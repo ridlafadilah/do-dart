@@ -1,11 +1,10 @@
-name: Dongkap Dart Analyzer
+name: Dongkap Analyzer
 
 on:
   push:
     branches: [ master ]
 
 jobs:
-
   package-analysis:
 
     runs-on: ubuntu-latest
@@ -13,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - uses: axel-op/dart-package-analyzer@master
+      - uses: axel-op/dart-package-analyzer@v3
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           relativePath: do_dart
