@@ -2,7 +2,7 @@ name: Dongkap Analyzer
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   package-analysis:
@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
 
       - uses: axel-op/dart-package-analyzer@v3
         with:
