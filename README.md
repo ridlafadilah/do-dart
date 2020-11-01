@@ -1,4 +1,4 @@
-# do-dart
+# do-dart [![Actions Status](https://github.com/ridlafadilah/do-dart/workflows/Dongkap%20Analyzer/badge.svg)](https://github.com/ridlafadilah/do-dart/actions)
 Dongkap | Mobile Application with Flutter
 
 ```
