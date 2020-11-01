@@ -59,7 +59,7 @@ Make sure following software is installed on your PC.
   
   Please testing with [Dongkap Java API](https://github.com/ridlafadilah/do-api)
 
-  > :warning: _If you are using the Dongkap Develpoment API, sometimes the connection to the server may timeout_
+  > :warning: _If you are using the Dongkap Develpoment API, sometimes the connection to the server may timeout._
 
 ## How can I support?
   * Star Dongkap GitHub repo :star:
