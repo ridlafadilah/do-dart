@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - uses: axel-op/dart-package-analyzer@v3
+      - uses: axel-op/dart-package-analyzer@master
         with:
           githubToken: ${{ secrets.GITHUB_TOKEN }}
           relativePath: do_dart
