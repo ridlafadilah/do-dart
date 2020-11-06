@@ -2,7 +2,7 @@ import 'package:do_dart/main/ui_view/body_measurement.dart';
 import 'package:do_dart/main/ui_view/glass_view.dart';
 import 'package:do_dart/main/ui_view/mediterranesn_diet_view.dart';
 import 'package:do_dart/main/ui_view/title_view.dart';
-import 'package:do_dart/app_theme.dart';
+import 'package:do_theme/theme.dart';
 import 'package:do_dart/main/my_diary/meals_list_view.dart';
 import 'package:do_dart/main/my_diary/water_view.dart';
 import 'package:flutter/material.dart';

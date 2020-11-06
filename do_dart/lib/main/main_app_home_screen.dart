@@ -2,11 +2,14 @@ import 'package:do_dart/main/models/tabIcon_data.dart';
 import 'package:do_dart/main/traning/training_screen.dart';
 import 'package:flutter/material.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
-import 'package:do_dart/app_theme.dart';
+import 'package:do_theme/theme.dart';
 import 'my_diary/my_diary_screen.dart';
 
 class MainAppHomeScreen extends StatefulWidget {
-  static String tag = 'home-page';
+  static Route route() {
+    return MaterialPageRoute<void>(builder: (_) => MainAppHomeScreen());
+  }
+
   @override
   _MainAppHomeScreenState createState() => _MainAppHomeScreenState();
 }

@@ -1,7 +1,4 @@
-import 'package:do_dart/auth/auth.dart';
-
-class SecurityConfig implements SecuritySettings {
-  @override
+class SecurityConfig {
   Map<String, dynamic> get securityResourceModel => {
         'client_id': 'do-mobile',
         'client_secret': 'secretdo02',
@@ -16,12 +13,16 @@ class SecurityConfig implements SecuritySettings {
         'recaptcha': '6LdQB9YZAAAAAI12Oyn9yoi5BoW0Bivxo8vJl8rd',
       };
 
-  @override
   Map<String, dynamic> get signatureHeader => {
         'authorization': 'Authorization',
         'signature': 'X-DONGKAP-Signature',
         'timestamp': 'X-DONGKAP-Timestamp',
         'key': 'X-DONGKAP-Key',
         'mark': 'X-DONGKAP-Mark',
+      };
+
+  Map<String, dynamic> get config => {
+        'security_resource': securityResourceModel,
+        'signature_header': signatureHeader,
       };
 }

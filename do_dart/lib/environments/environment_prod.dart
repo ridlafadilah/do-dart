@@ -1,36 +1,32 @@
 import 'environment.dart';
 
 class EnviromentProduction extends Enviroment {
-  String get profile => 'production';
-  String get locale => 'en-US';
-  Map<String, dynamic> get host => {
-        'openapi': {
-          'protocol': 'https',
-          'host': 'dongkap-api.herokuapp.com',
+  Map<String, dynamic> get config =>
+      {'profile': 'PROD', 'locale': 'en-US', 'debug': false};
+
+  Map<String, dynamic> get hosts => {
+        'hosts': {
+          'openapi': {
+            'host': 'https://dongkap-api.herokuapp.com',
+          },
+          'auth': {
+            'host': 'https://dongkap-api.herokuapp.com',
+          },
+          'security': {
+            'host': 'https://dongkap-api.herokuapp.com',
+          },
+          'profile': {
+            'host': 'https://dongkap-api.herokuapp.com',
+          },
+          'master': {
+            'host': 'https://dongkap-api.herokuapp.com',
+          },
+          'file': {
+            'host': 'https://dongkap-api.herokuapp.com',
+          },
+          'notification': {
+            'host': 'https://dongkap-api.herokuapp.com',
+          }
         },
-        'auth': {
-          'protocol': 'https',
-          'host': 'dongkap-api.herokuapp.com',
-        },
-        'security': {
-          'protocol': 'https',
-          'host': 'dongkap-api.herokuapp.com',
-        },
-        'profile': {
-          'protocol': 'https',
-          'host': 'dongkap-api.herokuapp.com',
-        },
-        'master': {
-          'protocol': 'https',
-          'host': 'dongkap-api.herokuapp.com',
-        },
-        'file': {
-          'protocol': 'https',
-          'host': 'dongkap-api.herokuapp.com',
-        },
-        'notification': {
-          'protocol': 'https',
-          'host': 'dongkap-api.herokuapp.com',
-        }
       };
 }

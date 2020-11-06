@@ -12,10 +12,9 @@ Dongkap | Mobile Application with Flutter
 ```
 
 ## Features
-A big thank you to [Mitesh Chodvadiya](https://github.com/mitesh77) for his contribution in building [
-Best-Flutter-UI-Templates](https://github.com/mitesh77/Best-Flutter-UI-Templates) with full feature support. :thumbsup:
+* __Theme__
+  * Main template using [Best-Flutter-UI-Templates](https://github.com/mitesh77/Best-Flutter-UI-Templates)
 
-In this framework I only added a few features, including:
 * __Integrate with API__
   * OAuth2 ( _soon_ )
   * JWT ( _soon_ )
@@ -29,7 +28,7 @@ In this framework I only added a few features, including:
 
 * __i18n__ ( _soon_ )
 
-* __Simple Admin Template__
+* __Simple UI Template__
   * Login ( _soon_ )
   * Registration ( _soon_ )
   * Forgot Password ( _soon_ )
@@ -53,7 +52,7 @@ Make sure following software is installed on your PC.
   ```
   do_dart$ flutter run
   ```
-  or open file ```main.dart``` and then press __F5__ in Visual Studio Code
+  or press __F5__ in Visual Studio Code
 
 * __API__
   

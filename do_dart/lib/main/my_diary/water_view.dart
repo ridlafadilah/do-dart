@@ -1,6 +1,6 @@
 import 'package:do_dart/main/ui_view/wave_view.dart';
-import 'package:do_dart/app_theme.dart';
-import 'package:do_dart/core/core.dart';
+import 'package:do_theme/theme.dart';
+import 'package:do_core/core.dart';
 import 'package:flutter/material.dart';
 
 class WaterView extends StatefulWidget {

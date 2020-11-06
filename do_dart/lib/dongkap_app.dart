@@ -1,19 +1,20 @@
 import 'dart:io';
+import 'package:do_auth/auth.dart';
+import 'package:do_dart/auth/auth.dart';
+import 'package:do_dart/configs/api_config.dart';
+import 'package:do_dart/configs/security_config.dart';
 import 'package:do_dart/environments/environment.dart';
+import 'package:do_dart/main/main_app_home_screen.dart';
+import 'package:do_dart/splash/splash.dart';
+import 'package:do_storage/storage.dart';
+import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:do_dart/app_theme.dart';
-import 'package:do_dart/auth/auth.dart';
-import 'package:do_dart/main/main_app_home_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:global_configuration/global_configuration.dart';
 
-import 'configs/security_config.dart';
-
 class DongkapApp extends StatelessWidget {
-  final routes = <String, WidgetBuilder>{
-    LoginPage.tag: (context) => LoginPage(),
-    MainAppHomeScreen.tag: (context) => MainAppHomeScreen(),
-  };
+  const DongkapApp({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,28 +27,79 @@ class DongkapApp extends StatelessWidget {
       systemNavigationBarDividerColor: Colors.grey,
       systemNavigationBarIconBrightness: Brightness.dark,
     ));
+
+    return MultiRepositoryProvider(
+      providers: [
+        RepositoryProvider<AuthService>(
+          create: (_) => AuthService(),
+        ),
+        RepositoryProvider<SharedPreferencesService>(
+          create: (_) => SharedPreferencesService(),
+        ),
+      ],
+      child: MultiBlocProvider(providers: [
+        BlocProvider<AuthenticationBloc>(
+          create: (_) => AuthenticationBloc(
+              authService: RepositoryProvider.of<AuthService>(_)),
+        )
+      ], child: DongkapAppView()),
+    );
+  }
+}
+
+class DongkapAppView extends StatefulWidget {
+  @override
+  _DongkapAppViewState createState() => _DongkapAppViewState();
+}
+
+class _DongkapAppViewState extends State<DongkapAppView> {
+  final _navigatorKey = GlobalKey<NavigatorState>();
+
+  NavigatorState get _navigator => _navigatorKey.currentState;
+
+  @override
+  Widget build(BuildContext context) {
     return MaterialApp(
+      navigatorKey: _navigatorKey,
       title: 'Dongkap',
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: GlobalConfiguration().getValue<bool>('debug'),
       theme: ThemeData(
         primarySwatch: Colors.blue,
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
-      home: LoginPage(),
-      routes: routes,
+      builder: (context, child) {
+        return BlocListener<AuthenticationBloc, AuthenticationState>(
+          listener: (context, state) {
+            switch (state.status) {
+              case AuthStatus.authenticated:
+                _navigator.pushAndRemoveUntil<void>(
+                  MainAppHomeScreen.route(),
+                  (route) => false,
+                );
+                break;
+              case AuthStatus.unauthenticated:
+                _navigator.pushAndRemoveUntil<void>(
+                  LoginPage.route(),
+                  (route) => false,
+                );
+                break;
+              default:
+                break;
+            }
+          },
+          child: child,
+        );
+      },
+      onGenerateRoute: (_) => SplashPage.route(),
     );
   }
 }
 
-setupConfiguration(Enviroment env) {
-  GlobalConfiguration().loadFromMap(env.host);
-  GlobalConfiguration().addValue('profile', env.profile);
-  GlobalConfiguration().addValue('locale', env.locale);
-}
-
-setupLocator() {
-  setupAuthLocator();
-  authLocator.allowReassignment = true;
-  authLocator.registerSingleton<SecuritySettings>(SecurityConfig());
+void setupConfiguration(Enviroment env, SecurityConfig sec, APIConfig api) {
+  GlobalConfiguration()
+      .loadFromMap(env.config)
+      .loadFromMap(env.hosts)
+      .loadFromMap(sec.config)
+      .loadFromMap(api.api);
 }

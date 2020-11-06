@@ -4,7 +4,7 @@ import 'package:do_dart/main/ui_view/title_view.dart';
 import 'package:do_dart/main/ui_view/workout_view.dart';
 import 'package:flutter/material.dart';
 
-import 'package:do_dart/app_theme.dart';
+import 'package:do_theme/theme.dart';
 
 class TrainingScreen extends StatefulWidget {
   const TrainingScreen({Key key, this.animationController}) : super(key: key);
