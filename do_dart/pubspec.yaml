@@ -17,10 +17,12 @@ dependencies:
   flutter_launcher_icons: ^0.8.1
   do_core:
     path: packages/do_core
-  do_theme:
-    path: packages/do_theme
   do_storage:
     path: packages/do_storage
+  do_api:
+    path: packages/do_api
+  do_theme:
+    path: packages/do_theme
   do_auth:
     path: packages/do_auth
 

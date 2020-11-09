@@ -19,6 +19,11 @@ dependencies:
   meta: ^1.2.3
   global_configuration: ^1.6.0
   json_annotation: ^3.1.0
+  logger: ^0.9.4
+  do_api:
+    path: ../do_api
+  do_storage:
+    path: ../do_storage
 
 dev_dependencies:
   flutter_test:

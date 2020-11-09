@@ -2,7 +2,6 @@ library do_auth;
 
 export 'models/auth_status.dart';
 export 'models/oauth_static.dart';
-export 'models/oauth_result.dart';
 
 export 'services/auth_service.dart';
 

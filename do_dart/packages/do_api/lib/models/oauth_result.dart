@@ -50,7 +50,7 @@ class OAuthResult {
 
   @override
   String toString() {
-    return 'OAuthResult{' +
+    return 'OAuthResult : {' +
         'accessToken: $accessToken, ' +
         'refreshToken: $refreshToken, ' +
         'tokenType: $tokenType, ' +

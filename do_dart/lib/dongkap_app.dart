@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:do_auth/auth.dart';
 import 'package:do_dart/auth/auth.dart';
-import 'package:do_dart/configs/api_config.dart';
 import 'package:do_dart/configs/security_config.dart';
 import 'package:do_dart/environments/environment.dart';
 import 'package:do_dart/main/main_app_home_screen.dart';
@@ -32,9 +31,6 @@ class DongkapApp extends StatelessWidget {
       providers: [
         RepositoryProvider<AuthService>(
           create: (_) => AuthService(),
-        ),
-        RepositoryProvider<SharedPreferencesService>(
-          create: (_) => SharedPreferencesService(),
         ),
       ],
       child: MultiBlocProvider(providers: [
@@ -96,10 +92,13 @@ class _DongkapAppViewState extends State<DongkapAppView> {
   }
 }
 
-void setupConfiguration(Enviroment env, SecurityConfig sec, APIConfig api) {
+void setupConfiguration(Enviroment env, SecurityConfig sec) {
   GlobalConfiguration()
       .loadFromMap(env.config)
       .loadFromMap(env.hosts)
-      .loadFromMap(sec.config)
-      .loadFromMap(api.api);
+      .loadFromMap(sec.config);
+}
+
+Future<void> setupLocator() async {
+  await setupStorageLocator();
 }

@@ -1,12 +1,12 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:do_api/api.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
 import '../services/auth_service.dart';
 import '../models/auth_status.dart';
-import '../models/oauth_result.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';
