@@ -1,4 +1,4 @@
-class Enviroment {
+class Environment {
   Map<String, dynamic> get config =>
       {'profile': 'DEV', 'locale': 'en-US', 'debug': true};
 

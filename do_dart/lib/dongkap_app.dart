@@ -92,7 +92,7 @@ class _DongkapAppViewState extends State<DongkapAppView> {
   }
 }
 
-void setupConfiguration(Enviroment env, SecurityConfig sec) {
+void setupConfiguration(Environment env, SecurityConfig sec) {
   GlobalConfiguration()
       .loadFromMap(env.config)
       .loadFromMap(env.hosts)

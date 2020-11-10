@@ -1,6 +1,6 @@
 import 'environment.dart';
 
-class EnviromentProduction extends Enviroment {
+class EnvironmentProduction extends Environment {
   Map<String, dynamic> get config =>
       {'profile': 'PROD', 'locale': 'en-US', 'debug': false};
 

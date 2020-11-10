@@ -7,7 +7,7 @@ import 'configs/security_config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  setupConfiguration(Enviroment(), SecurityConfig());
+  setupConfiguration(Environment(), SecurityConfig());
   await setupLocator();
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
