@@ -2,11 +2,8 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:logger/logger.dart';
 
 class HttpBasicInterceptors extends InterceptorsWrapper {
-  final logger = Logger();
-
   @override
   Future onRequest(RequestOptions options) async {
     final String clientId =

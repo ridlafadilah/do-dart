@@ -50,6 +50,10 @@ Make sure following software is installed on your PC.
 * __Development__
 
   ```
+  do_dart$ flutter pub run build_runner build
+  packages/do_api$ flutter pub run build_runner build
+  ```
+  ```
   do_dart$ flutter run
   ```
   or press __F5__ in Visual Studio Code

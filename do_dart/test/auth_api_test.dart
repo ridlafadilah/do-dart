@@ -1,21 +1,21 @@
 import 'package:dio/dio.dart' hide Headers;
-import 'package:do_api/interceptors/http_basic_interceptors.dart';
 import 'package:do_api/models/oauth_result.dart';
-import 'package:global_configuration/global_configuration.dart';
+import 'package:do_dart/environments/environment.dart';
 import 'package:retrofit/http.dart';
 
-part 'auth_api.g.dart';
+import 'http_interceptors_test.dart';
+
+part 'auth_api_test.g.dart';
 
 @RestApi()
-abstract class AuthAPI {
-  factory AuthAPI(Dio dio) {
-    final String baseUrl =
-        GlobalConfiguration().getValue("hosts")["auth"]["host"];
+abstract class AuthAPITest {
+  factory AuthAPITest(Dio dio) {
+    final String baseUrl = Environment().hosts['hosts']['auth']['host'];
     assert(baseUrl != null);
     dio.options.receiveTimeout = 30000;
     dio.options.connectTimeout = 15000;
-    dio.interceptors.add(HttpBasicInterceptors());
-    return _AuthAPI(dio, baseUrl: baseUrl);
+    dio.interceptors.add(HttpBasicInterceptorsTest());
+    return _AuthAPITest(dio, baseUrl: baseUrl);
   }
 
   @Headers({'content-type': 'application/x-www-form-urlencoded'})

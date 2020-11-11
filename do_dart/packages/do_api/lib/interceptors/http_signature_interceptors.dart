@@ -4,12 +4,10 @@ import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
 import 'package:do_storage/storage.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:logger/logger.dart';
 
 class HttpSignatureInterceptors extends InterceptorsWrapper {
   final SharedPreferencesService _sharedPreferences =
       storageLocator<SharedPreferencesService>();
-  final logger = Logger();
 
   @override
   Future onRequest(RequestOptions options) async {
