@@ -10,7 +10,7 @@ part 'auth_api.g.dart';
 abstract class AuthAPI {
   factory AuthAPI(Dio dio) {
     final String baseUrl =
-        GlobalConfiguration().getValue("hosts")["auth"]["host"];
+        GlobalConfiguration().getValue('hosts')['auth']['host'];
     assert(baseUrl != null);
     dio.options.receiveTimeout = 30000;
     dio.options.connectTimeout = 15000;
@@ -19,6 +19,6 @@ abstract class AuthAPI {
   }
 
   @Headers({'content-type': 'application/x-www-form-urlencoded'})
-  @POST("/do/oauth/token")
+  @POST('/do/oauth/token')
   Future<OAuthResult> token(@Body() Map<String, dynamic> body);
 }

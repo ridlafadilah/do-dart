@@ -54,7 +54,14 @@ class AuthService {
     });
   }
 
-  void logOut() {
+  Future<void> logOut() async {
+    await this._sharedPreferences.clearKey('access_token');
+    await this._sharedPreferences.clearKey('refresh_token');
+    await this._sharedPreferences.clearKey('token_type');
+    await this._sharedPreferences.clearKey('expires_in');
+    await this._sharedPreferences.clearKey('authority');
+    await this._sharedPreferences.clearKey('provider');
+    await this._sharedPreferences.clearKey('server_date');
     _controller.add(AuthStatus.unauthenticated);
   }
 

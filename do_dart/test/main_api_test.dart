@@ -42,12 +42,12 @@ void main() {
     test("Waiting", () async {
       logger.w('Waiting 15 seconds for the access_token to expired');
       await new Future.delayed(const Duration(seconds: 15));
-    }, timeout: Timeout(Duration(seconds: 20)));
+    });
 
     test("Refresh Token", () async {
       _profileAPITest = ProfileAPITest(Dio(), oAuthResult);
       final response = await _profileAPITest.getProfile();
       logger.i(response.toString());
-    });
-  }, timeout: Timeout(Duration(minutes: 1)));
+    }, timeout: Timeout(Duration(seconds: 45)));
+  }, timeout: Timeout(Duration(minutes: 2)));
 }

@@ -88,33 +88,55 @@ class HttpSignatureInterceptorsTest extends Interceptor {
 class HttpErrorInterceptorsTest extends Interceptor {
   Dio dio;
   final AuthAPITest _authAPI = AuthAPITest(Dio());
+  bool hasRefreshToken = false;
+  int timeouts = 0;
   HttpErrorInterceptorsTest(Dio _dio, OAuthResult _oAuthResult) {
     this.dio = _dio;
-    oAuthResult = _oAuthResult;
+    if (oAuthResult == null) {
+      oAuthResult = _oAuthResult;
+    }
+  }
+
+  @override
+  Future onResponse(Response response) async {
+    this.hasRefreshToken = false;
   }
 
   @override
   Future onError(DioError err) async {
     final int statusCode = err.response.statusCode;
+    final ErrorResponse response = ErrorResponse.fromJson(err.response.data);
+    logger.i(err.response.data);
     switch (statusCode) {
       case 401:
         try {
-          final ErrorResponse response =
-              ErrorResponse.fromJson(err.response.data);
           final String msg = response.respStatusMessage['invalid_token'];
-          if (msg.contains('expired')) {
-            this.dio.interceptors.requestLock.lock();
-            this.dio.interceptors.responseLock.lock();
-            await this.doRefreshToken(oAuthResult.refreshToken);
-            RequestOptions options = err.response.request;
-            dio.interceptors.requestLock.unlock();
-            dio.interceptors.responseLock.unlock();
-            return dio.request(options.path, options: options);
+          if (msg != null) {
+            if (msg.contains('expired')) {
+              if (!this.hasRefreshToken) {
+                this.dio.interceptors.requestLock.lock();
+                this.dio.interceptors.responseLock.lock();
+                await this.doRefreshToken(oAuthResult.refreshToken);
+                // logger.w('Waiting 15 seconds for the access_token to expired');
+                // await new Future.delayed(const Duration(seconds: 15));
+                RequestOptions options = err.response.request;
+                dio.interceptors.requestLock.unlock();
+                dio.interceptors.responseLock.unlock();
+                return dio.request(options.path, options: options);
+              } else {
+                this.clearSharedPreferences();
+                logger.e('LOGOUT');
+              }
+            } else {
+              this.clearSharedPreferences();
+              logger.e('LOGOUT');
+            }
           }
         } catch (e) {}
         break;
       default:
         super.onError(err);
+        break;
     }
   }
 
@@ -130,5 +152,10 @@ class HttpErrorInterceptorsTest extends Interceptor {
 
   Future<void> putSharedPreferences(OAuthResult value) async {
     oAuthResult = value;
+    this.hasRefreshToken = !this.hasRefreshToken;
+  }
+
+  void clearSharedPreferences() {
+    this.hasRefreshToken = false;
   }
 }
