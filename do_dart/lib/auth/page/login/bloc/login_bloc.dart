@@ -12,12 +12,12 @@ part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc({
-    @required AuthService authenticationRepository,
-  })  : assert(authenticationRepository != null),
-        _authenticationRepository = authenticationRepository,
+    @required AuthService authService,
+  })  : assert(authService != null),
+        _authService = authService,
         super(const LoginState());
 
-  final AuthService _authenticationRepository;
+  final AuthService _authService;
 
   @override
   Stream<LoginState> mapEventToState(
@@ -39,7 +39,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final username = Username.dirty(event.username);
     return state.copyWith(
       username: username,
-      status: Formz.validate([state.password, username]),
+      action: Formz.validate([state.password, username]),
     );
   }
 
@@ -50,7 +50,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     final password = Password.dirty(event.password);
     return state.copyWith(
       password: password,
-      status: Formz.validate([password, state.username]),
+      action: Formz.validate([password, state.username]),
     );
   }
 
@@ -58,10 +58,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     LoginSubmitted event,
     LoginState state,
   ) async* {
-    if (state.status.isValidated) {
-      yield state.copyWith(status: FormzStatus.submissionInProgress);
+    if (state.action.isValidated) {
+      yield state.copyWith(
+          status: FormzStatus.submissionInProgress,
+          action: FormzStatus.submissionInProgress);
       try {
-        await _authenticationRepository.logIn(
+        await _authService.logIn(
           username: state.username.value,
           password: state.password.value,
         );

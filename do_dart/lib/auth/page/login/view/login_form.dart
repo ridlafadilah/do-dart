@@ -97,10 +97,20 @@ class _PasswordInput extends StatelessWidget {
 }
 
 class _LoginButton extends StatelessWidget {
+  Function _loginButtonPress(BuildContext context, LoginState state) {
+    if (!state.action.isValidated || state.status.isSubmissionInProgress) {
+      return null;
+    } else {
+      return () {
+        context.read<LoginBloc>().add(const LoginSubmitted());
+      };
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
-        buildWhen: (previous, current) => previous.status != current.status,
+        buildWhen: (previous, current) => previous.action != current.action,
         builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
@@ -123,11 +133,7 @@ class _LoginButton extends StatelessWidget {
                   disabledColor: AppTheme.buttonDisable,
                   minWidth: 200.0,
                   height: 48.0,
-                  onPressed: state.status.isValidated
-                      ? () {
-                          context.read<LoginBloc>().add(const LoginSubmitted());
-                        }
-                      : null,
+                  onPressed: _loginButtonPress(context, state),
                   child: Center(
                     child: Padding(
                       padding: const EdgeInsets.all(4.0),

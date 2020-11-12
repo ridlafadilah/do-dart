@@ -50,7 +50,7 @@ Make sure following software is installed on your PC.
 * __Development__
 
   ```
-  do_dart$ flutter pub run build_runner build
+  do_dart$ flutter pub run build_runner build --delete-conflicting-outputs
   packages/do_core$ flutter pub run build_runner build
   ```
   ```

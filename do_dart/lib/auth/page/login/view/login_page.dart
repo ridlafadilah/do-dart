@@ -18,8 +18,7 @@ class LoginPage extends StatelessWidget {
         child: BlocProvider(
           create: (context) {
             return LoginBloc(
-              authenticationRepository:
-                  RepositoryProvider.of<AuthService>(context),
+              authService: RepositoryProvider.of<AuthService>(context),
             );
           },
           child: LoginForm(),

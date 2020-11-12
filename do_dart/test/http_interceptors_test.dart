@@ -115,7 +115,8 @@ class HttpErrorInterceptorsTest extends Interceptor {
               if (!hasRefreshToken) {
                 dio.interceptors.requestLock.lock();
                 dio.interceptors.responseLock.lock();
-                await doRefreshToken(oAuthResult.refreshToken);
+                await doRefreshToken(oAuthResult.refreshToken)
+                    .catchError((onError) {});
                 /*
                 logger.w('Waiting 15 seconds for the access_token to expired');
                 await new Future.delayed(const Duration(seconds: 15));

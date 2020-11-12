@@ -1,7 +1,9 @@
+import 'package:do_core/core.dart';
 import 'package:do_dart/main/models/tabIcon_data.dart';
 import 'package:do_dart/main/traning/training_screen.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
 import 'my_diary/my_diary_screen.dart';
 
@@ -81,7 +83,11 @@ class _MainAppHomeScreenState extends State<MainAppHomeScreen>
         ),
         BottomBarView(
           tabIconsList: tabIconsList,
-          addClick: () {},
+          addClick: () async {
+            AuthService authService =
+                RepositoryProvider.of<AuthService>(context);
+            await authService.logOut();
+          },
           changeIndex: (int index) {
             if (index == 0 || index == 2) {
               animationController.reverse().then<dynamic>((data) {

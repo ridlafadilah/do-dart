@@ -1,18 +1,24 @@
 import 'package:dio/dio.dart';
 import 'package:do_core/api/auth/auth_api.dart';
 import 'package:do_core/models/error_response.dart';
-import 'package:do_core/models/oauth_result.dart';
+import 'package:do_core/services/auth_service.dart';
 import 'package:do_core/services/core_locator.dart';
 import 'package:do_core/services/shared_preferences_service.dart';
 import 'package:global_configuration/global_configuration.dart';
 
 class HttpErrorInterceptors extends Interceptor {
-  HttpErrorInterceptors(this._dio);
+  HttpErrorInterceptors(this._dio, this._authService);
   final Dio _dio;
+  final AuthService _authService;
   final AuthAPI _authAPI = AuthAPI(Dio());
   final SharedPreferencesService _sharedPreferences =
       coreLocator<SharedPreferencesService>();
   bool hasRefreshToken = false;
+
+  @override
+  Future onResponse(Response response) async {
+    hasRefreshToken = false;
+  }
 
   @override
   Future onError(DioError err) async {
@@ -27,16 +33,16 @@ class HttpErrorInterceptors extends Interceptor {
               if (!hasRefreshToken) {
                 _dio.interceptors.requestLock.lock();
                 _dio.interceptors.responseLock.lock();
-                await doRefreshToken();
+                await doRefreshToken().catchError((onError) {});
                 RequestOptions options = err.response.request;
                 _dio.interceptors.requestLock.unlock();
                 _dio.interceptors.responseLock.unlock();
                 return _dio.request(options.path, options: options);
               } else {
-                await clearSharedPreferences();
+                await doLogOut();
               }
             } else {
-              await clearSharedPreferences();
+              await doLogOut();
             }
           }
         } catch (e) {}
@@ -56,36 +62,12 @@ class HttpErrorInterceptors extends Interceptor {
       'client_id': clientId,
       'refresh_token': refreshToken,
     };
-    await putSharedPreferences(await _authAPI.token(body));
-  }
-
-  Future<void> putSharedPreferences(OAuthResult value) async {
-    await _sharedPreferences.putString('access_token', value.accessToken);
-    await _sharedPreferences.putString('refresh_token', value.refreshToken);
-    await _sharedPreferences.putString('token_type', value.tokenType);
-    await _sharedPreferences.putString('xrkey', value.publicKey);
-    await _sharedPreferences.putInt('expires_in', value.expiresIn);
-    await _sharedPreferences.putString('authority', value.authority);
-    await _sharedPreferences.putString('provider', value.provider);
-    await _sharedPreferences.putString('image', value.image);
-    await _sharedPreferences.putString('email', value.email);
-    await _sharedPreferences.putString('menus', value.menus);
-    await _sharedPreferences.putString('extras', value.extras);
-    await _sharedPreferences.putString('server_date', value.serverDate);
-    await _sharedPreferences.putString('locale', value.locale);
-    await _sharedPreferences.putString('theme', value.theme);
-    await _sharedPreferences.putString('name', value.name);
+    await _authService.putSharedPreferences(await _authAPI.token(body));
     hasRefreshToken = !hasRefreshToken;
   }
 
-  Future<void> clearSharedPreferences() async {
-    await _sharedPreferences.clearKey('access_token');
-    await _sharedPreferences.clearKey('refresh_token');
-    await _sharedPreferences.clearKey('token_type');
-    await _sharedPreferences.clearKey('expires_in');
-    await _sharedPreferences.clearKey('authority');
-    await _sharedPreferences.clearKey('provider');
-    await _sharedPreferences.clearKey('server_date');
+  Future<void> doLogOut() async {
+    await _authService.logOut();
     hasRefreshToken = false;
   }
 }
