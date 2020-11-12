@@ -22,6 +22,6 @@ abstract class ProfileAPI {
   }
 
   @Headers({'content-type': 'application/json'})
-  @GET("/do/api/profile/vw/get/profile/v.1")
+  @GET('/do/api/profile/vw/get/profile/v.1')
   Future getProfile();
 }

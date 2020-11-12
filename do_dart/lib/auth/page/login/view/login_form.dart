@@ -21,24 +21,24 @@ class LoginForm extends StatelessWidget {
       },
       child: ListView(
         shrinkWrap: true,
-        padding: EdgeInsets.only(left: 24.0, right: 24.0),
+        padding: const EdgeInsets.only(left: 24.0, right: 24.0),
         children: <Widget>[
           _TitleLabel(),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           _SubtitleLabel(),
-          SizedBox(height: 35.0),
+          const SizedBox(height: 35.0),
           _UsernameInput(),
-          SizedBox(height: 8.0),
+          const SizedBox(height: 8.0),
           _ForgotPasswordLabel(),
           _PasswordInput(),
-          SizedBox(height: 24.0),
+          const SizedBox(height: 24.0),
           _LoginButton(),
           _AdditionalTitleLabel(),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           _GoogleLogin(),
-          SizedBox(height: 20.0),
+          const SizedBox(height: 20.0),
           _RegisterLink(),
-          SizedBox(height: 35.0),
+          const SizedBox(height: 35.0),
           _TermsConditionLink()
         ],
       ),
@@ -59,7 +59,7 @@ class _UsernameInput extends StatelessWidget {
           decoration: InputDecoration(
             labelText: 'Username or email :',
             hintText: 'Username / Email',
-            contentPadding: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
+            contentPadding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
             errorText: state.username.invalid ? 'invalid username' : null,
@@ -85,7 +85,7 @@ class _PasswordInput extends StatelessWidget {
             decoration: InputDecoration(
               labelText: 'Password :',
               hintText: 'Password',
-              contentPadding: EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+              contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
               errorText: state.password.invalid ? 'invalid password' : null,
@@ -104,7 +104,7 @@ class _LoginButton extends StatelessWidget {
         buildWhen: (previous, current) => previous.status != current.status,
         builder: (context, state) {
           return Padding(
-            padding: EdgeInsets.symmetric(vertical: 16.0),
+            padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: Center(
               child: Container(
                 decoration: state.status.isSubmissionInProgress
@@ -157,7 +157,7 @@ class _TitleLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 8),
-      child: Text(
+      child: const Text(
         'Login',
         textAlign: TextAlign.center,
         style: TextStyle(
@@ -175,7 +175,7 @@ class _SubtitleLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 8),
-      child: Text(
+      child: const Text(
         'Hello! Login with your username or email.',
         textAlign: TextAlign.center,
         style: TextStyle(
@@ -194,7 +194,7 @@ class _ForgotPasswordLabel extends StatelessWidget {
     return Align(
         alignment: Alignment.centerRight,
         child: FlatButton(
-          child: Text(
+          child: const Text(
             'Forgot password?',
             style: TextStyle(color: Colors.black54),
           ),
@@ -208,7 +208,7 @@ class _AdditionalTitleLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 8),
-      child: Text(
+      child: const Text(
         'or enter with:',
         textAlign: TextAlign.center,
         style: TextStyle(
@@ -243,8 +243,8 @@ class _RegisterLink extends StatelessWidget {
           direction: Axis.horizontal,
           alignment: WrapAlignment.center,
           children: <Widget>[
-            Padding(
-                padding: const EdgeInsets.only(right: 2),
+            const Padding(
+                padding: EdgeInsets.only(right: 2),
                 child: Text(
                   'Don' 't have an account?',
                   textAlign: TextAlign.center,
@@ -256,7 +256,7 @@ class _RegisterLink extends StatelessWidget {
                 )),
             InkWell(
               onTap: () {},
-              child: new Text(
+              child: const Text(
                 'Register',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -280,7 +280,7 @@ class _TermsConditionLink extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8),
       child: InkWell(
         onTap: () {},
-        child: new Text(
+        child: const Text(
           'Terms & Conditions',
           textAlign: TextAlign.center,
           style: TextStyle(

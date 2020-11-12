@@ -18,12 +18,12 @@ class AuthService {
 
   Stream<AuthStatus> get status async* {
     await Future<void>.delayed(const Duration(seconds: 1));
-    if (this._sharedPreferences.isKeyExists('access_token')) {
+    if (_sharedPreferences.isKeyExists('access_token')) {
       yield AuthStatus.authenticated;
     } else {
       yield AuthStatus.unauthenticated;
     }
-    yield* this._controller.stream;
+    yield* _controller.stream;
   }
 
   Future<void> logIn({
@@ -31,7 +31,7 @@ class AuthService {
     @required String password,
   }) async {
     final String clientId =
-        GlobalConfiguration().get("security_resource")["client_id"].toString();
+        GlobalConfiguration().get('security_resource')['client_id'].toString();
     final _authAPI = AuthAPI(Dio());
     Map<String, dynamic> body = {
       'grant_type': 'password',
@@ -40,8 +40,7 @@ class AuthService {
       'password': password
     };
     await _authAPI.token(body).then((value) async {
-      await this
-          .putSharedPreferences(value)
+      await putSharedPreferences(value)
           .then((value) => _controller.add(AuthStatus.authenticated));
     }).catchError((Object obj) {
       switch (obj.runtimeType) {
@@ -55,34 +54,32 @@ class AuthService {
   }
 
   Future<void> logOut() async {
-    await this._sharedPreferences.clearKey('access_token');
-    await this._sharedPreferences.clearKey('refresh_token');
-    await this._sharedPreferences.clearKey('token_type');
-    await this._sharedPreferences.clearKey('expires_in');
-    await this._sharedPreferences.clearKey('authority');
-    await this._sharedPreferences.clearKey('provider');
-    await this._sharedPreferences.clearKey('server_date');
+    await _sharedPreferences.clearKey('access_token');
+    await _sharedPreferences.clearKey('refresh_token');
+    await _sharedPreferences.clearKey('token_type');
+    await _sharedPreferences.clearKey('expires_in');
+    await _sharedPreferences.clearKey('authority');
+    await _sharedPreferences.clearKey('provider');
+    await _sharedPreferences.clearKey('server_date');
     _controller.add(AuthStatus.unauthenticated);
   }
 
   Future<void> putSharedPreferences(OAuthResult value) async {
-    await this._sharedPreferences.putString('access_token', value.accessToken);
-    await this
-        ._sharedPreferences
-        .putString('refresh_token', value.refreshToken);
-    await this._sharedPreferences.putString('token_type', value.tokenType);
-    await this._sharedPreferences.putString('xrkey', value.publicKey);
-    await this._sharedPreferences.putInt('expires_in', value.expiresIn);
-    await this._sharedPreferences.putString('authority', value.authority);
-    await this._sharedPreferences.putString('provider', value.provider);
-    await this._sharedPreferences.putString('image', value.image);
-    await this._sharedPreferences.putString('email', value.email);
-    await this._sharedPreferences.putString('menus', value.menus);
-    await this._sharedPreferences.putString('extras', value.extras);
-    await this._sharedPreferences.putString('server_date', value.serverDate);
-    await this._sharedPreferences.putString('locale', value.locale);
-    await this._sharedPreferences.putString('theme', value.theme);
-    await this._sharedPreferences.putString('name', value.name);
+    await _sharedPreferences.putString('access_token', value.accessToken);
+    await _sharedPreferences.putString('refresh_token', value.refreshToken);
+    await _sharedPreferences.putString('token_type', value.tokenType);
+    await _sharedPreferences.putString('xrkey', value.publicKey);
+    await _sharedPreferences.putInt('expires_in', value.expiresIn);
+    await _sharedPreferences.putString('authority', value.authority);
+    await _sharedPreferences.putString('provider', value.provider);
+    await _sharedPreferences.putString('image', value.image);
+    await _sharedPreferences.putString('email', value.email);
+    await _sharedPreferences.putString('menus', value.menus);
+    await _sharedPreferences.putString('extras', value.extras);
+    await _sharedPreferences.putString('server_date', value.serverDate);
+    await _sharedPreferences.putString('locale', value.locale);
+    await _sharedPreferences.putString('theme', value.theme);
+    await _sharedPreferences.putString('name', value.name);
   }
 
   void dispose() => _controller.close();

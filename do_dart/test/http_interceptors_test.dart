@@ -15,9 +15,10 @@ OAuthResult oAuthResult;
 class HttpBasicInterceptorsTest extends Interceptor {
   @override
   Future onRequest(RequestOptions options) async {
-    final String clientId = SecurityConfig().securityResourceModel['client_id'];
+    final String clientId =
+        SecurityConfig().securityResourceModel['client_id'].toString();
     final String clientSecret =
-        SecurityConfig().securityResourceModel['client_secret'];
+        SecurityConfig().securityResourceModel['client_secret'].toString();
     final String authorization =
         base64Encode(utf8.encode('$clientId:$clientSecret'));
     assert(clientId != null);
@@ -48,11 +49,11 @@ class HttpSignatureInterceptorsTest extends Interceptor {
 
   @override
   Future onRequest(RequestOptions options) async {
-    final String key = this.getKey();
-    final int timestamp = this.getTimestamp();
+    final String key = getKey();
+    final int timestamp = getTimestamp();
     final String path = options.path;
-    final String token = this.getToken();
-    String signature = this.getSignature('$key:$timestamp:$path:$token');
+    final String token = getToken();
+    String signature = getSignature('$key:$timestamp:$path:$token');
     options.headers['X-DONGKAP-Key'] = key;
     options.headers['X-DONGKAP-Timestamp'] = timestamp;
     options.headers['X-DONGKAP-Signature'] = signature;
@@ -76,30 +77,27 @@ class HttpSignatureInterceptorsTest extends Interceptor {
   }
 
   String getSignature(String plain) {
-    var key =
-        utf8.encode(SecurityConfig().securityResourceModel['private_key']);
+    var key = utf8.encode(
+        SecurityConfig().securityResourceModel['private_key'].toString());
     var bytes = utf8.encode(plain);
-    Hmac hmacSha256 = new Hmac(sha256, key);
+    Hmac hmacSha256 = Hmac(sha256, key);
     Digest digest = hmacSha256.convert(bytes);
     return base64.encode(digest.bytes);
   }
 }
 
 class HttpErrorInterceptorsTest extends Interceptor {
-  Dio dio;
+  HttpErrorInterceptorsTest(this.dio, OAuthResult _oAuthResult) {
+    oAuthResult ??= _oAuthResult;
+  }
+  final Dio dio;
   final AuthAPITest _authAPI = AuthAPITest(Dio());
   bool hasRefreshToken = false;
   int timeouts = 0;
-  HttpErrorInterceptorsTest(Dio _dio, OAuthResult _oAuthResult) {
-    this.dio = _dio;
-    if (oAuthResult == null) {
-      oAuthResult = _oAuthResult;
-    }
-  }
 
   @override
   Future onResponse(Response response) async {
-    this.hasRefreshToken = false;
+    hasRefreshToken = false;
   }
 
   @override
@@ -110,52 +108,56 @@ class HttpErrorInterceptorsTest extends Interceptor {
     switch (statusCode) {
       case 401:
         try {
-          final String msg = response.respStatusMessage['invalid_token'];
+          final String msg =
+              response.respStatusMessage['invalid_token'].toString();
           if (msg != null) {
             if (msg.contains('expired')) {
-              if (!this.hasRefreshToken) {
-                this.dio.interceptors.requestLock.lock();
-                this.dio.interceptors.responseLock.lock();
-                await this.doRefreshToken(oAuthResult.refreshToken);
-                // logger.w('Waiting 15 seconds for the access_token to expired');
-                // await new Future.delayed(const Duration(seconds: 15));
+              if (!hasRefreshToken) {
+                dio.interceptors.requestLock.lock();
+                dio.interceptors.responseLock.lock();
+                await doRefreshToken(oAuthResult.refreshToken);
+                /*
+                logger.w('Waiting 15 seconds for the access_token to expired');
+                await new Future.delayed(const Duration(seconds: 15));
+                */
                 RequestOptions options = err.response.request;
                 dio.interceptors.requestLock.unlock();
                 dio.interceptors.responseLock.unlock();
                 return dio.request(options.path, options: options);
               } else {
-                this.clearSharedPreferences();
+                clearSharedPreferences();
                 logger.e('LOGOUT');
               }
             } else {
-              this.clearSharedPreferences();
+              clearSharedPreferences();
               logger.e('LOGOUT');
             }
           }
         } catch (e) {}
         break;
       default:
-        super.onError(err);
+        await super.onError(err);
         break;
     }
   }
 
   Future<void> doRefreshToken(String refreshToken) async {
-    final String clientId = SecurityConfig().securityResourceModel['client_id'];
+    final String clientId =
+        SecurityConfig().securityResourceModel['client_id'].toString();
     Map<String, dynamic> body = {
       'grant_type': 'refresh_token',
       'client_id': clientId,
       'refresh_token': refreshToken,
     };
-    await this.putSharedPreferences(await _authAPI.token(body));
+    await putSharedPreferences(await _authAPI.token(body));
   }
 
   Future<void> putSharedPreferences(OAuthResult value) async {
     oAuthResult = value;
-    this.hasRefreshToken = !this.hasRefreshToken;
+    hasRefreshToken = !hasRefreshToken;
   }
 
   void clearSharedPreferences() {
-    this.hasRefreshToken = false;
+    hasRefreshToken = false;
   }
 }

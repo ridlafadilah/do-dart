@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
+import 'configs/security_config.dart';
 import 'dongkap_app.dart';
 import 'environments/environment_prod.dart';
-import 'configs/security_config.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -12,5 +12,5 @@ void main() async {
   await SystemChrome.setPreferredOrientations(<DeviceOrientation>[
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown
-  ]).then((_) => runApp(DongkapApp()));
+  ]).then((_) => runApp(const DongkapApp()));
 }

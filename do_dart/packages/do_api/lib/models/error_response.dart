@@ -4,9 +4,6 @@ part 'error_response.g.dart';
 
 @JsonSerializable()
 class ErrorResponse {
-  String respStatusCode;
-  Map<String, dynamic> respStatusMessage;
-
   ErrorResponse(this.respStatusCode, this.respStatusMessage);
 
   factory ErrorResponse.fromJson(Map<String, dynamic> json) =>
@@ -14,10 +11,10 @@ class ErrorResponse {
 
   Map<String, dynamic> toJson() => _$ErrorResponseToJson(this);
 
+  String respStatusCode;
+  Map<String, dynamic> respStatusMessage;
+
   @override
-  String toString() {
-    return 'ErrorResponse : {' +
-        'respStatusCode: $respStatusCode, ' +
-        'respStatusMessage: $respStatusMessage}';
-  }
+  String toString() => '''
+ErrorResponse : {${'respStatusCode: $respStatusCode, '}${'respStatusMessage: $respStatusMessage}'}''';
 }

@@ -20,9 +20,9 @@ void main() {
   });
 
   group('API', () {
-    test("Login", () async {
+    test('Login', () async {
       final String clientId =
-          SecurityConfig().securityResourceModel['client_id'];
+          SecurityConfig().securityResourceModel['client_id'].toString();
       Map<String, dynamic> body = {
         'grant_type': 'password',
         'client_id': clientId,
@@ -33,21 +33,21 @@ void main() {
       logger.i(oAuthResult.toString());
     });
 
-    test("Get Profile", () async {
+    test('Get Profile', () async {
       _profileAPITest = ProfileAPITest(Dio(), oAuthResult);
       final response = await _profileAPITest.getProfile();
       logger.i(response.toString());
     });
 
-    test("Waiting", () async {
+    test('Waiting', () async {
       logger.w('Waiting 15 seconds for the access_token to expired');
-      await new Future.delayed(const Duration(seconds: 15));
+      await Future.delayed(const Duration(seconds: 15));
     });
 
-    test("Refresh Token", () async {
+    test('Refresh Token', () async {
       _profileAPITest = ProfileAPITest(Dio(), oAuthResult);
       final response = await _profileAPITest.getProfile();
       logger.i(response.toString());
-    }, timeout: Timeout(Duration(seconds: 45)));
-  }, timeout: Timeout(Duration(minutes: 2)));
+    }, timeout: const Timeout(Duration(seconds: 45)));
+  }, timeout: const Timeout(Duration(minutes: 2)));
 }

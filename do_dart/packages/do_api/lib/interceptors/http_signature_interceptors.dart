@@ -11,11 +11,11 @@ class HttpSignatureInterceptors extends InterceptorsWrapper {
 
   @override
   Future onRequest(RequestOptions options) async {
-    final String key = this.getKey();
-    final int timestamp = this.getTimestamp();
+    final String key = getKey();
+    final int timestamp = getTimestamp();
     final String path = options.path;
-    final String token = this.getToken();
-    String signature = this.getSignature('$key:$timestamp:$path:$token');
+    final String token = getToken();
+    String signature = getSignature('$key:$timestamp:$path:$token');
     options.headers['X-DONGKAP-Key'] = key;
     options.headers['X-DONGKAP-Timestamp'] = timestamp;
     options.headers['X-DONGKAP-Signature'] = signature;
@@ -23,11 +23,11 @@ class HttpSignatureInterceptors extends InterceptorsWrapper {
   }
 
   String getKey() {
-    return this._sharedPreferences.getString('xrkey');
+    return _sharedPreferences.getString('xrkey');
   }
 
   String getToken() {
-    return this._sharedPreferences.getString('access_token');
+    return _sharedPreferences.getString('access_token');
   }
 
   int getTimestamp() {
@@ -38,7 +38,7 @@ class HttpSignatureInterceptors extends InterceptorsWrapper {
     var key = utf8
         .encode(GlobalConfiguration().get('security_resource')['private_key']);
     var bytes = utf8.encode(plain);
-    Hmac hmacSha256 = new Hmac(sha256, key);
+    Hmac hmacSha256 = Hmac(sha256, key);
     Digest digest = hmacSha256.convert(bytes);
     return base64.encode(digest.bytes);
   }

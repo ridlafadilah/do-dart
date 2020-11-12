@@ -1,7 +1,9 @@
 name: do_dart
-description: Dongkap | Mobile Application with Flutter.
+description: Dongkap | Mobile Application Framework with Flutter (Android & iOS).
 publish_to: 'none'
 version: 1.0.0+1
+homepage: https://github.com/ridlafadilah/do-dart
+repository: https://github.com/ridlafadilah/do-dart
 
 environment:
   sdk: ">=2.7.0 <3.0.0"
@@ -9,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  cupertino_icons: ^0.1.3
+  cupertino_icons: ^1.0.1
   font_awesome_flutter: ^8.8.1
   smooth_star_rating: ^1.1.1
   intl: ^0.16.0

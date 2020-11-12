@@ -7,8 +7,7 @@ class HttpOAuthInterceptors extends InterceptorsWrapper {
 
   @override
   Future onRequest(RequestOptions options) async {
-    final String authorization =
-        this._sharedPreferences.getString('access_token');
+    final String authorization = _sharedPreferences.getString('access_token');
     assert(authorization != null);
     options.headers['authorization'] = 'Bearer $authorization';
     return options;

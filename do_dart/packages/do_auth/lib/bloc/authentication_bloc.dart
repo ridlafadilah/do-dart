@@ -5,8 +5,8 @@ import 'package:do_api/api.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
-import '../services/auth_service.dart';
 import '../models/auth_status.dart';
+import '../services/auth_service.dart';
 
 part 'authentication_event.dart';
 part 'authentication_state.dart';

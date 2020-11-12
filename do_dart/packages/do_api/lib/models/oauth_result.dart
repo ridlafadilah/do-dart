@@ -4,28 +4,6 @@ part 'oauth_result.g.dart';
 
 @JsonSerializable()
 class OAuthResult {
-  @JsonKey(name: 'access_token')
-  String accessToken;
-  @JsonKey(name: 'refresh_token')
-  String refreshToken;
-  @JsonKey(name: 'token_type')
-  String tokenType;
-  @JsonKey(name: 'xrkey')
-  String publicKey;
-  @JsonKey(name: 'expires_in')
-  int expiresIn;
-  String authority;
-  String provider;
-  String image;
-  String email;
-  String menus;
-  String extras;
-  @JsonKey(name: 'server_date')
-  String serverDate;
-  String locale;
-  String theme;
-  String name;
-
   OAuthResult(
       this.accessToken,
       this.refreshToken,
@@ -48,23 +26,31 @@ class OAuthResult {
 
   Map<String, dynamic> toJson() => _$OAuthResultToJson(this);
 
+  @JsonKey(name: 'access_token')
+  String accessToken;
+  @JsonKey(name: 'refresh_token')
+  String refreshToken;
+  @JsonKey(name: 'token_type')
+  String tokenType;
+  @JsonKey(name: 'xrkey')
+  String publicKey;
+  @JsonKey(name: 'expires_in')
+  int expiresIn;
+  String authority;
+  String provider;
+  String image;
+  String email;
+  String menus;
+  String extras;
+  @JsonKey(name: 'server_date')
+  String serverDate;
+  String locale;
+  String theme;
+  String name;
+
   @override
   String toString() {
-    return 'OAuthResult : {' +
-        'accessToken: $accessToken, ' +
-        'refreshToken: $refreshToken, ' +
-        'tokenType: $tokenType, ' +
-        'publicKey: $publicKey, ' +
-        'expiresIn: $expiresIn, ' +
-        'authority: $authority, ' +
-        'provider: $provider, ' +
-        'image: $image, ' +
-        'email: $email, ' +
-        'menus: $menus, ' +
-        'extras: $extras, ' +
-        'serverDate: $serverDate, ' +
-        'locale: $locale, ' +
-        'theme: $theme, ' +
-        'name: $name}';
+    return '''
+OAuthResult : {${'accessToken: $accessToken, '}${'refreshToken: $refreshToken, '}${'tokenType: $tokenType, '}${'publicKey: $publicKey, '}${'expiresIn: $expiresIn, '}${'authority: $authority, '}${'provider: $provider, '}${'image: $image, '}${'email: $email, '}${'menus: $menus, '}${'extras: $extras, '}${'serverDate: $serverDate, '}${'locale: $locale, '}${'theme: $theme, '}${'name: $name}'}''';
   }
 }

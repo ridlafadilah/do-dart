@@ -10,7 +10,8 @@ part 'profile_api_test.g.dart';
 @RestApi()
 abstract class ProfileAPITest {
   factory ProfileAPITest(Dio dio, OAuthResult oAuthResult) {
-    final String baseUrl = Environment().hosts['hosts']['profile']['host'];
+    final String baseUrl =
+        Environment().hosts['hosts']['profile']['host'].toString();
     assert(baseUrl != null);
     dio.options.receiveTimeout = 30000;
     dio.options.connectTimeout = 15000;
@@ -21,6 +22,6 @@ abstract class ProfileAPITest {
   }
 
   @Headers({'content-type': 'application/json'})
-  @GET("/do/api/profile/vw/get/profile/v.1")
+  @GET('/do/api/profile/vw/get/profile/v.1')
   Future getProfile();
 }

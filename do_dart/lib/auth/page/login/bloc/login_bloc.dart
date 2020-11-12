@@ -6,8 +6,8 @@ import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:meta/meta.dart';
 
-import '../components/username.dart';
 import '../components/password.dart';
+import '../components/username.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';

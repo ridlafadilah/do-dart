@@ -1,8 +1,8 @@
 import 'package:do_dart/main/models/tabIcon_data.dart';
 import 'package:do_dart/main/traning/training_screen.dart';
+import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'bottom_navigation_view/bottom_bar_view.dart';
-import 'package:do_theme/theme.dart';
 import 'my_diary/my_diary_screen.dart';
 
 class MainAppHomeScreen extends StatefulWidget {

@@ -142,7 +142,7 @@ class MealsView extends StatelessWidget {
                             Text(
                               mealsListData.titleTxt,
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
@@ -160,7 +160,7 @@ class MealsView extends StatelessWidget {
                                   children: <Widget>[
                                     Text(
                                       mealsListData.meals.join('\n'),
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 10,
@@ -180,7 +180,7 @@ class MealsView extends StatelessWidget {
                                       Text(
                                         mealsListData.kacl.toString(),
                                         textAlign: TextAlign.center,
-                                        style: TextStyle(
+                                        style: const TextStyle(
                                           fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.w500,
                                           fontSize: 24,
@@ -188,9 +188,9 @@ class MealsView extends StatelessWidget {
                                           color: AppTheme.white,
                                         ),
                                       ),
-                                      Padding(
-                                        padding: const EdgeInsets.only(
-                                            left: 4, bottom: 3),
+                                      const Padding(
+                                        padding:
+                                            EdgeInsets.only(left: 4, bottom: 3),
                                         child: Text(
                                           'kcal',
                                           style: TextStyle(
@@ -212,7 +212,7 @@ class MealsView extends StatelessWidget {
                                         BoxShadow(
                                             color: AppTheme.nearlyBlack
                                                 .withOpacity(0.4),
-                                            offset: Offset(8.0, 8.0),
+                                            offset: const Offset(8.0, 8.0),
                                             blurRadius: 8.0),
                                       ],
                                     ),

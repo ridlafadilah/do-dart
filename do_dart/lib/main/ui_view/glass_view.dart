@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:do_theme/theme.dart';
 
 class GlassView extends StatelessWidget {
-  final AnimationController animationController;
-  final Animation animation;
-
   const GlassView({Key key, this.animationController, this.animation})
       : super(key: key);
+
+  final AnimationController animationController;
+  final Animation animation;
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -16,8 +16,8 @@ class GlassView extends StatelessWidget {
       builder: (BuildContext context, Widget child) {
         return FadeTransition(
           opacity: animation,
-          child: new Transform(
-            transform: new Matrix4.translationValues(
+          child: Transform(
+            transform: Matrix4.translationValues(
                 0.0, 30 * (1.0 - animation.value), 0.0),
             child: Column(
               children: <Widget>[
@@ -31,8 +31,8 @@ class GlassView extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 16),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: HexColor("#D7E0F9"),
-                            borderRadius: BorderRadius.only(
+                            color: HexColor('#D7E0F9'),
+                            borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(8.0),
                                 bottomLeft: Radius.circular(8.0),
                                 bottomRight: Radius.circular(8.0),
@@ -50,7 +50,8 @@ class GlassView extends StatelessWidget {
                                 padding: const EdgeInsets.only(
                                     left: 68, bottom: 12, right: 16, top: 12),
                                 child: Text(
-                                  'Prepare your stomach for lunch with one or two glass of water',
+                                  '''
+Prepare your stomach for lunch with one or two glass of water''',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: AppTheme.fontName,
@@ -72,7 +73,7 @@ class GlassView extends StatelessWidget {
                         child: SizedBox(
                           width: 80,
                           height: 80,
-                          child: Image.asset("assets/app/glass.png"),
+                          child: Image.asset('assets/app/glass.png'),
                         ),
                       )
                     ],
