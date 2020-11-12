@@ -1,4 +1,4 @@
-import 'package:do_auth/auth.dart';
+import 'package:do_core/core.dart';
 import 'package:do_dart/auth/page/login/bloc/login_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

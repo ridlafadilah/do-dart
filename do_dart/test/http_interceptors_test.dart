@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
-import 'package:do_api/api.dart';
+import 'package:do_core/core.dart';
 import 'package:do_dart/configs/security_config.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';

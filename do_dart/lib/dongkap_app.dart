@@ -1,11 +1,11 @@
 import 'dart:io';
-import 'package:do_auth/auth.dart';
+import 'package:do_core/core.dart';
 import 'package:do_dart/auth/auth.dart';
+import 'package:do_dart/auth/page/login/bloc/authentication/authentication_bloc.dart';
 import 'package:do_dart/configs/security_config.dart';
 import 'package:do_dart/environments/environment.dart';
 import 'package:do_dart/main/main_app_home_screen.dart';
 import 'package:do_dart/splash/splash.dart';
-import 'package:do_storage/storage.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -100,5 +100,5 @@ void setupConfiguration(Environment env, SecurityConfig sec) {
 }
 
 Future<void> setupLocator() async {
-  await setupStorageLocator();
+  await setupCoreLocator();
 }

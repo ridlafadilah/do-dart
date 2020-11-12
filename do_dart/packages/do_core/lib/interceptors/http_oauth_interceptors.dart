@@ -1,9 +1,10 @@
 import 'package:dio/dio.dart';
-import 'package:do_storage/storage.dart';
+import 'package:do_core/services/core_locator.dart';
+import 'package:do_core/services/shared_preferences_service.dart';
 
 class HttpOAuthInterceptors extends InterceptorsWrapper {
   final SharedPreferencesService _sharedPreferences =
-      storageLocator<SharedPreferencesService>();
+      coreLocator<SharedPreferencesService>();
 
   @override
   Future onRequest(RequestOptions options) async {

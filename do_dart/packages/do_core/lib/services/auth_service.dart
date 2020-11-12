@@ -1,16 +1,17 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:do_api/api.dart';
-import 'package:do_auth/models/auth_status.dart';
-import 'package:do_storage/storage.dart';
+import 'package:do_core/core.dart';
+import 'package:do_core/models/auth_status.dart';
+import 'package:do_core/services/core_locator.dart';
+import 'package:do_core/services/shared_preferences_service.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
 
 class AuthService {
   final SharedPreferencesService _sharedPreferences =
-      storageLocator<SharedPreferencesService>();
+      coreLocator<SharedPreferencesService>();
   final logger = Logger();
   final _controller = StreamController<AuthStatus>();
 

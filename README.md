@@ -51,7 +51,7 @@ Make sure following software is installed on your PC.
 
   ```
   do_dart$ flutter pub run build_runner build
-  packages/do_api$ flutter pub run build_runner build
+  packages/do_core$ flutter pub run build_runner build
   ```
   ```
   do_dart$ flutter run

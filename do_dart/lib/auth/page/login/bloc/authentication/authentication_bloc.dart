@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
-import 'package:do_api/api.dart';
-import 'package:do_auth/models/auth_status.dart';
-import 'package:do_auth/services/auth_service.dart';
+import 'package:do_core/core.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 

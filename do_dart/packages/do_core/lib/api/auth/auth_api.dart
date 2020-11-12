@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart' hide Headers;
-import 'package:do_api/interceptors/http_basic_interceptors.dart';
-import 'package:do_api/models/oauth_result.dart';
+import 'package:do_core/interceptors/http_basic_interceptors.dart';
+import 'package:do_core/models/oauth_result.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:retrofit/http.dart';
 

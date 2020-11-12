@@ -64,7 +64,7 @@ class _UsernameInput extends StatelessWidget {
             errorText: state.username.invalid ? 'invalid username' : null,
           ),
           onChanged: (username) =>
-              context.bloc<LoginBloc>().add(LoginUsernameChanged(username)),
+              context.read<LoginBloc>().add(LoginUsernameChanged(username)),
         );
       },
     );
@@ -90,7 +90,7 @@ class _PasswordInput extends StatelessWidget {
               errorText: state.password.invalid ? 'invalid password' : null,
             ),
             onChanged: (password) =>
-                context.bloc<LoginBloc>().add(LoginPasswordChanged(password)));
+                context.read<LoginBloc>().add(LoginPasswordChanged(password)));
       },
     );
   }
@@ -125,7 +125,7 @@ class _LoginButton extends StatelessWidget {
                   height: 48.0,
                   onPressed: state.status.isValidated
                       ? () {
-                          context.bloc<LoginBloc>().add(const LoginSubmitted());
+                          context.read<LoginBloc>().add(const LoginSubmitted());
                         }
                       : null,
                   child: Center(

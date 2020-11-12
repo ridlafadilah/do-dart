@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
-import 'package:do_api/api.dart';
-import 'package:do_storage/storage.dart';
+import 'package:do_core/api/auth/auth_api.dart';
+import 'package:do_core/models/error_response.dart';
+import 'package:do_core/models/oauth_result.dart';
+import 'package:do_core/services/core_locator.dart';
+import 'package:do_core/services/shared_preferences_service.dart';
 import 'package:global_configuration/global_configuration.dart';
 
 class HttpErrorInterceptors extends Interceptor {
@@ -8,7 +11,7 @@ class HttpErrorInterceptors extends Interceptor {
   final Dio _dio;
   final AuthAPI _authAPI = AuthAPI(Dio());
   final SharedPreferencesService _sharedPreferences =
-      storageLocator<SharedPreferencesService>();
+      coreLocator<SharedPreferencesService>();
   bool hasRefreshToken = false;
 
   @override
