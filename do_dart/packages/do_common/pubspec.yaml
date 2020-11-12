@@ -1,5 +1,5 @@
-name: do_theme
-description: Library Theme.
+name: do_common
+description: Library of common framework.
 publish_to: 'none'
 version: 1.0.0+1
 
@@ -10,3 +10,4 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  formz: ^0.3.2

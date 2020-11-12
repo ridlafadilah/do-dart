@@ -1,9 +1,8 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:do_common/common.dart';
 import 'package:do_core/core.dart';
-import 'package:do_dart/auth/page/login/components/password.dart';
-import 'package:do_dart/auth/page/login/components/username.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:meta/meta.dart';
