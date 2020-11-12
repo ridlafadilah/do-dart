@@ -2,13 +2,11 @@ import 'dart:async';
 
 import 'package:dio/dio.dart';
 import 'package:do_api/api.dart';
-import 'package:do_storage/services/shared_preferences_service.dart';
+import 'package:do_auth/models/auth_status.dart';
 import 'package:do_storage/storage.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
-
-import '../models/auth_status.dart';
 
 class AuthService {
   final SharedPreferencesService _sharedPreferences =

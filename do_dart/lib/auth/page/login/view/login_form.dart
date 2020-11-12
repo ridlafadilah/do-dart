@@ -1,10 +1,9 @@
+import 'package:do_dart/auth/page/login/bloc/login_bloc.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
-
-import '../bloc/login_bloc.dart';
 
 class LoginForm extends StatelessWidget {
   @override
