@@ -1,5 +1,7 @@
 import 'package:do_core/core.dart';
+import 'package:do_dart/main/home/home_page.dart';
 import 'package:do_dart/main/models/tabIcon_data.dart';
+import 'package:do_dart/main/profile/profile_page.dart';
 import 'package:do_dart/main/traning/training_screen.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -35,7 +37,7 @@ class _MainAppHomeScreenState extends State<MainAppHomeScreen>
 
     animationController = AnimationController(
         duration: const Duration(milliseconds: 600), vsync: this);
-    tabBody = MyDiaryScreen(animationController: animationController);
+    tabBody = HomePage(animationController: animationController);
     super.initState();
   }
 
@@ -89,26 +91,52 @@ class _MainAppHomeScreenState extends State<MainAppHomeScreen>
             await authService.logOut();
           },
           changeIndex: (int index) {
-            if (index == 0 || index == 2) {
-              animationController.reverse().then<dynamic>((data) {
-                if (!mounted) {
-                  return;
-                }
-                setState(() {
-                  tabBody =
-                      MyDiaryScreen(animationController: animationController);
+            switch (index) {
+              case 0:
+                animationController.reverse().then<dynamic>((data) {
+                  if (!mounted) {
+                    return;
+                  }
+                  setState(() {
+                    tabBody =
+                        HomePage(animationController: animationController);
+                  });
                 });
-              });
-            } else if (index == 1 || index == 3) {
-              animationController.reverse().then<dynamic>((data) {
-                if (!mounted) {
-                  return;
-                }
-                setState(() {
-                  tabBody =
-                      TrainingScreen(animationController: animationController);
+                break;
+              case 1:
+                animationController.reverse().then<dynamic>((data) {
+                  if (!mounted) {
+                    return;
+                  }
+                  setState(() {
+                    tabBody = TrainingScreen(
+                        animationController: animationController);
+                  });
                 });
-              });
+                break;
+              case 2:
+                animationController.reverse().then<dynamic>((data) {
+                  if (!mounted) {
+                    return;
+                  }
+                  setState(() {
+                    tabBody =
+                        MyDiaryScreen(animationController: animationController);
+                  });
+                });
+                break;
+              case 3:
+                animationController.reverse().then<dynamic>((data) {
+                  if (!mounted) {
+                    return;
+                  }
+                  setState(() {
+                    tabBody =
+                        ProfilePage(animationController: animationController);
+                  });
+                });
+                break;
+              default:
             }
           },
         ),
