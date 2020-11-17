@@ -3,9 +3,10 @@ import 'package:do_theme/models/tabIcon_data.dart';
 import 'package:do_theme/utils/app_theme.dart';
 import 'package:do_theme/utils/color_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class BottomBarView extends StatefulWidget {
-  const BottomBarView(
+class BottomNavigation extends StatefulWidget {
+  const BottomNavigation(
       {Key key, this.tabIconsList, this.changeIndex, this.addClick})
       : super(key: key);
 
@@ -13,10 +14,10 @@ class BottomBarView extends StatefulWidget {
   final Function addClick;
   final List<TabIconData> tabIconsList;
   @override
-  _BottomBarViewState createState() => _BottomBarViewState();
+  _BottomNavigationState createState() => _BottomNavigationState();
 }
 
-class _BottomBarViewState extends State<BottomBarView>
+class _BottomNavigationState extends State<BottomNavigation>
     with TickerProviderStateMixin {
   AnimationController animationController;
 
@@ -251,72 +252,9 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
                           parent: widget.tabIconData.animationController,
                           curve: const Interval(0.1, 1.0,
                               curve: Curves.fastOutSlowIn))),
-                  child: Image.asset(widget.tabIconData.isSelected
+                  child: SvgPicture.asset(widget.tabIconData.isSelected
                       ? widget.tabIconData.selectedImagePath
                       : widget.tabIconData.imagePath),
-                ),
-                Positioned(
-                  top: 4,
-                  left: 6,
-                  right: 0,
-                  child: ScaleTransition(
-                    alignment: Alignment.center,
-                    scale: Tween<double>(begin: 0.0, end: 1.0).animate(
-                        CurvedAnimation(
-                            parent: widget.tabIconData.animationController,
-                            curve: const Interval(0.2, 1.0,
-                                curve: Curves.fastOutSlowIn))),
-                    child: Container(
-                      width: 8,
-                      height: 8,
-                      decoration: const BoxDecoration(
-                        color: AppTheme.nearlyDarkBlue,
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: 0,
-                  left: 6,
-                  bottom: 8,
-                  child: ScaleTransition(
-                    alignment: Alignment.center,
-                    scale: Tween<double>(begin: 0.0, end: 1.0).animate(
-                        CurvedAnimation(
-                            parent: widget.tabIconData.animationController,
-                            curve: const Interval(0.5, 0.8,
-                                curve: Curves.fastOutSlowIn))),
-                    child: Container(
-                      width: 4,
-                      height: 4,
-                      decoration: const BoxDecoration(
-                        color: AppTheme.nearlyDarkBlue,
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  top: 6,
-                  right: 8,
-                  bottom: 0,
-                  child: ScaleTransition(
-                    alignment: Alignment.center,
-                    scale: Tween<double>(begin: 0.0, end: 1.0).animate(
-                        CurvedAnimation(
-                            parent: widget.tabIconData.animationController,
-                            curve: const Interval(0.5, 0.6,
-                                curve: Curves.fastOutSlowIn))),
-                    child: Container(
-                      width: 6,
-                      height: 6,
-                      decoration: const BoxDecoration(
-                        color: AppTheme.nearlyDarkBlue,
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
                 ),
               ],
             ),

@@ -59,7 +59,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
               return Stack(
                 children: <Widget>[
                   tabBody,
-                  bottomBar(),
+                  bottomNavigation(),
                 ],
               );
             }
@@ -74,13 +74,13 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
     return true;
   }
 
-  Widget bottomBar() {
+  Widget bottomNavigation() {
     return Column(
       children: <Widget>[
         const Expanded(
           child: SizedBox(),
         ),
-        BottomBarView(
+        BottomNavigation(
           tabIconsList: tabIconsList,
           addClick: () async {
             AuthService authService =

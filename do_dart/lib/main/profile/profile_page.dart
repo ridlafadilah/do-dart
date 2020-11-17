@@ -3,6 +3,7 @@ import 'package:do_dart/main/ui_view/running_view.dart';
 import 'package:do_dart/main/ui_view/title_view.dart';
 import 'package:do_dart/main/ui_view/workout_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:do_theme/theme.dart';
 
@@ -218,6 +219,10 @@ class _ProfilePageState extends State<ProfilePage>
                                 ),
                               ),
                             ),
+                            Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: SvgPicture.asset(
+                                    'assets/eva_icons/outline/svg/settings-2-outline.svg')),
                           ],
                         ),
                       )

@@ -6,6 +6,7 @@ import 'package:do_theme/theme.dart';
 import 'package:do_dart/main/my_diary/meals_list_view.dart';
 import 'package:do_dart/main/my_diary/water_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key, this.animationController}) : super(key: key);
@@ -260,11 +261,29 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 ),
                               ),
                             ),
-                            Container(
-                              width: 60,
-                              height: 60,
-                              child: Image.asset('assets/images/user.png'),
-                            )
+                            Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: SvgPicture.asset(
+                                    'assets/eva_icons/outline/svg/bell-outline.svg')),
+                            Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: ClipOval(
+                                  child: Container(
+                                    width: 50,
+                                    height: 50,
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).backgroundColor,
+                                      boxShadow: <BoxShadow>[
+                                        const BoxShadow(
+                                            color: AppTheme.colorTheme,
+                                            blurRadius: 10,
+                                            spreadRadius: 10),
+                                      ],
+                                    ),
+                                    child: Image.asset(
+                                        'assets/avatars/default.png'),
+                                  ),
+                                )),
                           ],
                         ),
                       )

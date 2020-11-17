@@ -1,6 +1,6 @@
 library do_theme;
 
-export 'components/bottom_navigation/bottom_bar_view.dart';
+export 'components/navigation/bottom_navigation.dart';
 
 export 'models/tabIcon_data.dart';
 

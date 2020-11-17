@@ -18,29 +18,29 @@ class TabIconData {
 
   static List<TabIconData> tabIconsList = <TabIconData>[
     TabIconData(
-      imagePath: 'assets/app/tab_1.png',
-      selectedImagePath: 'assets/app/tab_1s.png',
+      imagePath: 'assets/eva_icons/outline/svg/home-outline.svg',
+      selectedImagePath: 'assets/eva_icons/fill/svg/home.svg',
       index: 0,
       isSelected: true,
       animationController: null,
     ),
     TabIconData(
-      imagePath: 'assets/app/tab_2.png',
-      selectedImagePath: 'assets/app/tab_2s.png',
+      imagePath: 'assets/eva_icons/outline/svg/activity-outline.svg',
+      selectedImagePath: 'assets/eva_icons/fill/svg/activity.svg',
       index: 1,
       isSelected: false,
       animationController: null,
     ),
     TabIconData(
-      imagePath: 'assets/app/tab_3.png',
-      selectedImagePath: 'assets/app/tab_3s.png',
+      imagePath: 'assets/eva_icons/outline/svg/bulb-outline.svg',
+      selectedImagePath: 'assets/eva_icons/fill/svg/bulb.svg',
       index: 2,
       isSelected: false,
       animationController: null,
     ),
     TabIconData(
-      imagePath: 'assets/app/tab_4.png',
-      selectedImagePath: 'assets/app/tab_4s.png',
+      imagePath: 'assets/eva_icons/outline/svg/person-outline.svg',
+      selectedImagePath: 'assets/eva_icons/fill/svg/person.svg',
       index: 3,
       isSelected: false,
       animationController: null,
