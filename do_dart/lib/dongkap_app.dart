@@ -4,7 +4,7 @@ import 'package:do_dart/auth/auth.dart';
 import 'package:do_dart/auth/page/login/bloc/authentication/authentication_bloc.dart';
 import 'package:do_dart/configs/security_config.dart';
 import 'package:do_dart/environments/environment.dart';
-import 'package:do_dart/main/main_app_home_screen.dart';
+import 'package:do_dart/main/main_layout.dart';
 import 'package:do_dart/splash/splash.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -70,7 +70,7 @@ class _DongkapAppViewState extends State<DongkapAppView> {
             switch (state.status) {
               case AuthStatus.authenticated:
                 _navigator.pushAndRemoveUntil<void>(
-                  MainAppHomeScreen.route(),
+                  MainLayout.route(),
                   (route) => false,
                 );
                 break;

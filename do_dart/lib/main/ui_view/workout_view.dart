@@ -1,4 +1,3 @@
-import 'package:do_core/core.dart';
 import 'package:flutter/material.dart';
 import 'package:do_theme/theme.dart';
 

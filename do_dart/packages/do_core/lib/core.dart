@@ -10,4 +10,3 @@ export 'models/oauth_static.dart';
 export 'services/auth_service.dart';
 export 'services/core_locator.dart';
 export 'services/shared_preferences_service.dart';
-export 'utils/color_util.dart';

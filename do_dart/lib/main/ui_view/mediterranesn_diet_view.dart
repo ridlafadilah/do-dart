@@ -1,7 +1,6 @@
 import 'dart:math' as math;
 
 import 'package:do_theme/theme.dart';
-import 'package:do_core/core.dart';
 import 'package:flutter/material.dart';
 
 class MediterranesnDietView extends StatelessWidget {

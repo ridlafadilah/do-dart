@@ -1,25 +1,22 @@
 import 'package:do_core/core.dart';
 import 'package:do_dart/main/home/home_page.dart';
-import 'package:do_dart/main/models/tabIcon_data.dart';
+import 'package:do_dart/main/my_diary/my_diary_screen.dart';
 import 'package:do_dart/main/profile/profile_page.dart';
 import 'package:do_dart/main/traning/training_screen.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'bottom_navigation_view/bottom_bar_view.dart';
-import 'my_diary/my_diary_screen.dart';
 
-class MainAppHomeScreen extends StatefulWidget {
+class MainLayout extends StatefulWidget {
   static Route route() {
-    return MaterialPageRoute<void>(builder: (_) => MainAppHomeScreen());
+    return MaterialPageRoute<void>(builder: (_) => MainLayout());
   }
 
   @override
-  _MainAppHomeScreenState createState() => _MainAppHomeScreenState();
+  _MainLayoutState createState() => _MainLayoutState();
 }
 
-class _MainAppHomeScreenState extends State<MainAppHomeScreen>
-    with TickerProviderStateMixin {
+class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
   AnimationController animationController;
 
   List<TabIconData> tabIconsList = TabIconData.tabIconsList;
