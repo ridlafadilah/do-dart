@@ -220,9 +220,16 @@ class _ProfilePageState extends State<ProfilePage>
                               ),
                             ),
                             Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: SvgPicture.asset(
-                                    'assets/eva_icons/outline/svg/settings-2-outline.svg')),
+                              padding: const EdgeInsets.all(5.0),
+                              child: InkWell(
+                                  highlightColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  onTap: () {
+                                    _modalBottomSheetMenu();
+                                  },
+                                  child: SvgPicture.asset(
+                                      'assets/eva_icons/outline/svg/menu-2-outline.svg')),
+                            )
                           ],
                         ),
                       )
@@ -235,5 +242,101 @@ class _ProfilePageState extends State<ProfilePage>
         )
       ],
     );
+  }
+
+  void _modalBottomSheetMenu() {
+    showModalBottomSheet(
+        isScrollControlled: true,
+        context: context,
+        builder: (builder) {
+          return Container(
+            height: 275.0,
+            color: const Color(0xFF737373),
+            child: Container(
+              decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20.0),
+                      topRight: Radius.circular(20.0))),
+              child: Column(
+                children: <Widget>[
+                  const SizedBox(height: 10),
+                  Container(
+                    alignment: Alignment.center,
+                    child: Container(
+                      width: 50,
+                      height: 5,
+                      decoration: BoxDecoration(
+                          color: Colors.grey[300],
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(10))),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  ListTile(
+                    leading: SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/settings-outline.svg'),
+                    title: const Text('Settings'),
+                    horizontalTitleGap: 5,
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 25.0),
+                    onTap: () {},
+                  ),
+                  const Divider(
+                    height: 1,
+                    thickness: 1.0,
+                    indent: 70,
+                    endIndent: 0,
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/lock-outline.svg'),
+                    title: const Text('Security'),
+                    horizontalTitleGap: 5,
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 25.0),
+                    onTap: () {},
+                  ),
+                  const Divider(
+                    height: 1,
+                    thickness: 1.0,
+                    indent: 70,
+                    endIndent: 0,
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/info-outline.svg'),
+                    title: const Text('About'),
+                    horizontalTitleGap: 5,
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 25.0),
+                    onTap: () {},
+                  ),
+                  const Divider(
+                    height: 1,
+                    thickness: 1.0,
+                    indent: 70,
+                    endIndent: 0,
+                  ),
+                  ListTile(
+                    leading: SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/power-outline.svg'),
+                    title: const Text('Logout'),
+                    horizontalTitleGap: 5,
+                    contentPadding:
+                        const EdgeInsets.symmetric(horizontal: 25.0),
+                    onTap: () {},
+                  ),
+                  const Divider(
+                    height: 1,
+                    thickness: 1.0,
+                    indent: 70,
+                    endIndent: 0,
+                  ),
+                ],
+              ),
+            ),
+          );
+        });
   }
 }

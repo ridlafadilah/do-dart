@@ -262,9 +262,15 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               ),
                             ),
                             Padding(
-                                padding: const EdgeInsets.all(5.0),
+                              padding: const EdgeInsets.all(5.0),
+                              child: InkWell(
+                                highlightColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                onTap: () {},
                                 child: SvgPicture.asset(
-                                    'assets/eva_icons/outline/svg/bell-outline.svg')),
+                                    'assets/eva_icons/outline/svg/bell-outline.svg'),
+                              ),
+                            ),
                             Padding(
                                 padding: const EdgeInsets.all(5.0),
                                 child: ClipOval(
