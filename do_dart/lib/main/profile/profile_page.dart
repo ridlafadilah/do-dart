@@ -1,5 +1,7 @@
-import 'package:do_dart/main/ui_view/profile_view.dart';
+import 'package:do_core/core.dart';
+import 'package:do_dart/main/profile/profile_view.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 import 'package:do_theme/theme.dart';
@@ -201,10 +203,11 @@ class _ProfilePageState extends State<ProfilePage>
     showModalBottomSheet(
         isScrollControlled: true,
         context: context,
+        backgroundColor: Colors.transparent,
         builder: (builder) {
           return Container(
-            height: 275.0,
-            color: const Color(0xFF737373),
+            height: 300.0,
+            color: Colors.transparent,
             child: Container(
               decoration: const BoxDecoration(
                   color: Colors.white,
@@ -230,61 +233,65 @@ class _ProfilePageState extends State<ProfilePage>
                     leading: SvgPicture.asset(
                         'assets/eva_icons/outline/svg/settings-outline.svg'),
                     title: const Text('Settings'),
-                    horizontalTitleGap: 5,
+                    horizontalTitleGap: 2,
                     contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 25.0),
+                        const EdgeInsets.symmetric(horizontal: 20.0),
                     onTap: () {},
                   ),
                   const Divider(
                     height: 1,
                     thickness: 1.0,
-                    indent: 70,
-                    endIndent: 0,
+                    indent: 65,
+                    endIndent: 10,
                   ),
                   ListTile(
                     leading: SvgPicture.asset(
                         'assets/eva_icons/outline/svg/lock-outline.svg'),
                     title: const Text('Security'),
-                    horizontalTitleGap: 5,
+                    horizontalTitleGap: 2,
                     contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 25.0),
+                        const EdgeInsets.symmetric(horizontal: 20.0),
                     onTap: () {},
                   ),
                   const Divider(
                     height: 1,
                     thickness: 1.0,
-                    indent: 70,
-                    endIndent: 0,
+                    indent: 65,
+                    endIndent: 10,
                   ),
                   ListTile(
                     leading: SvgPicture.asset(
                         'assets/eva_icons/outline/svg/info-outline.svg'),
                     title: const Text('About'),
-                    horizontalTitleGap: 5,
+                    horizontalTitleGap: 2,
                     contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 25.0),
+                        const EdgeInsets.symmetric(horizontal: 20.0),
                     onTap: () {},
                   ),
                   const Divider(
                     height: 1,
                     thickness: 1.0,
-                    indent: 70,
-                    endIndent: 0,
+                    indent: 65,
+                    endIndent: 10,
                   ),
                   ListTile(
                     leading: SvgPicture.asset(
                         'assets/eva_icons/outline/svg/power-outline.svg'),
                     title: const Text('Logout'),
-                    horizontalTitleGap: 5,
+                    horizontalTitleGap: 2,
                     contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 25.0),
-                    onTap: () {},
+                        const EdgeInsets.symmetric(horizontal: 20.0),
+                    onTap: () async {
+                      AuthService authService =
+                          RepositoryProvider.of<AuthService>(context);
+                      await authService.logOut();
+                    },
                   ),
                   const Divider(
                     height: 1,
                     thickness: 1.0,
-                    indent: 70,
-                    endIndent: 0,
+                    indent: 65,
+                    endIndent: 10,
                   ),
                 ],
               ),

@@ -331,7 +331,7 @@ ${(1503 * animation.value).toInt()}''',
                       child: Container(
                         height: 2,
                         decoration: const BoxDecoration(
-                          color: AppTheme.background,
+                          color: AppTheme.backgroundGrey,
                           borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         ),
                       ),

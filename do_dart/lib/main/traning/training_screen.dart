@@ -1,7 +1,7 @@
-import 'package:do_dart/main/ui_view/area_list_view.dart';
-import 'package:do_dart/main/ui_view/running_view.dart';
-import 'package:do_dart/main/ui_view/title_view.dart';
-import 'package:do_dart/main/ui_view/workout_view.dart';
+import 'package:do_dart/main/views/area_list_view.dart';
+import 'package:do_dart/main/views/running_view.dart';
+import 'package:do_dart/main/views/title_view.dart';
+import 'package:do_dart/main/views/workout_view.dart';
 import 'package:flutter/material.dart';
 
 import 'package:do_theme/theme.dart';

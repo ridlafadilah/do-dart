@@ -1,11 +1,9 @@
-import 'package:do_core/core.dart';
 import 'package:do_dart/main/home/home_page.dart';
 import 'package:do_dart/main/my_diary/my_diary_screen.dart';
 import 'package:do_dart/main/profile/profile_page.dart';
 import 'package:do_dart/main/traning/training_screen.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainLayout extends StatefulWidget {
   static Route route() {
@@ -82,11 +80,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
         ),
         BottomNavigation(
           tabIconsList: tabIconsList,
-          addClick: () async {
-            AuthService authService =
-                RepositoryProvider.of<AuthService>(context);
-            await authService.logOut();
-          },
+          addClick: () {},
           changeIndex: (int index) {
             switch (index) {
               case 0:

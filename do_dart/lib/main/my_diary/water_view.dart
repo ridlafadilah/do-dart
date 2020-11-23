@@ -1,4 +1,4 @@
-import 'package:do_dart/main/ui_view/wave_view.dart';
+import 'package:do_dart/main/views/wave_view.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -118,7 +118,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                               child: Container(
                                 height: 2,
                                 decoration: const BoxDecoration(
-                                  color: AppTheme.background,
+                                  color: AppTheme.backgroundGrey,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(4.0)),
                                 ),
