@@ -155,7 +155,6 @@ class _TrainingScreenState extends State<TrainingScreen>
             itemCount: listViews.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
-              widget.animationController.forward();
               return listViews[index];
             },
           );
@@ -165,6 +164,7 @@ class _TrainingScreenState extends State<TrainingScreen>
   }
 
   Widget getAppBarUI() {
+    widget.animationController.forward();
     return Column(
       children: <Widget>[
         AnimatedBuilder(

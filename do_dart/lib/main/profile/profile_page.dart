@@ -1,5 +1,7 @@
 import 'package:do_core/core.dart';
+import 'package:do_dart/main/profile/profile_detail_view.dart';
 import 'package:do_dart/main/profile/profile_view.dart';
+import 'package:do_dart/main/views/title_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -56,10 +58,32 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   void addAllListData() {
-    const int count = 5;
+    const int count = 3;
 
     listViews.add(
       ProfileView(
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve: const Interval((1 / count) * 0, 1.0,
+                curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
+
+    listViews.add(
+      TitleView(
+        titleTxt: 'Your Profile',
+        subTxt: 'Customize',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve: const Interval((1 / count) * 1, 1.0,
+                curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
+
+    listViews.add(
+      ProfileDetailView(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve: const Interval((1 / count) * 2, 1.0,
@@ -111,7 +135,6 @@ class _ProfilePageState extends State<ProfilePage>
             itemCount: listViews.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
-              widget.animationController.forward();
               return listViews[index];
             },
           );
@@ -121,6 +144,7 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   Widget getAppBarUI() {
+    widget.animationController.forward();
     return Column(
       children: <Widget>[
         AnimatedBuilder(
@@ -162,7 +186,7 @@ class _ProfilePageState extends State<ProfilePage>
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Profile',
+                                  'Account',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: AppTheme.fontName,

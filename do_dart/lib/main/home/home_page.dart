@@ -198,7 +198,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             itemCount: listViews.length,
             scrollDirection: Axis.vertical,
             itemBuilder: (BuildContext context, int index) {
-              widget.animationController.forward();
               return listViews[index];
             },
           );
@@ -208,6 +207,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   Widget getAppBarUI() {
+    widget.animationController.forward();
     return Column(
       children: <Widget>[
         AnimatedBuilder(

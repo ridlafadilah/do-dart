@@ -31,7 +31,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
     tabIconsList[0].isSelected = true;
 
     animationController = AnimationController(
-        duration: const Duration(milliseconds: 600), vsync: this);
+        duration: const Duration(milliseconds: 200), vsync: this);
     tabBody = HomePage(animationController: animationController);
     super.initState();
   }
