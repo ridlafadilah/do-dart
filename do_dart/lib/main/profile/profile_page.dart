@@ -1,6 +1,6 @@
 import 'package:do_core/core.dart';
-import 'package:do_dart/main/profile/profile_detail_view.dart';
-import 'package:do_dart/main/profile/profile_view.dart';
+import 'package:do_dart/main/profile/views/profile_detail_view.dart';
+import 'package:do_dart/main/profile/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
