@@ -1,10 +1,9 @@
 import 'package:do_dart/main/views/body_measurement.dart';
 import 'package:do_dart/main/views/glass_view.dart';
 import 'package:do_dart/main/views/mediterranesn_diet_view.dart';
-import 'package:do_dart/main/views/title_view.dart';
 import 'package:do_theme/theme.dart';
-import 'package:do_dart/main/my_diary/meals_list_view.dart';
-import 'package:do_dart/main/my_diary/water_view.dart';
+import 'package:do_dart/main/views/meals_list_view.dart';
+import 'package:do_dart/main/views/water_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 

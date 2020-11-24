@@ -1,4 +1,4 @@
-import 'package:do_theme/theme.dart';
+import 'package:do_theme/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class TitleView extends StatelessWidget {
@@ -7,13 +7,16 @@ class TitleView extends StatelessWidget {
       this.titleTxt = '',
       this.subTxt = '',
       this.animationController,
-      this.animation})
+      this.animation,
+      this.onTap})
       : super(key: key);
 
   final String titleTxt;
   final String subTxt;
   final AnimationController animationController;
   final Animation animation;
+
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +50,7 @@ class TitleView extends StatelessWidget {
                       highlightColor: Colors.transparent,
                       borderRadius:
                           const BorderRadius.all(Radius.circular(4.0)),
-                      onTap: () {},
+                      onTap: onTap,
                       child: Padding(
                         padding: const EdgeInsets.only(left: 8),
                         child: Row(

@@ -143,8 +143,8 @@ class _BottomNavigationState extends State<BottomNavigation>
                         color: AppTheme.nearlyDarkBlue,
                         gradient: LinearGradient(
                             colors: [
-                              AppTheme.nearlyDarkBlue,
-                              HexColor('#6A88E5'),
+                              AppTheme.colorTheme,
+                              HexColor('#3366ff'),
                             ],
                             begin: Alignment.topLeft,
                             end: Alignment.bottomRight),
@@ -246,21 +246,24 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
               alignment: AlignmentDirectional.center,
               children: <Widget>[
                 ScaleTransition(
-                  alignment: Alignment.center,
-                  scale: Tween<double>(begin: 0.88, end: 1.0).animate(
-                      CurvedAnimation(
-                          parent: widget.tabIconData.animationController,
-                          curve: const Interval(0.1, 1.0,
-                              curve: Curves.fastOutSlowIn))),
-                  child: SvgPicture.asset(
-                    widget.tabIconData.isSelected
-                        ? widget.tabIconData.selectedImagePath
-                        : widget.tabIconData.imagePath,
-                    color: widget.tabIconData.isSelected
-                        ? AppTheme.darkGrey
-                        : AppTheme.grey,
-                  ),
-                ),
+                    alignment: Alignment.center,
+                    scale: Tween<double>(begin: 0.88, end: 1.0).animate(
+                        CurvedAnimation(
+                            parent: widget.tabIconData.animationController,
+                            curve: const Interval(0.1, 1.0,
+                                curve: Curves.fastOutSlowIn))),
+                    child: Container(
+                      height: 28,
+                      width: 28,
+                      child: SvgPicture.asset(
+                          widget.tabIconData.isSelected
+                              ? widget.tabIconData.selectedImagePath
+                              : widget.tabIconData.imagePath,
+                          color: widget.tabIconData.isSelected
+                              ? AppTheme.darkGrey
+                              : AppTheme.grey,
+                          fit: BoxFit.cover),
+                    )),
               ],
             ),
           ),

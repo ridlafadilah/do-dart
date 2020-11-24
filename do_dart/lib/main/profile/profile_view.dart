@@ -129,9 +129,15 @@ class ProfileView extends StatelessWidget {
                                 child: Container(
                                   height: 25,
                                   width: 25,
-                                  decoration: const BoxDecoration(
-                                    color: Colors.white,
+                                  decoration: BoxDecoration(
+                                    color: AppTheme.nearlyWhite,
                                     shape: BoxShape.circle,
+                                    boxShadow: <BoxShadow>[
+                                      BoxShadow(
+                                          color: AppTheme.grey.withOpacity(0.1),
+                                          offset: const Offset(1.0, 1.0),
+                                          blurRadius: 5.0),
+                                    ],
                                   ),
                                   child: InkWell(
                                       highlightColor: Colors.transparent,

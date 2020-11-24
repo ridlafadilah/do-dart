@@ -1,6 +1,5 @@
 import 'package:do_dart/main/views/area_list_view.dart';
 import 'package:do_dart/main/views/running_view.dart';
-import 'package:do_dart/main/views/title_view.dart';
 import 'package:do_dart/main/views/workout_view.dart';
 import 'package:flutter/material.dart';
 
