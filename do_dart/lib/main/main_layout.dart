@@ -1,7 +1,7 @@
+import 'package:do_dart/main/exercise/exercise_page.dart';
 import 'package:do_dart/main/home/home_page.dart';
-import 'package:do_dart/main/my_diary/my_diary_screen.dart';
 import 'package:do_dart/main/profile/profile_page.dart';
-import 'package:do_dart/main/traning/training_screen.dart';
+import 'package:do_dart/main/ui_template/ui_template_page.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -100,8 +100,8 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                     return;
                   }
                   setState(() {
-                    tabBody = TrainingScreen(
-                        animationController: animationController);
+                    tabBody =
+                        ExercisePage(animationController: animationController);
                   });
                 });
                 break;
@@ -111,8 +111,8 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                     return;
                   }
                   setState(() {
-                    tabBody =
-                        MyDiaryScreen(animationController: animationController);
+                    tabBody = UITemplatePage(
+                        animationController: animationController);
                   });
                 });
                 break;

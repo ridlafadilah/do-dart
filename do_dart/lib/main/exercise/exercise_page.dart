@@ -1,17 +1,18 @@
-import 'package:do_dart/main/home/views/home_view.dart';
-import 'package:do_theme/theme.dart';
+import 'package:do_dart/main/exercise/views/exercise_badge_view.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key key, this.animationController}) : super(key: key);
+import 'package:do_theme/theme.dart';
+
+class ExercisePage extends StatefulWidget {
+  const ExercisePage({Key key, this.animationController}) : super(key: key);
 
   final AnimationController animationController;
   @override
-  _HomePageState createState() => _HomePageState();
+  _ExercisePageState createState() => _ExercisePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _ExercisePageState extends State<ExercisePage>
+    with TickerProviderStateMixin {
   Animation<double> topBarAnimation;
 
   List<Widget> listViews = <Widget>[];
@@ -52,15 +53,16 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   }
 
   void addAllListData() {
-    const int count = 1;
+    const int count = 5;
+
     listViews.add(
-      HomeView(
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                  parent: widget.animationController,
-                  curve: const Interval((1 / count) * 0, 1.0,
-                      curve: Curves.fastOutSlowIn))),
-          animationController: widget.animationController),
+      ExerciseBadgeView(
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve: const Interval((1 / count) * 0, 1.0,
+                curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
     );
   }
 
@@ -157,7 +159,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Dongkap',
+                                  'Exercise',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: AppTheme.fontName,
@@ -169,36 +171,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 10.0, left: 5.0),
-                              child: InkWell(
-                                highlightColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                onTap: () {},
-                                child: SvgPicture.asset(
-                                    'assets/eva_icons/outline/svg/bell-outline.svg'),
-                              ),
-                            ),
-                            Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: ClipOval(
-                                  child: Container(
-                                    width: 50,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: Theme.of(context).backgroundColor,
-                                      boxShadow: <BoxShadow>[
-                                        const BoxShadow(
-                                            color: AppTheme.colorTheme,
-                                            blurRadius: 10,
-                                            spreadRadius: 10),
-                                      ],
-                                    ),
-                                    child: Image.asset(
-                                        'assets/avatars/default.png'),
-                                  ),
-                                )),
                           ],
                         ),
                       )

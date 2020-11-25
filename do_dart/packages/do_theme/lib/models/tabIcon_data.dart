@@ -25,8 +25,8 @@ class TabIconData {
       animationController: null,
     ),
     TabIconData(
-      imagePath: 'assets/eva_icons/outline/svg/activity-outline.svg',
-      selectedImagePath: 'assets/eva_icons/fill/svg/activity.svg',
+      imagePath: 'assets/eva_icons/outline/svg/layout-outline.svg',
+      selectedImagePath: 'assets/eva_icons/fill/svg/layout.svg',
       index: 1,
       isSelected: false,
       animationController: null,
