@@ -97,7 +97,7 @@ class HomeView extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: SvgPicture.asset(
-                                    'assets/eva_icons/outline/svg/home-outline.svg',
+                                    'assets/eva_icons/fill/svg/home.svg',
                                     color: HexColor('#598BFF')),
                               ),
                             )

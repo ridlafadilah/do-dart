@@ -61,7 +61,7 @@ class ExerciseBadgeView extends StatelessWidget {
                         padding: EdgeInsets.only(top: 8.0),
                         child: Text(
                           '''
-UI Widgets (Components)\nAPI calls\nAccessibility & I18n''',
+UI Widgets (Components)\nAPI calls\nAccessibility & i18n''',
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: AppTheme.fontName,
@@ -121,7 +121,7 @@ UI Widgets (Components)\nAPI calls\nAccessibility & I18n''',
                               child: Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: SvgPicture.asset(
-                                    'assets/eva_icons/outline/svg/pantone-outline.svg',
+                                    'assets/eva_icons/fill/svg/layout.svg',
                                     color: HexColor('#598BFF')),
                               ),
                             )
