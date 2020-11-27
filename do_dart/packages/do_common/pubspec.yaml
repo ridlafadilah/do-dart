@@ -11,3 +11,4 @@ dependencies:
   flutter:
     sdk: flutter
   formz: ^0.3.2
+  shimmer: ^1.1.2

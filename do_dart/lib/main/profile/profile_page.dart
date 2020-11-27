@@ -1,5 +1,7 @@
 import 'package:do_core/core.dart';
+import 'package:do_dart/main/profile/views/profile_detail_skeleton_view.dart';
 import 'package:do_dart/main/profile/views/profile_detail_view.dart';
+import 'package:do_dart/main/profile/views/profile_skeleton_view.dart';
 import 'package:do_dart/main/profile/views/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,17 +22,20 @@ class _ProfilePageState extends State<ProfilePage>
   Animation<double> topBarAnimation;
 
   List<Widget> listViews = <Widget>[];
+  List<Widget> listSkeletonViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
+  final ScrollController scrollSkeletonController = ScrollController();
   double topBarOpacity = 0.0;
 
   @override
   void initState() {
+    super.initState();
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: widget.animationController,
             curve: const Interval(0, 0.5, curve: Curves.fastOutSlowIn)));
-    addAllListData();
 
+    addAllListData();
     scrollController.addListener(() {
       if (scrollController.offset >= 24) {
         if (topBarOpacity != 1.0) {
@@ -53,7 +58,30 @@ class _ProfilePageState extends State<ProfilePage>
         }
       }
     });
-    super.initState();
+
+    addAllListSkeleton();
+    scrollSkeletonController.addListener(() {
+      if (scrollSkeletonController.offset >= 24) {
+        if (topBarOpacity != 1.0) {
+          setState(() {
+            topBarOpacity = 1.0;
+          });
+        }
+      } else if (scrollSkeletonController.offset <= 24 &&
+          scrollSkeletonController.offset >= 0) {
+        if (topBarOpacity != scrollSkeletonController.offset / 24) {
+          setState(() {
+            topBarOpacity = scrollSkeletonController.offset / 24;
+          });
+        }
+      } else if (scrollSkeletonController.offset <= 0) {
+        if (topBarOpacity != 0.0) {
+          setState(() {
+            topBarOpacity = 0.0;
+          });
+        }
+      }
+    });
   }
 
   void addAllListData() {
@@ -93,8 +121,46 @@ class _ProfilePageState extends State<ProfilePage>
     );
   }
 
+  void addAllListSkeleton() {
+    const int count = 3;
+
+    listSkeletonViews.add(
+      ProfileSkeletonView(
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve: const Interval((1 / count) * 0, 1.0,
+                curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
+
+    listSkeletonViews.add(
+      TitleView(
+        titleTxt: 'Your Profile',
+        subTxt: 'Customize',
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve: const Interval((1 / count) * 1, 1.0,
+                curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+        onTap: () {},
+      ),
+    );
+
+    listSkeletonViews.add(
+      ProfileDetailSkeletonView(
+        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
+            parent: widget.animationController,
+            curve: const Interval((1 / count) * 2, 1.0,
+                curve: Curves.fastOutSlowIn))),
+        animationController: widget.animationController,
+      ),
+    );
+  }
+
   Future<bool> getData() async {
-    await Future<dynamic>.delayed(const Duration(milliseconds: 50));
+    print('Call API');
+    await Future<dynamic>.delayed(const Duration(milliseconds: 5000));
     return true;
   }
 
@@ -122,7 +188,20 @@ class _ProfilePageState extends State<ProfilePage>
       future: getData(),
       builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
         if (!snapshot.hasData) {
-          return const SizedBox();
+          return ListView.builder(
+            controller: scrollSkeletonController,
+            padding: EdgeInsets.only(
+              top: AppBar().preferredSize.height +
+                  MediaQuery.of(context).padding.top +
+                  24,
+              bottom: 62 + MediaQuery.of(context).padding.bottom,
+            ),
+            itemCount: listSkeletonViews.length,
+            scrollDirection: Axis.vertical,
+            itemBuilder: (BuildContext context, int index) {
+              return listSkeletonViews[index];
+            },
+          );
         } else {
           return ListView.builder(
             controller: scrollController,
