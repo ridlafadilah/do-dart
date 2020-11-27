@@ -24,18 +24,18 @@ class _ProfilePageState extends State<ProfilePage>
   List<Widget> listViews = <Widget>[];
   List<Widget> listSkeletonViews = <Widget>[];
   final ScrollController scrollController = ScrollController();
-  final ScrollController scrollSkeletonController = ScrollController();
   double topBarOpacity = 0.0;
 
   @override
   void initState() {
-    super.initState();
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: widget.animationController,
             curve: const Interval(0, 0.5, curve: Curves.fastOutSlowIn)));
 
     addAllListData();
+    addAllListSkeleton();
+
     scrollController.addListener(() {
       if (scrollController.offset >= 24) {
         if (topBarOpacity != 1.0) {
@@ -58,30 +58,7 @@ class _ProfilePageState extends State<ProfilePage>
         }
       }
     });
-
-    addAllListSkeleton();
-    scrollSkeletonController.addListener(() {
-      if (scrollSkeletonController.offset >= 24) {
-        if (topBarOpacity != 1.0) {
-          setState(() {
-            topBarOpacity = 1.0;
-          });
-        }
-      } else if (scrollSkeletonController.offset <= 24 &&
-          scrollSkeletonController.offset >= 0) {
-        if (topBarOpacity != scrollSkeletonController.offset / 24) {
-          setState(() {
-            topBarOpacity = scrollSkeletonController.offset / 24;
-          });
-        }
-      } else if (scrollSkeletonController.offset <= 0) {
-        if (topBarOpacity != 0.0) {
-          setState(() {
-            topBarOpacity = 0.0;
-          });
-        }
-      }
-    });
+    super.initState();
   }
 
   void addAllListData() {
@@ -158,10 +135,14 @@ class _ProfilePageState extends State<ProfilePage>
     );
   }
 
-  Future<bool> getData() async {
-    print('Call API');
-    await Future<dynamic>.delayed(const Duration(milliseconds: 5000));
-    return true;
+  Future<bool> getData(BuildContext context) async {
+    ProfileService profileService = ProfileService(
+        authService: RepositoryProvider.of<AuthService>(context));
+    bool isResponse = false;
+    await profileService.getProfile().then((value) {
+      isResponse = !isResponse;
+    });
+    return isResponse;
   }
 
   @override
@@ -185,11 +166,11 @@ class _ProfilePageState extends State<ProfilePage>
 
   Widget getMainListViewUI() {
     return FutureBuilder<bool>(
-      future: getData(),
+      future: getData(context),
       builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
         if (!snapshot.hasData) {
           return ListView.builder(
-            controller: scrollSkeletonController,
+            controller: scrollController,
             padding: EdgeInsets.only(
               top: AppBar().preferredSize.height +
                   MediaQuery.of(context).padding.top +

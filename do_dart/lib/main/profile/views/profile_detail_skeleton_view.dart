@@ -41,8 +41,8 @@ class ProfileDetailSkeletonView extends StatelessWidget {
                 child: Column(
                   children: <Widget>[
                     Padding(
-                      padding: const EdgeInsets.only(
-                          left: 20, right: 24, top: 5, bottom: 16),
+                      padding:
+                          const EdgeInsets.only(left: 20, right: 24, top: 5),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,

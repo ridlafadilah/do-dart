@@ -49,14 +49,29 @@ Make sure following software is installed on your PC.
 ## Compile & Test
 * __Development__
 
-  ```
-  do_dart$ flutter pub run build_runner build --delete-conflicting-outputs
-  packages/do_core$ flutter pub run build_runner build
-  ```
-  ```
-  do_dart$ flutter run
-  ```
-  or press __F5__ in Visual Studio Code
+  * Download Packages :
+	```
+	do_dart$ flutter pub get
+	```
+	Click __Get Packages__ located in right side of the action ribbon at the top of pubspec.yaml.
+
+  * Generate Json Models :
+	```
+	do_dart$ flutter pub run build_runner build --delete-conflicting-outputs
+	```
+	```
+	do_dart/packages/do_core$ flutter pub run build_runner build
+	```
+
+  * Restart the Dart Analysis Server (VS Code) :
+
+  	`CTRL + Shift + P` , then search look for a command called `Dart: Restart Analysis Server`
+
+  * Run Application :
+	```
+	do_dart$ flutter run
+	```
+	or press __F5__ in Visual Studio Code
 
 * __API__
   

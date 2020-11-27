@@ -127,8 +127,8 @@ class ProfileView extends StatelessWidget {
                               Align(
                                 alignment: Alignment.bottomRight,
                                 child: Container(
-                                  height: 25,
-                                  width: 25,
+                                  height: 30,
+                                  width: 30,
                                   decoration: BoxDecoration(
                                     color: AppTheme.nearlyWhite,
                                     shape: BoxShape.circle,
@@ -139,14 +139,22 @@ class ProfileView extends StatelessWidget {
                                           blurRadius: 5.0),
                                     ],
                                   ),
-                                  child: InkWell(
-                                      highlightColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      onTap: () {},
-                                      child: SvgPicture.asset(
-                                          'assets/eva_icons/outline/svg/edit-outline.svg',
-                                          color:
-                                              AppTheme.grey.withOpacity(0.8))),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      InkWell(
+                                        highlightColor: Colors.transparent,
+                                        borderRadius: const BorderRadius.all(
+                                            Radius.circular(4.0)),
+                                        onTap: () {
+                                          print('a');
+                                        },
+                                        child: SvgPicture.asset(
+                                            'assets/eva_icons/fill/svg/camera.svg',
+                                            color: AppTheme.grey),
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ],

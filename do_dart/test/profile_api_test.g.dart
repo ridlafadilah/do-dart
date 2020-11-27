@@ -16,11 +16,12 @@ class _ProfileAPITest implements ProfileAPITest {
   String baseUrl;
 
   @override
-  Future<dynamic> getProfile() async {
+  Future<ProfileDto> getProfile() async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    final _result = await _dio.request('/do/api/profile/vw/get/profile/v.1',
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/do/api/profile/vw/get/profile/v.1',
         queryParameters: queryParameters,
         options: RequestOptions(
             method: 'GET',
@@ -29,7 +30,7 @@ class _ProfileAPITest implements ProfileAPITest {
             contentType: 'application/json',
             baseUrl: baseUrl),
         data: _data);
-    final value = _result.data;
+    final value = ProfileDto.fromJson(_result.data);
     return value;
   }
 }

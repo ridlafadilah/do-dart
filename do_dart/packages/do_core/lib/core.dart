@@ -9,4 +9,5 @@ export 'models/oauth_result.dart';
 export 'models/oauth_static.dart';
 export 'services/auth_service.dart';
 export 'services/core_locator.dart';
+export 'services/profile_service.dart';
 export 'services/shared_preferences_service.dart';

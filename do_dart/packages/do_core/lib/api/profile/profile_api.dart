@@ -2,6 +2,7 @@ import 'package:dio/dio.dart' hide Headers;
 import 'package:do_core/interceptors/http_error_interceptors.dart';
 import 'package:do_core/interceptors/http_oauth_interceptors.dart';
 import 'package:do_core/interceptors/http_signature_interceptors.dart';
+import 'package:do_core/models/profile_dto.dart';
 import 'package:do_core/services/auth_service.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:retrofit/http.dart';
@@ -24,5 +25,5 @@ abstract class ProfileAPI {
 
   @Headers({'content-type': 'application/json'})
   @GET('/do/api/profile/vw/get/profile/v.1')
-  Future getProfile();
+  Future<ProfileDto> getProfile();
 }

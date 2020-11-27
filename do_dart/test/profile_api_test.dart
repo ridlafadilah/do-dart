@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart' hide Headers;
 import 'package:do_core/core.dart';
+import 'package:do_core/models/profile_dto.dart';
 import 'package:do_dart/environments/environment.dart';
 import 'package:retrofit/http.dart';
 
@@ -23,5 +24,5 @@ abstract class ProfileAPITest {
 
   @Headers({'content-type': 'application/json'})
   @GET('/do/api/profile/vw/get/profile/v.1')
-  Future getProfile();
+  Future<ProfileDto> getProfile();
 }
