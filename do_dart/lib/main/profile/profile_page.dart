@@ -1,6 +1,5 @@
 import 'package:do_core/core.dart';
-import 'package:do_dart/main/profile/views/profile_detail_skeleton_view.dart';
-import 'package:do_dart/main/profile/views/profile_detail_view.dart';
+import 'package:do_dart/main/profile/bloc/profile_bloc.dart';
 import 'package:do_dart/main/profile/views/profile_skeleton_view.dart';
 import 'package:do_dart/main/profile/views/profile_view.dart';
 import 'package:flutter/material.dart';
@@ -21,128 +20,41 @@ class _ProfilePageState extends State<ProfilePage>
     with TickerProviderStateMixin {
   Animation<double> topBarAnimation;
 
-  List<Widget> listViews = <Widget>[];
-  List<Widget> listSkeletonViews = <Widget>[];
-  final ScrollController scrollController = ScrollController();
-  double topBarOpacity = 0.0;
+  final ScrollController _scrollController = ScrollController();
+  double _topBarOpacity = 0.0;
+  final int _itemTotal = 3;
 
   @override
   void initState() {
+    super.initState();
+
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: widget.animationController,
             curve: const Interval(0, 0.5, curve: Curves.fastOutSlowIn)));
 
-    addAllListData();
-    addAllListSkeleton();
-
-    scrollController.addListener(() {
-      if (scrollController.offset >= 24) {
-        if (topBarOpacity != 1.0) {
+    _scrollController.addListener(() {
+      if (_scrollController.offset >= 24) {
+        if (_topBarOpacity != 1.0) {
           setState(() {
-            topBarOpacity = 1.0;
+            _topBarOpacity = 1.0;
           });
         }
-      } else if (scrollController.offset <= 24 &&
-          scrollController.offset >= 0) {
-        if (topBarOpacity != scrollController.offset / 24) {
+      } else if (_scrollController.offset <= 24 &&
+          _scrollController.offset >= 0) {
+        if (_topBarOpacity != _scrollController.offset / 24) {
           setState(() {
-            topBarOpacity = scrollController.offset / 24;
+            _topBarOpacity = _scrollController.offset / 24;
           });
         }
-      } else if (scrollController.offset <= 0) {
-        if (topBarOpacity != 0.0) {
+      } else if (_scrollController.offset <= 0) {
+        if (_topBarOpacity != 0.0) {
           setState(() {
-            topBarOpacity = 0.0;
+            _topBarOpacity = 0.0;
           });
         }
       }
     });
-    super.initState();
-  }
-
-  void addAllListData() {
-    const int count = 3;
-
-    listViews.add(
-      ProfileView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve: const Interval((1 / count) * 0, 1.0,
-                curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
-
-    listViews.add(
-      TitleView(
-        titleTxt: 'Your Profile',
-        subTxt: 'Customize',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve: const Interval((1 / count) * 1, 1.0,
-                curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-        onTap: () {},
-      ),
-    );
-
-    listViews.add(
-      ProfileDetailView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve: const Interval((1 / count) * 2, 1.0,
-                curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
-  }
-
-  void addAllListSkeleton() {
-    const int count = 3;
-
-    listSkeletonViews.add(
-      ProfileSkeletonView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve: const Interval((1 / count) * 0, 1.0,
-                curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
-
-    listSkeletonViews.add(
-      TitleView(
-        titleTxt: 'Your Profile',
-        subTxt: 'Customize',
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve: const Interval((1 / count) * 1, 1.0,
-                curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-        onTap: () {},
-      ),
-    );
-
-    listSkeletonViews.add(
-      ProfileDetailSkeletonView(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve: const Interval((1 / count) * 2, 1.0,
-                curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
-    );
-  }
-
-  Future<bool> getData(BuildContext context) async {
-    ProfileService profileService = ProfileService(
-        authService: RepositoryProvider.of<AuthService>(context));
-    bool isResponse = false;
-    await profileService.getProfile().then((value) {
-      isResponse = !isResponse;
-    });
-    return isResponse;
   }
 
   @override
@@ -153,8 +65,8 @@ class _ProfilePageState extends State<ProfilePage>
         backgroundColor: Colors.transparent,
         body: Stack(
           children: <Widget>[
-            getMainListViewUI(),
-            getAppBarUI(),
+            mainView(),
+            appBar(),
             SizedBox(
               height: MediaQuery.of(context).padding.bottom,
             )
@@ -164,46 +76,59 @@ class _ProfilePageState extends State<ProfilePage>
     );
   }
 
-  Widget getMainListViewUI() {
-    return FutureBuilder<bool>(
-      future: getData(context),
-      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-        if (!snapshot.hasData) {
-          return ListView.builder(
-            controller: scrollController,
-            padding: EdgeInsets.only(
-              top: AppBar().preferredSize.height +
-                  MediaQuery.of(context).padding.top +
-                  24,
-              bottom: 62 + MediaQuery.of(context).padding.bottom,
-            ),
-            itemCount: listSkeletonViews.length,
-            scrollDirection: Axis.vertical,
-            itemBuilder: (BuildContext context, int index) {
-              return listSkeletonViews[index];
-            },
-          );
-        } else {
-          return ListView.builder(
-            controller: scrollController,
-            padding: EdgeInsets.only(
-              top: AppBar().preferredSize.height +
-                  MediaQuery.of(context).padding.top +
-                  24,
-              bottom: 62 + MediaQuery.of(context).padding.bottom,
-            ),
-            itemCount: listViews.length,
-            scrollDirection: Axis.vertical,
-            itemBuilder: (BuildContext context, int index) {
-              return listViews[index];
-            },
-          );
-        }
+  Widget mainView() {
+    return BlocProvider(
+      create: (context) {
+        return ProfileBloc(
+          authService: RepositoryProvider.of<AuthService>(context),
+        )..add(const ProfileFetched());
       },
+      child: BlocBuilder<ProfileBloc, ProfileState>(
+        builder: (BuildContext context, ProfileState state) {
+          if (state is ProfileSuccess) {
+            return ListView.builder(
+              controller: _scrollController,
+              padding: EdgeInsets.only(
+                top: AppBar().preferredSize.height +
+                    MediaQuery.of(context).padding.top +
+                    24,
+                bottom: 62 + MediaQuery.of(context).padding.bottom,
+              ),
+              itemCount: _itemTotal,
+              scrollDirection: Axis.vertical,
+              itemBuilder: (BuildContext context, int index) {
+                return ProfileView(
+                    itemTotal: _itemTotal,
+                    index: index,
+                    animationController: widget.animationController,
+                    profile: state.profile);
+              },
+            );
+          } else {
+            return ListView.builder(
+              controller: _scrollController,
+              padding: EdgeInsets.only(
+                top: AppBar().preferredSize.height +
+                    MediaQuery.of(context).padding.top +
+                    24,
+                bottom: 62 + MediaQuery.of(context).padding.bottom,
+              ),
+              itemCount: _itemTotal,
+              scrollDirection: Axis.vertical,
+              itemBuilder: (BuildContext context, int index) {
+                return ProfileSkeletonView(
+                    itemTotal: _itemTotal,
+                    index: index,
+                    animationController: widget.animationController);
+              },
+            );
+          }
+        },
+      ),
     );
   }
 
-  Widget getAppBarUI() {
+  Widget appBar() {
     widget.animationController.forward();
     return Column(
       children: <Widget>[
@@ -217,13 +142,14 @@ class _ProfilePageState extends State<ProfilePage>
                     0.0, 30 * (1.0 - topBarAnimation.value), 0.0),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: AppTheme.white.withOpacity(topBarOpacity),
+                    color: AppTheme.white.withOpacity(_topBarOpacity),
                     borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(32.0),
                     ),
                     boxShadow: <BoxShadow>[
                       BoxShadow(
-                          color: AppTheme.grey.withOpacity(0.4 * topBarOpacity),
+                          color:
+                              AppTheme.grey.withOpacity(0.4 * _topBarOpacity),
                           offset: const Offset(1.1, 1.1),
                           blurRadius: 10.0),
                     ],
@@ -237,8 +163,8 @@ class _ProfilePageState extends State<ProfilePage>
                         padding: EdgeInsets.only(
                             left: 16,
                             right: 16,
-                            top: 16 - 8.0 * topBarOpacity,
-                            bottom: 12 - 8.0 * topBarOpacity),
+                            top: 16 - 8.0 * _topBarOpacity,
+                            bottom: 12 - 8.0 * _topBarOpacity),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
@@ -251,7 +177,7 @@ class _ProfilePageState extends State<ProfilePage>
                                   style: TextStyle(
                                     fontFamily: AppTheme.fontName,
                                     fontWeight: FontWeight.w700,
-                                    fontSize: 22 + 6 - 6 * topBarOpacity,
+                                    fontSize: 22 + 6 - 6 * _topBarOpacity,
                                     letterSpacing: 1.2,
                                     color: AppTheme.darkerText,
                                   ),

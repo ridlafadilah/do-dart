@@ -1,19 +1,30 @@
+import 'package:do_core/models.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ProfileDetailView extends StatelessWidget {
-  const ProfileDetailView({Key key, this.animationController, this.animation})
+class ProfileDetailWidget extends StatelessWidget {
+  const ProfileDetailWidget(
+      {Key key, this.animationController, this.animation, this.profile})
       : super(key: key);
 
   final AnimationController animationController;
   final Animation animation;
+  final ProfileDto profile;
 
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
       animation: animationController,
       builder: (BuildContext context, Widget child) {
+        String pdb = '';
+        if (profile != null) {
+          profile.placeOfBirth =
+              profile.placeOfBirth != null ? profile.placeOfBirth : '';
+          profile.dateOfBirth =
+              profile.dateOfBirth != null ? profile.dateOfBirth : '';
+          pdb = '${profile.placeOfBirth}, ${profile.dateOfBirth}';
+        }
         return FadeTransition(
           opacity: animation,
           child: Transform(
@@ -61,7 +72,7 @@ class ProfileDetailView extends StatelessWidget {
                               ),
                             ),
                             subtitle: Text(
-                              'ridlafadilah',
+                              profile.username,
                               style: TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
@@ -87,7 +98,9 @@ class ProfileDetailView extends StatelessWidget {
                               ),
                             ),
                             subtitle: Text(
-                              '+62812345678',
+                              profile.phoneNumber != null
+                                  ? profile.phoneNumber
+                                  : '',
                               style: TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
@@ -113,7 +126,7 @@ class ProfileDetailView extends StatelessWidget {
                               ),
                             ),
                             subtitle: Text(
-                              'Male',
+                              profile.gender != null ? profile.gender : '',
                               style: TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
@@ -139,7 +152,7 @@ class ProfileDetailView extends StatelessWidget {
                               ),
                             ),
                             subtitle: Text(
-                              'Tangerang, 01/01/2000',
+                              pdb,
                               style: TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
@@ -165,7 +178,7 @@ class ProfileDetailView extends StatelessWidget {
                               ),
                             ),
                             subtitle: Text(
-                              'Tangerang',
+                              profile.address != null ? profile.address : '',
                               style: TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,

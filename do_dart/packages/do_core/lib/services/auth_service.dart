@@ -1,8 +1,9 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:do_core/core.dart';
-import 'package:do_core/models/auth_status.dart';
+import 'package:do_core/api/auth/auth_api.dart';
+import 'package:do_core/exceptions/server_error_exception.dart';
+import 'package:do_core/models.dart';
 import 'package:do_core/services/core_locator.dart';
 import 'package:do_core/services/shared_preferences_service.dart';
 import 'package:global_configuration/global_configuration.dart';

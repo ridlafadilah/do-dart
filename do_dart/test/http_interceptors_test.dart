@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:crypto/crypto.dart';
 import 'package:dio/dio.dart';
-import 'package:do_core/core.dart';
+import 'package:do_core/models.dart';
 import 'package:do_dart/configs/security_config.dart';
 import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
@@ -83,6 +83,18 @@ class HttpSignatureInterceptorsTest extends Interceptor {
     Hmac hmacSha256 = Hmac(sha256, key);
     Digest digest = hmacSha256.convert(bytes);
     return base64.encode(digest.bytes);
+  }
+}
+
+class HttpLanguageInterceptorsTest extends InterceptorsWrapper {
+  HttpLanguageInterceptorsTest(OAuthResult _oAuthResult) {
+    oAuthResult = _oAuthResult;
+  }
+
+  @override
+  Future onRequest(RequestOptions options) async {
+    options.headers['accept-language'] = oAuthResult.locale;
+    return options;
   }
 }
 

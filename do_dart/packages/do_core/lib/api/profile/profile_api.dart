@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart' hide Headers;
 import 'package:do_core/interceptors/http_error_interceptors.dart';
+import 'package:do_core/interceptors/http_language_interceptors.dart';
 import 'package:do_core/interceptors/http_oauth_interceptors.dart';
 import 'package:do_core/interceptors/http_signature_interceptors.dart';
 import 'package:do_core/models/profile_dto.dart';
@@ -19,6 +20,7 @@ abstract class ProfileAPI {
     dio.options.connectTimeout = 15000;
     dio.interceptors.add(HttpOAuthInterceptors());
     dio.interceptors.add(HttpSignatureInterceptors());
+    dio.interceptors.add(HttpLanguageInterceptors());
     dio.interceptors.add(HttpErrorInterceptors(dio, authService));
     return _ProfileAPI(dio, baseUrl: baseUrl);
   }

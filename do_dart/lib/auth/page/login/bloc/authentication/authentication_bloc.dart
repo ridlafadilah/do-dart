@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:do_core/core.dart';
+import 'package:do_core/models.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 

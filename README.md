@@ -16,10 +16,10 @@ Dongkap | Mobile Application with Flutter
   * Main template using [Best-Flutter-UI-Templates](https://github.com/mitesh77/Best-Flutter-UI-Templates)
 
 * __Integrate with API__
-  * OAuth2 ( _soon_ )
-  * JWT ( _soon_ )
-  * Interceptor Header Signature (Hmac SHA-256) ( _soon_ )
-  * Interceptor Header Accept-Language ( _soon_ )
+  * OAuth2
+  * JWT
+  * Interceptor Header Signature (Hmac SHA-256)
+  * Interceptor Header Accept-Language
 
 * __Social Sign On__
   * Google ( _soon_ )
@@ -29,7 +29,7 @@ Dongkap | Mobile Application with Flutter
 * __i18n__ ( _soon_ )
 
 * __Simple UI Template__
-  * Login ( _soon_ )
+  * Login
   * Registration ( _soon_ )
   * Forgot Password ( _soon_ )
   * Change Password ( _soon_ )

@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart' hide Headers;
-import 'package:do_core/core.dart';
+import 'package:do_core/models.dart';
 import 'package:do_dart/environments/environment.dart';
 import 'package:retrofit/http.dart';
 

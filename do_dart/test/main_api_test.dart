@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
-import 'package:do_core/core.dart';
+import 'package:do_core/models.dart';
 import 'package:do_dart/configs/security_config.dart';
 import 'package:logger/logger.dart';
 import 'package:test/test.dart';
@@ -26,8 +26,8 @@ void main() {
       Map<String, dynamic> body = {
         'grant_type': 'password',
         'client_id': clientId,
-        'username': 'admin',
-        'password': 'admin123'
+        'username': 'male',
+        'password': 'user123'
       };
       oAuthResult = await _authAPI.token(body);
       logger.i(oAuthResult.toString());
@@ -35,8 +35,10 @@ void main() {
 
     test('Get Profile', () async {
       _profileAPITest = ProfileAPITest(Dio(), oAuthResult);
-      final response = await _profileAPITest.getProfile();
-      logger.i(response.toString());
+      await _profileAPITest.getProfile().then((value) {
+        logger.i(value.gender);
+        logger.i(value.genderCode);
+      });
     });
 
     test('Waiting', () async {
@@ -46,8 +48,10 @@ void main() {
 
     test('Refresh Token', () async {
       _profileAPITest = ProfileAPITest(Dio(), oAuthResult);
-      final response = await _profileAPITest.getProfile();
-      logger.i(response.toString());
+      await _profileAPITest.getProfile().then((value) {
+        logger.i(value.gender);
+        logger.i(value.genderCode);
+      });
     }, timeout: const Timeout(Duration(seconds: 45)));
   }, timeout: const Timeout(Duration(minutes: 2)));
 }

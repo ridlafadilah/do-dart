@@ -2,8 +2,8 @@ import 'package:do_common/common.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class ProfileDetailSkeletonView extends StatelessWidget {
-  const ProfileDetailSkeletonView(
+class ProfileDetailSkeletonWidget extends StatelessWidget {
+  const ProfileDetailSkeletonWidget(
       {Key key, this.animationController, this.animation})
       : super(key: key);
 

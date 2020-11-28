@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:do_core/core.dart';
+import 'package:do_core/models.dart';
 import 'package:do_dart/auth/auth.dart';
 import 'package:do_dart/auth/page/login/bloc/authentication/authentication_bloc.dart';
 import 'package:do_dart/configs/security_config.dart';
