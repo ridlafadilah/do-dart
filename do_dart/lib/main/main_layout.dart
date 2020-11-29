@@ -17,7 +17,36 @@ class MainLayout extends StatefulWidget {
 class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
   AnimationController animationController;
 
-  List<TabIconData> tabIconsList = TabIconData.tabIconsList;
+  List<TabIconData> tabIconsList = <TabIconData>[
+    TabIconData(
+      imagePath: 'assets/eva_icons/outline/svg/home-outline.svg',
+      selectedImagePath: 'assets/eva_icons/fill/svg/home.svg',
+      index: 0,
+      isSelected: true,
+      animationController: null,
+    ),
+    TabIconData(
+      imagePath: 'assets/eva_icons/outline/svg/layout-outline.svg',
+      selectedImagePath: 'assets/eva_icons/fill/svg/layout.svg',
+      index: 1,
+      isSelected: false,
+      animationController: null,
+    ),
+    TabIconData(
+      imagePath: 'assets/eva_icons/outline/svg/bulb-outline.svg',
+      selectedImagePath: 'assets/eva_icons/fill/svg/bulb.svg',
+      index: 2,
+      isSelected: false,
+      animationController: null,
+    ),
+    TabIconData(
+      imagePath: 'assets/eva_icons/outline/svg/person-outline.svg',
+      selectedImagePath: 'assets/eva_icons/fill/svg/person.svg',
+      index: 3,
+      isSelected: false,
+      animationController: null,
+    ),
+  ];
 
   Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys = {
     TabItem.home: GlobalKey<NavigatorState>(),
@@ -134,3 +163,5 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
     );
   }
 }
+
+enum TabItem { home, exercise, template, profile }
