@@ -1,7 +1,7 @@
 import 'package:do_core/models.dart';
 import 'package:do_dart/main/profile/widgets/profile_detail_widget.dart';
 import 'package:do_dart/main/profile/widgets/profile_header_widget.dart';
-import 'package:do_theme/components/views/title_view.dart';
+import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatefulWidget {
