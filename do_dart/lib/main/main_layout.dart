@@ -19,6 +19,13 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
 
   List<TabIconData> tabIconsList = TabIconData.tabIconsList;
 
+  Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys = {
+    TabItem.home: GlobalKey<NavigatorState>(),
+    TabItem.exercise: GlobalKey<NavigatorState>(),
+    TabItem.template: GlobalKey<NavigatorState>(),
+    TabItem.profile: GlobalKey<NavigatorState>(),
+  };
+
   Widget tabBody = Container(
     color: AppTheme.background,
   );
@@ -57,12 +64,13 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
               return Stack(
                 children: <Widget>[
                   tabBody,
-                  bottomNavigation(),
                 ],
               );
             }
           },
         ),
+        bottomNavigationBar: bottomNavigation(),
+        extendBody: true,
       ),
     );
   }
@@ -73,65 +81,56 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
   }
 
   Widget bottomNavigation() {
-    return Column(
-      children: <Widget>[
-        const Expanded(
-          child: SizedBox(),
-        ),
-        BottomNavigation(
-          tabIconsList: tabIconsList,
-          addClick: () {},
-          changeIndex: (int index) {
-            switch (index) {
-              case 0:
-                animationController.reverse().then<dynamic>((data) {
-                  if (!mounted) {
-                    return;
-                  }
-                  setState(() {
-                    tabBody =
-                        HomePage(animationController: animationController);
-                  });
-                });
-                break;
-              case 1:
-                animationController.reverse().then<dynamic>((data) {
-                  if (!mounted) {
-                    return;
-                  }
-                  setState(() {
-                    tabBody =
-                        ExercisePage(animationController: animationController);
-                  });
-                });
-                break;
-              case 2:
-                animationController.reverse().then<dynamic>((data) {
-                  if (!mounted) {
-                    return;
-                  }
-                  setState(() {
-                    tabBody = UITemplatePage(
-                        animationController: animationController);
-                  });
-                });
-                break;
-              case 3:
-                animationController.reverse().then<dynamic>((data) {
-                  if (!mounted) {
-                    return;
-                  }
-                  setState(() {
-                    tabBody =
-                        ProfilePage(animationController: animationController);
-                  });
-                });
-                break;
-              default:
-            }
-          },
-        ),
-      ],
+    return BottomBarNavigation(
+      tabIconsList: tabIconsList,
+      addClick: () {},
+      changeIndex: (int index) {
+        switch (index) {
+          case 0:
+            animationController.reverse().then<dynamic>((data) {
+              if (!mounted) {
+                return;
+              }
+              setState(() {
+                tabBody = HomePage(animationController: animationController);
+              });
+            });
+            break;
+          case 1:
+            animationController.reverse().then<dynamic>((data) {
+              if (!mounted) {
+                return;
+              }
+              setState(() {
+                tabBody =
+                    ExercisePage(animationController: animationController);
+              });
+            });
+            break;
+          case 2:
+            animationController.reverse().then<dynamic>((data) {
+              if (!mounted) {
+                return;
+              }
+              setState(() {
+                tabBody =
+                    UITemplatePage(animationController: animationController);
+              });
+            });
+            break;
+          case 3:
+            animationController.reverse().then<dynamic>((data) {
+              if (!mounted) {
+                return;
+              }
+              setState(() {
+                tabBody = ProfilePage(animationController: animationController);
+              });
+            });
+            break;
+          default:
+        }
+      },
     );
   }
 }

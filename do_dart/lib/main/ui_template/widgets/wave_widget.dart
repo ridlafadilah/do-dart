@@ -3,15 +3,15 @@ import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:vector_math/vector_math.dart' as vector;
 
-class WaveView extends StatefulWidget {
-  const WaveView({Key key, this.percentageValue = 100.0}) : super(key: key);
+class WaveWidget extends StatefulWidget {
+  const WaveWidget({Key key, this.percentageValue = 100.0}) : super(key: key);
 
   final double percentageValue;
   @override
-  _WaveViewState createState() => _WaveViewState();
+  _WaveWidgetState createState() => _WaveWidgetState();
 }
 
-class _WaveViewState extends State<WaveView> with TickerProviderStateMixin {
+class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
   AnimationController animationController;
   AnimationController waveAnimationController;
   Offset bottleOffset1 = const Offset(0, 0);

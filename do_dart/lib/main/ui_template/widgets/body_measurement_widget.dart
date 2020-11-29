@@ -1,8 +1,9 @@
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class BodyMeasurementView extends StatelessWidget {
-  const BodyMeasurementView({Key key, this.animationController, this.animation})
+class BodyMeasurementWidget extends StatelessWidget {
+  const BodyMeasurementWidget(
+      {Key key, this.animationController, this.animation})
       : super(key: key);
 
   final AnimationController animationController;

@@ -2,18 +2,18 @@ import 'package:flutter/material.dart';
 
 import 'package:do_theme/theme.dart';
 
-class AreaListView extends StatefulWidget {
-  const AreaListView(
+class AreaListWidget extends StatefulWidget {
+  const AreaListWidget(
       {Key key, this.mainScreenAnimationController, this.mainScreenAnimation})
       : super(key: key);
 
   final AnimationController mainScreenAnimationController;
   final Animation<dynamic> mainScreenAnimation;
   @override
-  _AreaListViewState createState() => _AreaListViewState();
+  _AreaListWidgetState createState() => _AreaListWidgetState();
 }
 
-class _AreaListViewState extends State<AreaListView>
+class _AreaListWidgetState extends State<AreaListWidget>
     with TickerProviderStateMixin {
   AnimationController animationController;
   List<String> areaListData = <String>[

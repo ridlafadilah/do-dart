@@ -1,4 +1,5 @@
 import 'package:do_core/core.dart';
+import 'package:do_dart/main/home/home_page.dart';
 import 'package:do_dart/main/profile/bloc/profile_bloc.dart';
 import 'package:do_dart/main/profile/views/profile_skeleton_view.dart';
 import 'package:do_dart/main/profile/views/profile_view.dart';
@@ -246,7 +247,15 @@ class _ProfilePageState extends State<ProfilePage>
                     horizontalTitleGap: 2,
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 20.0),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.push<dynamic>(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                            builder: (BuildContext context) => HomePage(
+                                animationController:
+                                    widget.animationController)),
+                      );
+                    },
                   ),
                   const Divider(
                     height: 1,

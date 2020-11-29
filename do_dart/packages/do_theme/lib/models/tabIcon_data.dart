@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+enum TabItem { home, exercise, template, profile }
+
 class TabIconData {
   TabIconData({
     this.imagePath = '',

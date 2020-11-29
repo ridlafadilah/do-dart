@@ -1,6 +1,6 @@
 import 'package:do_core/models.dart';
-import 'package:do_dart/main/profile/widget/profile_detail_widget.dart';
-import 'package:do_dart/main/profile/widget/profile_header_widget.dart';
+import 'package:do_dart/main/profile/widgets/profile_detail_widget.dart';
+import 'package:do_dart/main/profile/widgets/profile_header_widget.dart';
 import 'package:do_theme/components/views/title_view.dart';
 import 'package:flutter/material.dart';
 
@@ -49,7 +49,7 @@ class _ProfileViewState extends State<ProfileView> {
     );
 
     listWidgets.add(
-      TitleView(
+      TitleWidget(
         titleTxt: 'Your Profile',
         subTxt: 'Customize',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(

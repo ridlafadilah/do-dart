@@ -2,8 +2,8 @@ import 'package:do_dart/main/models/meals_list_data.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class MealsListView extends StatefulWidget {
-  const MealsListView(
+class MealsListWidget extends StatefulWidget {
+  const MealsListWidget(
       {Key key, this.mainScreenAnimationController, this.mainScreenAnimation})
       : super(key: key);
 
@@ -11,10 +11,10 @@ class MealsListView extends StatefulWidget {
   final Animation<dynamic> mainScreenAnimation;
 
   @override
-  _MealsListViewState createState() => _MealsListViewState();
+  _MealsListWidgetState createState() => _MealsListWidgetState();
 }
 
-class _MealsListViewState extends State<MealsListView>
+class _MealsListWidgetState extends State<MealsListWidget>
     with TickerProviderStateMixin {
   AnimationController animationController;
   List<MealsListData> mealsListData = MealsListData.tabIconsList;

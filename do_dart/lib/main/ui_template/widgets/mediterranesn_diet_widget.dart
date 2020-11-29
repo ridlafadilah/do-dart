@@ -3,8 +3,8 @@ import 'dart:math' as math;
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
-class MediterranesnDietView extends StatelessWidget {
-  const MediterranesnDietView(
+class MediterranesnDietWidget extends StatelessWidget {
+  const MediterranesnDietWidget(
       {Key key, this.animationController, this.animation})
       : super(key: key);
 

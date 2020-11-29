@@ -1,5 +1,5 @@
-import 'package:do_dart/main/profile/widget/profile_detail_skeleton_widget.dart';
-import 'package:do_dart/main/profile/widget/profile_header_skeleton_widget.dart';
+import 'package:do_dart/main/profile/widgets/profile_detail_skeleton_widget.dart';
+import 'package:do_dart/main/profile/widgets/profile_header_skeleton_widget.dart';
 import 'package:do_theme/components/views/title_view.dart';
 import 'package:flutter/material.dart';
 
@@ -42,7 +42,7 @@ class _ProfileSkeletonViewState extends State<ProfileSkeletonView> {
     );
 
     listWidgets.add(
-      TitleView(
+      TitleWidget(
         titleTxt: 'Your Profile',
         subTxt: 'Customize',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'package:do_theme/theme.dart';
 
-class GlassView extends StatelessWidget {
-  const GlassView({Key key, this.animationController, this.animation})
+class GlassWidget extends StatelessWidget {
+  const GlassWidget({Key key, this.animationController, this.animation})
       : super(key: key);
 
   final AnimationController animationController;

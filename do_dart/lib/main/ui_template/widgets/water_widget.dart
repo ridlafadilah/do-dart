@@ -1,10 +1,10 @@
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
-import 'wave_view.dart';
+import 'wave_widget.dart';
 
-class WaterView extends StatefulWidget {
-  const WaterView(
+class WaterWidget extends StatefulWidget {
+  const WaterWidget(
       {Key key, this.mainScreenAnimationController, this.mainScreenAnimation})
       : super(key: key);
 
@@ -12,10 +12,11 @@ class WaterView extends StatefulWidget {
   final Animation<dynamic> mainScreenAnimation;
 
   @override
-  _WaterViewState createState() => _WaterViewState();
+  _WaterWidgetState createState() => _WaterWidgetState();
 }
 
-class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
+class _WaterWidgetState extends State<WaterWidget>
+    with TickerProviderStateMixin {
   Future<bool> getData() async {
     await Future<dynamic>.delayed(const Duration(milliseconds: 50));
     return true;
@@ -272,7 +273,7 @@ class _WaterViewState extends State<WaterView> with TickerProviderStateMixin {
                                   blurRadius: 4),
                             ],
                           ),
-                          child: const WaveView(
+                          child: const WaveWidget(
                             percentageValue: 60.0,
                           ),
                         ),

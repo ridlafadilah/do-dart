@@ -1,11 +1,11 @@
-import 'package:do_dart/main/ui_template/views/area_list_view.dart';
-import 'package:do_dart/main/ui_template/views/body_measurement.dart';
-import 'package:do_dart/main/ui_template/views/glass_view.dart';
-import 'package:do_dart/main/ui_template/views/meals_list_view.dart';
-import 'package:do_dart/main/ui_template/views/mediterranesn_diet_view.dart';
-import 'package:do_dart/main/ui_template/views/running_view.dart';
-import 'package:do_dart/main/ui_template/views/water_view.dart';
-import 'package:do_dart/main/ui_template/views/workout_view.dart';
+import 'package:do_dart/main/ui_template/widgets/area_list_widget.dart';
+import 'package:do_dart/main/ui_template/widgets/body_measurement_widget.dart';
+import 'package:do_dart/main/ui_template/widgets/glass_widget.dart';
+import 'package:do_dart/main/ui_template/widgets/meals_list_widget.dart';
+import 'package:do_dart/main/ui_template/widgets/mediterranesn_diet_widget.dart';
+import 'package:do_dart/main/ui_template/widgets/running_widget.dart';
+import 'package:do_dart/main/ui_template/widgets/water_widget.dart';
+import 'package:do_dart/main/ui_template/widgets/workout_widget.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -62,7 +62,7 @@ class _UITemplatePageState extends State<UITemplatePage>
     const int count = 14;
 
     listViews.add(
-      TitleView(
+      TitleWidget(
         titleTxt: 'Mediterranean diet',
         subTxt: 'Details',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
@@ -73,7 +73,7 @@ class _UITemplatePageState extends State<UITemplatePage>
       ),
     );
     listViews.add(
-      MediterranesnDietView(
+      MediterranesnDietWidget(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve: const Interval((1 / count) * 1, 1.0,
@@ -82,7 +82,7 @@ class _UITemplatePageState extends State<UITemplatePage>
       ),
     );
     listViews.add(
-      TitleView(
+      TitleWidget(
         titleTxt: 'Meals today',
         subTxt: 'Customize',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
@@ -94,7 +94,7 @@ class _UITemplatePageState extends State<UITemplatePage>
     );
 
     listViews.add(
-      MealsListView(
+      MealsListWidget(
         mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
                 parent: widget.animationController,
@@ -105,7 +105,7 @@ class _UITemplatePageState extends State<UITemplatePage>
     );
 
     listViews.add(
-      TitleView(
+      TitleWidget(
         titleTxt: 'Body measurement',
         subTxt: 'Today',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
@@ -117,7 +117,7 @@ class _UITemplatePageState extends State<UITemplatePage>
     );
 
     listViews.add(
-      BodyMeasurementView(
+      BodyMeasurementWidget(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve: const Interval((1 / count) * 5, 1.0,
@@ -126,7 +126,7 @@ class _UITemplatePageState extends State<UITemplatePage>
       ),
     );
     listViews.add(
-      TitleView(
+      TitleWidget(
         titleTxt: 'Water',
         subTxt: 'Aqua SmartBottle',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
@@ -138,7 +138,7 @@ class _UITemplatePageState extends State<UITemplatePage>
     );
 
     listViews.add(
-      WaterView(
+      WaterWidget(
         mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
                 parent: widget.animationController,
@@ -148,7 +148,7 @@ class _UITemplatePageState extends State<UITemplatePage>
       ),
     );
     listViews.add(
-      GlassView(
+      GlassWidget(
           animation: Tween<double>(begin: 0.0, end: 1.0).animate(
               CurvedAnimation(
                   parent: widget.animationController,
@@ -160,7 +160,7 @@ class _UITemplatePageState extends State<UITemplatePage>
     /* Training Views */
 
     listViews.add(
-      TitleView(
+      TitleWidget(
         titleTxt: 'Your program',
         subTxt: 'Details',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
@@ -172,7 +172,7 @@ class _UITemplatePageState extends State<UITemplatePage>
     );
 
     listViews.add(
-      WorkoutView(
+      WorkoutWidget(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve: const Interval((1 / count) * 10, 1.0,
@@ -181,7 +181,7 @@ class _UITemplatePageState extends State<UITemplatePage>
       ),
     );
     listViews.add(
-      RunningView(
+      RunningWidget(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve: const Interval((1 / count) * 11, 1.0,
@@ -191,7 +191,7 @@ class _UITemplatePageState extends State<UITemplatePage>
     );
 
     listViews.add(
-      TitleView(
+      TitleWidget(
         titleTxt: 'Area of focus',
         subTxt: 'more',
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
@@ -203,7 +203,7 @@ class _UITemplatePageState extends State<UITemplatePage>
     );
 
     listViews.add(
-      AreaListView(
+      AreaListWidget(
         mainScreenAnimation: Tween<double>(begin: 0.0, end: 1.0).animate(
             CurvedAnimation(
                 parent: widget.animationController,

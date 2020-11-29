@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:do_theme/theme.dart';
 
-class RunningView extends StatelessWidget {
-  const RunningView({Key key, this.animationController, this.animation})
+class RunningWidget extends StatelessWidget {
+  const RunningWidget({Key key, this.animationController, this.animation})
       : super(key: key);
 
   final AnimationController animationController;

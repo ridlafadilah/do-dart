@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:do_theme/theme.dart';
 
-class WorkoutView extends StatelessWidget {
-  const WorkoutView({Key key, this.animationController, this.animation})
+class WorkoutWidget extends StatelessWidget {
+  const WorkoutWidget({Key key, this.animationController, this.animation})
       : super(key: key);
 
   final AnimationController animationController;

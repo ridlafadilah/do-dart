@@ -1,8 +1,8 @@
 import 'package:do_theme/utils/app_theme.dart';
 import 'package:flutter/material.dart';
 
-class TitleView extends StatelessWidget {
-  const TitleView(
+class TitleWidget extends StatelessWidget {
+  const TitleWidget(
       {Key key,
       this.titleTxt = '',
       this.subTxt = '',
