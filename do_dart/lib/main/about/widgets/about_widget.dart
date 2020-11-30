@@ -2,13 +2,12 @@ import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class ExerciseBadgeView extends StatelessWidget {
-  const ExerciseBadgeView({Key key, this.animationController, this.animation})
+class AboutWidget extends StatelessWidget {
+  const AboutWidget({Key key, this.animationController, this.animation})
       : super(key: key);
 
   final AnimationController animationController;
   final Animation animation;
-
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
@@ -47,7 +46,7 @@ class ExerciseBadgeView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       const Text(
-                        'Next workout',
+                        'You are in',
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontFamily: AppTheme.fontName,
@@ -60,8 +59,7 @@ class ExerciseBadgeView extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.only(top: 8.0),
                         child: Text(
-                          '''
-UI Widgets (Components)\nAPI calls\nAccessibility & i18n''',
+                          'About Page',
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: AppTheme.fontName,
@@ -81,28 +79,6 @@ UI Widgets (Components)\nAPI calls\nAccessibility & i18n''',
                           crossAxisAlignment: CrossAxisAlignment.end,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            const Padding(
-                              padding: EdgeInsets.only(left: 4),
-                              child: Icon(
-                                Icons.timer,
-                                color: AppTheme.white,
-                                size: 16,
-                              ),
-                            ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 4.0),
-                              child: Text(
-                                '40 days',
-                                textAlign: TextAlign.center,
-                                style: TextStyle(
-                                  fontFamily: AppTheme.fontName,
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 14,
-                                  letterSpacing: 0.0,
-                                  color: AppTheme.white,
-                                ),
-                              ),
-                            ),
                             const Expanded(
                               child: SizedBox(),
                             ),
@@ -121,7 +97,7 @@ UI Widgets (Components)\nAPI calls\nAccessibility & i18n''',
                               child: Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: SvgPicture.asset(
-                                    'assets/eva_icons/fill/svg/layout.svg',
+                                    'assets/eva_icons/fill/svg/info.svg',
                                     color: HexColor('#598BFF')),
                               ),
                             )

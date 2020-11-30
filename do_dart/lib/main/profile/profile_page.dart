@@ -1,8 +1,10 @@
 import 'package:do_core/core.dart';
-import 'package:do_dart/main/home/home_page.dart';
+import 'package:do_dart/main/about/about_page.dart';
 import 'package:do_dart/main/profile/bloc/profile_bloc.dart';
 import 'package:do_dart/main/profile/views/profile_skeleton_view.dart';
 import 'package:do_dart/main/profile/views/profile_view.dart';
+import 'package:do_dart/main/security/security_page.dart';
+import 'package:do_dart/main/settings/settings_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -210,8 +212,9 @@ class _ProfilePageState extends State<ProfilePage>
     );
   }
 
-  void _modalBottomSheetMenu() {
-    showModalBottomSheet(
+  void _modalBottomSheetMenu() async {
+    await showModalBottomSheet(
+        useRootNavigator: true,
         isScrollControlled: true,
         context: context,
         backgroundColor: Colors.transparent,
@@ -248,10 +251,11 @@ class _ProfilePageState extends State<ProfilePage>
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 20.0),
                     onTap: () {
+                      Navigator.of(context, rootNavigator: true).pop();
                       Navigator.push<dynamic>(
                         context,
                         MaterialPageRoute<dynamic>(
-                            builder: (BuildContext context) => HomePage(
+                            builder: (BuildContext context) => SettingsPage(
                                 animationController:
                                     widget.animationController)),
                       );
@@ -270,7 +274,16 @@ class _ProfilePageState extends State<ProfilePage>
                     horizontalTitleGap: 2,
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 20.0),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context, rootNavigator: true).pop();
+                      Navigator.push<dynamic>(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                            builder: (BuildContext context) => SecurityPage(
+                                animationController:
+                                    widget.animationController)),
+                      );
+                    },
                   ),
                   const Divider(
                     height: 1,
@@ -285,7 +298,16 @@ class _ProfilePageState extends State<ProfilePage>
                     horizontalTitleGap: 2,
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 20.0),
-                    onTap: () {},
+                    onTap: () {
+                      Navigator.of(context, rootNavigator: true).pop();
+                      Navigator.push<dynamic>(
+                        context,
+                        MaterialPageRoute<dynamic>(
+                            builder: (BuildContext context) => AboutPage(
+                                animationController:
+                                    widget.animationController)),
+                      );
+                    },
                   ),
                   const Divider(
                     height: 1,

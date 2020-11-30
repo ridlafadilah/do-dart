@@ -1,4 +1,4 @@
-import 'package:do_dart/main/home/views/home_view.dart';
+import 'package:do_dart/main/home/widgets/home_widget.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -54,7 +54,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   void addAllListData() {
     const int count = 1;
     listViews.add(
-      HomeView(
+      HomeWidget(
           animation: Tween<double>(begin: 0.0, end: 1.0).animate(
               CurvedAnimation(
                   parent: widget.animationController,

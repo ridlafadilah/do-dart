@@ -2,8 +2,8 @@ import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({Key key, this.animationController, this.animation})
+class SecurityWidget extends StatelessWidget {
+  const SecurityWidget({Key key, this.animationController, this.animation})
       : super(key: key);
 
   final AnimationController animationController;
@@ -46,7 +46,7 @@ class HomeView extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       const Text(
-                        'Hello,',
+                        'You are in',
                         textAlign: TextAlign.left,
                         style: TextStyle(
                           fontFamily: AppTheme.fontName,
@@ -59,7 +59,7 @@ class HomeView extends StatelessWidget {
                       const Padding(
                         padding: EdgeInsets.only(top: 8.0),
                         child: Text(
-                          'Ridla Fadilah',
+                          'Security Page',
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             fontFamily: AppTheme.fontName,
@@ -97,7 +97,7 @@ class HomeView extends StatelessWidget {
                               child: Padding(
                                 padding: const EdgeInsets.all(10.0),
                                 child: SvgPicture.asset(
-                                    'assets/eva_icons/fill/svg/home.svg',
+                                    'assets/eva_icons/fill/svg/lock.svg',
                                     color: HexColor('#598BFF')),
                               ),
                             )

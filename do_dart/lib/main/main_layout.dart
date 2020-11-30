@@ -1,7 +1,4 @@
-import 'package:do_dart/main/exercise/exercise_page.dart';
-import 'package:do_dart/main/home/home_page.dart';
-import 'package:do_dart/main/profile/profile_page.dart';
-import 'package:do_dart/main/ui_template/ui_template_page.dart';
+import 'package:do_dart/main/tab_navigator.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -48,16 +45,14 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
     ),
   ];
 
-  Map<TabItem, GlobalKey<NavigatorState>> navigatorKeys = {
-    TabItem.home: GlobalKey<NavigatorState>(),
-    TabItem.exercise: GlobalKey<NavigatorState>(),
-    TabItem.template: GlobalKey<NavigatorState>(),
-    TabItem.profile: GlobalKey<NavigatorState>(),
+  Map<String, GlobalKey<NavigatorState>> navigatorKeys = {
+    TabNavigatorRoutes.home: GlobalKey<NavigatorState>(),
+    TabNavigatorRoutes.exercise: GlobalKey<NavigatorState>(),
+    TabNavigatorRoutes.uitemplate: GlobalKey<NavigatorState>(),
+    TabNavigatorRoutes.profile: GlobalKey<NavigatorState>(),
   };
 
-  Widget tabBody = Container(
-    color: AppTheme.background,
-  );
+  String currentTab = TabNavigatorRoutes.home;
 
   @override
   void initState() {
@@ -67,8 +62,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
     tabIconsList[0].isSelected = true;
 
     animationController = AnimationController(
-        duration: const Duration(milliseconds: 200), vsync: this);
-    tabBody = HomePage(animationController: animationController);
+        duration: const Duration(milliseconds: 50), vsync: this);
     super.initState();
   }
 
@@ -92,7 +86,11 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
             } else {
               return Stack(
                 children: <Widget>[
-                  tabBody,
+                  TabNavigator(
+                    navigatorKey: navigatorKeys[currentTab],
+                    animationController: animationController,
+                    tab: currentTab,
+                  )
                 ],
               );
             }
@@ -121,7 +119,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                 return;
               }
               setState(() {
-                tabBody = HomePage(animationController: animationController);
+                currentTab = TabNavigatorRoutes.home;
               });
             });
             break;
@@ -131,8 +129,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                 return;
               }
               setState(() {
-                tabBody =
-                    ExercisePage(animationController: animationController);
+                currentTab = TabNavigatorRoutes.exercise;
               });
             });
             break;
@@ -142,8 +139,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                 return;
               }
               setState(() {
-                tabBody =
-                    UITemplatePage(animationController: animationController);
+                currentTab = TabNavigatorRoutes.uitemplate;
               });
             });
             break;
@@ -153,7 +149,7 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
                 return;
               }
               setState(() {
-                tabBody = ProfilePage(animationController: animationController);
+                currentTab = TabNavigatorRoutes.profile;
               });
             });
             break;
@@ -163,5 +159,3 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
     );
   }
 }
-
-enum TabItem { home, exercise, template, profile }

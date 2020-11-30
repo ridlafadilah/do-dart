@@ -1,18 +1,17 @@
-import 'package:do_dart/main/exercise/widgets/exercise_badge_widget.dart';
-import 'package:flutter/material.dart';
-
+import 'package:do_dart/main/about/widgets/about_widget.dart';
 import 'package:do_theme/theme.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class ExercisePage extends StatefulWidget {
-  const ExercisePage({Key key, this.animationController}) : super(key: key);
+class AboutPage extends StatefulWidget {
+  const AboutPage({Key key, this.animationController}) : super(key: key);
 
   final AnimationController animationController;
   @override
-  _ExercisePageState createState() => _ExercisePageState();
+  _AboutPageState createState() => _AboutPageState();
 }
 
-class _ExercisePageState extends State<ExercisePage>
-    with TickerProviderStateMixin {
+class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
   Animation<double> topBarAnimation;
 
   List<Widget> listViews = <Widget>[];
@@ -53,16 +52,15 @@ class _ExercisePageState extends State<ExercisePage>
   }
 
   void addAllListData() {
-    const int count = 5;
-
+    const int count = 1;
     listViews.add(
-      ExerciseBadgeWidget(
-        animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
-            parent: widget.animationController,
-            curve: const Interval((1 / count) * 0, 1.0,
-                curve: Curves.fastOutSlowIn))),
-        animationController: widget.animationController,
-      ),
+      AboutWidget(
+          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                  parent: widget.animationController,
+                  curve: const Interval((1 / count) * 0, 1.0,
+                      curve: Curves.fastOutSlowIn))),
+          animationController: widget.animationController),
     );
   }
 
@@ -75,43 +73,31 @@ class _ExercisePageState extends State<ExercisePage>
   Widget build(BuildContext context) {
     return Container(
       color: AppTheme.background,
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: <Widget>[
-            getMainListViewUI(),
-            getAppBarUI(),
-            SizedBox(
-              height: MediaQuery.of(context).padding.bottom,
-            )
-          ],
-        ),
+      child: Stack(
+        children: <Widget>[
+          getMainListViewUI(),
+          getAppBarUI(),
+          SizedBox(
+            height: MediaQuery.of(context).padding.bottom,
+          )
+        ],
       ),
     );
   }
 
   Widget getMainListViewUI() {
-    return FutureBuilder<bool>(
-      future: getData(),
-      builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-        if (!snapshot.hasData) {
-          return const SizedBox();
-        } else {
-          return ListView.builder(
-            controller: scrollController,
-            padding: EdgeInsets.only(
-              top: AppBar().preferredSize.height +
-                  MediaQuery.of(context).padding.top +
-                  24,
-              bottom: 62 + MediaQuery.of(context).padding.bottom,
-            ),
-            itemCount: listViews.length,
-            scrollDirection: Axis.vertical,
-            itemBuilder: (BuildContext context, int index) {
-              return listViews[index];
-            },
-          );
-        }
+    return ListView.builder(
+      controller: scrollController,
+      padding: EdgeInsets.only(
+        top: AppBar().preferredSize.height +
+            MediaQuery.of(context).padding.top +
+            24,
+        bottom: 62 + MediaQuery.of(context).padding.bottom,
+      ),
+      itemCount: listViews.length,
+      scrollDirection: Axis.vertical,
+      itemBuilder: (BuildContext context, int index) {
+        return listViews[index];
       },
     );
   }
@@ -155,11 +141,33 @@ class _ExercisePageState extends State<ExercisePage>
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
+                            Padding(
+                              padding: const EdgeInsets.all(1.0),
+                              child: InkWell(
+                                highlightColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                onTap: () {
+                                  Navigator.of(context).pop(true);
+                                },
+                                child: Container(
+                                  height: 50,
+                                  width: 38,
+                                  color: Colors.transparent,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      SvgPicture.asset(
+                                          'assets/eva_icons/outline/svg/arrow-back-outline.svg'),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
                             Expanded(
                               child: Padding(
                                 padding: const EdgeInsets.all(8.0),
                                 child: Text(
-                                  'Exercise',
+                                  'About',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
                                     fontFamily: AppTheme.fontName,
