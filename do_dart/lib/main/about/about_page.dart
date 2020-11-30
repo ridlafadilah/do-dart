@@ -150,7 +150,7 @@ class _AboutPageState extends State<AboutPage> with TickerProviderStateMixin {
                                   Navigator.of(context).pop(true);
                                 },
                                 child: Container(
-                                  height: 50,
+                                  height: 44,
                                   width: 38,
                                   color: Colors.transparent,
                                   child: Column(

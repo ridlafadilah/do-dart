@@ -190,13 +190,26 @@ class _ProfilePageState extends State<ProfilePage>
                             Padding(
                               padding: const EdgeInsets.all(5.0),
                               child: InkWell(
-                                  highlightColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  onTap: () {
-                                    _modalBottomSheetMenu();
-                                  },
-                                  child: SvgPicture.asset(
-                                      'assets/eva_icons/outline/svg/menu-2-outline.svg')),
+                                focusColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                splashColor: Colors.transparent,
+                                onTap: () {
+                                  _modalBottomSheetMenu();
+                                },
+                                child: Container(
+                                  height: 44,
+                                  width: 40,
+                                  color: Colors.transparent,
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: <Widget>[
+                                      SvgPicture.asset(
+                                          'assets/eva_icons/outline/svg/menu-2-outline.svg'),
+                                    ],
+                                  ),
+                                ),
+                              ),
                             )
                           ],
                         ),
