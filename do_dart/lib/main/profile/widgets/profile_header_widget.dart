@@ -42,7 +42,7 @@ class ProfileHeaderWidget extends StatelessWidget {
                                 topRight: Radius.circular(8.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
-                                  color: AppTheme.grey.withOpacity(0.4),
+                                  color: AppTheme.grey.withOpacity(0.2),
                                   offset: const Offset(1.1, 1.1),
                                   blurRadius: 10.0),
                             ],
@@ -149,9 +149,7 @@ class ProfileHeaderWidget extends StatelessWidget {
                                         highlightColor: Colors.transparent,
                                         borderRadius: const BorderRadius.all(
                                             Radius.circular(4.0)),
-                                        onTap: () {
-                                          print('a');
-                                        },
+                                        onTap: () {},
                                         child: SvgPicture.asset(
                                             'assets/eva_icons/fill/svg/camera.svg',
                                             color: AppTheme.grey),

@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 class ProfileView extends StatefulWidget {
   ProfileView(
       {Key key,
-      this.index,
       this.itemTotal,
+      this.scrollController,
       this.animationController,
       @required this.profile})
       : super(key: key);
 
   final int itemTotal;
-  final int index;
+  final ScrollController scrollController;
   final AnimationController animationController;
   final ProfileDto profile;
 
@@ -27,13 +27,23 @@ class _ProfileViewState extends State<ProfileView> {
 
   @override
   void initState() {
-    super.initState();
     addList();
+    super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return listWidgets[widget.index];
+    return ListView.builder(
+      controller: widget.scrollController,
+      padding: EdgeInsets.only(
+        bottom: 62 + MediaQuery.of(context).padding.bottom,
+      ),
+      itemCount: widget.itemTotal,
+      scrollDirection: Axis.vertical,
+      itemBuilder: (BuildContext context, int index) {
+        return listWidgets[index];
+      },
+    );
   }
 
   void addList() {

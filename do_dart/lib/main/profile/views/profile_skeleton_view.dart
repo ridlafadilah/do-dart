@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 
 class ProfileSkeletonView extends StatefulWidget {
   ProfileSkeletonView(
-      {Key key, this.itemTotal, this.index, this.animationController})
+      {Key key,
+      this.itemTotal,
+      this.scrollController,
+      this.animationController})
       : super(key: key);
 
   final int itemTotal;
-  final int index;
+  final ScrollController scrollController;
   final AnimationController animationController;
 
   @override
@@ -27,7 +30,17 @@ class _ProfileSkeletonViewState extends State<ProfileSkeletonView> {
 
   @override
   Widget build(BuildContext context) {
-    return listWidgets[widget.index];
+    return ListView.builder(
+      controller: widget.scrollController,
+      padding: EdgeInsets.only(
+        bottom: 62 + MediaQuery.of(context).padding.bottom,
+      ),
+      itemCount: widget.itemTotal,
+      scrollDirection: Axis.vertical,
+      itemBuilder: (BuildContext context, int index) {
+        return listWidgets[index];
+      },
+    );
   }
 
   void addList() {

@@ -78,23 +78,14 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
       color: AppTheme.background,
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: FutureBuilder<bool>(
-          future: getData(),
-          builder: (BuildContext context, AsyncSnapshot<bool> snapshot) {
-            if (!snapshot.hasData) {
-              return const SizedBox();
-            } else {
-              return Stack(
-                children: <Widget>[
-                  TabNavigator(
-                    navigatorKey: navigatorKeys[currentTab],
-                    animationController: animationController,
-                    tab: currentTab,
-                  )
-                ],
-              );
-            }
-          },
+        body: Stack(
+          children: <Widget>[
+            TabNavigator(
+              navigatorKey: navigatorKeys[currentTab],
+              animationController: animationController,
+              tab: currentTab,
+            )
+          ],
         ),
         bottomNavigationBar: bottomNavigation(),
         extendBody: true,
@@ -102,13 +93,8 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
     );
   }
 
-  Future<bool> getData() async {
-    await Future<dynamic>.delayed(const Duration(milliseconds: 200));
-    return true;
-  }
-
   Widget bottomNavigation() {
-    return BottomBarNavigation(
+    return DongkapBottomBar(
       tabIconsList: tabIconsList,
       addClick: () {},
       changeIndex: (int index) {

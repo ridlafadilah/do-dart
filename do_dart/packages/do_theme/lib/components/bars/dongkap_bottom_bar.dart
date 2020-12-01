@@ -5,8 +5,8 @@ import 'package:do_theme/utils/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class BottomBarNavigation extends StatefulWidget {
-  const BottomBarNavigation(
+class DongkapBottomBar extends StatefulWidget {
+  const DongkapBottomBar(
       {Key key, this.tabIconsList, this.changeIndex, this.addClick})
       : super(key: key);
 
@@ -14,10 +14,10 @@ class BottomBarNavigation extends StatefulWidget {
   final Function addClick;
   final List<TabIconData> tabIconsList;
   @override
-  _BottomBarNavigationState createState() => _BottomBarNavigationState();
+  _DongkapBottomBarState createState() => _DongkapBottomBarState();
 }
 
-class _BottomBarNavigationState extends State<BottomBarNavigation>
+class _DongkapBottomBarState extends State<DongkapBottomBar>
     with TickerProviderStateMixin {
   AnimationController animationController;
 
