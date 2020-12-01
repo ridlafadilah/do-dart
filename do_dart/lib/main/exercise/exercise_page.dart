@@ -21,6 +21,8 @@ class _ExercisePageState extends State<ExercisePage>
 
   @override
   void initState() {
+    super.initState();
+
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: widget.animationController,
@@ -49,7 +51,6 @@ class _ExercisePageState extends State<ExercisePage>
         }
       }
     });
-    super.initState();
   }
 
   void addAllListData() {

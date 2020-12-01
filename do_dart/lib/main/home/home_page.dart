@@ -20,6 +20,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   void initState() {
+    super.initState();
+
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: widget.animationController,
@@ -48,7 +50,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         }
       }
     });
-    super.initState();
   }
 
   void addAllListData() {
@@ -73,14 +74,17 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Container(
       color: AppTheme.background,
-      child: Stack(
-        children: <Widget>[
-          getMainListViewUI(),
-          getAppBarUI(),
-          SizedBox(
-            height: MediaQuery.of(context).padding.bottom,
-          )
-        ],
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: <Widget>[
+            getMainListViewUI(),
+            getAppBarUI(),
+            SizedBox(
+              height: MediaQuery.of(context).padding.bottom,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -158,47 +162,44 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
                               ),
                             ),
                             Padding(
-                              padding:
-                                  const EdgeInsets.only(right: 5.0, left: 5.0),
-                              child: InkWell(
-                                focusColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                splashColor: Colors.transparent,
-                                onTap: () {},
-                                child: Container(
-                                  height: 44,
-                                  width: 40,
-                                  color: Colors.transparent,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      SvgPicture.asset(
-                                          'assets/eva_icons/outline/svg/bell-outline.svg'),
-                                    ],
+                              padding: const EdgeInsets.all(5.0),
+                              child: SizedBox(
+                                height: 40,
+                                width: 40,
+                                child: InkWell(
+                                  highlightColor:
+                                      AppTheme.grey.withOpacity(0.2),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20.0)),
+                                  onTap: () {},
+                                  child: Center(
+                                    child: SvgPicture.asset(
+                                        'assets/eva_icons/outline/svg/bell-outline.svg'),
                                   ),
                                 ),
                               ),
                             ),
                             Padding(
-                                padding: const EdgeInsets.all(5.0),
-                                child: ClipOval(
-                                  child: Container(
-                                    width: 50,
-                                    height: 50,
-                                    decoration: BoxDecoration(
-                                      color: Theme.of(context).backgroundColor,
-                                      boxShadow: <BoxShadow>[
-                                        const BoxShadow(
-                                            color: AppTheme.colorTheme,
-                                            blurRadius: 10,
-                                            spreadRadius: 10),
-                                      ],
+                              padding: const EdgeInsets.all(5.0),
+                              child: SizedBox(
+                                height: 40,
+                                width: 40,
+                                child: InkWell(
+                                  highlightColor:
+                                      AppTheme.grey.withOpacity(0.2),
+                                  splashColor: AppTheme.grey,
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20.0)),
+                                  onTap: () {},
+                                  child: Center(
+                                    child: ClipOval(
+                                      child: Image.asset(
+                                          'assets/avatars/default.png'),
                                     ),
-                                    child: Image.asset(
-                                        'assets/avatars/default.png'),
                                   ),
-                                )),
+                                ),
+                              ),
+                            ),
                           ],
                         ),
                       )

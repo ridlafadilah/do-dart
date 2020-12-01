@@ -21,6 +21,8 @@ class _SecurityPageState extends State<SecurityPage>
 
   @override
   void initState() {
+    super.initState();
+
     topBarAnimation = Tween<double>(begin: 0.0, end: 1.0).animate(
         CurvedAnimation(
             parent: widget.animationController,
@@ -49,7 +51,6 @@ class _SecurityPageState extends State<SecurityPage>
         }
       }
     });
-    super.initState();
   }
 
   void addAllListData() {
@@ -74,14 +75,17 @@ class _SecurityPageState extends State<SecurityPage>
   Widget build(BuildContext context) {
     return Container(
       color: AppTheme.background,
-      child: Stack(
-        children: <Widget>[
-          getMainListViewUI(),
-          getAppBarUI(),
-          SizedBox(
-            height: MediaQuery.of(context).padding.bottom,
-          )
-        ],
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: Stack(
+          children: <Widget>[
+            getMainListViewUI(),
+            getAppBarUI(),
+            SizedBox(
+              height: MediaQuery.of(context).padding.bottom,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -143,23 +147,21 @@ class _SecurityPageState extends State<SecurityPage>
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             Padding(
-                              padding: const EdgeInsets.all(1.0),
-                              child: InkWell(
-                                highlightColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                onTap: () {
-                                  Navigator.of(context).pop(true);
-                                },
-                                child: Container(
-                                  height: 44,
-                                  width: 38,
-                                  color: Colors.transparent,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      SvgPicture.asset(
-                                          'assets/eva_icons/outline/svg/arrow-back-outline.svg'),
-                                    ],
+                              padding: const EdgeInsets.all(0.5),
+                              child: SizedBox(
+                                height: 40,
+                                width: 40,
+                                child: InkWell(
+                                  highlightColor:
+                                      AppTheme.grey.withOpacity(0.2),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20.0)),
+                                  onTap: () {
+                                    Navigator.of(context).pop(true);
+                                  },
+                                  child: Center(
+                                    child: SvgPicture.asset(
+                                        'assets/eva_icons/outline/svg/arrow-back-outline.svg'),
                                   ),
                                 ),
                               ),

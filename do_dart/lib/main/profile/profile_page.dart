@@ -189,28 +189,24 @@ class _ProfilePageState extends State<ProfilePage>
                             ),
                             Padding(
                               padding: const EdgeInsets.all(5.0),
-                              child: InkWell(
-                                focusColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                splashColor: Colors.transparent,
-                                onTap: () {
-                                  _modalBottomSheetMenu();
-                                },
-                                child: Container(
-                                  height: 44,
-                                  width: 40,
-                                  color: Colors.transparent,
-                                  child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      SvgPicture.asset(
-                                          'assets/eva_icons/outline/svg/menu-2-outline.svg'),
-                                    ],
+                              child: SizedBox(
+                                height: 40,
+                                width: 40,
+                                child: InkWell(
+                                  highlightColor:
+                                      AppTheme.grey.withOpacity(0.2),
+                                  borderRadius: const BorderRadius.all(
+                                      Radius.circular(20.0)),
+                                  onTap: () {
+                                    _modalBottomSheetMenu();
+                                  },
+                                  child: Center(
+                                    child: SvgPicture.asset(
+                                        'assets/eva_icons/outline/svg/menu-2-outline.svg'),
                                   ),
                                 ),
                               ),
-                            )
+                            ),
                           ],
                         ),
                       )
@@ -235,12 +231,16 @@ class _ProfilePageState extends State<ProfilePage>
           return Container(
             height: 300.0,
             color: Colors.transparent,
-            child: Container(
-              decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(20.0),
-                      topRight: Radius.circular(20.0))),
+            child: Card(
+              color: Colors.white,
+              shape: const ContinuousRectangleBorder(
+                borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0)),
+              ),
+              borderOnForeground: true,
+              elevation: 0,
+              margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
               child: Column(
                 children: <Widget>[
                   const SizedBox(height: 10),
