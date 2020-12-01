@@ -111,7 +111,6 @@ class _ExercisePageState extends State<ExercisePage>
 
   Widget appBar() {
     return DongkapAppBar(
-      height: 82,
       animationController: widget.animationController,
       topBarOpacity: _topBarOpacity,
       title: 'Exercise',

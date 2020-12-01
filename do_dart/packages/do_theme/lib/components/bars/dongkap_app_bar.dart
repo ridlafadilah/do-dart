@@ -4,14 +4,12 @@ import 'package:flutter/material.dart';
 class DongkapAppBar extends StatefulWidget implements PreferredSizeWidget {
   const DongkapAppBar({
     Key key,
-    @required this.height,
     this.title,
     this.children,
-    this.animationController,
-    this.topBarOpacity,
+    @required this.animationController,
+    @required this.topBarOpacity,
   }) : super(key: key);
 
-  final double height;
   final String title;
   final List<Widget> children;
   final AnimationController animationController;
@@ -21,7 +19,7 @@ class DongkapAppBar extends StatefulWidget implements PreferredSizeWidget {
   _ProfileAppBarState createState() => _ProfileAppBarState();
 
   @override
-  Size get preferredSize => Size.fromHeight(height + 1 - 19 * topBarOpacity);
+  Size get preferredSize => Size.fromHeight(83 - 19 * topBarOpacity);
 }
 
 class _ProfileAppBarState extends State<DongkapAppBar> {

@@ -101,7 +101,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   Widget appBar() {
     return DongkapAppBar(
-      height: 82,
       animationController: widget.animationController,
       topBarOpacity: _topBarOpacity,
       children: <Widget>[

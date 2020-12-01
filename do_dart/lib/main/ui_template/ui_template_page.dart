@@ -260,7 +260,6 @@ class _UITemplatePageState extends State<UITemplatePage>
 
   Widget appBar() {
     return DongkapAppBar(
-      height: 82,
       animationController: widget.animationController,
       topBarOpacity: _topBarOpacity,
       children: <Widget>[

@@ -109,7 +109,6 @@ class _ProfilePageState extends State<ProfilePage>
 
   Widget appBar() {
     return DongkapAppBar(
-      height: 82,
       animationController: widget.animationController,
       topBarOpacity: _topBarOpacity,
       children: <Widget>[
@@ -189,7 +188,10 @@ class _ProfilePageState extends State<ProfilePage>
                   ListTile(
                     leading: SvgPicture.asset(
                         'assets/eva_icons/outline/svg/settings-outline.svg'),
-                    title: const Text('Settings'),
+                    title: const Text(
+                      'Settings',
+                      style: TextStyle(fontFamily: AppTheme.fontName),
+                    ),
                     horizontalTitleGap: 2,
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 20.0),
@@ -213,7 +215,10 @@ class _ProfilePageState extends State<ProfilePage>
                   ListTile(
                     leading: SvgPicture.asset(
                         'assets/eva_icons/outline/svg/lock-outline.svg'),
-                    title: const Text('Security'),
+                    title: const Text(
+                      'Security',
+                      style: TextStyle(fontFamily: AppTheme.fontName),
+                    ),
                     horizontalTitleGap: 2,
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 20.0),
@@ -237,7 +242,10 @@ class _ProfilePageState extends State<ProfilePage>
                   ListTile(
                     leading: SvgPicture.asset(
                         'assets/eva_icons/outline/svg/info-outline.svg'),
-                    title: const Text('About'),
+                    title: const Text(
+                      'About',
+                      style: TextStyle(fontFamily: AppTheme.fontName),
+                    ),
                     horizontalTitleGap: 2,
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 20.0),
@@ -261,7 +269,10 @@ class _ProfilePageState extends State<ProfilePage>
                   ListTile(
                     leading: SvgPicture.asset(
                         'assets/eva_icons/outline/svg/power-outline.svg'),
-                    title: const Text('Logout'),
+                    title: const Text(
+                      'Logout',
+                      style: TextStyle(fontFamily: AppTheme.fontName),
+                    ),
                     horizontalTitleGap: 2,
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 20.0),
