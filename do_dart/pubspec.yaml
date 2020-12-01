@@ -16,6 +16,7 @@ dependencies:
   smooth_star_rating: ^1.1.1
   intl: ^0.16.0
   flutter_launcher_icons: ^0.8.1
+  package_info: ^0.4.3+2
   flutter_bloc: ^6.0.6
   bloc: ^6.1.0
   cached_network_image: ^2.3.3
