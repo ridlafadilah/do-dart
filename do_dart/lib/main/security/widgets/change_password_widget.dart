@@ -2,12 +2,10 @@ import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class ChangePasswordWidget extends StatefulWidget {
-  const ChangePasswordWidget(
-      {Key key, this.animationController, this.animation})
+  const ChangePasswordWidget({Key key, this.animationController})
       : super(key: key);
 
   final AnimationController animationController;
-  final Animation animation;
 
   @override
   _ChangePasswordWidgetState createState() => _ChangePasswordWidgetState();

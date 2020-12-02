@@ -4,11 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingsWidget extends StatefulWidget {
-  const SettingsWidget({Key key, this.animationController, this.animation})
-      : super(key: key);
+  const SettingsWidget({Key key, this.animationController}) : super(key: key);
 
   final AnimationController animationController;
-  final Animation animation;
 
   @override
   _SettingsWidgetState createState() => _SettingsWidgetState();
@@ -23,6 +21,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
     return Padding(
       padding: const EdgeInsets.only(left: 5),
       child: ListView(
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         children: <Widget>[
           ListTile(

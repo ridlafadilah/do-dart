@@ -6,11 +6,9 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:package_info/package_info.dart';
 
 class AboutWidget extends StatefulWidget {
-  const AboutWidget({Key key, this.animationController, this.animation})
-      : super(key: key);
+  const AboutWidget({Key key, this.animationController}) : super(key: key);
 
   final AnimationController animationController;
-  final Animation animation;
 
   @override
   _AboutWidgetState createState() => _AboutWidgetState();
@@ -26,8 +24,8 @@ class _AboutWidgetState extends State<AboutWidget> {
 
   @override
   void initState() {
-    super.initState();
     _initPackageInfo();
+    super.initState();
   }
 
   @override
@@ -35,6 +33,7 @@ class _AboutWidgetState extends State<AboutWidget> {
     return Padding(
       padding: const EdgeInsets.only(left: 5),
       child: ListView(
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         children: <Widget>[
           ListTile(

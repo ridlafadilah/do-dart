@@ -19,8 +19,6 @@ class _LanguagePageState extends State<LanguagePage>
 
   @override
   void initState() {
-    addAllListData();
-
     _scrollController.addListener(() {
       if (_scrollController.offset >= 24) {
         if (_topBarOpacity != 1.0) {
@@ -47,19 +45,6 @@ class _LanguagePageState extends State<LanguagePage>
     super.initState();
   }
 
-  void addAllListData() {
-    const int count = 1;
-    listViews.add(
-      LanguageWidget(
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                  parent: widget.animationController,
-                  curve: const Interval((1 / count) * 0, 1.0,
-                      curve: Curves.fastOutSlowIn))),
-          animationController: widget.animationController),
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -82,15 +67,23 @@ class _LanguagePageState extends State<LanguagePage>
   }
 
   Widget mainView() {
+    const int count = 1;
     return ListView.builder(
       controller: _scrollController,
       padding: EdgeInsets.only(
         bottom: 62 + MediaQuery.of(context).padding.bottom,
       ),
-      itemCount: listViews.length,
+      itemCount: count,
       scrollDirection: Axis.vertical,
       itemBuilder: (BuildContext context, int index) {
-        return listViews[index];
+        return LanguageWidget(
+          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
+              CurvedAnimation(
+                  parent: widget.animationController,
+                  curve: const Interval((1 / count) * 0, 1.0,
+                      curve: Curves.fastOutSlowIn))),
+          animationController: widget.animationController,
+        );
       },
     );
   }

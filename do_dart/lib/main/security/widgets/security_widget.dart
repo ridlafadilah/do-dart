@@ -5,11 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SecurityWidget extends StatefulWidget {
-  const SecurityWidget({Key key, this.animationController, this.animation})
-      : super(key: key);
+  const SecurityWidget({Key key, this.animationController}) : super(key: key);
 
   final AnimationController animationController;
-  final Animation animation;
 
   @override
   _SecurityWidgetState createState() => _SecurityWidgetState();
@@ -24,6 +22,7 @@ class _SecurityWidgetState extends State<SecurityWidget> {
     return Padding(
       padding: const EdgeInsets.only(left: 5),
       child: ListView(
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         children: <Widget>[
           ListTile(

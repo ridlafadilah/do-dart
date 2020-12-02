@@ -2,12 +2,10 @@ import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class DeactivateAccountWidget extends StatefulWidget {
-  const DeactivateAccountWidget(
-      {Key key, this.animationController, this.animation})
+  const DeactivateAccountWidget({Key key, this.animationController})
       : super(key: key);
 
   final AnimationController animationController;
-  final Animation animation;
 
   @override
   _DeactivateAccountWidgetState createState() =>
