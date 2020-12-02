@@ -2,7 +2,6 @@ library do_theme;
 
 export 'components/bars/dongkap_app_bar.dart';
 export 'components/bars/dongkap_bottom_bar.dart';
-export 'components/widgets/title_widget.dart';
 
 export 'models/tabIcon_data.dart';
 

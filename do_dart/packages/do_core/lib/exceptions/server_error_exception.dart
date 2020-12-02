@@ -40,4 +40,9 @@ class ServerError implements Exception {
     }
     return _errorMessage;
   }
+
+  @override
+  String toString() {
+    return _errorMessage;
+  }
 }

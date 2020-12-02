@@ -1,6 +1,6 @@
 import 'package:do_dart/main/profile/widgets/profile_detail_skeleton_widget.dart';
 import 'package:do_dart/main/profile/widgets/profile_header_skeleton_widget.dart';
-import 'package:do_theme/theme.dart';
+import 'package:do_common/common.dart';
 import 'package:flutter/material.dart';
 
 class ProfileSkeletonView extends StatefulWidget {

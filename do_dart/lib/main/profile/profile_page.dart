@@ -1,3 +1,4 @@
+import 'package:do_common/common.dart';
 import 'package:do_core/core.dart';
 import 'package:do_dart/main/about/about_page.dart';
 import 'package:do_dart/main/profile/bloc/profile_bloc.dart';
@@ -96,6 +97,12 @@ class _ProfilePageState extends State<ProfilePage>
                 context.read<ProfileBloc>().add(const ProfileFetched());
               },
             );
+          } else if (state is ProfileError) {
+            return ConnectionErrorWidget(
+                error: state.error,
+                onPressed: () async {
+                  context.read<ProfileBloc>().add(const ProfileFetched());
+                });
           } else {
             return ProfileSkeletonView(
                 itemTotal: _itemTotal,

@@ -1,4 +1,4 @@
-import 'package:do_theme/utils/app_theme.dart';
+import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class TitleWidget extends StatelessWidget {

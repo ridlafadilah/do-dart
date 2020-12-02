@@ -7,6 +7,7 @@ import 'package:do_dart/main/ui_template/widgets/running_widget.dart';
 import 'package:do_dart/main/ui_template/widgets/water_widget.dart';
 import 'package:do_dart/main/ui_template/widgets/workout_widget.dart';
 import 'package:do_theme/theme.dart';
+import 'package:do_common/common.dart';
 import 'package:flutter/material.dart';
 
 class UITemplatePage extends StatefulWidget {
