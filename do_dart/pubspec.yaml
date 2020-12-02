@@ -49,11 +49,12 @@ flutter_icons:
 flutter:
   uses-material-design: true
   assets:
-    - assets/app/
     - assets/avatars/
     - assets/eva_icons/fill/svg/
     - assets/eva_icons/outline/svg/
+    - assets/flags/
     - assets/images/
+    - assets/uitemplate/
 
   fonts:
     - family: OpenSans

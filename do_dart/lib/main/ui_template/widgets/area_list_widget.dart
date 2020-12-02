@@ -17,10 +17,10 @@ class _AreaListWidgetState extends State<AreaListWidget>
     with TickerProviderStateMixin {
   AnimationController animationController;
   List<String> areaListData = <String>[
-    'assets/app/area1.png',
-    'assets/app/area2.png',
-    'assets/app/area3.png',
-    'assets/app/area1.png',
+    'assets/uitemplate/area1.png',
+    'assets/uitemplate/area2.png',
+    'assets/uitemplate/area3.png',
+    'assets/uitemplate/area1.png',
   ];
 
   @override

@@ -74,17 +74,20 @@ class _AboutWidgetState extends State<AboutWidget> {
             indent: 60,
           ),
           ListTile(
+            enabled: false,
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/star-outline.svg'),
             title: Text(
               _packageInfo.appName,
-              style: const TextStyle(fontFamily: AppTheme.fontName),
+              style: const TextStyle(
+                  fontFamily: AppTheme.fontName, color: Colors.black),
             ),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
             trailing: Text(
               _packageInfo.version,
-              style: const TextStyle(fontFamily: AppTheme.fontName),
+              style: const TextStyle(
+                  fontFamily: AppTheme.fontName, color: Colors.black),
             ),
             onTap: () {},
           ),

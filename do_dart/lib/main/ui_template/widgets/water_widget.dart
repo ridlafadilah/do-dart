@@ -175,7 +175,7 @@ class _WaterWidgetState extends State<WaterWidget>
                                           width: 24,
                                           height: 24,
                                           child: Image.asset(
-                                              'assets/app/bell.png'),
+                                              'assets/uitemplate/bell.png'),
                                         ),
                                         Flexible(
                                           child: Text(

@@ -98,7 +98,7 @@ class MediterranesnDietWidget extends StatelessWidget {
                                                   width: 28,
                                                   height: 28,
                                                   child: Image.asset(
-                                                      'assets/app/eaten.png'),
+                                                      'assets/uitemplate/eaten.png'),
                                                 ),
                                                 Padding(
                                                   padding:
@@ -194,7 +194,7 @@ ${(1127 * animation.value).toInt()}''',
                                                   width: 28,
                                                   height: 28,
                                                   child: Image.asset(
-                                                      'assets/app/burned.png'),
+                                                      'assets/uitemplate/burned.png'),
                                                 ),
                                                 Padding(
                                                   padding:

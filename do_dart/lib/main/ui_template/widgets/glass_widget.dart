@@ -72,7 +72,7 @@ Prepare your stomach for lunch with one or two glass of water''',
                         child: SizedBox(
                           width: 80,
                           height: 80,
-                          child: Image.asset('assets/app/glass.png'),
+                          child: Image.asset('assets/uitemplate/glass.png'),
                         ),
                       )
                     ],

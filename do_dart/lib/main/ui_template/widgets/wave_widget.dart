@@ -246,7 +246,7 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
               children: <Widget>[
                 AspectRatio(
                   aspectRatio: 1,
-                  child: Image.asset('assets/app/bottle.png'),
+                  child: Image.asset('assets/uitemplate/bottle.png'),
                 ),
               ],
             )

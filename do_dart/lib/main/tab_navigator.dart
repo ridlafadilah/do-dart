@@ -1,9 +1,6 @@
-import 'package:do_dart/main/about/about_page.dart';
 import 'package:do_dart/main/exercise/exercise_page.dart';
 import 'package:do_dart/main/home/home_page.dart';
 import 'package:do_dart/main/profile/profile_page.dart';
-import 'package:do_dart/main/security/security_page.dart';
-import 'package:do_dart/main/settings/settings_page.dart';
 import 'package:do_dart/main/ui_template/ui_template_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,9 +10,6 @@ class TabNavigatorRoutes {
   static const String exercise = '/exercise';
   static const String uitemplate = '/uitemplate';
   static const String profile = '/profile';
-  static const String settings = '/profile/settings';
-  static const String security = '/profile/security';
-  static const String about = '/profile/about';
 }
 
 class TabNavigator extends StatelessWidget {
@@ -36,12 +30,6 @@ class TabNavigator extends StatelessWidget {
           UITemplatePage(animationController: animationController),
       TabNavigatorRoutes.profile: (context) =>
           ProfilePage(animationController: animationController),
-      TabNavigatorRoutes.settings: (context) =>
-          SettingsPage(animationController: animationController),
-      TabNavigatorRoutes.security: (context) =>
-          SecurityPage(animationController: animationController),
-      TabNavigatorRoutes.about: (context) =>
-          AboutPage(animationController: animationController),
     };
   }
 

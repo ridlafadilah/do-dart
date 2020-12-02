@@ -1,3 +1,4 @@
+import 'package:do_dart/main/settings/language_page.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -35,7 +36,14 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
             trailing: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg'),
-            onTap: () {},
+            onTap: () {
+              Navigator.push<dynamic>(
+                context,
+                MaterialPageRoute<dynamic>(
+                    builder: (BuildContext context) => LanguagePage(
+                        animationController: widget.animationController)),
+              );
+            },
           ),
           const Divider(
             height: 1,
