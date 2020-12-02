@@ -48,7 +48,7 @@ class SettingsPage extends StatelessWidget {
       topBarOpacity: 0.0,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(0.5),
+          padding: const EdgeInsets.all(5.0),
           child: SizedBox(
             height: 40,
             width: 40,

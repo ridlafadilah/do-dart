@@ -94,7 +94,7 @@ class _LanguagePageState extends State<LanguagePage>
       topBarOpacity: _topBarOpacity,
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.all(0.5),
+          padding: const EdgeInsets.all(5.0),
           child: SizedBox(
             height: 40,
             width: 40,
