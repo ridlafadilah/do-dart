@@ -14,9 +14,6 @@ class ChangePasswordWidget extends StatefulWidget {
 }
 
 class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
-  bool is2FA = false;
-  String is2FAIcon = 'assets/eva_icons/outline/svg/shield-off-outline.svg';
-
   @override
   Widget build(BuildContext context) {
     return Padding(
