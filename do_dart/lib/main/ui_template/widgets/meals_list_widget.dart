@@ -1,4 +1,4 @@
-import 'package:do_dart/main/models/meals_list_data.dart';
+import 'package:do_dart/main/ui_template/models/meals_list_data.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 

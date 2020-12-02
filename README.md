@@ -21,6 +21,11 @@ Dongkap | Mobile Application with Flutter
   * Interceptor Header Signature (Hmac SHA-256)
   * Interceptor Header Accept-Language
 
+* __State Management__
+  * BLoC
+  * Provider
+  * Get_it
+
 * __Social Sign On__
   * Google ( _soon_ )
 
