@@ -78,7 +78,7 @@ Make sure following software is installed on your PC.
 	do_dart$ flutter pub run build_runner build --delete-conflicting-outputs
 	```
 	```
-	do_dart/packages/do_core$ flutter pub run build_runner build
+	do_dart/packages/do_core$ flutter pub run build_runner build --delete-conflicting-outputs
 	```
 
   * Restart the Dart Analysis Server (VS Code) :

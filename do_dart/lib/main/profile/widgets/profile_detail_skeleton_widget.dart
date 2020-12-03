@@ -42,12 +42,16 @@ class ProfileDetailSkeletonWidget extends StatelessWidget {
                   children: <Widget>[
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 20, right: 24, top: 25),
+                          const EdgeInsets.only(left: 20, right: 24, top: 15),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          const SkeletonList(),
+                          const SkeletonList(
+                            type: SkeletonListType.all,
+                            itemCount: 5,
+                            marginItem: EdgeInsets.only(bottom: 21.5),
+                          ),
                         ],
                       ),
                     )

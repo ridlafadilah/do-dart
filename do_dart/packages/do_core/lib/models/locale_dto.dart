@@ -7,6 +7,7 @@ class LocaleDto {
   LocaleDto(
     this.localeCode,
     this.identifier,
+    this.subIdentifier,
     this.icon,
     this.localeDefault,
     this.localeEnabled,
@@ -25,6 +26,7 @@ class LocaleDto {
 
   String localeCode;
   String identifier;
+  String subIdentifier;
   String icon;
   bool localeDefault;
   bool localeEnabled;

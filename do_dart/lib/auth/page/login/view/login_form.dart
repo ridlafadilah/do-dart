@@ -1,3 +1,4 @@
+import 'package:do_core/bloc.dart';
 import 'package:do_dart/auth/page/login/bloc/login_bloc.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -102,7 +103,7 @@ class _LoginButton extends StatelessWidget {
       return null;
     } else {
       return () {
-        context.read<LoginBloc>().add(const LoginSubmitted());
+        context.read<LoginBloc>().add(const SubmittedEvent());
       };
     }
   }

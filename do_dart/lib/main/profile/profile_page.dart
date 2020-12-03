@@ -1,11 +1,10 @@
 import 'package:do_common/common.dart';
+import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
-import 'package:do_dart/main/about/about_page.dart';
 import 'package:do_dart/main/profile/bloc/profile_bloc.dart';
+import 'package:do_dart/main/profile/profile_bottom_menu.dart';
 import 'package:do_dart/main/profile/views/profile_skeleton_view.dart';
 import 'package:do_dart/main/profile/views/profile_view.dart';
-import 'package:do_dart/main/security/security_page.dart';
-import 'package:do_dart/main/settings/settings_page.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -79,11 +78,11 @@ class _ProfilePageState extends State<ProfilePage>
       create: (context) {
         return ProfileBloc(
           authService: RepositoryProvider.of<AuthService>(context),
-        )..add(const ProfileFetched());
+        )..add(const RequestedEvent());
       },
-      child: BlocBuilder<ProfileBloc, ProfileState>(
-        builder: (BuildContext context, ProfileState state) {
-          if (state is ProfileSuccess) {
+      child: BlocBuilder<ProfileBloc, CommonState>(
+        builder: (BuildContext context, CommonState state) {
+          if (state is SuccessState) {
             return RefreshIndicator(
               backgroundColor: Colors.white,
               color: AppTheme.colorTheme,
@@ -92,16 +91,16 @@ class _ProfilePageState extends State<ProfilePage>
                   itemTotal: _itemTotal,
                   scrollController: _scrollController,
                   animationController: widget.animationController,
-                  profile: state.profile),
+                  profile: state.data),
               onRefresh: () async {
-                context.read<ProfileBloc>().add(const ProfileFetched());
+                context.read<ProfileBloc>().add(const RequestedEvent());
               },
             );
-          } else if (state is ProfileError) {
+          } else if (state is FailureState) {
             return ConnectionErrorWidget(
                 error: state.error,
                 onPressed: () async {
-                  context.read<ProfileBloc>().add(const ProfileFetched());
+                  context.read<ProfileBloc>().add(const RequestedEvent());
                 });
           } else {
             return ProfileSkeletonView(
@@ -164,141 +163,8 @@ class _ProfilePageState extends State<ProfilePage>
         context: context,
         backgroundColor: Colors.transparent,
         builder: (builder) {
-          return Container(
-            height: 300.0,
-            color: Colors.transparent,
-            child: Card(
-              color: Colors.white,
-              shape: const ContinuousRectangleBorder(
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.0),
-                    topRight: Radius.circular(20.0)),
-              ),
-              borderOnForeground: true,
-              elevation: 0,
-              margin: const EdgeInsets.fromLTRB(0, 0, 0, 0),
-              child: Column(
-                children: <Widget>[
-                  const SizedBox(height: 10),
-                  Container(
-                    alignment: Alignment.center,
-                    child: Container(
-                      width: 50,
-                      height: 5,
-                      decoration: BoxDecoration(
-                          color: Colors.grey[300],
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(10))),
-                    ),
-                  ),
-                  const SizedBox(height: 10),
-                  ListTile(
-                    leading: SvgPicture.asset(
-                        'assets/eva_icons/outline/svg/settings-outline.svg'),
-                    title: const Text(
-                      'Settings',
-                      style: TextStyle(fontFamily: AppTheme.fontName),
-                    ),
-                    horizontalTitleGap: 2,
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 20.0),
-                    onTap: () {
-                      Navigator.of(context, rootNavigator: true).pop();
-                      Navigator.push<dynamic>(
-                        context,
-                        MaterialPageRoute<dynamic>(
-                            builder: (BuildContext context) => SettingsPage(
-                                animationController:
-                                    widget.animationController)),
-                      );
-                    },
-                  ),
-                  const Divider(
-                    height: 1,
-                    thickness: 1.0,
-                    indent: 65,
-                    endIndent: 10,
-                  ),
-                  ListTile(
-                    leading: SvgPicture.asset(
-                        'assets/eva_icons/outline/svg/lock-outline.svg'),
-                    title: const Text(
-                      'Security',
-                      style: TextStyle(fontFamily: AppTheme.fontName),
-                    ),
-                    horizontalTitleGap: 2,
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 20.0),
-                    onTap: () {
-                      Navigator.of(context, rootNavigator: true).pop();
-                      Navigator.push<dynamic>(
-                        context,
-                        MaterialPageRoute<dynamic>(
-                            builder: (BuildContext context) => SecurityPage(
-                                animationController:
-                                    widget.animationController)),
-                      );
-                    },
-                  ),
-                  const Divider(
-                    height: 1,
-                    thickness: 1.0,
-                    indent: 65,
-                    endIndent: 10,
-                  ),
-                  ListTile(
-                    leading: SvgPicture.asset(
-                        'assets/eva_icons/outline/svg/info-outline.svg'),
-                    title: const Text(
-                      'About',
-                      style: TextStyle(fontFamily: AppTheme.fontName),
-                    ),
-                    horizontalTitleGap: 2,
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 20.0),
-                    onTap: () {
-                      Navigator.of(context, rootNavigator: true).pop();
-                      Navigator.push<dynamic>(
-                        context,
-                        MaterialPageRoute<dynamic>(
-                            builder: (BuildContext context) => AboutPage(
-                                animationController:
-                                    widget.animationController)),
-                      );
-                    },
-                  ),
-                  const Divider(
-                    height: 1,
-                    thickness: 1.0,
-                    indent: 65,
-                    endIndent: 10,
-                  ),
-                  ListTile(
-                    leading: SvgPicture.asset(
-                        'assets/eva_icons/outline/svg/power-outline.svg'),
-                    title: const Text(
-                      'Logout',
-                      style: TextStyle(fontFamily: AppTheme.fontName),
-                    ),
-                    horizontalTitleGap: 2,
-                    contentPadding:
-                        const EdgeInsets.symmetric(horizontal: 20.0),
-                    onTap: () async {
-                      AuthService authService =
-                          RepositoryProvider.of<AuthService>(context);
-                      await authService.logOut();
-                    },
-                  ),
-                  const Divider(
-                    height: 1,
-                    thickness: 1.0,
-                    indent: 65,
-                    endIndent: 10,
-                  ),
-                ],
-              ),
-            ),
-          );
+          return ProfileBottomMenu(
+              animationController: widget.animationController);
         });
   }
 }

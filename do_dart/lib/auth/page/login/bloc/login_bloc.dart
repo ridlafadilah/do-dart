@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:do_common/common.dart';
 import 'package:do_core/core.dart';
+import 'package:do_core/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:meta/meta.dart';
@@ -10,7 +11,7 @@ import 'package:meta/meta.dart';
 part 'login_event.dart';
 part 'login_state.dart';
 
-class LoginBloc extends Bloc<LoginEvent, LoginState> {
+class LoginBloc extends Bloc<CommonEvent, LoginState> {
   LoginBloc({
     @required AuthService authService,
   })  : assert(authService != null),
@@ -21,13 +22,13 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   @override
   Stream<LoginState> mapEventToState(
-    LoginEvent event,
+    CommonEvent event,
   ) async* {
     if (event is LoginUsernameChanged) {
       yield _mapUsernameChangedToState(event, state);
     } else if (event is LoginPasswordChanged) {
       yield _mapPasswordChangedToState(event, state);
-    } else if (event is LoginSubmitted) {
+    } else if (event is SubmittedEvent) {
       yield* _mapLoginSubmittedToState(event, state);
     }
   }
@@ -55,7 +56,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   }
 
   Stream<LoginState> _mapLoginSubmittedToState(
-    LoginSubmitted event,
+    SubmittedEvent event,
     LoginState state,
   ) async* {
     if (state.action.isValidated) {

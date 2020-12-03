@@ -4,92 +4,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LanguageWidget extends StatefulWidget {
-  const LanguageWidget({Key key, this.animationController, this.animation})
-      : super(key: key);
-
-  final AnimationController animationController;
-  final Animation animation;
+  const LanguageWidget({Key key}) : super(key: key);
 
   @override
   _LanguageWidgetState createState() => _LanguageWidgetState();
 }
 
 class _LanguageWidgetState extends State<LanguageWidget> {
-  List<LocaleDto> locales = <LocaleDto>[];
-
-  @override
-  void initState() {
-    locales = <LocaleDto>[
-      LocaleDto.fromJson({
-        'localeCode': 'en-US',
-        'identifier': 'English (United States)',
-        'icon': 'en',
-        'localeDefault': true,
-        'localeEnabled': true,
-      }),
-      LocaleDto.fromJson({
-        'localeCode': 'id-ID',
-        'identifier': 'Indonesian (Indonesia)',
-        'localeDefault': false,
-        'localeEnabled': true,
-      }),
-      LocaleDto.fromJson({
-        'localeCode': 'hi-IN',
-        'identifier': 'Hindi (India)',
-        'localeDefault': false,
-        'localeEnabled': true,
-      }),
-      LocaleDto.fromJson({
-        'localeCode': 'ar-SA',
-        'identifier': 'Arabic (Saudi Arabia)',
-        'localeDefault': false,
-        'localeEnabled': true,
-      }),
-      LocaleDto.fromJson({
-        'localeCode': 'de-DE',
-        'identifier': 'German (Germany)',
-        'localeDefault': false,
-        'localeEnabled': true,
-      }),
-      LocaleDto.fromJson({
-        'localeCode': 'ru-RU',
-        'identifier': 'Russian (Russia)',
-        'localeDefault': false,
-        'localeEnabled': true,
-      }),
-      LocaleDto.fromJson({
-        'localeCode': 'ms-MY',
-        'identifier': 'Malay (Malaysia)',
-        'localeDefault': false,
-        'localeEnabled': true,
-      }),
-      LocaleDto.fromJson({
-        'localeCode': 'fr-FR',
-        'identifier': 'French (France)',
-        'localeDefault': false,
-        'localeEnabled': true,
-      }),
-      LocaleDto.fromJson({
-        'localeCode': 'zh-TW',
-        'identifier': 'Chinese (Taiwan)',
-        'localeDefault': false,
-        'localeEnabled': true,
-      }),
-      LocaleDto.fromJson({
-        'localeCode': 'ja-JP',
-        'identifier': 'Japanese (Japan)',
-        'localeDefault': false,
-        'localeEnabled': true,
-      }),
-      LocaleDto.fromJson({
-        'localeCode': 'th-TH',
-        'identifier': 'Thai (Thailand)',
-        'localeDefault': false,
-        'localeEnabled': true,
-      }),
-    ];
-    super.initState();
-  }
+  final List<LocaleDto> locales = <LocaleDto>[
+    LocaleDto.fromJson({
+      'localeCode': 'en-US',
+      'identifier': 'English',
+      'subIdentifier': 'United States',
+      'icon': 'flag-icon flag-icon-us',
+      'localeDefault': true,
+      'localeEnabled': true,
+    }),
+    LocaleDto.fromJson({
+      'localeCode': 'id-ID',
+      'identifier': 'Indonesian',
+      'subIdentifier': 'Indonesia',
+      'icon': 'flag-icon flag-icon-id',
+      'localeDefault': false,
+      'localeEnabled': true,
+    }),
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -105,6 +44,10 @@ class _LanguageWidgetState extends State<LanguageWidget> {
                 ListTile(
                   title: Text(
                     locales[index].identifier,
+                    style: const TextStyle(fontFamily: AppTheme.fontName),
+                  ),
+                  subtitle: Text(
+                    locales[index].subIdentifier,
                     style: const TextStyle(fontFamily: AppTheme.fontName),
                   ),
                   contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),

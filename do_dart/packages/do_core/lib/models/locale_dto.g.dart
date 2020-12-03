@@ -10,6 +10,7 @@ LocaleDto _$LocaleDtoFromJson(Map<String, dynamic> json) {
   return LocaleDto(
     json['localeCode'] as String,
     json['identifier'] as String,
+    json['subIdentifier'] as String,
     json['icon'] as String,
     json['localeDefault'] as bool,
     json['localeEnabled'] as bool,
@@ -25,6 +26,7 @@ LocaleDto _$LocaleDtoFromJson(Map<String, dynamic> json) {
 Map<String, dynamic> _$LocaleDtoToJson(LocaleDto instance) => <String, dynamic>{
       'localeCode': instance.localeCode,
       'identifier': instance.identifier,
+      'subIdentifier': instance.subIdentifier,
       'icon': instance.icon,
       'localeDefault': instance.localeDefault,
       'localeEnabled': instance.localeEnabled,

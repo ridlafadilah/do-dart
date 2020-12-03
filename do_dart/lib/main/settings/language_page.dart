@@ -76,14 +76,7 @@ class _LanguagePageState extends State<LanguagePage>
       itemCount: count,
       scrollDirection: Axis.vertical,
       itemBuilder: (BuildContext context, int index) {
-        return LanguageWidget(
-          animation: Tween<double>(begin: 0.0, end: 1.0).animate(
-              CurvedAnimation(
-                  parent: widget.animationController,
-                  curve: const Interval((1 / count) * 0, 1.0,
-                      curve: Curves.fastOutSlowIn))),
-          animationController: widget.animationController,
-        );
+        return const LanguageWidget();
       },
     );
   }
