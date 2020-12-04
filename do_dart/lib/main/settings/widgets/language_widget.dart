@@ -1,4 +1,5 @@
 import 'package:do_core/models.dart';
+import 'package:do_dart/main/settings/language_bottom_menu.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -55,7 +56,9 @@ class _LanguageWidgetState extends State<LanguageWidget> {
                       ? SvgPicture.asset(
                           'assets/eva_icons/outline/svg/checkmark-outline.svg')
                       : null,
-                  onTap: () {},
+                  onTap: () {
+                    _modalBottomSheetMenu(context, locales[index].identifier);
+                  },
                 ),
                 const Divider(
                   height: 1,
@@ -66,5 +69,17 @@ class _LanguageWidgetState extends State<LanguageWidget> {
             );
           }),
     );
+  }
+
+  void _modalBottomSheetMenu(BuildContext context, String language) async {
+    await showModalBottomSheet(
+        useRootNavigator: true,
+        isScrollControlled: true,
+        isDismissible: false,
+        context: context,
+        backgroundColor: Colors.transparent,
+        builder: (builder) {
+          return LanguageBottomMenu(language: language);
+        });
   }
 }
