@@ -74,8 +74,9 @@ class _LanguageWidgetState extends State<LanguageWidget> {
   void _modalBottomSheetMenu(BuildContext context, String language) async {
     await showModalBottomSheet(
         useRootNavigator: true,
-        isScrollControlled: true,
+        isScrollControlled: false,
         isDismissible: false,
+        enableDrag: false,
         context: context,
         backgroundColor: Colors.transparent,
         builder: (builder) {
