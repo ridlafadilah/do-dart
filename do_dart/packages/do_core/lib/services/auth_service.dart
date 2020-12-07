@@ -46,6 +46,9 @@ class AuthService {
       switch (obj.runtimeType) {
         case DioError:
           final error = ServerError.withError(error: obj as DioError);
+          final DioError err = obj as DioError;
+          print(err.request.baseUrl);
+          print(err.request.uri.host);
           logger.e(error.getErrorMessage());
           break;
         default:
