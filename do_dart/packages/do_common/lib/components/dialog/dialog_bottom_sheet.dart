@@ -2,10 +2,19 @@ import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class LanguageBottomMenu extends StatelessWidget {
-  const LanguageBottomMenu({Key key, this.language}) : super(key: key);
+class DialogBottomSheet extends StatelessWidget {
+  const DialogBottomSheet(
+      {Key key,
+      @required this.title,
+      @required this.subtitle,
+      @required this.submit,
+      this.onSubmit})
+      : super(key: key);
 
-  final String language;
+  final String title;
+  final String subtitle;
+  final String submit;
+  final void Function() onSubmit;
 
   @override
   Widget build(BuildContext context) {
@@ -48,15 +57,15 @@ class LanguageBottomMenu extends StatelessWidget {
               child: Column(
                 children: <Widget>[
                   const SizedBox(height: 20),
-                  const Padding(
-                    padding: EdgeInsets.only(
+                  Padding(
+                    padding: const EdgeInsets.only(
                       right: 24,
                       left: 24,
                       bottom: 15,
                     ),
                     child: Text(
-                      'Change Language',
-                      style: TextStyle(
+                      title,
+                      style: const TextStyle(
                         fontFamily: AppTheme.fontName,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
@@ -70,8 +79,7 @@ class LanguageBottomMenu extends StatelessWidget {
                       bottom: 20,
                     ),
                     child: Text(
-                      '''
-Are you sure want to change the language into $language?''',
+                      subtitle,
                       style: const TextStyle(
                         fontFamily: AppTheme.fontName,
                         wordSpacing: 0.5,
@@ -95,10 +103,10 @@ Are you sure want to change the language into $language?''',
                               color: AppTheme.colorTheme,
                               elevation: 1.0,
                               highlightElevation: 1.0,
-                              onPressed: () {},
-                              child: const Text(
-                                'Submit',
-                                style: TextStyle(
+                              onPressed: onSubmit,
+                              child: Text(
+                                submit,
+                                style: const TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                   color: AppTheme.white,

@@ -1,35 +1,17 @@
+import 'package:do_common/common.dart';
+import 'package:do_core/bloc/common_event.dart';
+import 'package:do_core/bloc/common_state.dart';
 import 'package:do_core/models.dart';
-import 'package:do_dart/main/settings/language_bottom_menu.dart';
+import 'package:do_dart/main/settings/bloc/change_language_bloc.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class LanguageWidget extends StatefulWidget {
-  const LanguageWidget({Key key}) : super(key: key);
+class LanguageWidget extends StatelessWidget {
+  const LanguageWidget({Key key, @required this.locales}) : super(key: key);
 
-  @override
-  _LanguageWidgetState createState() => _LanguageWidgetState();
-}
-
-class _LanguageWidgetState extends State<LanguageWidget> {
-  final List<LocaleDto> locales = <LocaleDto>[
-    LocaleDto.fromJson({
-      'localeCode': 'en-US',
-      'identifier': 'English',
-      'subIdentifier': 'United States',
-      'icon': 'flag-icon flag-icon-us',
-      'localeDefault': true,
-      'localeEnabled': true,
-    }),
-    LocaleDto.fromJson({
-      'localeCode': 'id-ID',
-      'identifier': 'Indonesian',
-      'subIdentifier': 'Indonesia',
-      'icon': 'flag-icon flag-icon-id',
-      'localeDefault': false,
-      'localeEnabled': true,
-    }),
-  ];
+  final List<LocaleDto> locales;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +39,7 @@ class _LanguageWidgetState extends State<LanguageWidget> {
                           'assets/eva_icons/outline/svg/checkmark-outline.svg')
                       : null,
                   onTap: () {
-                    _modalBottomSheetMenu(context, locales[index].identifier);
+                    _promptLanguage(context, locales[index].identifier);
                   },
                 ),
                 const Divider(
@@ -71,7 +53,7 @@ class _LanguageWidgetState extends State<LanguageWidget> {
     );
   }
 
-  void _modalBottomSheetMenu(BuildContext context, String language) async {
+  void _promptLanguage(BuildContext context, String language) async {
     await showModalBottomSheet(
         useRootNavigator: true,
         isScrollControlled: false,
@@ -80,7 +62,39 @@ class _LanguageWidgetState extends State<LanguageWidget> {
         context: context,
         backgroundColor: Colors.transparent,
         builder: (builder) {
-          return LanguageBottomMenu(language: language);
+          return DialogBottomSheet(
+            title: 'Change Language',
+            subtitle:
+                'Are you sure want to change the language into $language?',
+            submit: 'Submit',
+            onSubmit: () {
+              Navigator.of(context, rootNavigator: true).pop();
+              _loading(context);
+            },
+          );
         });
+  }
+
+  void _loading(BuildContext context) async {
+    await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return BlocProvider(
+          create: (context) {
+            return ChangeLanguageBloc()..add(const SubmittedEvent());
+          },
+          child: BlocBuilder<ChangeLanguageBloc, CommonState>(
+            builder: (BuildContext context, CommonState state) {
+              return Container(
+                decoration:
+                    const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.5)),
+                child: const Center(child: CircularProgressIndicator()),
+              );
+            },
+          ),
+        );
+      },
+    );
   }
 }

@@ -1,5 +1,6 @@
 library do_common;
 
+export 'components/dialog/dialog_bottom_sheet.dart';
 export 'components/error/connection_error_widget.dart';
 export 'components/skeleton/skeleton.dart';
 export 'components/skeleton/skeleton_list.dart';

@@ -1,6 +1,10 @@
+import 'package:do_core/bloc.dart';
+import 'package:do_core/models/locale_dto.dart';
+import 'package:do_dart/main/settings/bloc/language_bloc.dart';
 import 'package:do_dart/main/settings/widgets/language_widget.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LanguagePage extends StatefulWidget {
@@ -67,17 +71,29 @@ class _LanguagePageState extends State<LanguagePage>
   }
 
   Widget mainView() {
-    const int count = 1;
-    return ListView.builder(
-      controller: _scrollController,
-      padding: EdgeInsets.only(
-        bottom: 62 + MediaQuery.of(context).padding.bottom,
-      ),
-      itemCount: count,
-      scrollDirection: Axis.vertical,
-      itemBuilder: (BuildContext context, int index) {
-        return const LanguageWidget();
+    return BlocProvider(
+      create: (context) {
+        return LanguageBloc()..add(const RequestedEvent());
       },
+      child: BlocBuilder<LanguageBloc, CommonState>(
+        builder: (BuildContext context, CommonState state) {
+          List<LocaleDto> data = <LocaleDto>[];
+          if (state is RequestSuccessState) {
+            data = state.data as List<LocaleDto>;
+          }
+          return ListView.builder(
+            controller: _scrollController,
+            padding: EdgeInsets.only(
+              bottom: 62 + MediaQuery.of(context).padding.bottom,
+            ),
+            itemCount: 1,
+            scrollDirection: Axis.vertical,
+            itemBuilder: (BuildContext context, int index) {
+              return LanguageWidget(locales: data);
+            },
+          );
+        },
+      ),
     );
   }
 

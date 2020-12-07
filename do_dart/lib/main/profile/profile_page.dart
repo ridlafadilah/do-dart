@@ -84,7 +84,7 @@ class _ProfilePageState extends State<ProfilePage>
       },
       child: BlocBuilder<ProfileBloc, CommonState>(
         builder: (BuildContext context, CommonState state) {
-          if (state is SuccessState) {
+          if (state is RequestSuccessState) {
             return RefreshIndicator(
               backgroundColor: Colors.white,
               color: AppTheme.colorTheme,
@@ -98,7 +98,7 @@ class _ProfilePageState extends State<ProfilePage>
                 context.read<ProfileBloc>().add(const RequestedEvent());
               },
             );
-          } else if (state is FailureState) {
+          } else if (state is RequestFailureState) {
             return ConnectionErrorWidget(
                 error: state.error,
                 onPressed: () async {

@@ -7,19 +7,21 @@ abstract class CommonState extends Equatable {
   List<Object> get props => [];
 }
 
-class InProgressState extends CommonState {}
+class InitialState extends CommonState {}
 
-class SuccessState<T> extends CommonState {
-  const SuccessState({this.data});
+class RequestInProgressState extends CommonState {}
 
-  final T data;
+class RequestSuccessState extends CommonState {
+  const RequestSuccessState({this.data});
+
+  final Object data;
 
   @override
   List<Object> get props => [data];
 }
 
-class FailureState extends CommonState {
-  const FailureState({this.error});
+class RequestFailureState extends CommonState {
+  const RequestFailureState({this.error});
 
   final String error;
 
@@ -27,5 +29,28 @@ class FailureState extends CommonState {
   List<Object> get props => [error];
 
   @override
-  String toString() => 'State Failure { error: $error }';
+  String toString() => 'Request State Failure { error: $error }';
+}
+
+class SubmitInProgressState extends CommonState {}
+
+class SubmitSuccessState extends CommonState {
+  const SubmitSuccessState({this.data});
+
+  final Object data;
+
+  @override
+  List<Object> get props => [data];
+}
+
+class SubmitFailureState extends CommonState {
+  const SubmitFailureState({this.error});
+
+  final String error;
+
+  @override
+  List<Object> get props => [error];
+
+  @override
+  String toString() => 'Request State Failure { error: $error }';
 }

@@ -3,11 +3,11 @@ import 'package:do_core/core.dart';
 import 'package:do_core/models.dart';
 import 'package:meta/meta.dart';
 
-class ProfileBloc extends CommonBloc<ProfileDto> {
+class ProfileBloc extends CommonBloc {
   ProfileBloc({@required AuthService authService})
       : assert(authService != null),
         _authService = authService,
-        super(InProgressState());
+        super(RequestInProgressState());
 
   final AuthService _authService;
 
@@ -17,4 +17,7 @@ class ProfileBloc extends CommonBloc<ProfileDto> {
     ProfileDto profile = await profileService.getProfile();
     return profile;
   }
+
+  @override
+  Future<dynamic> putData() => null;
 }
