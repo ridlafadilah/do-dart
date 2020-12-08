@@ -20,6 +20,7 @@ class _LanguagePageState extends State<LanguagePage>
   List<Widget> listViews = <Widget>[];
   final ScrollController _scrollController = ScrollController();
   double _topBarOpacity = 0.0;
+  List<LocaleDto> data = <LocaleDto>[];
 
   @override
   void initState() {
@@ -75,24 +76,40 @@ class _LanguagePageState extends State<LanguagePage>
       create: (context) {
         return LanguageBloc()..add(const RequestedEvent());
       },
-      child: BlocBuilder<LanguageBloc, CommonState>(
-        builder: (BuildContext context, CommonState state) {
-          List<LocaleDto> data = <LocaleDto>[];
+      child: BlocListener<LanguageBloc, CommonState>(
+        listener: (context, state) {
           if (state is RequestSuccessState) {
             data = state.data as List<LocaleDto>;
           }
-          return ListView.builder(
-            controller: _scrollController,
-            padding: EdgeInsets.only(
-              bottom: 62 + MediaQuery.of(context).padding.bottom,
-            ),
-            itemCount: 1,
-            scrollDirection: Axis.vertical,
-            itemBuilder: (BuildContext context, int index) {
-              return LanguageWidget(locales: data);
-            },
-          );
+          if (state is SubmitInProgressState) {
+            _loading(context);
+          } else if (state is SubmitFailureState) {
+            Navigator.of(context, rootNavigator: true).pop();
+          } else if (state is SubmitSuccessState) {
+            Navigator.of(context, rootNavigator: true).pop();
+            Navigator.of(context).pop();
+          }
         },
+        child: BlocBuilder<LanguageBloc, CommonState>(
+          builder: (BuildContext context, CommonState state) {
+            return ListView.builder(
+              controller: _scrollController,
+              padding: EdgeInsets.only(
+                bottom: 62 + MediaQuery.of(context).padding.bottom,
+              ),
+              itemCount: 1,
+              scrollDirection: Axis.vertical,
+              itemBuilder: (BuildContext context, int index) {
+                return LanguageWidget(
+                  locales: data,
+                  onSelect: () {
+                    context.read<LanguageBloc>().add(const SubmittedEvent());
+                  },
+                );
+              },
+            );
+          },
+        ),
       ),
     );
   }
@@ -137,6 +154,19 @@ class _LanguagePageState extends State<LanguagePage>
           ),
         ),
       ],
+    );
+  }
+
+  void _loading(BuildContext context) async {
+    await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return Container(
+          decoration: const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0)),
+          child: const Center(child: CircularProgressIndicator()),
+        );
+      },
     );
   }
 }

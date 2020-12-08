@@ -28,7 +28,8 @@ class LanguageBloc extends CommonBloc {
   }
 
   @override
-  Future<dynamic> putData() {
-    return null;
+  Future<dynamic> putData() async {
+    await Future<dynamic>.delayed(const Duration(milliseconds: 3000));
+    return true;
   }
 }

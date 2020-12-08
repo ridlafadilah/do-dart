@@ -1,17 +1,15 @@
 import 'package:do_common/common.dart';
-import 'package:do_core/bloc/common_event.dart';
-import 'package:do_core/bloc/common_state.dart';
 import 'package:do_core/models.dart';
-import 'package:do_dart/main/settings/bloc/change_language_bloc.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LanguageWidget extends StatelessWidget {
-  const LanguageWidget({Key key, @required this.locales}) : super(key: key);
+  const LanguageWidget({Key key, @required this.locales, this.onSelect})
+      : super(key: key);
 
   final List<LocaleDto> locales;
+  final void Function() onSelect;
 
   @override
   Widget build(BuildContext context) {
@@ -69,32 +67,9 @@ class LanguageWidget extends StatelessWidget {
             submit: 'Submit',
             onSubmit: () {
               Navigator.of(context, rootNavigator: true).pop();
-              _loading(context);
+              onSelect();
             },
           );
         });
-  }
-
-  void _loading(BuildContext context) async {
-    await showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (BuildContext context) {
-        return BlocProvider(
-          create: (context) {
-            return ChangeLanguageBloc()..add(const SubmittedEvent());
-          },
-          child: BlocBuilder<ChangeLanguageBloc, CommonState>(
-            builder: (BuildContext context, CommonState state) {
-              return Container(
-                decoration:
-                    const BoxDecoration(color: Color.fromRGBO(0, 0, 0, 0.5)),
-                child: const Center(child: CircularProgressIndicator()),
-              );
-            },
-          ),
-        );
-      },
-    );
   }
 }
