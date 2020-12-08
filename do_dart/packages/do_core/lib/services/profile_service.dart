@@ -1,8 +1,10 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:do_core/core.dart';
+import 'package:do_core/api/profile/profile_api.dart';
+import 'package:do_core/exceptions/server_error_exception.dart';
 import 'package:do_core/models/profile_dto.dart';
+import 'package:do_core/services/auth_service.dart';
 import 'package:logger/logger.dart';
 import 'package:meta/meta.dart';
 
