@@ -2,7 +2,7 @@ import 'package:do_core/bloc/common_event.dart';
 import 'package:do_core/bloc/common_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-abstract class CommonBloc extends Bloc<CommonEvent, CommonState> {
+abstract class CommonBloc<X, Y, Z> extends Bloc<CommonEvent, CommonState> {
   CommonBloc(CommonState state) : super(state);
 
   @override
@@ -10,23 +10,23 @@ abstract class CommonBloc extends Bloc<CommonEvent, CommonState> {
     if (event is RequestedEvent) {
       yield RequestInProgressState();
       try {
-        dynamic data = await getData();
-        yield RequestSuccessState(data: data);
+        X data = await getData();
+        yield RequestSuccessState<X>(data: data);
       } catch (e) {
         yield RequestFailureState(error: e.toString());
       }
-    } else if (event is SubmittedEvent) {
+    } else if (event is SubmittedEvent<Y>) {
       yield SubmitInProgressState();
       try {
-        dynamic data = await putData();
-        yield SubmitSuccessState(data: data);
+        Z data = await putData(event.data);
+        yield SubmitSuccessState<Z>(data: data);
       } catch (e) {
         yield SubmitFailureState(error: e.toString());
       }
     }
   }
 
-  Future<dynamic> getData();
+  Future<X> getData();
 
-  Future<dynamic> putData();
+  Future<Z> putData(Y data);
 }

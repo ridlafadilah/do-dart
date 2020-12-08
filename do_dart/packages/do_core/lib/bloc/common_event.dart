@@ -11,6 +11,11 @@ class RequestedEvent extends CommonEvent {
   const RequestedEvent();
 }
 
-class SubmittedEvent extends CommonEvent {
-  const SubmittedEvent();
+class SubmittedEvent<T> extends CommonEvent {
+  const SubmittedEvent({this.data});
+
+  final T data;
+
+  @override
+  List<Object> get props => [data];
 }

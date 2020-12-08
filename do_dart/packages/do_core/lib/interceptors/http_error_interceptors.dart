@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:do_core/api/auth/auth_api.dart';
-import 'package:do_core/models/error_response.dart';
+import 'package:do_core/models/base_response.dart';
 import 'package:do_core/services/auth_service.dart';
 import 'package:do_core/services/core_locator.dart';
 import 'package:do_core/services/shared_preferences_service.dart';
@@ -23,7 +23,7 @@ class HttpErrorInterceptors extends Interceptor {
   @override
   Future onError(DioError err) async {
     final int statusCode = err.response.statusCode;
-    final ErrorResponse response = ErrorResponse.fromJson(err.response.data);
+    final BaseResponse response = BaseResponse.fromJson(err.response.data);
     switch (statusCode) {
       case 401:
         try {

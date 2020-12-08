@@ -1,6 +1,7 @@
 import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
+import 'package:do_core/models.dart';
 import 'package:do_dart/main/about/about_page.dart';
 import 'package:do_dart/main/profile/bloc/profile_bloc.dart';
 import 'package:do_dart/main/profile/views/profile_skeleton_view.dart';
@@ -84,7 +85,7 @@ class _ProfilePageState extends State<ProfilePage>
       },
       child: BlocBuilder<ProfileBloc, CommonState>(
         builder: (BuildContext context, CommonState state) {
-          if (state is RequestSuccessState) {
+          if (state is RequestSuccessState<ProfileDto>) {
             return RefreshIndicator(
               backgroundColor: Colors.white,
               color: AppTheme.colorTheme,

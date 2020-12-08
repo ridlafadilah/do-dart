@@ -9,7 +9,7 @@ class LanguageWidget extends StatelessWidget {
       : super(key: key);
 
   final List<LocaleDto> locales;
-  final void Function() onSelect;
+  final void Function(LocaleDto data) onSelect;
 
   @override
   Widget build(BuildContext context) {
@@ -32,13 +32,15 @@ class LanguageWidget extends StatelessWidget {
                     style: const TextStyle(fontFamily: AppTheme.fontName),
                   ),
                   contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  trailing: locales[index].localeDefault
+                  trailing: locales[index].localeUsed
                       ? SvgPicture.asset(
                           'assets/eva_icons/outline/svg/checkmark-outline.svg')
                       : null,
-                  onTap: () {
-                    _promptLanguage(context, locales[index].identifier);
-                  },
+                  onTap: locales[index].localeUsed
+                      ? null
+                      : () {
+                          _promptLanguage(context, locales[index]);
+                        },
                 ),
                 const Divider(
                   height: 1,
@@ -51,7 +53,7 @@ class LanguageWidget extends StatelessWidget {
     );
   }
 
-  void _promptLanguage(BuildContext context, String language) async {
+  void _promptLanguage(BuildContext context, LocaleDto locale) async {
     await showModalBottomSheet(
         useRootNavigator: true,
         isScrollControlled: false,
@@ -62,12 +64,12 @@ class LanguageWidget extends StatelessWidget {
         builder: (builder) {
           return DialogBottomSheet(
             title: 'Change Language',
-            subtitle:
-                'Are you sure want to change the language into $language?',
+            subtitle: '''
+Are you sure want to change the language into ${locale.identifier}?''',
             submit: 'Submit',
             onSubmit: () {
               Navigator.of(context, rootNavigator: true).pop();
-              onSelect();
+              onSelect(locale);
             },
           );
         });

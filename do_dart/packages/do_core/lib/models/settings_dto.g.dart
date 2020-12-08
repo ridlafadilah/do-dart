@@ -1,20 +1,17 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'locale_dto.dart';
+part of 'settings_dto.dart';
 
 // **************************************************************************
 // JsonSerializableGenerator
 // **************************************************************************
 
-LocaleDto _$LocaleDtoFromJson(Map<String, dynamic> json) {
-  return LocaleDto(
+SettingsDto _$SettingsDtoFromJson(Map<String, dynamic> json) {
+  return SettingsDto(
     json['localeCode'] as String,
-    json['identifier'] as String,
-    json['subIdentifier'] as String,
-    json['icon'] as String,
-    json['localeUsed'] as bool,
-    json['localeDefault'] as bool,
-    json['localeEnabled'] as bool,
+    json['localeIdentifier'] as String,
+    json['localeIcon'] as String,
+    json['theme'] as String,
   )
     ..version = json['version'] as int
     ..active = json['active'] as String
@@ -24,7 +21,8 @@ LocaleDto _$LocaleDtoFromJson(Map<String, dynamic> json) {
     ..modifiedBy = json['modifiedBy'] as String;
 }
 
-Map<String, dynamic> _$LocaleDtoToJson(LocaleDto instance) => <String, dynamic>{
+Map<String, dynamic> _$SettingsDtoToJson(SettingsDto instance) =>
+    <String, dynamic>{
       'version': instance.version,
       'active': instance.active,
       'createdDate': instance.createdDate,
@@ -32,10 +30,7 @@ Map<String, dynamic> _$LocaleDtoToJson(LocaleDto instance) => <String, dynamic>{
       'modifiedDate': instance.modifiedDate,
       'modifiedBy': instance.modifiedBy,
       'localeCode': instance.localeCode,
-      'identifier': instance.identifier,
-      'subIdentifier': instance.subIdentifier,
-      'icon': instance.icon,
-      'localeUsed': instance.localeUsed,
-      'localeDefault': instance.localeDefault,
-      'localeEnabled': instance.localeEnabled,
+      'localeIdentifier': instance.localeIdentifier,
+      'localeIcon': instance.localeIcon,
+      'theme': instance.theme,
     };

@@ -1,4 +1,6 @@
 import 'package:do_core/bloc.dart';
+import 'package:do_core/core.dart';
+import 'package:do_core/models.dart';
 import 'package:do_core/models/locale_dto.dart';
 import 'package:do_dart/main/settings/bloc/language_bloc.dart';
 import 'package:do_dart/main/settings/widgets/language_widget.dart';
@@ -74,18 +76,20 @@ class _LanguagePageState extends State<LanguagePage>
   Widget mainView() {
     return BlocProvider(
       create: (context) {
-        return LanguageBloc()..add(const RequestedEvent());
+        return LanguageBloc(
+          authService: RepositoryProvider.of<AuthService>(context),
+        )..add(const RequestedEvent());
       },
       child: BlocListener<LanguageBloc, CommonState>(
         listener: (context, state) {
-          if (state is RequestSuccessState) {
-            data = state.data as List<LocaleDto>;
+          if (state is RequestSuccessState<List<LocaleDto>>) {
+            data = state.data;
           }
           if (state is SubmitInProgressState) {
             _loading(context);
           } else if (state is SubmitFailureState) {
             Navigator.of(context, rootNavigator: true).pop();
-          } else if (state is SubmitSuccessState) {
+          } else if (state is SubmitSuccessState<BaseResponse>) {
             Navigator.of(context, rootNavigator: true).pop();
             Navigator.of(context).pop();
           }
@@ -102,8 +106,10 @@ class _LanguagePageState extends State<LanguagePage>
               itemBuilder: (BuildContext context, int index) {
                 return LanguageWidget(
                   locales: data,
-                  onSelect: () {
-                    context.read<LanguageBloc>().add(const SubmittedEvent());
+                  onSelect: (LocaleDto localeDto) {
+                    context
+                        .read<LanguageBloc>()
+                        .add(SubmittedEvent<LocaleDto>(data: localeDto));
                   },
                 );
               },

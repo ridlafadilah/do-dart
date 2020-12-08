@@ -1,22 +1,18 @@
+import 'package:do_core/models/base_audit_dto.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'locale_dto.g.dart';
 
 @JsonSerializable()
-class LocaleDto {
+class LocaleDto extends BaseAuditDto {
   LocaleDto(
     this.localeCode,
     this.identifier,
     this.subIdentifier,
     this.icon,
+    this.localeUsed,
     this.localeDefault,
     this.localeEnabled,
-    this.version,
-    this.active,
-    this.createdDate,
-    this.createdBy,
-    this.modifiedDate,
-    this.modifiedBy,
   );
 
   factory LocaleDto.fromJson(Map<String, dynamic> json) =>
@@ -28,12 +24,7 @@ class LocaleDto {
   String identifier;
   String subIdentifier;
   String icon;
+  bool localeUsed = false;
   bool localeDefault;
   bool localeEnabled;
-  int version;
-  String active;
-  String createdDate;
-  String createdBy;
-  String modifiedDate;
-  String modifiedBy;
 }

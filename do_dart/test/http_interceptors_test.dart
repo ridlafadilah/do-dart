@@ -115,7 +115,7 @@ class HttpErrorInterceptorsTest extends Interceptor {
   @override
   Future onError(DioError err) async {
     final int statusCode = err.response.statusCode;
-    final ErrorResponse response = ErrorResponse.fromJson(err.response.data);
+    final BaseResponse response = BaseResponse.fromJson(err.response.data);
     logger.i(err.response.data);
     switch (statusCode) {
       case 401:

@@ -11,13 +11,13 @@ class InitialState extends CommonState {}
 
 class RequestInProgressState extends CommonState {}
 
-class RequestSuccessState extends CommonState {
+class RequestSuccessState<T> extends CommonState {
   const RequestSuccessState({this.data});
 
-  final Object data;
+  final T data;
 
   @override
-  List<Object> get props => [data];
+  List<T> get props => [data];
 }
 
 class RequestFailureState extends CommonState {
@@ -34,13 +34,13 @@ class RequestFailureState extends CommonState {
 
 class SubmitInProgressState extends CommonState {}
 
-class SubmitSuccessState extends CommonState {
+class SubmitSuccessState<T> extends CommonState {
   const SubmitSuccessState({this.data});
 
-  final Object data;
+  final T data;
 
   @override
-  List<Object> get props => [data];
+  List<T> get props => [data];
 }
 
 class SubmitFailureState extends CommonState {

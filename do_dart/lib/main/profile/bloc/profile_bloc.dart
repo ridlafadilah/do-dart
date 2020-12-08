@@ -3,7 +3,7 @@ import 'package:do_core/core.dart';
 import 'package:do_core/models.dart';
 import 'package:meta/meta.dart';
 
-class ProfileBloc extends CommonBloc {
+class ProfileBloc extends CommonBloc<ProfileDto, Object, dynamic> {
   ProfileBloc({@required AuthService authService})
       : assert(authService != null),
         _authService = authService,
@@ -19,5 +19,5 @@ class ProfileBloc extends CommonBloc {
   }
 
   @override
-  Future<dynamic> putData() => null;
+  Future<dynamic> putData(Object data) => null;
 }
