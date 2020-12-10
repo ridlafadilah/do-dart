@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:do_core/api/security/settings_api.dart';
+import 'package:do_core/api/security/security_api.dart';
 import 'package:do_core/exceptions/server_error_exception.dart';
 import 'package:do_core/models/base_response.dart';
 import 'package:do_core/models/locale_dto.dart';
@@ -55,7 +55,7 @@ class LanguageService {
 
   Future<BaseResponse> putData(LocaleDto data) async {
     final String theme = _sharedPreferences.getString('theme');
-    final _settingsAPI = SettingsAPI(Dio(), _authService);
+    final _settingsAPI = SecurityAPI(Dio(), _authService);
     final SettingsDto settings = SettingsDto.fromJson({
       'localeCode': data.localeCode,
       'localeIdentifier': data.identifier,

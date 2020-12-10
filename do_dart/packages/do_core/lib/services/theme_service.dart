@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:dio/dio.dart';
-import 'package:do_core/api/security/settings_api.dart';
+import 'package:do_core/api/security/security_api.dart';
 import 'package:do_core/exceptions/server_error_exception.dart';
 import 'package:do_core/models/settings_dto.dart';
 import 'package:do_core/services/auth_service.dart';
@@ -27,7 +27,6 @@ class ThemeService {
 
   bool getData() {
     final String theme = _sharedPreferences.getString('theme');
-    print(theme);
     switch (theme) {
       case ThemeType.darkTheme:
         return true;
@@ -51,8 +50,8 @@ class ThemeService {
         'localeCode': localeCode,
       });
     }
-    final _settingsAPI = SettingsAPI(Dio(), _authService);
-    await _settingsAPI.putSettings(settings).catchError((Object obj) {
+    final SecurityAPI _securityAPI = SecurityAPI(Dio(), _authService);
+    await _securityAPI.putSettings(settings).catchError((Object obj) {
       switch (obj.runtimeType) {
         case DioError:
           final error = ServerError.withError(error: obj as DioError);

@@ -82,37 +82,39 @@ class _SettingsWidgetState extends State<SettingsWidget> {
               },
               child: BlocBuilder<ThemeBloc, CommonState>(
                 builder: (BuildContext context, CommonState state) {
-                  return SwitchListTile(
-                    secondary: Padding(
-                        padding: const EdgeInsets.only(left: 15),
-                        child: SvgPicture.asset(iconDarkMode)),
-                    title: const Text(
-                      'Dark Mode',
-                      style: TextStyle(fontFamily: AppTheme.fontName),
+                  return Column(children: [
+                    SwitchListTile(
+                      secondary: Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: SvgPicture.asset(iconDarkMode)),
+                      title: const Text(
+                        'Dark Mode',
+                        style: TextStyle(fontFamily: AppTheme.fontName),
+                      ),
+                      contentPadding:
+                          const EdgeInsets.only(left: 5.0, right: 15.0),
+                      value: isDarkMode,
+                      activeColor: AppTheme.colorTheme,
+                      onChanged: (bool value) {
+                        _promptTheme(context, value);
+                      },
                     ),
-                    contentPadding:
-                        const EdgeInsets.only(left: 5.0, right: 15.0),
-                    value: isDarkMode,
-                    activeColor: AppTheme.colorTheme,
-                    onChanged: (bool value) {
-                      _promptLanguage(context, value);
-                    },
-                  );
+                    const Divider(
+                      height: 1,
+                      thickness: 1.0,
+                      indent: 60,
+                    ),
+                  ]);
                 },
               ),
             ),
-          ),
-          const Divider(
-            height: 1,
-            thickness: 1.0,
-            indent: 60,
           ),
         ],
       ),
     );
   }
 
-  void _promptLanguage(BuildContext context, bool darkMode) async {
+  void _promptTheme(BuildContext context, bool darkMode) async {
     String subtitle = 'Are you sure want to change to default mode?';
     if (darkMode) subtitle = 'Are you sure want to change to dark mode?';
     await showModalBottomSheet(

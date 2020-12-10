@@ -8,11 +8,11 @@ import 'package:do_core/services/auth_service.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:retrofit/http.dart';
 
-part 'settings_api.g.dart';
+part 'security_api.g.dart';
 
 @RestApi()
-abstract class SettingsAPI {
-  factory SettingsAPI(Dio dio, AuthService authService) {
+abstract class SecurityAPI {
+  factory SecurityAPI(Dio dio, AuthService authService) {
     final String baseUrl =
         GlobalConfiguration().getValue('hosts')['security']['host'];
     assert(baseUrl != null);
@@ -22,7 +22,7 @@ abstract class SettingsAPI {
     dio.interceptors.add(HttpSignatureInterceptors());
     dio.interceptors.add(HttpLanguageInterceptors());
     dio.interceptors.add(HttpErrorInterceptors(dio, authService));
-    return _SettingsAPI(dio, baseUrl: baseUrl);
+    return _SecurityAPI(dio, baseUrl: baseUrl);
   }
 
   @Headers({'content-type': 'application/json'})
