@@ -54,8 +54,6 @@ class LanguageService {
   }
 
   Future<BaseResponse> putData(LocaleDto data) async {
-    await _sharedPreferences.putString('locale', data.localeCode);
-    await Future<dynamic>.delayed(const Duration(milliseconds: 500));
     final String theme = _sharedPreferences.getString('theme');
     final _settingsAPI = SettingsAPI(Dio(), _authService);
     final SettingsDto settings = SettingsDto.fromJson({
@@ -74,6 +72,7 @@ class LanguageService {
         default:
       }
     });
+    await _sharedPreferences.putString('locale', data.localeCode);
     return response;
   }
 }

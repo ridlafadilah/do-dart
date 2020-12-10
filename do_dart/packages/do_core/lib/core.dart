@@ -9,3 +9,4 @@ export 'services/core_locator.dart';
 export 'services/language_service.dart';
 export 'services/profile_service.dart';
 export 'services/shared_preferences_service.dart';
+export 'services/theme_service.dart';
