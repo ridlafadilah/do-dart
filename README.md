@@ -81,6 +81,11 @@ Make sure following software is installed on your PC.
 	do_dart/packages/do_core$ flutter pub run build_runner build --delete-conflicting-outputs
 	```
 
+  * Pub Activate Encrypt (_skip_) :
+	```
+	do_dart$ flutter pub global activate encrypt
+	```
+
   * Restart the Dart Analysis Server (VS Code) :
 
   	`CTRL + Shift + P` , then search look for a command called `Dart: Restart Analysis Server`

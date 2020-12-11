@@ -129,6 +129,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             title: 'Change Theme',
             subtitle: subtitle,
             submit: 'Submit',
+            height: 260.0,
             onSubmit: () {
               Navigator.of(context, rootNavigator: true).pop();
               context

@@ -28,4 +28,8 @@ abstract class SecurityAPI {
   @Headers({'content-type': 'application/json'})
   @PUT('/do/api/security/trx/put/settings/v.1')
   Future<BaseResponse> putSettings(@Body() SettingsDto settings);
+
+  @Headers({'content-type': 'application/json'})
+  @POST('/do/api/security/trx/post/change-password/v.1')
+  Future<BaseResponse> changePassword(@Body() ChangePasswordDto changePassword);
 }

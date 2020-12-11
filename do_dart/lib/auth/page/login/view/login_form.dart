@@ -72,7 +72,14 @@ class _UsernameInput extends StatelessWidget {
   }
 }
 
-class _PasswordInput extends StatelessWidget {
+class _PasswordInput extends StatefulWidget {
+  @override
+  __PasswordInputState createState() => __PasswordInputState();
+}
+
+class __PasswordInputState extends State<_PasswordInput> {
+  bool isObscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<LoginBloc, LoginState>(
@@ -81,7 +88,6 @@ class _PasswordInput extends StatelessWidget {
         return TextFormField(
             key: const Key('loginForm_password'),
             autofocus: false,
-            obscureText: true,
             decoration: InputDecoration(
               labelText: 'Password :',
               hintText: 'Password',
@@ -89,7 +95,25 @@ class _PasswordInput extends StatelessWidget {
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
               errorText: state.password.invalid ? 'invalid password' : null,
+              suffixIcon: Padding(
+                padding: const EdgeInsets.all(12.0),
+                child: GestureDetector(
+                  onTap: () {
+                    setState(() {
+                      isObscureText = !isObscureText;
+                    });
+                  },
+                  child: isObscureText
+                      ? SvgPicture.asset(
+                          'assets/eva_icons/outline/svg/eye-outline.svg',
+                          color: AppTheme.grey.withOpacity(0.85))
+                      : SvgPicture.asset(
+                          'assets/eva_icons/outline/svg/eye-off-outline.svg',
+                          color: AppTheme.grey.withOpacity(0.85)),
+                ),
+              ),
             ),
+            obscureText: isObscureText,
             onChanged: (password) =>
                 context.read<LoginBloc>().add(LoginPasswordChanged(password)));
       },
@@ -129,23 +153,25 @@ class _LoginButton extends StatelessWidget {
                               blurRadius: 2.0),
                         ],
                       ),
-                child: MaterialButton(
-                  color: AppTheme.button,
-                  disabledColor: AppTheme.buttonDisable,
+                child: ButtonTheme(
                   minWidth: 200.0,
                   height: 48.0,
-                  onPressed: _loginButtonPress(context, state),
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Text(
-                        'LOGIN',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: state.status.isSubmissionInProgress
-                              ? AppTheme.buttonTextDisable
-                              : Colors.white,
+                  child: RaisedButton(
+                    color: AppTheme.button,
+                    disabledColor: AppTheme.buttonDisable,
+                    onPressed: _loginButtonPress(context, state),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(4.0),
+                        child: Text(
+                          'LOGIN',
+                          style: TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                            color: state.status.isSubmissionInProgress
+                                ? AppTheme.buttonTextDisable
+                                : Colors.white,
+                          ),
                         ),
                       ),
                     ),

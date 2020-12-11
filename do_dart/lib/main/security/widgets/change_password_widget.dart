@@ -1,8 +1,10 @@
 import 'package:do_core/bloc.dart';
+import 'package:do_core/core.dart';
 import 'package:do_dart/main/security/bloc/change_password_bloc.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
 
 class ChangePasswordWidget extends StatefulWidget {
@@ -20,7 +22,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) {
-        return ChangePasswordBloc();
+        return ChangePasswordBloc(
+          authService: RepositoryProvider.of<AuthService>(context),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.only(left: 25, right: 25),
@@ -40,7 +44,14 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
   }
 }
 
-class _OldPasswordInput extends StatelessWidget {
+class _OldPasswordInput extends StatefulWidget {
+  @override
+  __OldPasswordInputState createState() => __OldPasswordInputState();
+}
+
+class __OldPasswordInputState extends State<_OldPasswordInput> {
+  bool isObscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChangePasswordBloc, ChangePasswordState>(
@@ -50,7 +61,6 @@ class _OldPasswordInput extends StatelessWidget {
         return TextFormField(
           key: const Key('changePasswordForm_currentPassword'),
           autofocus: false,
-          obscureText: true,
           decoration: InputDecoration(
             labelText: 'Current Password',
             hintText: 'Current Password',
@@ -59,7 +69,25 @@ class _OldPasswordInput extends StatelessWidget {
                 OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
             errorText:
                 state.oldPassword.invalid ? 'Password is required!' : null,
+            suffixIcon: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isObscureText = !isObscureText;
+                  });
+                },
+                child: isObscureText
+                    ? SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/eye-outline.svg',
+                        color: AppTheme.grey.withOpacity(0.85))
+                    : SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/eye-off-outline.svg',
+                        color: AppTheme.grey.withOpacity(0.85)),
+              ),
+            ),
           ),
+          obscureText: isObscureText,
           onChanged: (password) => context
               .read<ChangePasswordBloc>()
               .add(OldPasswordChanged(password)),
@@ -69,7 +97,14 @@ class _OldPasswordInput extends StatelessWidget {
   }
 }
 
-class _NewPasswordInput extends StatelessWidget {
+class _NewPasswordInput extends StatefulWidget {
+  @override
+  __NewPasswordInputState createState() => __NewPasswordInputState();
+}
+
+class __NewPasswordInputState extends State<_NewPasswordInput> {
+  bool isObscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChangePasswordBloc, ChangePasswordState>(
@@ -79,7 +114,6 @@ class _NewPasswordInput extends StatelessWidget {
         return TextFormField(
           key: const Key('changePasswordForm_newPassword'),
           autofocus: false,
-          obscureText: true,
           decoration: InputDecoration(
             labelText: 'New Password',
             hintText: 'New Password',
@@ -90,7 +124,25 @@ class _NewPasswordInput extends StatelessWidget {
                 ? '''
 Make sure it\'s at least 8 characters\nincluding a number, a lowercase, and uppercase letter'''
                 : null,
+            suffixIcon: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isObscureText = !isObscureText;
+                  });
+                },
+                child: isObscureText
+                    ? SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/eye-outline.svg',
+                        color: AppTheme.grey.withOpacity(0.85))
+                    : SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/eye-off-outline.svg',
+                        color: AppTheme.grey.withOpacity(0.85)),
+              ),
+            ),
           ),
+          obscureText: isObscureText,
           onChanged: (password) => context
               .read<ChangePasswordBloc>()
               .add(NewPasswordChanged(password)),
@@ -100,7 +152,14 @@ Make sure it\'s at least 8 characters\nincluding a number, a lowercase, and uppe
   }
 }
 
-class _ConfirmPasswordInput extends StatelessWidget {
+class _ConfirmPasswordInput extends StatefulWidget {
+  @override
+  __ConfirmPasswordInputState createState() => __ConfirmPasswordInputState();
+}
+
+class __ConfirmPasswordInputState extends State<_ConfirmPasswordInput> {
+  bool isObscureText = true;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ChangePasswordBloc, ChangePasswordState>(
@@ -110,7 +169,6 @@ class _ConfirmPasswordInput extends StatelessWidget {
         return TextFormField(
           key: const Key('changePasswordForm_confirmPassword'),
           autofocus: false,
-          obscureText: true,
           decoration: InputDecoration(
             labelText: 'Confirm Password',
             hintText: 'Confirm Password',
@@ -120,7 +178,25 @@ class _ConfirmPasswordInput extends StatelessWidget {
             errorText: state.confirmPassword.invalid
                 ? 'New Password and Confirm Password not match'
                 : null,
+            suffixIcon: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isObscureText = !isObscureText;
+                  });
+                },
+                child: isObscureText
+                    ? SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/eye-outline.svg',
+                        color: AppTheme.grey.withOpacity(0.85))
+                    : SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/eye-off-outline.svg',
+                        color: AppTheme.grey.withOpacity(0.85)),
+              ),
+            ),
           ),
+          obscureText: isObscureText,
           onChanged: (password) => context
               .read<ChangePasswordBloc>()
               .add(ConfirmPasswordChanged(password)),
@@ -163,23 +239,25 @@ class _ButtonChangePasswordInput extends StatelessWidget {
                             blurRadius: 2.0),
                       ],
                     ),
-              child: MaterialButton(
-                color: AppTheme.button,
-                disabledColor: AppTheme.buttonDisable,
+              child: ButtonTheme(
                 minWidth: 200.0,
                 height: 48.0,
-                onPressed: _changePasswordButtonPress(context, state),
-                child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Text(
-                      'Change Password',
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
-                        color: state.status.isSubmissionInProgress
-                            ? AppTheme.buttonTextDisable
-                            : Colors.white,
+                child: RaisedButton(
+                  color: AppTheme.button,
+                  disabledColor: AppTheme.buttonDisable,
+                  onPressed: _changePasswordButtonPress(context, state),
+                  child: Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(4.0),
+                      child: Text(
+                        'Change Password',
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
+                          color: state.status.isSubmissionInProgress
+                              ? AppTheme.buttonTextDisable
+                              : Colors.white,
+                        ),
                       ),
                     ),
                   ),

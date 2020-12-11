@@ -36,4 +36,26 @@ class _SecurityAPI implements SecurityAPI {
     final value = BaseResponse.fromJson(_result.data);
     return value;
   }
+
+  @override
+  Future<BaseResponse> changePassword(changePassword) async {
+    ArgumentError.checkNotNull(changePassword, 'changePassword');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(changePassword?.toJson() ?? <String, dynamic>{});
+    _data.removeWhere((k, v) => v == null);
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/do/api/security/trx/post/change-password/v.1',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{r'content-type': 'application/json'},
+            extra: _extra,
+            contentType: 'application/json',
+            baseUrl: baseUrl),
+        data: _data);
+    final value = BaseResponse.fromJson(_result.data);
+    return value;
+  }
 }

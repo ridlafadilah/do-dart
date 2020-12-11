@@ -1,3 +1,4 @@
+import 'package:do_dart/main/security/widgets/deactivate_dialog_bottom_sheet.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -42,21 +43,25 @@ Once you deactivated account, there is no going back. Please be certain.''',
                         blurRadius: 2.0),
                   ],
                 ),
-                child: MaterialButton(
-                  color: Colors.red,
-                  disabledColor: AppTheme.buttonDisable,
+                child: ButtonTheme(
                   minWidth: 200.0,
                   height: 48.0,
-                  onPressed: () {},
-                  child: const Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(4.0),
-                      child: Text(
-                        'Deactivate Account',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
+                  child: RaisedButton(
+                    color: Colors.red,
+                    disabledColor: AppTheme.buttonDisable,
+                    onPressed: () {
+                      _promptDeactivate(context);
+                    },
+                    child: const Center(
+                      child: Padding(
+                        padding: EdgeInsets.all(4.0),
+                        child: Text(
+                          'Deactivate Account',
+                          style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500,
+                              color: Colors.white),
+                        ),
                       ),
                     ),
                   ),
@@ -66,6 +71,24 @@ Once you deactivated account, there is no going back. Please be certain.''',
           )
         ],
       ),
+    );
+  }
+
+  void _promptDeactivate(BuildContext context) async {
+    await showModalBottomSheet(
+      useRootNavigator: true,
+      isScrollControlled: true,
+      isDismissible: false,
+      enableDrag: false,
+      context: context,
+      backgroundColor: Colors.transparent,
+      builder: (builder) {
+        return DeactivateDialogBottomSheet(
+          onSubmit: () {
+            Navigator.of(context, rootNavigator: true).pop();
+          },
+        );
+      },
     );
   }
 }

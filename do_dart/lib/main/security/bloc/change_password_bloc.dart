@@ -3,14 +3,21 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
+import 'package:do_core/core.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
+import 'package:meta/meta.dart';
 
 part 'change_password_event.dart';
 part 'change_password_state.dart';
 
 class ChangePasswordBloc extends Bloc<CommonEvent, ChangePasswordState> {
-  ChangePasswordBloc() : super(const ChangePasswordState());
+  ChangePasswordBloc({@required AuthService authService})
+      : assert(authService != null),
+        _authService = authService,
+        super(const ChangePasswordState());
+
+  final AuthService _authService;
 
   @override
   Stream<ChangePasswordState> mapEventToState(
@@ -73,6 +80,17 @@ class ChangePasswordBloc extends Bloc<CommonEvent, ChangePasswordState> {
           status: FormzStatus.submissionInProgress,
           action: FormzStatus.submissionInProgress);
       try {
+        ChangePasswordService changePasswordService =
+            ChangePasswordService(authService: _authService);
+        await changePasswordService
+            .changePassword(
+          password: state.oldPassword.value,
+          newPassword: state.newPassword.value,
+          confirmPassword: state.confirmPassword.value,
+        )
+            .then((value) async {
+          await _authService.logOut();
+        });
         yield state.copyWith(status: FormzStatus.submissionSuccess);
       } on Exception catch (_) {
         yield state.copyWith(status: FormzStatus.submissionFailure);

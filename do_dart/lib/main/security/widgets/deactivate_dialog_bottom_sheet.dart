@@ -2,31 +2,29 @@ import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class DialogBottomSheet extends StatelessWidget {
-  DialogBottomSheet(
-      {Key key,
-      @required this.title,
-      @required this.subtitle,
-      @required this.submit,
-      this.onSubmit,
-      this.height = 280.0,
-      this.buttonColor = AppTheme.colorTheme,
-      this.buttonDisabled = false,
-      this.child})
-      : super(key: key);
+class DeactivateDialogBottomSheet extends StatefulWidget {
+  DeactivateDialogBottomSheet({Key key, this.onSubmit}) : super(key: key);
 
-  final String title;
-  final String subtitle;
-  final String submit;
-  final double height;
-  final Color buttonColor;
-  final bool buttonDisabled;
   final void Function() onSubmit;
-  final Widget child;
+
+  @override
+  _DeactivateDialogBottomSheetState createState() =>
+      _DeactivateDialogBottomSheetState();
+}
+
+class _DeactivateDialogBottomSheetState
+    extends State<DeactivateDialogBottomSheet> {
+  final String title = 'Deactivate Account';
+  final String subtitle = '''
+This action cannot be undone. This will permanently disable your account.\nI understand the consequences''';
+  final String submit = 'Deactivate Account';
+  final double sizeExitButton = 70.0;
+  final double height = 370.0;
+  bool isObscureText = true;
+  bool buttonDisabled = false;
 
   @override
   Widget build(BuildContext context) {
-    final double sizeExitButton = 70.0;
     return Container(
       height: MediaQuery.of(context).viewInsets.bottom + height,
       color: Colors.transparent,
@@ -96,8 +94,39 @@ class DialogBottomSheet extends StatelessWidget {
                       ),
                     ),
                   ),
-                  Container(
-                    child: child,
+                  Padding(
+                    padding: const EdgeInsets.only(
+                        left: 20.0, right: 20.0, bottom: 15.0),
+                    child: TextFormField(
+                      key: const Key('deactivateAccountForm_password'),
+                      autofocus: true,
+                      decoration: InputDecoration(
+                        labelText: 'Password',
+                        hintText: 'Password',
+                        contentPadding:
+                            const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(5.0)),
+                        suffixIcon: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isObscureText = !isObscureText;
+                              });
+                            },
+                            child: isObscureText
+                                ? SvgPicture.asset(
+                                    'assets/eva_icons/outline/svg/eye-outline.svg',
+                                    color: AppTheme.grey.withOpacity(0.85))
+                                : SvgPicture.asset(
+                                    'assets/eva_icons/outline/svg/eye-off-outline.svg',
+                                    color: AppTheme.grey.withOpacity(0.85)),
+                          ),
+                        ),
+                      ),
+                      obscureText: isObscureText,
+                    ),
                   ),
                   _buttonSubmitModal(),
                 ],
@@ -120,14 +149,13 @@ class DialogBottomSheet extends StatelessWidget {
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(5.0),
                 side: BorderSide(
-                    color:
-                        buttonDisabled ? AppTheme.buttonDisable : buttonColor,
+                    color: buttonDisabled ? AppTheme.buttonDisable : Colors.red,
                     width: 0.5)),
-            color: buttonColor,
+            color: Colors.red,
             disabledColor: AppTheme.buttonDisable,
             elevation: 1.0,
             highlightElevation: 1.0,
-            onPressed: onSubmit,
+            onPressed: widget.onSubmit,
             child: Text(
               submit,
               style: TextStyle(
