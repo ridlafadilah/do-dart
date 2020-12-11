@@ -1,5 +1,9 @@
+import 'package:do_core/bloc.dart';
+import 'package:do_dart/main/security/bloc/change_password_bloc.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 
 class ChangePasswordWidget extends StatefulWidget {
   const ChangePasswordWidget({Key key, this.animationController})
@@ -14,89 +18,177 @@ class ChangePasswordWidget extends StatefulWidget {
 class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(left: 25, right: 25),
-      child: Column(
-        children: <Widget>[
-          TextFormField(
-            key: const Key('changePasswordForm_currentPassword'),
-            autofocus: false,
-            obscureText: true,
-            decoration: InputDecoration(
-              labelText: 'Current Password',
-              hintText: 'Current Password',
-              contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
-            ),
-            onChanged: (password) {},
+    return BlocProvider(
+      create: (context) {
+        return ChangePasswordBloc();
+      },
+      child: Padding(
+        padding: const EdgeInsets.only(left: 25, right: 25),
+        child: Column(
+          children: <Widget>[
+            _OldPasswordInput(),
+            const SizedBox(height: 10),
+            _NewPasswordInput(),
+            const SizedBox(height: 10),
+            _ConfirmPasswordInput(),
+            const SizedBox(height: 10),
+            _ButtonChangePasswordInput(),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _OldPasswordInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ChangePasswordBloc, ChangePasswordState>(
+      buildWhen: (previous, current) =>
+          previous.oldPassword != current.oldPassword,
+      builder: (context, state) {
+        return TextFormField(
+          key: const Key('changePasswordForm_currentPassword'),
+          autofocus: false,
+          obscureText: true,
+          decoration: InputDecoration(
+            labelText: 'Current Password',
+            hintText: 'Current Password',
+            contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+            errorText:
+                state.oldPassword.invalid ? 'Password is required!' : null,
           ),
-          const SizedBox(height: 10),
-          TextFormField(
-            key: const Key('changePasswordForm_newPassword'),
-            autofocus: false,
-            obscureText: true,
-            decoration: InputDecoration(
-              labelText: 'New Password',
-              hintText: 'New Password',
-              contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
-            ),
-            onChanged: (password) {},
+          onChanged: (password) => context
+              .read<ChangePasswordBloc>()
+              .add(OldPasswordChanged(password)),
+        );
+      },
+    );
+  }
+}
+
+class _NewPasswordInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ChangePasswordBloc, ChangePasswordState>(
+      buildWhen: (previous, current) =>
+          previous.newPassword != current.newPassword,
+      builder: (context, state) {
+        return TextFormField(
+          key: const Key('changePasswordForm_newPassword'),
+          autofocus: false,
+          obscureText: true,
+          decoration: InputDecoration(
+            labelText: 'New Password',
+            hintText: 'New Password',
+            contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+            errorText: state.newPassword.invalid
+                ? '''
+Make sure it\'s at least 8 characters\nincluding a number, a lowercase, and uppercase letter'''
+                : null,
           ),
-          const SizedBox(height: 10),
-          TextFormField(
-            key: const Key('changePasswordForm_confirmPassword'),
-            autofocus: false,
-            obscureText: true,
-            decoration: InputDecoration(
-              labelText: 'Confirm Password',
-              hintText: 'Confirm Password',
-              contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-              border:
-                  OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
-            ),
-            onChanged: (password) {},
+          onChanged: (password) => context
+              .read<ChangePasswordBloc>()
+              .add(NewPasswordChanged(password)),
+        );
+      },
+    );
+  }
+}
+
+class _ConfirmPasswordInput extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ChangePasswordBloc, ChangePasswordState>(
+      buildWhen: (previous, current) =>
+          previous.confirmPassword != current.confirmPassword,
+      builder: (context, state) {
+        return TextFormField(
+          key: const Key('changePasswordForm_confirmPassword'),
+          autofocus: false,
+          obscureText: true,
+          decoration: InputDecoration(
+            labelText: 'Confirm Password',
+            hintText: 'Confirm Password',
+            contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+            errorText: state.confirmPassword.invalid
+                ? 'New Password and Confirm Password not match'
+                : null,
           ),
-          const SizedBox(height: 10),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: Center(
-              child: Container(
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-                  boxShadow: <BoxShadow>[
-                    BoxShadow(
-                        color: Colors.grey.withOpacity(0.3),
-                        offset: const Offset(2, 2),
-                        blurRadius: 2.0),
-                  ],
-                ),
-                child: MaterialButton(
-                  color: AppTheme.button,
-                  disabledColor: AppTheme.buttonDisable,
-                  minWidth: 200.0,
-                  height: 48.0,
-                  onPressed: () {},
-                  child: const Center(
-                    child: Padding(
-                      padding: EdgeInsets.all(4.0),
-                      child: Text(
-                        'Change Password',
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                            color: Colors.white),
+          onChanged: (password) => context
+              .read<ChangePasswordBloc>()
+              .add(ConfirmPasswordChanged(password)),
+        );
+      },
+    );
+  }
+}
+
+class _ButtonChangePasswordInput extends StatelessWidget {
+  Function _changePasswordButtonPress(
+      BuildContext context, ChangePasswordState state) {
+    if (!state.action.isValidated || state.status.isSubmissionInProgress) {
+      return null;
+    } else {
+      return () {
+        context.read<ChangePasswordBloc>().add(const SubmittedEvent());
+      };
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ChangePasswordBloc, ChangePasswordState>(
+      buildWhen: (previous, current) => previous.action != current.action,
+      builder: (context, state) {
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: Center(
+            child: Container(
+              decoration: state.status.isSubmissionInProgress
+                  ? null
+                  : BoxDecoration(
+                      borderRadius:
+                          const BorderRadius.all(Radius.circular(5.0)),
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            offset: const Offset(2, 2),
+                            blurRadius: 2.0),
+                      ],
+                    ),
+              child: MaterialButton(
+                color: AppTheme.button,
+                disabledColor: AppTheme.buttonDisable,
+                minWidth: 200.0,
+                height: 48.0,
+                onPressed: _changePasswordButtonPress(context, state),
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(4.0),
+                    child: Text(
+                      'Change Password',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                        color: state.status.isSubmissionInProgress
+                            ? AppTheme.buttonTextDisable
+                            : Colors.white,
                       ),
                     ),
                   ),
                 ),
               ),
             ),
-          )
-        ],
-      ),
+          ),
+        );
+      },
     );
   }
 }

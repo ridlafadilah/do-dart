@@ -56,7 +56,7 @@ class ChangePasswordBloc extends Bloc<CommonEvent, ChangePasswordState> {
     ChangePasswordState state,
   ) {
     final confirmPassword = ConfirmedPassword.dirty(
-        password: event.confirmPassword, value: state.newPassword.value);
+        password: state.newPassword.value, value: event.confirmPassword);
     return state.copyWith(
       confirmPassword: confirmPassword,
       action: Formz.validate(

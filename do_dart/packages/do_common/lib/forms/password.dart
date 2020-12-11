@@ -18,7 +18,7 @@ class NewPassword extends FormzInput<String, PasswordValidationError> {
   const NewPassword.dirty([String value = '']) : super.dirty(value);
 
   static final _passwordRegExp =
-      RegExp(r'^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$');
+      RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])[a-zA-Z0-9]{8,}$');
 
   @override
   PasswordValidationError validator(String value) {
@@ -37,6 +37,10 @@ class ConfirmedPassword extends FormzInput<String, PasswordValidationError> {
 
   @override
   PasswordValidationError validator(String value) {
-    return password == value ? null : PasswordValidationError.notEquals;
+    if (value?.isNotEmpty == true) {
+      return password == value ? null : PasswordValidationError.notEquals;
+    } else {
+      return PasswordValidationError.empty;
+    }
   }
 }
