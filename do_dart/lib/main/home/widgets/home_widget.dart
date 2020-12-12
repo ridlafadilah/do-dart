@@ -1,5 +1,6 @@
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomeWidget extends StatelessWidget {
@@ -45,10 +46,10 @@ class HomeWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      const Text(
-                        'Hello,',
+                      Text(
+                        AppLocalizations.of(context).hello,
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: AppTheme.fontName,
                           fontWeight: FontWeight.normal,
                           fontSize: 14,

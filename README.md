@@ -89,6 +89,9 @@ Make sure following software is installed on your PC.
   * Restart the Dart Analysis Server (VS Code) :
 
   	`CTRL + Shift + P` , then search look for a command called `Dart: Restart Analysis Server`
+	```
+	do_dart$ flutter analyze
+	```
 
   * Run Application :
 	```

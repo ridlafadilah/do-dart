@@ -11,6 +11,7 @@ import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:global_configuration/global_configuration.dart';
 
 class DongkapApp extends StatelessWidget {
@@ -54,6 +55,11 @@ class _DongkapAppViewState extends State<DongkapAppView> {
 
   NavigatorState get _navigator => _navigatorKey.currentState;
 
+  static const List<Locale> supportedLocales = <Locale>[
+    Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
+    Locale.fromSubtags(languageCode: 'id', countryCode: 'ID'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -65,6 +71,14 @@ class _DongkapAppViewState extends State<DongkapAppView> {
         textTheme: AppTheme.textTheme,
         platform: TargetPlatform.iOS,
       ),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+      supportedLocales: supportedLocales,
+      localeResolutionCallback:
+          (Locale locale, Iterable<Locale> supportedLocales) {
+        locale = supportedLocales
+            .firstWhere((element) => element.languageCode == 'id');
+        return locale;
+      },
       builder: (context, child) {
         return BlocListener<AuthenticationBloc, AuthenticationState>(
           listener: (context, state) {
