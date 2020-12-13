@@ -1,5 +1,6 @@
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ExerciseBadgeWidget extends StatelessWidget {
@@ -46,10 +47,10 @@ class ExerciseBadgeWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      const Text(
-                        'Next workout',
+                      Text(
+                        AppLocalizations.of(context).badgeExerciseTitle,
                         textAlign: TextAlign.left,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: AppTheme.fontName,
                           fontWeight: FontWeight.normal,
                           fontSize: 14,
@@ -57,13 +58,12 @@ class ExerciseBadgeWidget extends StatelessWidget {
                           color: AppTheme.white,
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 8.0),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
-                          '''
-UI Widgets (Components)\nAPI calls\nAccessibility & i18n''',
+                          AppLocalizations.of(context).badgeExerciseSubtitle,
                           textAlign: TextAlign.left,
-                          style: TextStyle(
+                          style: const TextStyle(
                             fontFamily: AppTheme.fontName,
                             fontWeight: FontWeight.normal,
                             fontSize: 20,
@@ -89,12 +89,12 @@ UI Widgets (Components)\nAPI calls\nAccessibility & i18n''',
                                 size: 16,
                               ),
                             ),
-                            const Padding(
-                              padding: EdgeInsets.only(left: 4.0),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 4.0),
                               child: Text(
-                                '40 days',
+                                AppLocalizations.of(context).days(40),
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   fontFamily: AppTheme.fontName,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14,

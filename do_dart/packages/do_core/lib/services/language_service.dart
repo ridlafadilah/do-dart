@@ -10,12 +10,9 @@ import 'package:do_core/services/auth_service.dart';
 import 'package:do_core/services/core_locator.dart';
 import 'package:do_core/services/shared_preferences_service.dart';
 import 'package:logger/logger.dart';
-import 'package:meta/meta.dart';
 
 class LanguageService {
-  LanguageService({@required AuthService authService})
-      : assert(authService != null),
-        _authService = authService;
+  LanguageService({AuthService authService}) : _authService = authService;
 
   final logger = Logger();
   final AuthService _authService;
@@ -42,7 +39,12 @@ class LanguageService {
     }),
   ];
 
-  Future<List<LocaleDto>> getData() async {
+  LocaleDto getCurrentLocale() {
+    final String localeCode = _sharedPreferences.getString('locale');
+    return locales.singleWhere((element) => element.localeCode == localeCode);
+  }
+
+  List<LocaleDto> getData() {
     final String localeCode = _sharedPreferences.getString('locale');
     LocaleDto locale =
         locales.singleWhere((element) => element.localeCode == localeCode);

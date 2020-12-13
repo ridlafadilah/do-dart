@@ -9,6 +9,7 @@ import 'package:do_dart/main/ui_template/widgets/workout_widget.dart';
 import 'package:do_theme/theme.dart';
 import 'package:do_common/common.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class UITemplatePage extends StatefulWidget {
   const UITemplatePage({Key key, this.animationController}) : super(key: key);
@@ -268,7 +269,7 @@ class _UITemplatePageState extends State<UITemplatePage>
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Template',
+              AppLocalizations.of(context).template,
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontFamily: AppTheme.fontName,

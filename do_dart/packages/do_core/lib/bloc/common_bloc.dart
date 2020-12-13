@@ -1,6 +1,8 @@
-import 'package:do_core/bloc/common_event.dart';
-import 'package:do_core/bloc/common_state.dart';
+import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+part 'common_event.dart';
+part 'common_state.dart';
 
 abstract class CommonBloc<X, Y, Z> extends Bloc<CommonEvent, CommonState> {
   CommonBloc(CommonState state) : super(state);

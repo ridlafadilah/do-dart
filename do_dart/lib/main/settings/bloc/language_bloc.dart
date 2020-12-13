@@ -12,10 +12,11 @@ class LanguageBloc
 
   final AuthService _authService;
   LanguageService languageService;
+
   @override
   Future<List<LocaleDto>> getData() async {
     languageService = LanguageService(authService: _authService);
-    return await languageService.getData();
+    return languageService.getData();
   }
 
   @override

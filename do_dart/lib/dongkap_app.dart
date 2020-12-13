@@ -5,6 +5,7 @@ import 'package:do_dart/auth/auth.dart';
 import 'package:do_dart/auth/page/login/bloc/authentication/authentication_bloc.dart';
 import 'package:do_dart/configs/security_config.dart';
 import 'package:do_dart/environments/environment.dart';
+import 'package:do_dart/l10n/bloc/translation_bloc.dart';
 import 'package:do_dart/main/main_layout.dart';
 import 'package:do_dart/splash/splash.dart';
 import 'package:do_theme/theme.dart';
@@ -12,6 +13,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:global_configuration/global_configuration.dart';
 
 class DongkapApp extends StatelessWidget {
@@ -39,6 +41,9 @@ class DongkapApp extends StatelessWidget {
         BlocProvider<AuthenticationBloc>(
           create: (_) => AuthenticationBloc(
               authService: RepositoryProvider.of<AuthService>(_)),
+        ),
+        BlocProvider<TranslationBloc>(
+          create: (_) => TranslationBloc()..add(const TranslationEvent()),
         )
       ], child: DongkapAppView()),
     );
@@ -59,50 +64,57 @@ class _DongkapAppViewState extends State<DongkapAppView> {
     Locale.fromSubtags(languageCode: 'en', countryCode: 'US'),
     Locale.fromSubtags(languageCode: 'id', countryCode: 'ID'),
   ];
+  Locale localeDefault =
+      const Locale.fromSubtags(languageCode: 'en', countryCode: 'US');
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      navigatorKey: _navigatorKey,
-      title: 'Dongkap',
-      debugShowCheckedModeBanner: GlobalConfiguration().getValue<bool>('debug'),
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        textTheme: AppTheme.textTheme,
-        platform: TargetPlatform.iOS,
-      ),
-      localizationsDelegates: AppLocalizations.localizationsDelegates,
-      supportedLocales: supportedLocales,
-      localeResolutionCallback:
-          (Locale locale, Iterable<Locale> supportedLocales) {
-        locale = supportedLocales
-            .firstWhere((element) => element.languageCode == 'id');
-        return locale;
-      },
-      builder: (context, child) {
-        return BlocListener<AuthenticationBloc, AuthenticationState>(
-          listener: (context, state) {
-            switch (state.status) {
-              case AuthStatus.authenticated:
-                _navigator.pushAndRemoveUntil<void>(
-                  MainLayout.route(),
-                  (route) => false,
-                );
-                break;
-              case AuthStatus.unauthenticated:
-                _navigator.pushAndRemoveUntil<void>(
-                  LoginPage.route(),
-                  (route) => false,
-                );
-                break;
-              default:
-                break;
-            }
+    return BlocBuilder<TranslationBloc, TranslationState>(
+      builder: (BuildContext context, TranslationState state) {
+        return MaterialApp(
+          navigatorKey: _navigatorKey,
+          title: 'Dongkap',
+          debugShowCheckedModeBanner:
+              GlobalConfiguration().getValue<bool>('debug'),
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+            textTheme: AppTheme.textTheme,
+            platform: TargetPlatform.iOS,
+          ),
+          localizationsDelegates: [
+            AppLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: supportedLocales,
+          locale: state.locale,
+          builder: (context, child) {
+            return BlocListener<AuthenticationBloc, AuthenticationState>(
+              listener: (context, state) {
+                switch (state.status) {
+                  case AuthStatus.authenticated:
+                    _navigator.pushAndRemoveUntil<void>(
+                      MainLayout.route(),
+                      (route) => false,
+                    );
+                    break;
+                  case AuthStatus.unauthenticated:
+                    _navigator.pushAndRemoveUntil<void>(
+                      LoginPage.route(),
+                      (route) => false,
+                    );
+                    break;
+                  default:
+                    break;
+                }
+              },
+              child: child,
+            );
           },
-          child: child,
+          onGenerateRoute: (_) => SplashPage.route(),
         );
       },
-      onGenerateRoute: (_) => SplashPage.route(),
     );
   }
 }

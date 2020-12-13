@@ -1,14 +1,13 @@
 import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
 import 'package:do_dart/main/security/bloc/provider_bloc.dart';
-import 'package:do_dart/main/security/bloc/provider_event.dart';
-import 'package:do_dart/main/security/bloc/provider_state.dart';
 import 'package:do_dart/main/security/bloc/two_factor_auth_bloc.dart';
 import 'package:do_dart/main/security/change_password_page.dart';
 import 'package:do_dart/main/security/deactivate_account_page.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SecurityWidget extends StatefulWidget {
@@ -49,10 +48,10 @@ class _SecurityWidgetState extends State<SecurityWidget> {
           ListTile(
             enabled: false,
             leading: SvgPicture.asset('assets/eva_icons/fill/svg/google.svg'),
-            title: const Text(
-              'Logged in with Google',
-              style:
-                  TextStyle(fontFamily: AppTheme.fontName, color: Colors.black),
+            title: Text(
+              AppLocalizations.of(context).labelLoginSocial('Google'),
+              style: const TextStyle(
+                  fontFamily: AppTheme.fontName, color: Colors.black),
             ),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -66,9 +65,9 @@ class _SecurityWidgetState extends State<SecurityWidget> {
           ListTile(
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/slash-outline.svg'),
-            title: const Text(
-              'Deactivate Account',
-              style: TextStyle(fontFamily: AppTheme.fontName),
+            title: Text(
+              AppLocalizations.of(context).deactivateAccount,
+              style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -105,9 +104,9 @@ class _SecurityWidgetState extends State<SecurityWidget> {
           ListTile(
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/lock-outline.svg'),
-            title: const Text(
-              'Change Password',
-              style: TextStyle(fontFamily: AppTheme.fontName),
+            title: Text(
+              AppLocalizations.of(context).changePassword,
+              style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -158,13 +157,14 @@ class _SecurityWidgetState extends State<SecurityWidget> {
                       secondary: Padding(
                           padding: const EdgeInsets.only(left: 15),
                           child: SvgPicture.asset(is2FAIcon)),
-                      title: const Text(
-                        '2-Step Verification',
-                        style: TextStyle(fontFamily: AppTheme.fontName),
+                      title: Text(
+                        AppLocalizations.of(context).twoFactorAuthentication,
+                        style: const TextStyle(fontFamily: AppTheme.fontName),
                       ),
-                      subtitle: const Text(
-                        'Send a verification code every time you login',
-                        style: TextStyle(fontFamily: AppTheme.fontName),
+                      subtitle: Text(
+                        AppLocalizations.of(context)
+                            .twoFactorAuthenticationSubtitle,
+                        style: const TextStyle(fontFamily: AppTheme.fontName),
                       ),
                       contentPadding:
                           const EdgeInsets.only(left: 5.0, right: 15.0),
@@ -187,9 +187,9 @@ class _SecurityWidgetState extends State<SecurityWidget> {
           ListTile(
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/slash-outline.svg'),
-            title: const Text(
-              'Deactivate Account',
-              style: TextStyle(fontFamily: AppTheme.fontName),
+            title: Text(
+              AppLocalizations.of(context).deactivateAccount,
+              style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -215,9 +215,11 @@ class _SecurityWidgetState extends State<SecurityWidget> {
   }
 
   void _prompt2FA(BuildContext context, bool twoFA) async {
-    String subtitle = 'Are you sure want to disable Two Factor Authentication?';
+    String subtitle = AppLocalizations.of(context)
+        .promptTwoFactorAuthenticationDisableSubtitle;
     if (twoFA)
-      subtitle = 'Are you sure want to enable Two Factor Authentication?';
+      subtitle = AppLocalizations.of(context)
+          .promptTwoFactorAuthenticationEnableSubtitle;
     await showModalBottomSheet(
         useRootNavigator: true,
         isScrollControlled: false,
@@ -227,9 +229,10 @@ class _SecurityWidgetState extends State<SecurityWidget> {
         backgroundColor: Colors.transparent,
         builder: (builder) {
           return DialogBottomSheet(
-            title: 'Two Factor Authentication',
+            title:
+                AppLocalizations.of(context).promptTwoFactorAuthenticationTitle,
             subtitle: subtitle,
-            submit: 'Submit',
+            submit: AppLocalizations.of(context).buttonSubmit,
             onSubmit: () {
               Navigator.of(context, rootNavigator: true).pop();
               context

@@ -2,11 +2,13 @@ import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
 import 'package:do_core/models.dart';
 import 'package:do_core/models/locale_dto.dart';
+import 'package:do_dart/l10n/bloc/translation_bloc.dart';
 import 'package:do_dart/main/settings/bloc/language_bloc.dart';
 import 'package:do_dart/main/settings/widgets/language_widget.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LanguagePage extends StatefulWidget {
@@ -90,6 +92,7 @@ class _LanguagePageState extends State<LanguagePage>
           } else if (state is SubmitFailureState) {
             Navigator.of(context, rootNavigator: true).pop();
           } else if (state is SubmitSuccessState<BaseResponse>) {
+            context.read<TranslationBloc>().add(const TranslationEvent());
             Navigator.of(context, rootNavigator: true).pop();
             Navigator.of(context).pop();
           }
@@ -147,7 +150,7 @@ class _LanguagePageState extends State<LanguagePage>
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Language',
+              AppLocalizations.of(context).language,
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontFamily: AppTheme.fontName,

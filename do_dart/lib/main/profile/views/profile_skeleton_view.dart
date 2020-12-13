@@ -2,6 +2,7 @@ import 'package:do_dart/main/profile/widgets/profile_detail_skeleton_widget.dart
 import 'package:do_dart/main/profile/widgets/profile_header_skeleton_widget.dart';
 import 'package:do_common/common.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileSkeletonView extends StatefulWidget {
   ProfileSkeletonView(
@@ -25,11 +26,11 @@ class _ProfileSkeletonViewState extends State<ProfileSkeletonView> {
   @override
   void initState() {
     super.initState();
-    addList();
   }
 
   @override
   Widget build(BuildContext context) {
+    addList(context);
     return ListView.builder(
       controller: widget.scrollController,
       padding: EdgeInsets.only(
@@ -43,7 +44,7 @@ class _ProfileSkeletonViewState extends State<ProfileSkeletonView> {
     );
   }
 
-  void addList() {
+  void addList(BuildContext context) {
     listWidgets.add(
       ProfileHeaderSkeletonWidget(
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
@@ -56,8 +57,8 @@ class _ProfileSkeletonViewState extends State<ProfileSkeletonView> {
 
     listWidgets.add(
       TitleWidget(
-        titleTxt: 'Your Profile',
-        subTxt: 'Customize',
+        titleTxt: AppLocalizations.of(context).titleWidgetProfiletitle,
+        subTxt: AppLocalizations.of(context).titleWidgetProfileSubtitle,
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve: Interval((1 / widget.itemTotal) * 1, 1.0,

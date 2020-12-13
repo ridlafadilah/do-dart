@@ -1,4 +1,4 @@
-import 'package:equatable/equatable.dart';
+part of 'common_bloc.dart';
 
 abstract class CommonState extends Equatable {
   const CommonState();

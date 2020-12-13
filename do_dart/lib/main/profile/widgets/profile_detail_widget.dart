@@ -1,6 +1,7 @@
 import 'package:do_core/models.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileDetailWidget extends StatelessWidget {
@@ -61,9 +62,9 @@ class ProfileDetailWidget extends StatelessWidget {
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/person-outline.svg',
                                 color: AppTheme.grey),
-                            title: const Text(
-                              'Username',
-                              style: TextStyle(
+                            title: Text(
+                              AppLocalizations.of(context).username,
+                              style: const TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
@@ -87,9 +88,9 @@ class ProfileDetailWidget extends StatelessWidget {
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/phone-outline.svg',
                                 color: AppTheme.grey),
-                            title: const Text(
-                              'Phone Number',
-                              style: TextStyle(
+                            title: Text(
+                              AppLocalizations.of(context).phoneNumber,
+                              style: const TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
@@ -115,9 +116,9 @@ class ProfileDetailWidget extends StatelessWidget {
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/people-outline.svg',
                                 color: AppTheme.grey),
-                            title: const Text(
-                              'Gender',
-                              style: TextStyle(
+                            title: Text(
+                              AppLocalizations.of(context).gender,
+                              style: const TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
@@ -141,9 +142,9 @@ class ProfileDetailWidget extends StatelessWidget {
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/calendar-outline.svg',
                                 color: AppTheme.grey),
-                            title: const Text(
-                              'Place / Date of Birth',
-                              style: TextStyle(
+                            title: Text(
+                              AppLocalizations.of(context).pdob,
+                              style: const TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
@@ -167,9 +168,9 @@ class ProfileDetailWidget extends StatelessWidget {
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/home-outline.svg',
                                 color: AppTheme.grey),
-                            title: const Text(
-                              'Address',
-                              style: TextStyle(
+                            title: Text(
+                              AppLocalizations.of(context).address,
+                              style: const TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,

@@ -1,6 +1,7 @@
 import 'package:do_dart/main/security/widgets/deactivate_dialog_bottom_sheet.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DeactivateAccountWidget extends StatefulWidget {
   const DeactivateAccountWidget({Key key, this.animationController})
@@ -20,10 +21,9 @@ class _DeactivateAccountWidgetState extends State<DeactivateAccountWidget> {
       padding: const EdgeInsets.only(left: 25, right: 25),
       child: Column(
         children: <Widget>[
-          const Text(
-            '''
-Once you deactivated account, there is no going back. Please be certain.''',
-            style: TextStyle(
+          Text(
+            AppLocalizations.of(context).deactivateAccountWarning,
+            style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
                 wordSpacing: 1.5,
@@ -52,12 +52,12 @@ Once you deactivated account, there is no going back. Please be certain.''',
                     onPressed: () {
                       _promptDeactivate(context);
                     },
-                    child: const Center(
+                    child: Center(
                       child: Padding(
-                        padding: EdgeInsets.all(4.0),
+                        padding: const EdgeInsets.all(4.0),
                         child: Text(
-                          'Deactivate Account',
-                          style: TextStyle(
+                          AppLocalizations.of(context).deactivateAccount,
+                          style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,
                               color: Colors.white),

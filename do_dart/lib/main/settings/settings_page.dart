@@ -1,6 +1,7 @@
 import 'package:do_dart/main/settings/widgets/settings_widget.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingsPage extends StatelessWidget {
@@ -65,13 +66,13 @@ class SettingsPage extends StatelessWidget {
             ),
           ),
         ),
-        const Expanded(
+        Expanded(
           child: Padding(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Settings',
+              AppLocalizations.of(context).settings,
               textAlign: TextAlign.left,
-              style: TextStyle(
+              style: const TextStyle(
                 fontFamily: AppTheme.fontName,
                 fontWeight: FontWeight.w700,
                 fontSize: 22 + 6 - 6 * 0.0,

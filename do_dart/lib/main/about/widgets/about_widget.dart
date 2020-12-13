@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:package_info/package_info.dart';
 
@@ -39,9 +40,9 @@ class _AboutWidgetState extends State<AboutWidget> {
           ListTile(
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/shield-outline.svg'),
-            title: const Text(
-              'Privacy Policy',
-              style: TextStyle(fontFamily: AppTheme.fontName),
+            title: Text(
+              AppLocalizations.of(context).privacyPolicy,
+              style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -57,9 +58,9 @@ class _AboutWidgetState extends State<AboutWidget> {
           ListTile(
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/file-text-outline.svg'),
-            title: const Text(
-              'Terms and Conditions',
-              style: TextStyle(fontFamily: AppTheme.fontName),
+            title: Text(
+              AppLocalizations.of(context).termsAndConditions,
+              style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),

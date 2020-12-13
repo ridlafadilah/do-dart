@@ -1,8 +1,9 @@
 import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
-import 'package:do_dart/main/security/bloc/provider_event.dart';
-import 'package:do_dart/main/security/bloc/provider_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+part 'provider_event.dart';
+part 'provider_state.dart';
 
 class ProviderBloc extends Bloc<ProviderEvent, CommonState> {
   ProviderBloc() : super(LocalState());

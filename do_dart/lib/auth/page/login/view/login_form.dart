@@ -3,6 +3,7 @@ import 'package:do_dart/auth/page/login/bloc/login_bloc.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
 
@@ -57,12 +58,14 @@ class _UsernameInput extends StatelessWidget {
           keyboardType: TextInputType.emailAddress,
           autofocus: false,
           decoration: InputDecoration(
-            labelText: 'Username or email :',
-            hintText: 'Username / Email',
+            labelText: AppLocalizations.of(context).labelUsernameEmail,
+            hintText: AppLocalizations.of(context).hintUsernameEmail,
             contentPadding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
-            errorText: state.username.invalid ? 'invalid username' : null,
+            errorText: state.username.invalid
+                ? AppLocalizations.of(context).errorUsername
+                : null,
           ),
           onChanged: (username) =>
               context.read<LoginBloc>().add(LoginUsernameChanged(username)),
@@ -89,12 +92,14 @@ class __PasswordInputState extends State<_PasswordInput> {
             key: const Key('loginForm_password'),
             autofocus: false,
             decoration: InputDecoration(
-              labelText: 'Password :',
-              hintText: 'Password',
+              labelText: '${AppLocalizations.of(context).password} :',
+              hintText: AppLocalizations.of(context).password,
               contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
-              errorText: state.password.invalid ? 'invalid password' : null,
+              errorText: state.password.invalid
+                  ? AppLocalizations.of(context).errorPassword
+                  : null,
               suffixIcon: Padding(
                 padding: const EdgeInsets.all(12.0),
                 child: GestureDetector(
@@ -164,7 +169,7 @@ class _LoginButton extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Text(
-                          'LOGIN',
+                          AppLocalizations.of(context).login.toUpperCase(),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
@@ -189,10 +194,10 @@ class _TitleLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 8),
-      child: const Text(
-        'Login',
+      child: Text(
+        AppLocalizations.of(context).login,
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: AppTheme.fontName,
           fontSize: 35,
           fontWeight: FontWeight.w700,
@@ -207,10 +212,10 @@ class _SubtitleLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 8),
-      child: const Text(
-        'Hello! Login with your username or email.',
+      child: Text(
+        AppLocalizations.of(context).labelLogin,
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: AppTheme.fontName,
           fontSize: 16,
           fontWeight: FontWeight.w400,
@@ -226,9 +231,9 @@ class _ForgotPasswordLabel extends StatelessWidget {
     return Align(
         alignment: Alignment.centerRight,
         child: FlatButton(
-          child: const Text(
-            'Forgot password?',
-            style: TextStyle(color: Colors.black54),
+          child: Text(
+            '${AppLocalizations.of(context).forgotPassword}?',
+            style: const TextStyle(color: Colors.black54),
           ),
           onPressed: () {},
         ));
@@ -240,10 +245,10 @@ class _AdditionalTitleLabel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 8),
-      child: const Text(
-        'or enter with:',
+      child: Text(
+        '${AppLocalizations.of(context).labelFooterLoginSocial} :',
         textAlign: TextAlign.center,
-        style: TextStyle(
+        style: const TextStyle(
           fontFamily: AppTheme.fontName,
           fontSize: 16,
           fontWeight: FontWeight.w400,
@@ -275,12 +280,12 @@ class _RegisterLink extends StatelessWidget {
           direction: Axis.horizontal,
           alignment: WrapAlignment.center,
           children: <Widget>[
-            const Padding(
-                padding: EdgeInsets.only(right: 2),
+            Padding(
+                padding: const EdgeInsets.only(right: 2),
                 child: Text(
-                  'Don' 't have an account?',
+                  AppLocalizations.of(context).labelFooterLoginOther,
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontFamily: AppTheme.fontName,
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
@@ -288,10 +293,10 @@ class _RegisterLink extends StatelessWidget {
                 )),
             InkWell(
               onTap: () {},
-              child: const Text(
-                'Register',
+              child: Text(
+                AppLocalizations.of(context).register,
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: AppTheme.fontName,
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
@@ -312,10 +317,10 @@ class _TermsConditionLink extends StatelessWidget {
       padding: const EdgeInsets.only(top: 8),
       child: InkWell(
         onTap: () {},
-        child: const Text(
-          'Terms & Conditions',
+        child: Text(
+          AppLocalizations.of(context).termsAndConditions,
           textAlign: TextAlign.center,
-          style: TextStyle(
+          style: const TextStyle(
             fontFamily: AppTheme.fontName,
             fontSize: 16,
             fontWeight: FontWeight.w400,

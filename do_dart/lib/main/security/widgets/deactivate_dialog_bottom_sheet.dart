@@ -1,5 +1,6 @@
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DeactivateDialogBottomSheet extends StatefulWidget {
@@ -14,10 +15,6 @@ class DeactivateDialogBottomSheet extends StatefulWidget {
 
 class _DeactivateDialogBottomSheetState
     extends State<DeactivateDialogBottomSheet> {
-  final String title = 'Deactivate Account';
-  final String subtitle = '''
-This action cannot be undone. This will permanently disable your account.\nI understand the consequences''';
-  final String submit = 'Deactivate Account';
   final double sizeExitButton = 70.0;
   final double height = 370.0;
   bool isObscureText = true;
@@ -71,7 +68,7 @@ This action cannot be undone. This will permanently disable your account.\nI und
                       bottom: 15,
                     ),
                     child: Text(
-                      title,
+                      AppLocalizations.of(context).promptDeactivateAccountTitle,
                       style: const TextStyle(
                         fontFamily: AppTheme.fontName,
                         fontSize: 24,
@@ -86,7 +83,8 @@ This action cannot be undone. This will permanently disable your account.\nI und
                       bottom: 20,
                     ),
                     child: Text(
-                      subtitle,
+                      AppLocalizations.of(context)
+                          .promptDeactivateAccountSubtitle,
                       style: const TextStyle(
                         fontFamily: AppTheme.fontName,
                         wordSpacing: 0.5,
@@ -101,8 +99,8 @@ This action cannot be undone. This will permanently disable your account.\nI und
                       key: const Key('deactivateAccountForm_password'),
                       autofocus: true,
                       decoration: InputDecoration(
-                        labelText: 'Password',
-                        hintText: 'Password',
+                        labelText: AppLocalizations.of(context).password,
+                        hintText: AppLocalizations.of(context).password,
                         contentPadding:
                             const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
                         border: OutlineInputBorder(
@@ -157,7 +155,7 @@ This action cannot be undone. This will permanently disable your account.\nI und
             highlightElevation: 1.0,
             onPressed: widget.onSubmit,
             child: Text(
-              submit,
+              AppLocalizations.of(context).promptDeactivateAccountTitle,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,

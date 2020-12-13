@@ -11,6 +11,7 @@ import 'package:do_dart/main/settings/settings_page.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -125,7 +126,7 @@ class _ProfilePageState extends State<ProfilePage>
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              'Account',
+              AppLocalizations.of(context).account,
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontFamily: AppTheme.fontName,
@@ -197,9 +198,9 @@ class _ProfilePageState extends State<ProfilePage>
                   ListTile(
                     leading: SvgPicture.asset(
                         'assets/eva_icons/outline/svg/settings-outline.svg'),
-                    title: const Text(
-                      'Settings',
-                      style: TextStyle(fontFamily: AppTheme.fontName),
+                    title: Text(
+                      AppLocalizations.of(context).settings,
+                      style: const TextStyle(fontFamily: AppTheme.fontName),
                     ),
                     horizontalTitleGap: 2,
                     contentPadding:
@@ -224,9 +225,9 @@ class _ProfilePageState extends State<ProfilePage>
                   ListTile(
                     leading: SvgPicture.asset(
                         'assets/eva_icons/outline/svg/lock-outline.svg'),
-                    title: const Text(
-                      'Security',
-                      style: TextStyle(fontFamily: AppTheme.fontName),
+                    title: Text(
+                      AppLocalizations.of(context).security,
+                      style: const TextStyle(fontFamily: AppTheme.fontName),
                     ),
                     horizontalTitleGap: 2,
                     contentPadding:
@@ -251,9 +252,9 @@ class _ProfilePageState extends State<ProfilePage>
                   ListTile(
                     leading: SvgPicture.asset(
                         'assets/eva_icons/outline/svg/info-outline.svg'),
-                    title: const Text(
-                      'About',
-                      style: TextStyle(fontFamily: AppTheme.fontName),
+                    title: Text(
+                      AppLocalizations.of(context).about,
+                      style: const TextStyle(fontFamily: AppTheme.fontName),
                     ),
                     horizontalTitleGap: 2,
                     contentPadding:
@@ -278,9 +279,9 @@ class _ProfilePageState extends State<ProfilePage>
                   ListTile(
                     leading: SvgPicture.asset(
                         'assets/eva_icons/outline/svg/power-outline.svg'),
-                    title: const Text(
-                      'Logout',
-                      style: TextStyle(fontFamily: AppTheme.fontName),
+                    title: Text(
+                      AppLocalizations.of(context).logout,
+                      style: const TextStyle(fontFamily: AppTheme.fontName),
                     ),
                     horizontalTitleGap: 2,
                     contentPadding:

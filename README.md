@@ -31,16 +31,16 @@ Dongkap | Mobile Application with Flutter
 
 * __Google reCAPTCHA v2__ ( _soon_ )
 
-* __i18n__ ( _soon_ )
+* __l10n__ ( _flutter_localizations_ )
 
 * __Simple UI Template__
   * Login
   * Registration ( _soon_ )
   * Forgot Password ( _soon_ )
-  * Change Password ( _soon_ )
+  * Change Password
   * Update Profile ( _soon_ )
   * Upload Photo Profile ( _soon_ )
-  * Change Language ( _soon_ )
+  * Change Language
   * Dark Mode ( _soon_ )
 
 <p float="left">

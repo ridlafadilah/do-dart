@@ -1,4 +1,4 @@
-import 'package:do_core/bloc.dart';
+part of 'provider_bloc.dart';
 
 class ProviderType {
   static const String local = 'local';

@@ -6,6 +6,7 @@ import 'package:do_dart/main/settings/language_page.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingsWidget extends StatefulWidget {
@@ -32,9 +33,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
           ListTile(
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/globe-outline.svg'),
-            title: const Text(
-              'Language',
-              style: TextStyle(fontFamily: AppTheme.fontName),
+            title: Text(
+              AppLocalizations.of(context).language,
+              style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
@@ -87,9 +88,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       secondary: Padding(
                           padding: const EdgeInsets.only(left: 15),
                           child: SvgPicture.asset(iconDarkMode)),
-                      title: const Text(
-                        'Dark Mode',
-                        style: TextStyle(fontFamily: AppTheme.fontName),
+                      title: Text(
+                        AppLocalizations.of(context).darkMode,
+                        style: const TextStyle(fontFamily: AppTheme.fontName),
                       ),
                       contentPadding:
                           const EdgeInsets.only(left: 5.0, right: 15.0),
@@ -115,8 +116,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   }
 
   void _promptTheme(BuildContext context, bool darkMode) async {
-    String subtitle = 'Are you sure want to change to default mode?';
-    if (darkMode) subtitle = 'Are you sure want to change to dark mode?';
+    String subtitle = AppLocalizations.of(context).defaultMode;
+    if (darkMode) subtitle = AppLocalizations.of(context).darkMode;
+    subtitle = AppLocalizations.of(context).promptThemeSubtitle(subtitle);
     await showModalBottomSheet(
         useRootNavigator: true,
         isScrollControlled: false,
@@ -126,9 +128,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         backgroundColor: Colors.transparent,
         builder: (builder) {
           return DialogBottomSheet(
-            title: 'Change Theme',
+            title: AppLocalizations.of(context).promptThemeTitle,
             subtitle: subtitle,
-            submit: 'Submit',
+            submit: AppLocalizations.of(context).buttonSubmit,
             height: 260.0,
             onSubmit: () {
               Navigator.of(context, rootNavigator: true).pop();
