@@ -1,4 +1,5 @@
 analyzer:
+  exclude: [lib/generated/**]
   errors:
     close_sinks: ignore
     uri_has_not_been_generated: ignore
