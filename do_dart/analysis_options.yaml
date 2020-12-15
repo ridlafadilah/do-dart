@@ -1,11 +1,7 @@
 analyzer:
-  exclude: [lib/generated/**]
   errors:
     close_sinks: ignore
     uri_has_not_been_generated: ignore
-    implementation_imports: ignore
-    non_constant_identifier_names: ignore
-    unused_element: ignore
 
 linter:
   rules:
