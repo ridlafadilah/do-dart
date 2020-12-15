@@ -2,7 +2,7 @@ import 'package:do_common/common.dart';
 import 'package:do_core/models.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LanguageWidget extends StatelessWidget {
@@ -64,10 +64,10 @@ class LanguageWidget extends StatelessWidget {
         backgroundColor: Colors.transparent,
         builder: (builder) {
           return DialogBottomSheet(
-            title: AppLocalizations.of(context).promptLanguageTitle,
-            subtitle: AppLocalizations.of(context)
+            title: DongkapLocalizations.of(context).promptLanguageTitle,
+            subtitle: DongkapLocalizations.of(context)
                 .promptLanguageSubtitle(locale.identifier),
-            submit: AppLocalizations.of(context).buttonSubmit,
+            submit: DongkapLocalizations.of(context).buttonSubmit,
             onSubmit: () {
               Navigator.of(context, rootNavigator: true).pop();
               onSelect(locale);

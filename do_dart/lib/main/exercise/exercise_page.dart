@@ -1,7 +1,7 @@
 import 'package:do_dart/main/exercise/widgets/exercise_badge_widget.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 
 class ExercisePage extends StatefulWidget {
   const ExercisePage({Key key, this.animationController}) : super(key: key);
@@ -113,7 +113,7 @@ class _ExercisePageState extends State<ExercisePage>
     return DongkapAppBar(
       animationController: widget.animationController,
       topBarOpacity: _topBarOpacity,
-      title: AppLocalizations.of(context).exercise,
+      title: DongkapLocalizations.of(context).exercise,
     );
   }
 }

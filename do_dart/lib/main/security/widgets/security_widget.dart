@@ -7,7 +7,7 @@ import 'package:do_dart/main/security/deactivate_account_page.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SecurityWidget extends StatefulWidget {
@@ -49,7 +49,7 @@ class _SecurityWidgetState extends State<SecurityWidget> {
             enabled: false,
             leading: SvgPicture.asset('assets/eva_icons/fill/svg/google.svg'),
             title: Text(
-              AppLocalizations.of(context).labelLoginSocial('Google'),
+              DongkapLocalizations.of(context).labelLoginSocial('Google'),
               style: const TextStyle(
                   fontFamily: AppTheme.fontName, color: Colors.black),
             ),
@@ -66,7 +66,7 @@ class _SecurityWidgetState extends State<SecurityWidget> {
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/slash-outline.svg'),
             title: Text(
-              AppLocalizations.of(context).deactivateAccount,
+              DongkapLocalizations.of(context).deactivateAccount,
               style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
@@ -105,7 +105,7 @@ class _SecurityWidgetState extends State<SecurityWidget> {
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/lock-outline.svg'),
             title: Text(
-              AppLocalizations.of(context).changePassword,
+              DongkapLocalizations.of(context).changePassword,
               style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
@@ -158,11 +158,12 @@ class _SecurityWidgetState extends State<SecurityWidget> {
                           padding: const EdgeInsets.only(left: 15),
                           child: SvgPicture.asset(is2FAIcon)),
                       title: Text(
-                        AppLocalizations.of(context).twoFactorAuthentication,
+                        DongkapLocalizations.of(context)
+                            .twoFactorAuthentication,
                         style: const TextStyle(fontFamily: AppTheme.fontName),
                       ),
                       subtitle: Text(
-                        AppLocalizations.of(context)
+                        DongkapLocalizations.of(context)
                             .twoFactorAuthenticationSubtitle,
                         style: const TextStyle(fontFamily: AppTheme.fontName),
                       ),
@@ -188,7 +189,7 @@ class _SecurityWidgetState extends State<SecurityWidget> {
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/slash-outline.svg'),
             title: Text(
-              AppLocalizations.of(context).deactivateAccount,
+              DongkapLocalizations.of(context).deactivateAccount,
               style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
@@ -215,10 +216,10 @@ class _SecurityWidgetState extends State<SecurityWidget> {
   }
 
   void _prompt2FA(BuildContext context, bool twoFA) async {
-    String subtitle = AppLocalizations.of(context)
+    String subtitle = DongkapLocalizations.of(context)
         .promptTwoFactorAuthenticationDisableSubtitle;
     if (twoFA)
-      subtitle = AppLocalizations.of(context)
+      subtitle = DongkapLocalizations.of(context)
           .promptTwoFactorAuthenticationEnableSubtitle;
     await showModalBottomSheet(
         useRootNavigator: true,
@@ -229,10 +230,10 @@ class _SecurityWidgetState extends State<SecurityWidget> {
         backgroundColor: Colors.transparent,
         builder: (builder) {
           return DialogBottomSheet(
-            title:
-                AppLocalizations.of(context).promptTwoFactorAuthenticationTitle,
+            title: DongkapLocalizations.of(context)
+                .promptTwoFactorAuthenticationTitle,
             subtitle: subtitle,
-            submit: AppLocalizations.of(context).buttonSubmit,
+            submit: DongkapLocalizations.of(context).buttonSubmit,
             onSubmit: () {
               Navigator.of(context, rootNavigator: true).pop();
               context

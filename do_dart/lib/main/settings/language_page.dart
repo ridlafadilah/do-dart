@@ -8,7 +8,7 @@ import 'package:do_dart/main/settings/widgets/language_widget.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class LanguagePage extends StatefulWidget {
@@ -150,7 +150,7 @@ class _LanguagePageState extends State<LanguagePage>
           child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              AppLocalizations.of(context).language,
+              DongkapLocalizations.of(context).language,
               textAlign: TextAlign.left,
               style: TextStyle(
                 fontFamily: AppTheme.fontName,

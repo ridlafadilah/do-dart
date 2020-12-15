@@ -1,7 +1,7 @@
 import 'package:do_dart/main/security/widgets/deactivate_dialog_bottom_sheet.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 
 class DeactivateAccountWidget extends StatefulWidget {
   const DeactivateAccountWidget({Key key, this.animationController})
@@ -22,7 +22,7 @@ class _DeactivateAccountWidgetState extends State<DeactivateAccountWidget> {
       child: Column(
         children: <Widget>[
           Text(
-            AppLocalizations.of(context).deactivateAccountWarning,
+            DongkapLocalizations.of(context).deactivateAccountWarning,
             style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w500,
@@ -56,7 +56,7 @@ class _DeactivateAccountWidgetState extends State<DeactivateAccountWidget> {
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Text(
-                          AppLocalizations.of(context).deactivateAccount,
+                          DongkapLocalizations.of(context).deactivateAccount,
                           style: const TextStyle(
                               fontSize: 16,
                               fontWeight: FontWeight.w500,

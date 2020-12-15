@@ -3,7 +3,7 @@ import 'package:do_dart/main/profile/widgets/profile_detail_widget.dart';
 import 'package:do_dart/main/profile/widgets/profile_header_widget.dart';
 import 'package:do_common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 
 class ProfileView extends StatefulWidget {
   ProfileView(
@@ -61,8 +61,8 @@ class _ProfileViewState extends State<ProfileView> {
 
     listWidgets.add(
       TitleWidget(
-        titleTxt: AppLocalizations.of(context).titleWidgetProfiletitle,
-        subTxt: AppLocalizations.of(context).titleWidgetProfileSubtitle,
+        titleTxt: DongkapLocalizations.of(context).titleWidgetProfiletitle,
+        subTxt: DongkapLocalizations.of(context).titleWidgetProfileSubtitle,
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve: Interval((1 / widget.itemTotal) * 1, 1.0,

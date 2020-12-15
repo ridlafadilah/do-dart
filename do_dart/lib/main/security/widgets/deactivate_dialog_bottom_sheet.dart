@@ -1,6 +1,6 @@
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class DeactivateDialogBottomSheet extends StatefulWidget {
@@ -68,7 +68,8 @@ class _DeactivateDialogBottomSheetState
                       bottom: 15,
                     ),
                     child: Text(
-                      AppLocalizations.of(context).promptDeactivateAccountTitle,
+                      DongkapLocalizations.of(context)
+                          .promptDeactivateAccountTitle,
                       style: const TextStyle(
                         fontFamily: AppTheme.fontName,
                         fontSize: 24,
@@ -83,7 +84,7 @@ class _DeactivateDialogBottomSheetState
                       bottom: 20,
                     ),
                     child: Text(
-                      AppLocalizations.of(context)
+                      DongkapLocalizations.of(context)
                           .promptDeactivateAccountSubtitle,
                       style: const TextStyle(
                         fontFamily: AppTheme.fontName,
@@ -99,8 +100,8 @@ class _DeactivateDialogBottomSheetState
                       key: const Key('deactivateAccountForm_password'),
                       autofocus: true,
                       decoration: InputDecoration(
-                        labelText: AppLocalizations.of(context).password,
-                        hintText: AppLocalizations.of(context).password,
+                        labelText: DongkapLocalizations.of(context).password,
+                        hintText: DongkapLocalizations.of(context).password,
                         contentPadding:
                             const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
                         border: OutlineInputBorder(
@@ -155,7 +156,7 @@ class _DeactivateDialogBottomSheetState
             highlightElevation: 1.0,
             onPressed: widget.onSubmit,
             child: Text(
-              AppLocalizations.of(context).promptDeactivateAccountTitle,
+              DongkapLocalizations.of(context).promptDeactivateAccountTitle,
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,

@@ -1,6 +1,6 @@
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ExerciseBadgeWidget extends StatelessWidget {
@@ -48,7 +48,7 @@ class ExerciseBadgeWidget extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       Text(
-                        AppLocalizations.of(context).badgeExerciseTitle,
+                        DongkapLocalizations.of(context).badgeExerciseTitle,
                         textAlign: TextAlign.left,
                         style: const TextStyle(
                           fontFamily: AppTheme.fontName,
@@ -61,7 +61,8 @@ class ExerciseBadgeWidget extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Text(
-                          AppLocalizations.of(context).badgeExerciseSubtitle,
+                          DongkapLocalizations.of(context)
+                              .badgeExerciseSubtitle,
                           textAlign: TextAlign.left,
                           style: const TextStyle(
                             fontFamily: AppTheme.fontName,
@@ -92,7 +93,7 @@ class ExerciseBadgeWidget extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 4.0),
                               child: Text(
-                                AppLocalizations.of(context).days(40),
+                                DongkapLocalizations.of(context).days(40),
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
                                   fontFamily: AppTheme.fontName,

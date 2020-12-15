@@ -6,7 +6,7 @@ import 'package:do_dart/main/settings/language_page.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class SettingsWidget extends StatefulWidget {
@@ -34,7 +34,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/globe-outline.svg'),
             title: Text(
-              AppLocalizations.of(context).language,
+              DongkapLocalizations.of(context).language,
               style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
@@ -89,7 +89,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                           padding: const EdgeInsets.only(left: 15),
                           child: SvgPicture.asset(iconDarkMode)),
                       title: Text(
-                        AppLocalizations.of(context).darkMode,
+                        DongkapLocalizations.of(context).darkMode,
                         style: const TextStyle(fontFamily: AppTheme.fontName),
                       ),
                       contentPadding:
@@ -116,9 +116,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
   }
 
   void _promptTheme(BuildContext context, bool darkMode) async {
-    String subtitle = AppLocalizations.of(context).defaultMode;
-    if (darkMode) subtitle = AppLocalizations.of(context).darkMode;
-    subtitle = AppLocalizations.of(context).promptThemeSubtitle(subtitle);
+    String subtitle = DongkapLocalizations.of(context).defaultMode;
+    if (darkMode) subtitle = DongkapLocalizations.of(context).darkMode;
+    subtitle = DongkapLocalizations.of(context).promptThemeSubtitle(subtitle);
     await showModalBottomSheet(
         useRootNavigator: true,
         isScrollControlled: false,
@@ -128,9 +128,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         backgroundColor: Colors.transparent,
         builder: (builder) {
           return DialogBottomSheet(
-            title: AppLocalizations.of(context).promptThemeTitle,
+            title: DongkapLocalizations.of(context).promptThemeTitle,
             subtitle: subtitle,
-            submit: AppLocalizations.of(context).buttonSubmit,
+            submit: DongkapLocalizations.of(context).buttonSubmit,
             height: 260.0,
             onSubmit: () {
               Navigator.of(context, rootNavigator: true).pop();

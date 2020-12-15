@@ -3,7 +3,7 @@ import 'package:do_dart/auth/page/login/bloc/login_bloc.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
 
@@ -58,13 +58,13 @@ class _UsernameInput extends StatelessWidget {
           keyboardType: TextInputType.emailAddress,
           autofocus: false,
           decoration: InputDecoration(
-            labelText: AppLocalizations.of(context).labelUsernameEmail,
-            hintText: AppLocalizations.of(context).hintUsernameEmail,
+            labelText: DongkapLocalizations.of(context).labelUsernameEmail,
+            hintText: DongkapLocalizations.of(context).hintUsernameEmail,
             contentPadding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
             errorText: state.username.invalid
-                ? AppLocalizations.of(context).errorUsername
+                ? DongkapLocalizations.of(context).errorUsername
                 : null,
           ),
           onChanged: (username) =>
@@ -92,13 +92,13 @@ class __PasswordInputState extends State<_PasswordInput> {
             key: const Key('loginForm_password'),
             autofocus: false,
             decoration: InputDecoration(
-              labelText: '${AppLocalizations.of(context).password} :',
-              hintText: AppLocalizations.of(context).password,
+              labelText: '${DongkapLocalizations.of(context).password} :',
+              hintText: DongkapLocalizations.of(context).password,
               contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
               border:
                   OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
               errorText: state.password.invalid
-                  ? AppLocalizations.of(context).errorPassword
+                  ? DongkapLocalizations.of(context).errorPassword
                   : null,
               suffixIcon: Padding(
                 padding: const EdgeInsets.all(12.0),
@@ -169,7 +169,7 @@ class _LoginButton extends StatelessWidget {
                       child: Padding(
                         padding: const EdgeInsets.all(4.0),
                         child: Text(
-                          AppLocalizations.of(context).login.toUpperCase(),
+                          DongkapLocalizations.of(context).login.toUpperCase(),
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.w500,
@@ -195,7 +195,7 @@ class _TitleLabel extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 8),
       child: Text(
-        AppLocalizations.of(context).login,
+        DongkapLocalizations.of(context).login,
         textAlign: TextAlign.center,
         style: const TextStyle(
           fontFamily: AppTheme.fontName,
@@ -213,7 +213,7 @@ class _SubtitleLabel extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 8),
       child: Text(
-        AppLocalizations.of(context).labelLogin,
+        DongkapLocalizations.of(context).labelLogin,
         textAlign: TextAlign.center,
         style: const TextStyle(
           fontFamily: AppTheme.fontName,
@@ -232,7 +232,7 @@ class _ForgotPasswordLabel extends StatelessWidget {
         alignment: Alignment.centerRight,
         child: FlatButton(
           child: Text(
-            '${AppLocalizations.of(context).forgotPassword}?',
+            '${DongkapLocalizations.of(context).forgotPassword}?',
             style: const TextStyle(color: Colors.black54),
           ),
           onPressed: () {},
@@ -246,7 +246,7 @@ class _AdditionalTitleLabel extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 8),
       child: Text(
-        '${AppLocalizations.of(context).labelFooterLoginSocial} :',
+        '${DongkapLocalizations.of(context).labelFooterLoginSocial} :',
         textAlign: TextAlign.center,
         style: const TextStyle(
           fontFamily: AppTheme.fontName,
@@ -283,7 +283,7 @@ class _RegisterLink extends StatelessWidget {
             Padding(
                 padding: const EdgeInsets.only(right: 2),
                 child: Text(
-                  AppLocalizations.of(context).labelFooterLoginOther,
+                  DongkapLocalizations.of(context).labelFooterLoginOther,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     fontFamily: AppTheme.fontName,
@@ -294,7 +294,7 @@ class _RegisterLink extends StatelessWidget {
             InkWell(
               onTap: () {},
               child: Text(
-                AppLocalizations.of(context).register,
+                DongkapLocalizations.of(context).register,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                   fontFamily: AppTheme.fontName,
@@ -318,7 +318,7 @@ class _TermsConditionLink extends StatelessWidget {
       child: InkWell(
         onTap: () {},
         child: Text(
-          AppLocalizations.of(context).termsAndConditions,
+          DongkapLocalizations.of(context).termsAndConditions,
           textAlign: TextAlign.center,
           style: const TextStyle(
             fontFamily: AppTheme.fontName,

@@ -12,7 +12,7 @@ import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:global_configuration/global_configuration.dart';
 
@@ -82,7 +82,7 @@ class _DongkapAppViewState extends State<DongkapAppView> {
             platform: TargetPlatform.iOS,
           ),
           localizationsDelegates: [
-            AppLocalizations.delegate,
+            DongkapLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,

@@ -1,7 +1,7 @@
 import 'package:do_core/models.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileDetailWidget extends StatelessWidget {
@@ -63,7 +63,7 @@ class ProfileDetailWidget extends StatelessWidget {
                                 'assets/eva_icons/outline/svg/person-outline.svg',
                                 color: AppTheme.grey),
                             title: Text(
-                              AppLocalizations.of(context).username,
+                              DongkapLocalizations.of(context).username,
                               style: const TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
@@ -89,7 +89,7 @@ class ProfileDetailWidget extends StatelessWidget {
                                 'assets/eva_icons/outline/svg/phone-outline.svg',
                                 color: AppTheme.grey),
                             title: Text(
-                              AppLocalizations.of(context).phoneNumber,
+                              DongkapLocalizations.of(context).phoneNumber,
                               style: const TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
@@ -117,7 +117,7 @@ class ProfileDetailWidget extends StatelessWidget {
                                 'assets/eva_icons/outline/svg/people-outline.svg',
                                 color: AppTheme.grey),
                             title: Text(
-                              AppLocalizations.of(context).gender,
+                              DongkapLocalizations.of(context).gender,
                               style: const TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
@@ -143,7 +143,7 @@ class ProfileDetailWidget extends StatelessWidget {
                                 'assets/eva_icons/outline/svg/calendar-outline.svg',
                                 color: AppTheme.grey),
                             title: Text(
-                              AppLocalizations.of(context).pdob,
+                              DongkapLocalizations.of(context).pdob,
                               style: const TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
@@ -169,7 +169,7 @@ class ProfileDetailWidget extends StatelessWidget {
                                 'assets/eva_icons/outline/svg/home-outline.svg',
                                 color: AppTheme.grey),
                             title: Text(
-                              AppLocalizations.of(context).address,
+                              DongkapLocalizations.of(context).address,
                               style: const TextStyle(
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,

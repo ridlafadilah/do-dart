@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:package_info/package_info.dart';
 
@@ -41,7 +41,7 @@ class _AboutWidgetState extends State<AboutWidget> {
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/shield-outline.svg'),
             title: Text(
-              AppLocalizations.of(context).privacyPolicy,
+              DongkapLocalizations.of(context).privacyPolicy,
               style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
@@ -59,7 +59,7 @@ class _AboutWidgetState extends State<AboutWidget> {
             leading: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/file-text-outline.svg'),
             title: Text(
-              AppLocalizations.of(context).termsAndConditions,
+              DongkapLocalizations.of(context).termsAndConditions,
               style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,

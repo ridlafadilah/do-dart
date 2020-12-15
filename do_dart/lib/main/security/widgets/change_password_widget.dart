@@ -4,7 +4,7 @@ import 'package:do_dart/main/security/bloc/change_password_bloc.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
 
@@ -63,13 +63,13 @@ class __OldPasswordInputState extends State<_OldPasswordInput> {
           key: const Key('changePasswordForm_currentPassword'),
           autofocus: false,
           decoration: InputDecoration(
-            labelText: AppLocalizations.of(context).password,
-            hintText: AppLocalizations.of(context).password,
+            labelText: DongkapLocalizations.of(context).password,
+            hintText: DongkapLocalizations.of(context).password,
             contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
             errorText: state.oldPassword.invalid
-                ? AppLocalizations.of(context).errorPassword
+                ? DongkapLocalizations.of(context).errorPassword
                 : null,
             suffixIcon: Padding(
               padding: const EdgeInsets.all(12.0),
@@ -117,13 +117,13 @@ class __NewPasswordInputState extends State<_NewPasswordInput> {
           key: const Key('changePasswordForm_newPassword'),
           autofocus: false,
           decoration: InputDecoration(
-            labelText: AppLocalizations.of(context).newPassword,
-            hintText: AppLocalizations.of(context).newPassword,
+            labelText: DongkapLocalizations.of(context).newPassword,
+            hintText: DongkapLocalizations.of(context).newPassword,
             contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
             errorText: state.newPassword.invalid
-                ? AppLocalizations.of(context).errorNewPassword
+                ? DongkapLocalizations.of(context).errorNewPassword
                 : null,
             suffixIcon: Padding(
               padding: const EdgeInsets.all(12.0),
@@ -171,13 +171,13 @@ class __ConfirmPasswordInputState extends State<_ConfirmPasswordInput> {
           key: const Key('changePasswordForm_confirmPassword'),
           autofocus: false,
           decoration: InputDecoration(
-            labelText: AppLocalizations.of(context).confirmPassword,
-            hintText: AppLocalizations.of(context).confirmPassword,
+            labelText: DongkapLocalizations.of(context).confirmPassword,
+            hintText: DongkapLocalizations.of(context).confirmPassword,
             contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
             border:
                 OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
             errorText: state.confirmPassword.invalid
-                ? AppLocalizations.of(context).errorConfirmPassword
+                ? DongkapLocalizations.of(context).errorConfirmPassword
                 : null,
             suffixIcon: Padding(
               padding: const EdgeInsets.all(12.0),
@@ -251,7 +251,7 @@ class _ButtonChangePasswordInput extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(4.0),
                       child: Text(
-                        AppLocalizations.of(context).changePassword,
+                        DongkapLocalizations.of(context).changePassword,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
