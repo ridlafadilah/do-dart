@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart' hide Headers;
+import 'package:do_core/models/base_response.dart';
 
 class ServerError implements Exception {
   ServerError.withError({DioError error}) {
@@ -7,35 +8,46 @@ class ServerError implements Exception {
 
   int _errorCode;
   String _errorMessage = '';
+  BaseResponse _errorResponse;
 
-  getErrorCode() {
+  int getErrorCode() {
     return _errorCode;
   }
 
-  getErrorMessage() {
+  String getErrorMessage() {
     return _errorMessage;
+  }
+
+  BaseResponse getErrorResponse() {
+    return _errorResponse;
   }
 
   _handleError(DioError error) {
     switch (error.type) {
       case DioErrorType.CANCEL:
-        _errorMessage = 'Request was cancelled';
+        _errorMessage = 'errorDioCancel';
         break;
       case DioErrorType.CONNECT_TIMEOUT:
-        _errorMessage = 'Connection timeout';
+        _errorMessage = 'errorDioConnectTimeout';
         break;
       case DioErrorType.DEFAULT:
-        _errorMessage = 'Connection failed due to internet connection';
+        _errorMessage = 'errorDioDefault';
         break;
       case DioErrorType.RECEIVE_TIMEOUT:
-        _errorMessage = 'Receive timeout in connection';
-        break;
-      case DioErrorType.RESPONSE:
-        _errorMessage =
-            'Received invalid status code: ${error.response.statusCode}';
+        _errorMessage = 'errorDioReceiveTimeout';
         break;
       case DioErrorType.SEND_TIMEOUT:
-        _errorMessage = 'Receive timeout in send request';
+        _errorMessage = 'errorDioSendTimeout';
+        break;
+      case DioErrorType.RESPONSE:
+        BaseResponse _errorResponse =
+            BaseResponse.fromJson(error.response.data as Map<String, dynamic>);
+        if (_errorResponse.respStatusCode != null) {
+          _errorMessage =
+              _errorResponse.respStatusMessage[_errorResponse.respStatusCode];
+        } else {
+          _errorMessage = 'ERR_${error.response.statusCode}';
+        }
         break;
     }
     return _errorMessage;

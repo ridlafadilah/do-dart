@@ -29,9 +29,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "ERR_400" : MessageLookupByLibrary.simpleMessage("Bad Request"),
+    "ERR_401" : MessageLookupByLibrary.simpleMessage("Unauthorized"),
+    "ERR_403" : MessageLookupByLibrary.simpleMessage("Access Denied"),
+    "ERR_404" : MessageLookupByLibrary.simpleMessage("Not Found"),
+    "ERR_500" : MessageLookupByLibrary.simpleMessage("Internal Server Error"),
+    "ERR_504" : MessageLookupByLibrary.simpleMessage("Timeout Server"),
     "about" : MessageLookupByLibrary.simpleMessage("About"),
     "account" : MessageLookupByLibrary.simpleMessage("Account"),
     "address" : MessageLookupByLibrary.simpleMessage("Address"),
+    "badCredentials" : MessageLookupByLibrary.simpleMessage("Incorrect Username or Password"),
     "badgeExerciseSubtitle" : MessageLookupByLibrary.simpleMessage("UI Widgets (Components)\nAPI calls\nAccessibility & i18n"),
     "badgeExerciseTitle" : MessageLookupByLibrary.simpleMessage("Next workout"),
     "buttonCancel" : MessageLookupByLibrary.simpleMessage("Cancel"),
@@ -44,6 +51,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "deactivateAccountWarning" : MessageLookupByLibrary.simpleMessage("Once you deactivated account, there is no going back. Please be certain."),
     "defaultMode" : MessageLookupByLibrary.simpleMessage("Default Mode"),
     "errorConfirmPassword" : MessageLookupByLibrary.simpleMessage("New Password and Confirm Password not match"),
+    "errorDioCancel" : MessageLookupByLibrary.simpleMessage("Request was cancelled"),
+    "errorDioConnectTimeout" : MessageLookupByLibrary.simpleMessage("Connection timeout"),
+    "errorDioDefault" : MessageLookupByLibrary.simpleMessage("Connection failed due to internet connection"),
+    "errorDioReceiveTimeout" : MessageLookupByLibrary.simpleMessage("Receive timeout in connection"),
+    "errorDioSendTimeout" : MessageLookupByLibrary.simpleMessage("Receive timeout in send request"),
     "errorNewPassword" : MessageLookupByLibrary.simpleMessage("Make sure it\'s at least 8 characters\nincluding a number, a lowercase, and uppercase letter"),
     "errorPassword" : MessageLookupByLibrary.simpleMessage("Password is required!"),
     "errorUsername" : MessageLookupByLibrary.simpleMessage("Username is required!"),
@@ -75,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "promptTwoFactorAuthenticationEnableSubtitle" : MessageLookupByLibrary.simpleMessage("Are you sure want to enable 2-Step Verification?"),
     "promptTwoFactorAuthenticationTitle" : MessageLookupByLibrary.simpleMessage("2-Step Verification"),
     "register" : MessageLookupByLibrary.simpleMessage("Register"),
+    "retry" : MessageLookupByLibrary.simpleMessage("Retry"),
     "security" : MessageLookupByLibrary.simpleMessage("Security"),
     "settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "template" : MessageLookupByLibrary.simpleMessage("Template"),
@@ -83,6 +96,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "titleWidgetProfiletitle" : MessageLookupByLibrary.simpleMessage("Your Profile"),
     "twoFactorAuthentication" : MessageLookupByLibrary.simpleMessage("2-Step Verification"),
     "twoFactorAuthenticationSubtitle" : MessageLookupByLibrary.simpleMessage("Send a verification code every time you login"),
+    "userAccountHasExpired" : MessageLookupByLibrary.simpleMessage("Account has been expired"),
+    "userAccountIsLocked" : MessageLookupByLibrary.simpleMessage("Account has been locked"),
+    "userCredentialsHaveExpired" : MessageLookupByLibrary.simpleMessage("Account credentials has been expired"),
+    "userIsDisabled" : MessageLookupByLibrary.simpleMessage("Account has been deactivated"),
     "username" : MessageLookupByLibrary.simpleMessage("Username")
   };
 }

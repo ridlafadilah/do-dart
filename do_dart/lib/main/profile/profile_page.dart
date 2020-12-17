@@ -2,6 +2,7 @@ import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
 import 'package:do_core/models.dart';
+import 'package:do_dart/l10n/utils/locale_utils.dart';
 import 'package:do_dart/main/about/about_page.dart';
 import 'package:do_dart/main/profile/bloc/profile_bloc.dart';
 import 'package:do_dart/main/profile/views/profile_skeleton_view.dart';
@@ -102,7 +103,8 @@ class _ProfilePageState extends State<ProfilePage>
             );
           } else if (state is RequestFailureState) {
             return ConnectionErrorWidget(
-                error: state.error,
+                error: LocaleUtils.translate(state.error),
+                retryButton: DongkapLocalizations.of(context).retry,
                 onPressed: () async {
                   context.read<ProfileBloc>().add(const RequestedEvent());
                 });

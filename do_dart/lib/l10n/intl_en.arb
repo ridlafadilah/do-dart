@@ -33,10 +33,28 @@
           "value": {}
       }
     },
+    "retry": "Retry",
     "exercise": "Exercise",
     "template": "Template",
   
     "hintUsernameEmail": "Username / Email",
+
+		"ERR_400": "Bad Request",
+		"ERR_401": "Unauthorized",
+		"ERR_403": "Access Denied",
+		"ERR_404": "Not Found",
+		"ERR_500": "Internal Server Error",
+		"ERR_504": "Timeout Server",
+    "errorDioCancel": "Request was cancelled",
+    "errorDioConnectTimeout": "Connection timeout",
+    "errorDioDefault": "Connection failed due to internet connection",
+    "errorDioReceiveTimeout": "Receive timeout in connection",
+    "errorDioSendTimeout": "Receive timeout in send request",
+    "badCredentials": "Incorrect Username or Password",
+    "userAccountIsLocked": "Account has been locked",
+    "userIsDisabled": "Account has been deactivated",
+    "userAccountHasExpired": "Account has been expired",
+    "userCredentialsHaveExpired": "Account credentials has been expired",
   
     "labelFooterLoginSocial": "or enter with",
     "labelFooterLoginOther": "Don't have an account?",

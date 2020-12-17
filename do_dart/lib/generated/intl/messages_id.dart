@@ -29,9 +29,16 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "ERR_400" : MessageLookupByLibrary.simpleMessage("Permintaan akses gagal"),
+    "ERR_401" : MessageLookupByLibrary.simpleMessage("Akses tidak diizinkan"),
+    "ERR_403" : MessageLookupByLibrary.simpleMessage("Akses ditolak"),
+    "ERR_404" : MessageLookupByLibrary.simpleMessage("Data tidak ditemukan"),
+    "ERR_500" : MessageLookupByLibrary.simpleMessage("Server gagal diakses"),
+    "ERR_504" : MessageLookupByLibrary.simpleMessage("Server timeout"),
     "about" : MessageLookupByLibrary.simpleMessage("Tentang"),
     "account" : MessageLookupByLibrary.simpleMessage("Akun"),
     "address" : MessageLookupByLibrary.simpleMessage("Alamat"),
+    "badCredentials" : MessageLookupByLibrary.simpleMessage("Username atau Kata Sandi salah"),
     "badgeExerciseSubtitle" : MessageLookupByLibrary.simpleMessage("UI Widgets (Components)\nAPI calls\nAccessibility & i18n"),
     "badgeExerciseTitle" : MessageLookupByLibrary.simpleMessage("Latihan berikutnya"),
     "buttonCancel" : MessageLookupByLibrary.simpleMessage("Batal"),
@@ -44,6 +51,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "deactivateAccountWarning" : MessageLookupByLibrary.simpleMessage("Setelah Anda menonaktifkan akun, tidak ada jalan untuk kembali. Harap pastikan."),
     "defaultMode" : MessageLookupByLibrary.simpleMessage("Mode Default"),
     "errorConfirmPassword" : MessageLookupByLibrary.simpleMessage("Kata Sandi Baru dan Konfirmasi Kata Sandi tidak sama"),
+    "errorDioCancel" : MessageLookupByLibrary.simpleMessage("Permintaan dibatalkan"),
+    "errorDioConnectTimeout" : MessageLookupByLibrary.simpleMessage("Koneksi timeout"),
+    "errorDioDefault" : MessageLookupByLibrary.simpleMessage("Koneksi Terputus"),
+    "errorDioReceiveTimeout" : MessageLookupByLibrary.simpleMessage("Timeout pada saat menerima permintaan"),
+    "errorDioSendTimeout" : MessageLookupByLibrary.simpleMessage("Timeout pada saat kirim permintaan"),
     "errorNewPassword" : MessageLookupByLibrary.simpleMessage("Pastikan setidaknya 8 karakter\ntermasuk angka, huruf kecil, dan huruf besar"),
     "errorPassword" : MessageLookupByLibrary.simpleMessage("Kata Sandi wajib diisi!"),
     "errorUsername" : MessageLookupByLibrary.simpleMessage("Username wajib diisi!"),
@@ -75,6 +87,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "promptTwoFactorAuthenticationEnableSubtitle" : MessageLookupByLibrary.simpleMessage("Anda yakin ingin mengaktifkan Verifikasi 2 langkah?"),
     "promptTwoFactorAuthenticationTitle" : MessageLookupByLibrary.simpleMessage("Verifikasi 2 langkah"),
     "register" : MessageLookupByLibrary.simpleMessage("Daftar"),
+    "retry" : MessageLookupByLibrary.simpleMessage("Ulang"),
     "security" : MessageLookupByLibrary.simpleMessage("Keamanan"),
     "settings" : MessageLookupByLibrary.simpleMessage("Pengaturan"),
     "template" : MessageLookupByLibrary.simpleMessage("Template"),
@@ -83,6 +96,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "titleWidgetProfiletitle" : MessageLookupByLibrary.simpleMessage("Profil Anda"),
     "twoFactorAuthentication" : MessageLookupByLibrary.simpleMessage("Verifikasi 2 langkah"),
     "twoFactorAuthenticationSubtitle" : MessageLookupByLibrary.simpleMessage("Kirim kode verifikasi setiap kali Anda masuk"),
+    "userAccountHasExpired" : MessageLookupByLibrary.simpleMessage("Akun sudah kadaluwarsa"),
+    "userAccountIsLocked" : MessageLookupByLibrary.simpleMessage("Akun telah dikunci"),
+    "userCredentialsHaveExpired" : MessageLookupByLibrary.simpleMessage("Kredensial akun sudah kedaluwarsa"),
+    "userIsDisabled" : MessageLookupByLibrary.simpleMessage("Akun sudah dinonaktifkan"),
     "username" : MessageLookupByLibrary.simpleMessage("Username")
   };
 }

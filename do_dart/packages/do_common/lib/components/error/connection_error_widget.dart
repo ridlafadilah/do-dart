@@ -6,10 +6,12 @@ class ConnectionErrorWidget extends StatelessWidget {
   ConnectionErrorWidget({
     Key key,
     @required this.error,
+    @required this.retryButton,
     @required this.onPressed,
   }) : super(key: key);
 
   final String error;
+  final String retryButton;
   final VoidCallback onPressed;
 
   @override
@@ -39,9 +41,9 @@ class ConnectionErrorWidget extends StatelessWidget {
           RaisedButton(
             color: AppTheme.colorTheme,
             onPressed: onPressed,
-            child: const Text(
-              'Retry',
-              style: TextStyle(
+            child: Text(
+              retryButton,
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
                 color: AppTheme.white,

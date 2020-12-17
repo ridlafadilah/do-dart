@@ -315,6 +315,16 @@ class DongkapLocalizations {
     );
   }
 
+  /// `Retry`
+  String get retry {
+    return Intl.message(
+      'Retry',
+      name: 'retry',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Exercise`
   String get exercise {
     return Intl.message(
@@ -340,6 +350,166 @@ class DongkapLocalizations {
     return Intl.message(
       'Username / Email',
       name: 'hintUsernameEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Bad Request`
+  String get ERR_400 {
+    return Intl.message(
+      'Bad Request',
+      name: 'ERR_400',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Unauthorized`
+  String get ERR_401 {
+    return Intl.message(
+      'Unauthorized',
+      name: 'ERR_401',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Access Denied`
+  String get ERR_403 {
+    return Intl.message(
+      'Access Denied',
+      name: 'ERR_403',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Not Found`
+  String get ERR_404 {
+    return Intl.message(
+      'Not Found',
+      name: 'ERR_404',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Internal Server Error`
+  String get ERR_500 {
+    return Intl.message(
+      'Internal Server Error',
+      name: 'ERR_500',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Timeout Server`
+  String get ERR_504 {
+    return Intl.message(
+      'Timeout Server',
+      name: 'ERR_504',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Request was cancelled`
+  String get errorDioCancel {
+    return Intl.message(
+      'Request was cancelled',
+      name: 'errorDioCancel',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection timeout`
+  String get errorDioConnectTimeout {
+    return Intl.message(
+      'Connection timeout',
+      name: 'errorDioConnectTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Connection failed due to internet connection`
+  String get errorDioDefault {
+    return Intl.message(
+      'Connection failed due to internet connection',
+      name: 'errorDioDefault',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receive timeout in connection`
+  String get errorDioReceiveTimeout {
+    return Intl.message(
+      'Receive timeout in connection',
+      name: 'errorDioReceiveTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Receive timeout in send request`
+  String get errorDioSendTimeout {
+    return Intl.message(
+      'Receive timeout in send request',
+      name: 'errorDioSendTimeout',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Incorrect Username or Password`
+  String get badCredentials {
+    return Intl.message(
+      'Incorrect Username or Password',
+      name: 'badCredentials',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account has been locked`
+  String get userAccountIsLocked {
+    return Intl.message(
+      'Account has been locked',
+      name: 'userAccountIsLocked',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account has been deactivated`
+  String get userIsDisabled {
+    return Intl.message(
+      'Account has been deactivated',
+      name: 'userIsDisabled',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account has been expired`
+  String get userAccountHasExpired {
+    return Intl.message(
+      'Account has been expired',
+      name: 'userAccountHasExpired',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Account credentials has been expired`
+  String get userCredentialsHaveExpired {
+    return Intl.message(
+      'Account credentials has been expired',
+      name: 'userCredentialsHaveExpired',
       desc: '',
       args: [],
     );

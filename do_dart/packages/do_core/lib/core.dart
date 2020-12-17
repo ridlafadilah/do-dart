@@ -14,3 +14,4 @@ export 'services/provider_service.dart';
 export 'services/shared_preferences_service.dart';
 export 'services/theme_service.dart';
 export 'services/two_factor_auth_service.dart';
+export 'utils/string_utils.dart';

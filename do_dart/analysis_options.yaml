@@ -1,5 +1,4 @@
 analyzer:
-  exclude: [lib/generated/**]
   errors:
     close_sinks: ignore
     uri_has_not_been_generated: ignore
@@ -31,7 +30,6 @@ linter:
     - iterable_contains_unrelated_type
     - library_names
     - library_prefixes
-    - lines_longer_than_80_chars
     - list_remove_unrelated_type
     - no_adjacent_strings_in_list
     - no_duplicate_case_values

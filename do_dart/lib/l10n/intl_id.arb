@@ -33,10 +33,28 @@
           "value": {}
       }
     },
+    "retry": "Ulang",
     "exercise": "Latihan",
     "template": "Template",
   
     "hintUsernameEmail": "Username / Email",
+
+		"ERR_400": "Permintaan akses gagal",
+		"ERR_401": "Akses tidak diizinkan",
+		"ERR_403": "Akses ditolak",
+		"ERR_404": "Data tidak ditemukan",
+		"ERR_500": "Server gagal diakses",
+		"ERR_504": "Server timeout",
+    "errorDioCancel": "Permintaan dibatalkan",
+    "errorDioConnectTimeout": "Koneksi timeout",
+    "errorDioDefault": "Koneksi Terputus",
+    "errorDioReceiveTimeout": "Timeout pada saat menerima permintaan",
+    "errorDioSendTimeout": "Timeout pada saat kirim permintaan",
+    "badCredentials": "Username atau Kata Sandi salah",
+    "userAccountIsLocked": "Akun telah dikunci",
+    "userIsDisabled": "Akun sudah dinonaktifkan",
+    "userAccountHasExpired": "Akun sudah kadaluwarsa",
+    "userCredentialsHaveExpired": "Kredensial akun sudah kedaluwarsa",
   
     "labelFooterLoginSocial": "atau masuk dengan",
     "labelFooterLoginOther": "Belum memiliki akun?",

@@ -1,5 +1,7 @@
 import 'package:do_core/bloc.dart';
+import 'package:do_core/core.dart';
 import 'package:do_dart/auth/page/login/bloc/login_bloc.dart';
+import 'package:do_dart/l10n/utils/locale_utils.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,7 +18,11 @@ class LoginForm extends StatelessWidget {
           ScaffoldMessenger.of(context)
             ..hideCurrentSnackBar()
             ..showSnackBar(
-              const SnackBar(content: Text('Authentication Failure')),
+              SnackBar(
+                content: Text(LocaleUtils.translate(
+                    StringUtils.toCamelCase(state.error))),
+                backgroundColor: Colors.red.withOpacity(0.75),
+              ),
             );
         }
       },

@@ -69,8 +69,10 @@ class LoginBloc extends Bloc<CommonEvent, LoginState> {
           password: state.password.value,
         );
         yield state.copyWith(status: FormzStatus.submissionSuccess);
-      } on Exception catch (_) {
-        yield state.copyWith(status: FormzStatus.submissionFailure);
+      } on ServerError catch (err) {
+        yield state.copyWith(
+            error: err.getErrorMessage(),
+            status: FormzStatus.submissionFailure);
       }
     }
   }
