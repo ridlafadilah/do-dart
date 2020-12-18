@@ -6,5 +6,6 @@ export 'components/skeleton/skeleton.dart';
 export 'components/skeleton/skeleton_list.dart';
 export 'components/skeleton/skeleton_round.dart';
 export 'components/title/title_widget.dart';
+export 'components/toast/flushbar.dart';
 export 'forms/password.dart';
 export 'forms/username.dart';

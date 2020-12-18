@@ -1,6 +1,8 @@
+import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
 import 'package:do_dart/main/security/bloc/change_password_bloc.dart';
+import 'package:do_dart/l10n/utils/locale_utils.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,10 +11,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
 
 class ChangePasswordWidget extends StatefulWidget {
-  const ChangePasswordWidget({Key key, this.animationController})
+  const ChangePasswordWidget(
+      {Key key, this.animationController, this.scaffoldMessengerKey})
       : super(key: key);
 
   final AnimationController animationController;
+  final GlobalKey<ScaffoldMessengerState> scaffoldMessengerKey;
 
   @override
   _ChangePasswordWidgetState createState() => _ChangePasswordWidgetState();
@@ -27,18 +31,38 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
           authService: RepositoryProvider.of<AuthService>(context),
         );
       },
-      child: Padding(
-        padding: const EdgeInsets.only(left: 25, right: 25, top: 2),
-        child: Column(
-          children: <Widget>[
-            _OldPasswordInput(),
-            const SizedBox(height: 10),
-            _NewPasswordInput(),
-            const SizedBox(height: 10),
-            _ConfirmPasswordInput(),
-            const SizedBox(height: 10),
-            _ButtonChangePasswordInput(),
-          ],
+      child: BlocListener<ChangePasswordBloc, ChangePasswordState>(
+        listener: (context, state) {
+          if (state.status.isSubmissionFailure) {
+            Flushbar(
+              messageText: Text(
+                LocaleUtils.translate(state.error),
+                style: const TextStyle(color: Colors.white),
+              ),
+              icon: SvgPicture.asset(
+                  'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
+                  color: Colors.white),
+              duration: const Duration(seconds: 3),
+              backgroundColor: Colors.red[400],
+              routeBlur: 0.5,
+              isDismissible: false,
+              dismissDirection: FlushbarDismissDirection.vertical,
+            )..show(context);
+          }
+        },
+        child: Padding(
+          padding: const EdgeInsets.only(left: 25, right: 25, top: 2),
+          child: Column(
+            children: <Widget>[
+              _OldPasswordInput(),
+              const SizedBox(height: 10),
+              _NewPasswordInput(),
+              const SizedBox(height: 10),
+              _ConfirmPasswordInput(),
+              const SizedBox(height: 10),
+              _ButtonChangePasswordInput(),
+            ],
+          ),
         ),
       ),
     );

@@ -41,6 +41,7 @@ class LoginBloc extends Bloc<CommonEvent, LoginState> {
     return state.copyWith(
       username: username,
       action: Formz.validate([state.password, username]),
+      status: FormzStatus.pure,
     );
   }
 
@@ -52,6 +53,7 @@ class LoginBloc extends Bloc<CommonEvent, LoginState> {
     return state.copyWith(
       password: password,
       action: Formz.validate([password, state.username]),
+      status: FormzStatus.pure,
     );
   }
 

@@ -1,3 +1,4 @@
+import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
 import 'package:do_dart/auth/page/login/bloc/login_bloc.dart';
@@ -15,40 +16,72 @@ class LoginForm extends StatelessWidget {
     return BlocListener<LoginBloc, LoginState>(
       listener: (context, state) {
         if (state.status.isSubmissionFailure) {
-          ScaffoldMessenger.of(context)
-            ..hideCurrentSnackBar()
-            ..showSnackBar(
-              SnackBar(
-                content: Text(LocaleUtils.translate(
-                    StringUtils.toCamelCase(state.error))),
-                backgroundColor: Colors.red.withOpacity(0.75),
-              ),
-            );
+          Flushbar(
+            messageText: Text(
+              LocaleUtils.translate(
+                  LocaleUtils.translate(StringUtils.toCamelCase(state.error))),
+              style: const TextStyle(color: Colors.white),
+            ),
+            icon: SvgPicture.asset(
+                'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
+                color: Colors.white),
+            duration: const Duration(seconds: 3),
+            backgroundColor: Colors.red[400],
+            routeBlur: 0.5,
+            isDismissible: false,
+            dismissDirection: FlushbarDismissDirection.vertical,
+          )..show(context);
         }
       },
       child: ListView(
         shrinkWrap: true,
-        padding: const EdgeInsets.only(left: 24.0, right: 24.0),
         children: <Widget>[
-          _TitleLabel(),
-          const SizedBox(height: 8.0),
-          _SubtitleLabel(),
-          const SizedBox(height: 35.0),
-          _UsernameInput(),
-          const SizedBox(height: 8.0),
-          _ForgotPasswordLabel(),
-          _PasswordInput(),
-          const SizedBox(height: 24.0),
-          _LoginButton(),
-          _AdditionalTitleLabel(),
-          const SizedBox(height: 20.0),
-          _GoogleLogin(),
-          const SizedBox(height: 20.0),
-          _RegisterLink(),
-          const SizedBox(height: 35.0),
-          _TermsConditionLink()
+          _LinearProgressIndicator(),
+          Padding(
+            padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+            child: Column(
+              children: <Widget>[
+                const SizedBox(height: 20.0),
+                _TitleLabel(),
+                const SizedBox(height: 8.0),
+                _SubtitleLabel(),
+                const SizedBox(height: 35.0),
+                _UsernameInput(),
+                const SizedBox(height: 8.0),
+                _ForgotPasswordLabel(),
+                _PasswordInput(),
+                const SizedBox(height: 24.0),
+                _LoginButton(),
+                _AdditionalTitleLabel(),
+                const SizedBox(height: 20.0),
+                _GoogleLogin(),
+                const SizedBox(height: 20.0),
+                _RegisterLink(),
+                const SizedBox(height: 35.0),
+                _TermsConditionLink()
+              ],
+            ),
+          ),
         ],
       ),
+    );
+  }
+}
+
+class _LinearProgressIndicator extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LoginBloc, LoginState>(
+      buildWhen: (previous, current) => previous.action != current.action,
+      builder: (context, state) {
+        if (!state.status.isSubmissionInProgress) {
+          return const SizedBox(
+            height: 4.0,
+          );
+        } else {
+          return const LinearProgressIndicator();
+        }
+      },
     );
   }
 }

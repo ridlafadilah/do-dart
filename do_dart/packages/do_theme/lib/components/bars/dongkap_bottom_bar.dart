@@ -141,7 +141,6 @@ class _DongkapBottomBarState extends State<DongkapBottomBar>
                             parent: animationController,
                             curve: Curves.fastOutSlowIn)),
                     child: Container(
-                      // alignment: Alignment.center,s
                       decoration: BoxDecoration(
                         color: AppTheme.nearlyDarkBlue,
                         gradient: LinearGradient(

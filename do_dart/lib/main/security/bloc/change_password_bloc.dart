@@ -92,8 +92,10 @@ class ChangePasswordBloc extends Bloc<CommonEvent, ChangePasswordState> {
           await _authService.logOut();
         });
         yield state.copyWith(status: FormzStatus.submissionSuccess);
-      } on Exception catch (_) {
-        yield state.copyWith(status: FormzStatus.submissionFailure);
+      } on ServerError catch (err) {
+        yield state.copyWith(
+            error: err.getErrorMessage(),
+            status: FormzStatus.submissionFailure);
       }
     }
   }
