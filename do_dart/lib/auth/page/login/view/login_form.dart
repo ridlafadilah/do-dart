@@ -79,7 +79,9 @@ class _LinearProgressIndicator extends StatelessWidget {
             height: 4.0,
           );
         } else {
-          return const LinearProgressIndicator();
+          return const LinearProgressIndicator(
+            backgroundColor: AppTheme.colorTheme,
+          );
         }
       },
     );

@@ -50,21 +50,48 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
             )..show(context);
           }
         },
-        child: Padding(
-          padding: const EdgeInsets.only(left: 25, right: 25, top: 2),
-          child: Column(
-            children: <Widget>[
-              _OldPasswordInput(),
-              const SizedBox(height: 10),
-              _NewPasswordInput(),
-              const SizedBox(height: 10),
-              _ConfirmPasswordInput(),
-              const SizedBox(height: 10),
-              _ButtonChangePasswordInput(),
-            ],
-          ),
+        child: ListView(
+          shrinkWrap: true,
+          children: <Widget>[
+            _LinearProgressIndicator(),
+            Padding(
+              padding: const EdgeInsets.only(left: 24.0, right: 24.0),
+              child: Column(
+                children: <Widget>[
+                  const SizedBox(height: 10),
+                  _OldPasswordInput(),
+                  const SizedBox(height: 10),
+                  _NewPasswordInput(),
+                  const SizedBox(height: 10),
+                  _ConfirmPasswordInput(),
+                  const SizedBox(height: 10),
+                  _ButtonChangePasswordInput(),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
+    );
+  }
+}
+
+class _LinearProgressIndicator extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ChangePasswordBloc, ChangePasswordState>(
+      buildWhen: (previous, current) => previous.action != current.action,
+      builder: (context, state) {
+        if (!state.status.isSubmissionInProgress) {
+          return const SizedBox(
+            height: 4.0,
+          );
+        } else {
+          return const LinearProgressIndicator(
+            backgroundColor: AppTheme.colorTheme,
+          );
+        }
+      },
     );
   }
 }

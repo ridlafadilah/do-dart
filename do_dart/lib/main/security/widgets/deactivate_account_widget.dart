@@ -21,6 +21,7 @@ class _DeactivateAccountWidgetState extends State<DeactivateAccountWidget> {
       padding: const EdgeInsets.only(left: 25, right: 25),
       child: Column(
         children: <Widget>[
+          const SizedBox(height: 10),
           Text(
             DongkapLocalizations.of(context).deactivateAccountWarning,
             style: const TextStyle(
