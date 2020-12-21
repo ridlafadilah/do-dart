@@ -1,5 +1,7 @@
 import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
+import 'package:do_core/core.dart';
+import 'package:do_dart/l10n/utils/locale_utils.dart';
 import 'package:do_dart/main/security/bloc/provider_bloc.dart';
 import 'package:do_dart/main/security/bloc/two_factor_auth_bloc.dart';
 import 'package:do_dart/main/security/change_password_page.dart';
@@ -142,6 +144,21 @@ class _SecurityWidgetState extends State<SecurityWidget> {
                   _loading(context);
                 } else if (state is SubmitFailureState) {
                   Navigator.of(context, rootNavigator: true).pop();
+                  Flushbar(
+                    messageText: Text(
+                      LocaleUtils.translate(LocaleUtils.translate(
+                          StringUtils.toCamelCase(state.error))),
+                      style: const TextStyle(color: Colors.white),
+                    ),
+                    icon: SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
+                        color: Colors.white),
+                    duration: const Duration(seconds: 3),
+                    backgroundColor: Colors.red[400],
+                    routeBlur: 0.5,
+                    isDismissible: false,
+                    dismissDirection: FlushbarDismissDirection.vertical,
+                  )..show(context);
                 } else if (state is SubmitSuccessState<bool>) {
                   Navigator.of(context, rootNavigator: true).pop();
                   is2FA = state.data;

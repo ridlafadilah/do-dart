@@ -1,8 +1,10 @@
+import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
 import 'package:do_core/models.dart';
 import 'package:do_core/models/locale_dto.dart';
 import 'package:do_dart/l10n/bloc/translation_bloc.dart';
+import 'package:do_dart/l10n/utils/locale_utils.dart';
 import 'package:do_dart/main/settings/bloc/language_bloc.dart';
 import 'package:do_dart/main/settings/widgets/language_widget.dart';
 import 'package:do_theme/theme.dart';
@@ -91,6 +93,21 @@ class _LanguagePageState extends State<LanguagePage>
             _loading(context);
           } else if (state is SubmitFailureState) {
             Navigator.of(context, rootNavigator: true).pop();
+            Flushbar(
+              messageText: Text(
+                LocaleUtils.translate(LocaleUtils.translate(
+                    StringUtils.toCamelCase(state.error))),
+                style: const TextStyle(color: Colors.white),
+              ),
+              icon: SvgPicture.asset(
+                  'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
+                  color: Colors.white),
+              duration: const Duration(seconds: 3),
+              backgroundColor: Colors.red[400],
+              routeBlur: 0.5,
+              isDismissible: false,
+              dismissDirection: FlushbarDismissDirection.vertical,
+            )..show(context);
           } else if (state is SubmitSuccessState<BaseResponse>) {
             context.read<TranslationBloc>().add(const TranslationEvent());
             Navigator.of(context, rootNavigator: true).pop();
