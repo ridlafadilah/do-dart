@@ -68,7 +68,7 @@ class _ExercisePageState extends State<ExercisePage>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppTheme.background,
+      color: Theme.of(context).backgroundColor,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         resizeToAvoidBottomInset: false,

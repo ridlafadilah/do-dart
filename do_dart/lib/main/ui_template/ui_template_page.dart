@@ -219,7 +219,7 @@ class _UITemplatePageState extends State<UITemplatePage>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppTheme.background,
+      color: Theme.of(context).backgroundColor,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         resizeToAvoidBottomInset: false,
@@ -272,11 +272,14 @@ class _UITemplatePageState extends State<UITemplatePage>
               DongkapLocalizations.of(context).template,
               textAlign: TextAlign.left,
               style: TextStyle(
-                fontFamily: AppTheme.fontName,
-                fontWeight: FontWeight.w700,
                 fontSize: 22 + 6 - 6 * _topBarOpacity,
-                letterSpacing: 1.2,
-                color: AppTheme.darkerText,
+                color: Theme.of(context).appBarTheme.titleTextStyle.color,
+                fontFamily:
+                    Theme.of(context).appBarTheme.titleTextStyle.fontFamily,
+                fontWeight:
+                    Theme.of(context).appBarTheme.titleTextStyle.fontWeight,
+                letterSpacing:
+                    Theme.of(context).appBarTheme.titleTextStyle.letterSpacing,
               ),
             ),
           ),

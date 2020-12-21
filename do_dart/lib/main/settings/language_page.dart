@@ -95,8 +95,7 @@ class _LanguagePageState extends State<LanguagePage>
             Navigator.of(context, rootNavigator: true).pop();
             Flushbar(
               messageText: Text(
-                LocaleUtils.translate(LocaleUtils.translate(
-                    StringUtils.toCamelCase(state.error))),
+                LocaleUtils.translate(LocaleUtils.translate(state.error)),
                 style: const TextStyle(color: Colors.white),
               ),
               icon: SvgPicture.asset(

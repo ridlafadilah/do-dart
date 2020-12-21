@@ -23,7 +23,7 @@ class DongkapApp extends StatelessWidget {
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.dark,
+      statusBarIconBrightness: Brightness.light,
       statusBarBrightness:
           Platform.isAndroid ? Brightness.dark : Brightness.light,
       systemNavigationBarColor: Colors.white,
@@ -76,11 +76,9 @@ class _DongkapAppViewState extends State<DongkapAppView> {
           title: 'Dongkap',
           debugShowCheckedModeBanner:
               GlobalConfiguration().getValue<bool>('debug'),
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-            textTheme: AppTheme.textTheme,
-            platform: TargetPlatform.iOS,
-          ),
+          theme: AppTheme.light,
+          darkTheme: AppTheme.dark,
+          themeMode: ThemeMode.dark,
           localizationsDelegates: [
             DongkapLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,

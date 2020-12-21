@@ -1,6 +1,5 @@
 import 'dart:math' as math;
 import 'package:do_theme/models/tabIcon_data.dart';
-import 'package:do_theme/utils/app_theme.dart';
 import 'package:do_theme/utils/color_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,8 +43,11 @@ class _DongkapBottomBarState extends State<DongkapBottomBar>
               return Transform(
                 transform: Matrix4.translationValues(0.0, 0.0, 0.0),
                 child: PhysicalShape(
-                  color: AppTheme.white,
-                  elevation: 16.0,
+                  color: Theme.of(context)
+                      .bottomNavigationBarTheme
+                      .backgroundColor,
+                  elevation: 30.0,
+                  shadowColor: Colors.white,
                   clipper: TabClipper(
                       radius: Tween<double>(begin: 0.0, end: 1.0)
                               .animate(CurvedAnimation(
@@ -142,10 +144,10 @@ class _DongkapBottomBarState extends State<DongkapBottomBar>
                             curve: Curves.fastOutSlowIn)),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: AppTheme.nearlyDarkBlue,
+                        color: Theme.of(context).colorScheme.secondary,
                         gradient: LinearGradient(
                             colors: [
-                              AppTheme.colorTheme,
+                              Theme.of(context).colorScheme.secondary,
                               HexColor('#3366ff'),
                             ],
                             begin: Alignment.topLeft,
@@ -153,7 +155,10 @@ class _DongkapBottomBarState extends State<DongkapBottomBar>
                         shape: BoxShape.circle,
                         boxShadow: <BoxShadow>[
                           BoxShadow(
-                              color: AppTheme.nearlyDarkBlue.withOpacity(0.4),
+                              color: Theme.of(context)
+                                  .colorScheme
+                                  .secondary
+                                  .withOpacity(0.4),
                               offset: const Offset(8.0, 16.0),
                               blurRadius: 16.0),
                         ],
@@ -167,9 +172,9 @@ class _DongkapBottomBarState extends State<DongkapBottomBar>
                           onTap: () {
                             widget.addClick();
                           },
-                          child: const Icon(
+                          child: Icon(
                             Icons.add,
-                            color: AppTheme.white,
+                            color: Theme.of(context).colorScheme.primary,
                             size: 32,
                           ),
                         ),
@@ -269,8 +274,14 @@ class _TabIconsState extends State<TabIcons> with TickerProviderStateMixin {
                                     ? widget.tabIconData.selectedImagePath
                                     : widget.tabIconData.imagePath,
                                 color: widget.tabIconData.isSelected
-                                    ? AppTheme.darkGrey
-                                    : AppTheme.grey,
+                                    ? Theme.of(context)
+                                        .bottomNavigationBarTheme
+                                        .selectedIconTheme
+                                        .color
+                                    : Theme.of(context)
+                                        .bottomNavigationBarTheme
+                                        .unselectedIconTheme
+                                        .color,
                                 fit: BoxFit.cover),
                           ),
                         ],
