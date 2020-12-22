@@ -32,7 +32,8 @@ class _DeactivateDialogBottomSheetState
             width: sizeExitButton,
             padding: const EdgeInsets.only(bottom: 15),
             child: FloatingActionButton(
-              backgroundColor: AppTheme.white,
+              backgroundColor:
+                  Theme.of(context).bottomSheetTheme.backgroundColor,
               onPressed: () {
                 Navigator.of(context, rootNavigator: true).pop();
               },
@@ -42,14 +43,14 @@ class _DeactivateDialogBottomSheetState
                   'assets/eva_icons/outline/svg/close-outline.svg',
                   height: 35.0,
                   width: 35.0,
-                  color: AppTheme.grey),
+                  color: Theme.of(context).iconTheme.color),
             ),
           ),
           Container(
             height: height - sizeExitButton,
             color: Colors.transparent,
             child: Card(
-              color: Colors.white,
+              color: Theme.of(context).bottomSheetTheme.backgroundColor,
               shape: const ContinuousRectangleBorder(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.0),
@@ -104,8 +105,6 @@ class _DeactivateDialogBottomSheetState
                         hintText: DongkapLocalizations.of(context).password,
                         contentPadding:
                             const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(5.0)),
                         suffixIcon: Padding(
                           padding: const EdgeInsets.all(12.0),
                           child: GestureDetector(
@@ -117,10 +116,16 @@ class _DeactivateDialogBottomSheetState
                             child: isObscureText
                                 ? SvgPicture.asset(
                                     'assets/eva_icons/outline/svg/eye-outline.svg',
-                                    color: AppTheme.grey.withOpacity(0.85))
+                                    color: Theme.of(context)
+                                        .iconTheme
+                                        .color
+                                        .withOpacity(0.5))
                                 : SvgPicture.asset(
                                     'assets/eva_icons/outline/svg/eye-off-outline.svg',
-                                    color: AppTheme.grey.withOpacity(0.85)),
+                                    color: Theme.of(context)
+                                        .iconTheme
+                                        .color
+                                        .withOpacity(0.5)),
                           ),
                         ),
                       ),

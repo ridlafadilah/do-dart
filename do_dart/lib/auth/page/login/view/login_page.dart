@@ -16,7 +16,7 @@ class LoginPage extends StatelessWidget {
         preferredSize: Size.fromHeight(5.0),
         child: SizedBox.shrink(),
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Theme.of(context).backgroundColor,
       body: Center(
         child: BlocProvider(
           create: (context) {

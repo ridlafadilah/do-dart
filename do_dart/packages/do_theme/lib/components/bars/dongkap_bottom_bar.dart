@@ -174,7 +174,9 @@ class _DongkapBottomBarState extends State<DongkapBottomBar>
                           },
                           child: Icon(
                             Icons.add,
-                            color: Theme.of(context).colorScheme.primary,
+                            color: Theme.of(context)
+                                .floatingActionButtonTheme
+                                .backgroundColor,
                             size: 32,
                           ),
                         ),

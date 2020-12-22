@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class AppTheme {
   AppTheme._();
 
+  static const Color colorTheme = Color.fromRGBO(51, 102, 255, 1);
+
   static const Color lightColor = Color(0xFFFFFFFF);
   static const Color darkColor = Color(0xFF0d1117);
 
@@ -11,39 +13,34 @@ class AppTheme {
   static const Color lightText = Color(0xFFFFFFFF);
   static const Color lightModal = Color(0xFFFFFFFF);
   static const Color darkModal = Color(0xFF1a1a1b);
+  static const Color buttonDisable = Color.fromRGBO(143, 155, 179, .24);
+  static const Color buttonTextDisable = Color.fromRGBO(143, 155, 179, .48);
 
   static const Color grey = Color(0xFF3A5160);
+  static const Color danger = Color(0xFFFF0000);
 
   static const Color nearlyWhite = Color(0xFFFAFAFA);
   static const Color background = Color(0xFFFFFFFF);
   static const Color backgroundGrey = Color(0xFFF2F3F8);
   static const Color nearlyDarkBlue = Color(0xFF3366FF);
-
   static const Color nearlyBlue = Color(0xFF00B6F0);
   static const Color nearlyBlack = Color(0xFF213333);
   static const Color darkGrey = Color(0xFF313A44);
-
   static const Color white = Color(0xFFFFFFFF);
-
   static const Color darkText = Color(0xFF253840);
   static const Color deactivatedText = Color(0xFF767676);
   static const Color dismissibleBackground = Color(0xFF364A54);
   static const Color spacer = Color(0xFFF2F2F2);
 
-  static const Color colorTheme = Color.fromRGBO(51, 102, 255, 1);
-  static const Color button = Color.fromRGBO(51, 102, 255, 1);
-  static const Color buttonDisable = Color.fromRGBO(143, 155, 179, .24);
-  static const Color buttonTextDisable = Color.fromRGBO(143, 155, 179, .48);
-
   static final ThemeData light = ThemeData(
     platform: TargetPlatform.iOS,
-    primaryColor: lightColor,
+    primaryColor: colorTheme,
     backgroundColor: lightColor,
     appBarTheme: AppBarTheme(
       color: lightColor,
-      foregroundColor: darkColor,
       titleTextStyle: titleTextStyle,
       shadowColor: darkColor.withOpacity(0.7),
+      iconTheme: const IconThemeData(color: darkColor),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: colorTheme,
@@ -63,11 +60,52 @@ class AppTheme {
       indent: 65,
       endIndent: 10,
     ),
-    colorScheme: const ColorScheme.light(
-      primary: lightColor,
+    colorScheme: ColorScheme.light(
+      primary: darkColor.withOpacity(0.5),
       onPrimary: lightColor,
       primaryVariant: lightColor,
       secondary: colorTheme,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      labelStyle: TextStyle(
+        color: darkColor.withOpacity(0.5),
+      ),
+      hintStyle: TextStyle(
+        color: darkColor.withOpacity(0.5),
+      ),
+      errorStyle: const TextStyle(
+        color: danger,
+      ),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5.0),
+        borderSide: const BorderSide(
+          color: danger,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5.0),
+        borderSide: BorderSide(
+          color: darkColor.withOpacity(0.5),
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5.0),
+        borderSide: const BorderSide(
+          color: colorTheme,
+        ),
+      ),
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: lightColor,
+    ),
+    buttonTheme: ButtonThemeData(
+      buttonColor: colorTheme,
+      disabledColor: buttonDisable,
+      highlightColor: Colors.transparent,
+      minWidth: 200.0,
+      height: 48.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
     ),
     cardTheme: const CardTheme(
       color: Colors.teal,
@@ -95,9 +133,9 @@ class AppTheme {
     backgroundColor: darkColor,
     appBarTheme: const AppBarTheme(
       color: darkColor,
-      foregroundColor: lightColor,
       titleTextStyle: titleTextStyleDark,
       shadowColor: lightColor,
+      iconTheme: IconThemeData(color: lightColor),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: colorTheme,
@@ -117,11 +155,52 @@ class AppTheme {
       indent: 65,
       endIndent: 10,
     ),
-    colorScheme: const ColorScheme.light(
-      primary: darkColor,
+    colorScheme: const ColorScheme.dark(
+      primary: lightColor,
       onPrimary: darkColor,
       primaryVariant: darkColor,
       secondary: colorTheme,
+    ),
+    inputDecorationTheme: InputDecorationTheme(
+      labelStyle: TextStyle(
+        color: lightColor.withOpacity(0.3),
+      ),
+      hintStyle: TextStyle(
+        color: lightColor.withOpacity(0.3),
+      ),
+      errorStyle: const TextStyle(
+        color: danger,
+      ),
+      border: OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5.0),
+        borderSide: const BorderSide(
+          color: danger,
+        ),
+      ),
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5.0),
+        borderSide: BorderSide(
+          color: lightColor.withOpacity(0.5),
+        ),
+      ),
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(5.0),
+        borderSide: const BorderSide(
+          color: colorTheme,
+        ),
+      ),
+    ),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: darkColor,
+    ),
+    buttonTheme: ButtonThemeData(
+      buttonColor: colorTheme,
+      disabledColor: buttonDisable,
+      highlightColor: Colors.transparent,
+      minWidth: 200.0,
+      height: 48.0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
     ),
     cardTheme: const CardTheme(
       color: Colors.black,

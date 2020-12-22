@@ -117,8 +117,6 @@ class __OldPasswordInputState extends State<_OldPasswordInput> {
             labelText: DongkapLocalizations.of(context).password,
             hintText: DongkapLocalizations.of(context).password,
             contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-            border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
             errorText: state.oldPassword.invalid
                 ? DongkapLocalizations.of(context).errorPassword
                 : null,
@@ -133,10 +131,12 @@ class __OldPasswordInputState extends State<_OldPasswordInput> {
                 child: isObscureText
                     ? SvgPicture.asset(
                         'assets/eva_icons/outline/svg/eye-outline.svg',
-                        color: AppTheme.grey.withOpacity(0.85))
+                        color:
+                            Theme.of(context).iconTheme.color.withOpacity(0.5))
                     : SvgPicture.asset(
                         'assets/eva_icons/outline/svg/eye-off-outline.svg',
-                        color: AppTheme.grey.withOpacity(0.85)),
+                        color:
+                            Theme.of(context).iconTheme.color.withOpacity(0.5)),
               ),
             ),
           ),
@@ -171,8 +171,6 @@ class __NewPasswordInputState extends State<_NewPasswordInput> {
             labelText: DongkapLocalizations.of(context).newPassword,
             hintText: DongkapLocalizations.of(context).newPassword,
             contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-            border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
             errorText: state.newPassword.invalid
                 ? DongkapLocalizations.of(context).errorNewPassword
                 : null,
@@ -187,10 +185,12 @@ class __NewPasswordInputState extends State<_NewPasswordInput> {
                 child: isObscureText
                     ? SvgPicture.asset(
                         'assets/eva_icons/outline/svg/eye-outline.svg',
-                        color: AppTheme.grey.withOpacity(0.85))
+                        color:
+                            Theme.of(context).iconTheme.color.withOpacity(0.5))
                     : SvgPicture.asset(
                         'assets/eva_icons/outline/svg/eye-off-outline.svg',
-                        color: AppTheme.grey.withOpacity(0.85)),
+                        color:
+                            Theme.of(context).iconTheme.color.withOpacity(0.5)),
               ),
             ),
           ),
@@ -225,8 +225,6 @@ class __ConfirmPasswordInputState extends State<_ConfirmPasswordInput> {
             labelText: DongkapLocalizations.of(context).confirmPassword,
             hintText: DongkapLocalizations.of(context).confirmPassword,
             contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-            border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(5.0)),
             errorText: state.confirmPassword.invalid
                 ? DongkapLocalizations.of(context).errorConfirmPassword
                 : null,
@@ -241,10 +239,12 @@ class __ConfirmPasswordInputState extends State<_ConfirmPasswordInput> {
                 child: isObscureText
                     ? SvgPicture.asset(
                         'assets/eva_icons/outline/svg/eye-outline.svg',
-                        color: AppTheme.grey.withOpacity(0.85))
+                        color:
+                            Theme.of(context).iconTheme.color.withOpacity(0.5))
                     : SvgPicture.asset(
                         'assets/eva_icons/outline/svg/eye-off-outline.svg',
-                        color: AppTheme.grey.withOpacity(0.85)),
+                        color:
+                            Theme.of(context).iconTheme.color.withOpacity(0.5)),
               ),
             ),
           ),
@@ -278,39 +278,21 @@ class _ButtonChangePasswordInput extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: Center(
-            child: Container(
-              decoration: state.status.isSubmissionInProgress
-                  ? null
-                  : BoxDecoration(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(5.0)),
-                      boxShadow: <BoxShadow>[
-                        BoxShadow(
-                            color: Colors.grey.withOpacity(0.3),
-                            offset: const Offset(2, 2),
-                            blurRadius: 2.0),
-                      ],
-                    ),
-              child: ButtonTheme(
-                minWidth: 200.0,
-                height: 48.0,
-                child: RaisedButton(
-                  color: AppTheme.button,
-                  disabledColor: AppTheme.buttonDisable,
-                  onPressed: _changePasswordButtonPress(context, state),
-                  child: Center(
-                    child: Padding(
-                      padding: const EdgeInsets.all(4.0),
-                      child: Text(
-                        DongkapLocalizations.of(context).changePassword,
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w500,
-                          color: state.status.isSubmissionInProgress
-                              ? AppTheme.buttonTextDisable
-                              : Colors.white,
-                        ),
-                      ),
+            child: RaisedButton(
+              onPressed: _changePasswordButtonPress(context, state),
+              child: Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: Text(
+                    DongkapLocalizations.of(context).changePassword,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w500,
+                      color: (state.status.isSubmissionInProgress ||
+                              state.action.isInvalid ||
+                              state.action.isPure)
+                          ? AppTheme.buttonTextDisable
+                          : Colors.white,
                     ),
                   ),
                 ),

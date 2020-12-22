@@ -78,7 +78,7 @@ class _DongkapAppViewState extends State<DongkapAppView> {
               GlobalConfiguration().getValue<bool>('debug'),
           theme: AppTheme.light,
           darkTheme: AppTheme.dark,
-          themeMode: ThemeMode.light,
+          themeMode: ThemeMode.dark,
           localizationsDelegates: [
             DongkapLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,

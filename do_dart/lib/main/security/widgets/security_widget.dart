@@ -6,7 +6,6 @@ import 'package:do_dart/main/security/bloc/provider_bloc.dart';
 import 'package:do_dart/main/security/bloc/two_factor_auth_bloc.dart';
 import 'package:do_dart/main/security/change_password_page.dart';
 import 'package:do_dart/main/security/deactivate_account_page.dart';
-import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:do_dart/generated/l10n.dart';
@@ -49,12 +48,12 @@ class _SecurityWidgetState extends State<SecurityWidget> {
         children: <Widget>[
           ListTile(
             enabled: false,
-            leading: SvgPicture.asset('assets/eva_icons/fill/svg/google.svg'),
-            title: Text(
-              DongkapLocalizations.of(context).labelLoginSocial('Google'),
-              style: const TextStyle(
-                  fontFamily: AppTheme.fontName, color: Colors.black),
+            leading: SvgPicture.asset(
+              'assets/eva_icons/fill/svg/google.svg',
+              color: Theme.of(context).iconTheme.color,
             ),
+            title: Text(
+                DongkapLocalizations.of(context).labelLoginSocial('Google')),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
             onTap: () {},
@@ -66,15 +65,16 @@ class _SecurityWidgetState extends State<SecurityWidget> {
           ),
           ListTile(
             leading: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/slash-outline.svg'),
-            title: Text(
-              DongkapLocalizations.of(context).deactivateAccount,
-              style: const TextStyle(fontFamily: AppTheme.fontName),
+              'assets/eva_icons/outline/svg/slash-outline.svg',
+              color: Theme.of(context).iconTheme.color,
             ),
+            title: Text(DongkapLocalizations.of(context).deactivateAccount),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
             trailing: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg'),
+              'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg',
+              color: Theme.of(context).iconTheme.color,
+            ),
             onTap: () {
               Navigator.push<dynamic>(
                 context,
@@ -105,15 +105,16 @@ class _SecurityWidgetState extends State<SecurityWidget> {
         children: <Widget>[
           ListTile(
             leading: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/lock-outline.svg'),
-            title: Text(
-              DongkapLocalizations.of(context).changePassword,
-              style: const TextStyle(fontFamily: AppTheme.fontName),
+              'assets/eva_icons/outline/svg/lock-outline.svg',
+              color: Theme.of(context).iconTheme.color,
             ),
+            title: Text(DongkapLocalizations.of(context).changePassword),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
             trailing: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg'),
+              'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg',
+              color: Theme.of(context).iconTheme.color,
+            ),
             onTap: () {
               Navigator.push<dynamic>(
                 context,
@@ -151,8 +152,9 @@ class _SecurityWidgetState extends State<SecurityWidget> {
                       style: const TextStyle(color: Colors.white),
                     ),
                     icon: SvgPicture.asset(
-                        'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
-                        color: Colors.white),
+                      'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
+                      color: Theme.of(context).iconTheme.color,
+                    ),
                     duration: const Duration(seconds: 3),
                     backgroundColor: Colors.red[400],
                     routeBlur: 0.5,
@@ -173,21 +175,18 @@ class _SecurityWidgetState extends State<SecurityWidget> {
                     SwitchListTile(
                       secondary: Padding(
                           padding: const EdgeInsets.only(left: 15),
-                          child: SvgPicture.asset(is2FAIcon)),
-                      title: Text(
-                        DongkapLocalizations.of(context)
-                            .twoFactorAuthentication,
-                        style: const TextStyle(fontFamily: AppTheme.fontName),
-                      ),
-                      subtitle: Text(
-                        DongkapLocalizations.of(context)
-                            .twoFactorAuthenticationSubtitle,
-                        style: const TextStyle(fontFamily: AppTheme.fontName),
-                      ),
+                          child: SvgPicture.asset(
+                            is2FAIcon,
+                            color: Theme.of(context).iconTheme.color,
+                          )),
+                      title: Text(DongkapLocalizations.of(context)
+                          .twoFactorAuthentication),
+                      subtitle: Text(DongkapLocalizations.of(context)
+                          .twoFactorAuthenticationSubtitle),
                       contentPadding:
                           const EdgeInsets.only(left: 5.0, right: 15.0),
                       value: is2FA,
-                      activeColor: AppTheme.colorTheme,
+                      activeColor: Theme.of(context).colorScheme.secondary,
                       onChanged: (bool value) {
                         _prompt2FA(context, value);
                       },
@@ -204,15 +203,16 @@ class _SecurityWidgetState extends State<SecurityWidget> {
           ),
           ListTile(
             leading: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/slash-outline.svg'),
-            title: Text(
-              DongkapLocalizations.of(context).deactivateAccount,
-              style: const TextStyle(fontFamily: AppTheme.fontName),
+              'assets/eva_icons/outline/svg/slash-outline.svg',
+              color: Theme.of(context).iconTheme.color,
             ),
+            title: Text(DongkapLocalizations.of(context).deactivateAccount),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
             trailing: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg'),
+              'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg',
+              color: Theme.of(context).iconTheme.color,
+            ),
             onTap: () {
               Navigator.push<dynamic>(
                 context,

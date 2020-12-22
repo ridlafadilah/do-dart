@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -39,61 +38,61 @@ class _AboutWidgetState extends State<AboutWidget> {
         children: <Widget>[
           ListTile(
             leading: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/shield-outline.svg'),
+              'assets/eva_icons/outline/svg/shield-outline.svg',
+              color: Theme.of(context).iconTheme.color,
+            ),
             title: Text(
               DongkapLocalizations.of(context).privacyPolicy,
-              style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
             trailing: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg'),
+              'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg',
+              color: Theme.of(context).iconTheme.color,
+            ),
             onTap: () {},
           ),
           const Divider(
             height: 1,
-            thickness: 1.0,
             indent: 60,
           ),
           ListTile(
             leading: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/file-text-outline.svg'),
+              'assets/eva_icons/outline/svg/file-text-outline.svg',
+              color: Theme.of(context).iconTheme.color,
+            ),
             title: Text(
               DongkapLocalizations.of(context).termsAndConditions,
-              style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
             trailing: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg'),
+              'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg',
+              color: Theme.of(context).iconTheme.color,
+            ),
             onTap: () {},
           ),
           const Divider(
             height: 1,
-            thickness: 1.0,
             indent: 60,
           ),
           ListTile(
-            enabled: false,
             leading: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/star-outline.svg'),
+              'assets/eva_icons/outline/svg/star-outline.svg',
+              color: Theme.of(context).iconTheme.color,
+            ),
             title: Text(
               _packageInfo.appName,
-              style: const TextStyle(
-                  fontFamily: AppTheme.fontName, color: Colors.black),
             ),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
             trailing: Text(
               _packageInfo.version,
-              style: const TextStyle(
-                  fontFamily: AppTheme.fontName, color: Colors.black),
             ),
             onTap: () {},
           ),
           const Divider(
             height: 1,
-            thickness: 1.0,
             indent: 60,
           ),
         ],

@@ -159,7 +159,7 @@ class _LanguagePageState extends State<LanguagePage>
               child: Center(
                 child: SvgPicture.asset(
                   'assets/eva_icons/outline/svg/arrow-back-outline.svg',
-                  color: Theme.of(context).appBarTheme.foregroundColor,
+                  color: Theme.of(context).appBarTheme.iconTheme.color,
                 ),
               ),
             ),
