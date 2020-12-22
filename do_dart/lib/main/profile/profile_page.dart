@@ -156,7 +156,9 @@ class _ProfilePageState extends State<ProfilePage>
               },
               child: Center(
                 child: SvgPicture.asset(
-                    'assets/eva_icons/outline/svg/menu-2-outline.svg'),
+                  'assets/eva_icons/outline/svg/menu-2-outline.svg',
+                  color: Theme.of(context).iconTheme.color,
+                ),
               ),
             ),
           ),
@@ -176,7 +178,7 @@ class _ProfilePageState extends State<ProfilePage>
             height: 300.0,
             color: Colors.transparent,
             child: Card(
-              color: Colors.white,
+              color: Theme.of(context).bottomSheetTheme.backgroundColor,
               shape: const ContinuousRectangleBorder(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.0),
@@ -202,10 +204,12 @@ class _ProfilePageState extends State<ProfilePage>
                   const SizedBox(height: 10),
                   ListTile(
                     leading: SvgPicture.asset(
-                        'assets/eva_icons/outline/svg/settings-outline.svg'),
+                      'assets/eva_icons/outline/svg/settings-outline.svg',
+                      color: Theme.of(context).iconTheme.color,
+                    ),
                     title: Text(
                       DongkapLocalizations.of(context).settings,
-                      style: const TextStyle(fontFamily: AppTheme.fontName),
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     horizontalTitleGap: 2,
                     contentPadding:
@@ -221,18 +225,15 @@ class _ProfilePageState extends State<ProfilePage>
                       );
                     },
                   ),
-                  const Divider(
-                    height: 1,
-                    thickness: 1.0,
-                    indent: 65,
-                    endIndent: 10,
-                  ),
+                  const Divider(height: 1),
                   ListTile(
                     leading: SvgPicture.asset(
-                        'assets/eva_icons/outline/svg/lock-outline.svg'),
+                      'assets/eva_icons/outline/svg/lock-outline.svg',
+                      color: Theme.of(context).iconTheme.color,
+                    ),
                     title: Text(
                       DongkapLocalizations.of(context).security,
-                      style: const TextStyle(fontFamily: AppTheme.fontName),
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     horizontalTitleGap: 2,
                     contentPadding:
@@ -248,18 +249,15 @@ class _ProfilePageState extends State<ProfilePage>
                       );
                     },
                   ),
-                  const Divider(
-                    height: 1,
-                    thickness: 1.0,
-                    indent: 65,
-                    endIndent: 10,
-                  ),
+                  const Divider(height: 1),
                   ListTile(
                     leading: SvgPicture.asset(
-                        'assets/eva_icons/outline/svg/info-outline.svg'),
+                      'assets/eva_icons/outline/svg/info-outline.svg',
+                      color: Theme.of(context).iconTheme.color,
+                    ),
                     title: Text(
                       DongkapLocalizations.of(context).about,
-                      style: const TextStyle(fontFamily: AppTheme.fontName),
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     horizontalTitleGap: 2,
                     contentPadding:
@@ -275,18 +273,15 @@ class _ProfilePageState extends State<ProfilePage>
                       );
                     },
                   ),
-                  const Divider(
-                    height: 1,
-                    thickness: 1.0,
-                    indent: 65,
-                    endIndent: 10,
-                  ),
+                  const Divider(height: 1),
                   ListTile(
                     leading: SvgPicture.asset(
-                        'assets/eva_icons/outline/svg/power-outline.svg'),
+                      'assets/eva_icons/outline/svg/power-outline.svg',
+                      color: Theme.of(context).iconTheme.color,
+                    ),
                     title: Text(
                       DongkapLocalizations.of(context).logout,
-                      style: const TextStyle(fontFamily: AppTheme.fontName),
+                      style: Theme.of(context).textTheme.headline6,
                     ),
                     horizontalTitleGap: 2,
                     contentPadding:
@@ -297,12 +292,7 @@ class _ProfilePageState extends State<ProfilePage>
                       await authService.logOut();
                     },
                   ),
-                  const Divider(
-                    height: 1,
-                    thickness: 1.0,
-                    indent: 65,
-                    endIndent: 10,
-                  ),
+                  const Divider(height: 1),
                 ],
               ),
             ),

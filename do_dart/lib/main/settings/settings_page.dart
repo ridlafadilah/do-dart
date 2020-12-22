@@ -12,7 +12,7 @@ class SettingsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppTheme.background,
+      color: Theme.of(context).backgroundColor,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         resizeToAvoidBottomInset: false,
@@ -61,7 +61,9 @@ class SettingsPage extends StatelessWidget {
               },
               child: Center(
                 child: SvgPicture.asset(
-                    'assets/eva_icons/outline/svg/arrow-back-outline.svg'),
+                  'assets/eva_icons/outline/svg/arrow-back-outline.svg',
+                  color: Theme.of(context).appBarTheme.foregroundColor,
+                ),
               ),
             ),
           ),
@@ -72,12 +74,15 @@ class SettingsPage extends StatelessWidget {
             child: Text(
               DongkapLocalizations.of(context).settings,
               textAlign: TextAlign.left,
-              style: const TextStyle(
-                fontFamily: AppTheme.fontName,
-                fontWeight: FontWeight.w700,
+              style: TextStyle(
                 fontSize: 22 + 6 - 6 * 0.0,
-                letterSpacing: 1.2,
-                color: AppTheme.darkerText,
+                color: Theme.of(context).appBarTheme.titleTextStyle.color,
+                fontFamily:
+                    Theme.of(context).appBarTheme.titleTextStyle.fontFamily,
+                fontWeight:
+                    Theme.of(context).appBarTheme.titleTextStyle.fontWeight,
+                letterSpacing:
+                    Theme.of(context).appBarTheme.titleTextStyle.letterSpacing,
               ),
             ),
           ),

@@ -61,7 +61,7 @@ class _DongkapAppBarState extends State<DongkapAppBar> {
                           color: Theme.of(context)
                               .appBarTheme
                               .shadowColor
-                              .withOpacity(0.3 * widget.topBarOpacity),
+                              .withOpacity(0.4 * widget.topBarOpacity),
                           offset: const Offset(0.1, 0.1),
                           blurRadius: 10.0),
                     ],

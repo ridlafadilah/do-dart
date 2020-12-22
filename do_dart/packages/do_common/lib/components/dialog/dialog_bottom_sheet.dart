@@ -37,7 +37,8 @@ class DialogBottomSheet extends StatelessWidget {
             width: sizeExitButton,
             padding: const EdgeInsets.only(bottom: 15),
             child: FloatingActionButton(
-              backgroundColor: AppTheme.white,
+              backgroundColor:
+                  Theme.of(context).bottomSheetTheme.backgroundColor,
               onPressed: () {
                 Navigator.of(context, rootNavigator: true).pop();
               },
@@ -47,14 +48,14 @@ class DialogBottomSheet extends StatelessWidget {
                   'assets/eva_icons/outline/svg/close-outline.svg',
                   height: 35.0,
                   width: 35.0,
-                  color: AppTheme.grey),
+                  color: Theme.of(context).iconTheme.color),
             ),
           ),
           Container(
             height: height - sizeExitButton,
             color: Colors.transparent,
             child: Card(
-              color: Colors.white,
+              color: Theme.of(context).bottomSheetTheme.backgroundColor,
               shape: const ContinuousRectangleBorder(
                 borderRadius: BorderRadius.only(
                     topLeft: Radius.circular(20.0),

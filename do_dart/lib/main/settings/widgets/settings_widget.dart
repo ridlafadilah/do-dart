@@ -4,7 +4,6 @@ import 'package:do_core/core.dart';
 import 'package:do_dart/l10n/utils/locale_utils.dart';
 import 'package:do_dart/main/settings/bloc/theme_bloc.dart';
 import 'package:do_dart/main/settings/language_page.dart';
-import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:do_dart/generated/l10n.dart';
@@ -33,15 +32,18 @@ class _SettingsWidgetState extends State<SettingsWidget> {
         children: <Widget>[
           ListTile(
             leading: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/globe-outline.svg'),
+              'assets/eva_icons/outline/svg/globe-outline.svg',
+              color: Theme.of(context).iconTheme.color,
+            ),
             title: Text(
               DongkapLocalizations.of(context).language,
-              style: const TextStyle(fontFamily: AppTheme.fontName),
             ),
             horizontalTitleGap: 2,
             contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
             trailing: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg'),
+              'assets/eva_icons/outline/svg/arrow-ios-forward-outline.svg',
+              color: Theme.of(context).iconTheme.color,
+            ),
             onTap: () {
               Navigator.push<dynamic>(
                 context,
@@ -53,7 +55,6 @@ class _SettingsWidgetState extends State<SettingsWidget> {
           ),
           const Divider(
             height: 1,
-            thickness: 1.0,
             indent: 60,
           ),
           BlocProvider(
@@ -67,8 +68,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                 if (state is RequestSuccessState<bool>) {
                   isDarkMode = state.data;
                   iconDarkMode = state.data
-                      ? 'assets/eva_icons/outline/svg/moon-outline.svg'
-                      : 'assets/eva_icons/fill/svg/moon.svg';
+                      ? 'assets/eva_icons/fill/svg/moon.svg'
+                      : 'assets/eva_icons/outline/svg/moon-outline.svg';
                 }
                 if (state is SubmitInProgressState) {
                   _loading(context);
@@ -80,8 +81,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       style: const TextStyle(color: Colors.white),
                     ),
                     icon: SvgPicture.asset(
-                        'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
-                        color: Colors.white),
+                      'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
+                      color: Theme.of(context).iconTheme.color,
+                    ),
                     duration: const Duration(seconds: 3),
                     backgroundColor: Colors.red[400],
                     routeBlur: 0.5,
@@ -92,8 +94,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                   Navigator.of(context, rootNavigator: true).pop();
                   isDarkMode = state.data;
                   iconDarkMode = state.data
-                      ? 'assets/eva_icons/outline/svg/moon-outline.svg'
-                      : 'assets/eva_icons/fill/svg/moon.svg';
+                      ? 'assets/eva_icons/fill/svg/moon.svg'
+                      : 'assets/eva_icons/outline/svg/moon-outline.svg';
                 }
               },
               child: BlocBuilder<ThemeBloc, CommonState>(
@@ -102,22 +104,23 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     SwitchListTile(
                       secondary: Padding(
                           padding: const EdgeInsets.only(left: 15),
-                          child: SvgPicture.asset(iconDarkMode)),
+                          child: SvgPicture.asset(
+                            iconDarkMode,
+                            color: Theme.of(context).iconTheme.color,
+                          )),
                       title: Text(
                         DongkapLocalizations.of(context).darkMode,
-                        style: const TextStyle(fontFamily: AppTheme.fontName),
                       ),
                       contentPadding:
                           const EdgeInsets.only(left: 5.0, right: 15.0),
                       value: isDarkMode,
-                      activeColor: AppTheme.colorTheme,
+                      activeColor: Theme.of(context).colorScheme.secondary,
                       onChanged: (bool value) {
                         _promptTheme(context, value);
                       },
                     ),
                     const Divider(
                       height: 1,
-                      thickness: 1.0,
                       indent: 60,
                     ),
                   ]);

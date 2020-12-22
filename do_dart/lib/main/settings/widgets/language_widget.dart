@@ -1,6 +1,5 @@
 import 'package:do_common/common.dart';
 import 'package:do_core/models.dart';
-import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -26,16 +25,16 @@ class LanguageWidget extends StatelessWidget {
                 ListTile(
                   title: Text(
                     locales[index].identifier,
-                    style: const TextStyle(fontFamily: AppTheme.fontName),
                   ),
                   subtitle: Text(
                     locales[index].subIdentifier,
-                    style: const TextStyle(fontFamily: AppTheme.fontName),
                   ),
                   contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
                   trailing: locales[index].localeUsed
                       ? SvgPicture.asset(
-                          'assets/eva_icons/outline/svg/checkmark-outline.svg')
+                          'assets/eva_icons/outline/svg/checkmark-outline.svg',
+                          color: Theme.of(context).iconTheme.color,
+                        )
                       : null,
                   onTap: locales[index].localeUsed
                       ? null

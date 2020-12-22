@@ -4,11 +4,15 @@ class AppTheme {
   AppTheme._();
 
   static const Color lightColor = Color(0xFFFFFFFF);
-  static const Color darkColor = Color(0xFF000000);
+  static const Color darkColor = Color(0xFF0d1117);
 
   static const String fontName = 'OpenSans';
   static const Color darkerText = Color(0xFF17262A);
   static const Color lightText = Color(0xFFFFFFFF);
+  static const Color lightModal = Color(0xFFFFFFFF);
+  static const Color darkModal = Color(0xFF1a1a1b);
+
+  static const Color grey = Color(0xFF3A5160);
 
   static const Color nearlyWhite = Color(0xFFFAFAFA);
   static const Color background = Color(0xFFFFFFFF);
@@ -20,7 +24,6 @@ class AppTheme {
   static const Color darkGrey = Color(0xFF313A44);
 
   static const Color white = Color(0xFFFFFFFF);
-  static const Color grey = Color(0xFF3A5160);
 
   static const Color darkText = Color(0xFF253840);
   static const Color deactivatedText = Color(0xFF767676);
@@ -38,17 +41,27 @@ class AppTheme {
     backgroundColor: lightColor,
     appBarTheme: AppBarTheme(
       color: lightColor,
+      foregroundColor: darkColor,
       titleTextStyle: titleTextStyle,
       shadowColor: darkColor.withOpacity(0.7),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: lightColor,
+      backgroundColor: colorTheme,
       selectedIconTheme: const IconThemeData(
-        color: darkColor,
+        color: lightColor,
       ),
       unselectedIconTheme: IconThemeData(
-        color: darkColor.withOpacity(0.7),
+        color: lightColor.withOpacity(0.7),
       ),
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: lightModal,
+    ),
+    dividerTheme: DividerThemeData(
+      color: darkColor.withOpacity(0.1),
+      thickness: 1.0,
+      indent: 65,
+      endIndent: 10,
     ),
     colorScheme: const ColorScheme.light(
       primary: lightColor,
@@ -67,6 +80,7 @@ class AppTheme {
       headline4: headline4,
       headline5: headline5,
       headline6: headline6,
+      subtitle1: subtitle1,
       subtitle2: subtitle2,
       bodyText1: body1,
       bodyText2: body2,
@@ -81,17 +95,27 @@ class AppTheme {
     backgroundColor: darkColor,
     appBarTheme: const AppBarTheme(
       color: darkColor,
+      foregroundColor: lightColor,
       titleTextStyle: titleTextStyleDark,
       shadowColor: lightColor,
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: darkColor,
+      backgroundColor: colorTheme,
       selectedIconTheme: const IconThemeData(
-        color: lightColor,
+        color: darkColor,
       ),
       unselectedIconTheme: IconThemeData(
-        color: lightColor.withOpacity(0.7),
+        color: darkColor.withOpacity(0.7),
       ),
+    ),
+    bottomSheetTheme: const BottomSheetThemeData(
+      backgroundColor: darkModal,
+    ),
+    dividerTheme: DividerThemeData(
+      color: lightColor.withOpacity(0.1),
+      thickness: 1.0,
+      indent: 65,
+      endIndent: 10,
     ),
     colorScheme: const ColorScheme.light(
       primary: darkColor,
@@ -110,6 +134,7 @@ class AppTheme {
       headline4: headline4Dark,
       headline5: headline5Dark,
       headline6: headline6Dark,
+      subtitle1: subtitle1Dark,
       subtitle2: subtitle2Dark,
       bodyText1: body1Dark,
       bodyText2: body2Dark,
@@ -154,15 +179,23 @@ class AppTheme {
 
   static const TextStyle headline6 = TextStyle(
     fontFamily: fontName,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.normal,
     fontSize: 16,
     letterSpacing: 0.18,
     color: darkerText,
   );
 
-  static const TextStyle subtitle2 = TextStyle(
+  static const TextStyle subtitle1 = TextStyle(
     fontFamily: fontName,
     fontWeight: FontWeight.w400,
+    fontSize: 16,
+    letterSpacing: 0.05,
+    color: darkerText,
+  );
+
+  static const TextStyle subtitle2 = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.normal,
     fontSize: 14,
     letterSpacing: -0.04,
     color: darkerText,
@@ -229,15 +262,23 @@ class AppTheme {
 
   static const TextStyle headline6Dark = TextStyle(
     fontFamily: fontName,
-    fontWeight: FontWeight.bold,
+    fontWeight: FontWeight.normal,
     fontSize: 16,
     letterSpacing: 0.18,
     color: lightText,
   );
 
-  static const TextStyle subtitle2Dark = TextStyle(
+  static const TextStyle subtitle1Dark = TextStyle(
     fontFamily: fontName,
     fontWeight: FontWeight.w400,
+    fontSize: 16,
+    letterSpacing: 0.05,
+    color: lightText,
+  );
+
+  static const TextStyle subtitle2Dark = TextStyle(
+    fontFamily: fontName,
+    fontWeight: FontWeight.normal,
     fontSize: 14,
     letterSpacing: -0.04,
     color: lightText,

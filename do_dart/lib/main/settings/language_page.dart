@@ -59,7 +59,7 @@ class _LanguagePageState extends State<LanguagePage>
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: AppTheme.background,
+      color: Theme.of(context).backgroundColor,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         resizeToAvoidBottomInset: false,
@@ -99,8 +99,9 @@ class _LanguagePageState extends State<LanguagePage>
                 style: const TextStyle(color: Colors.white),
               ),
               icon: SvgPicture.asset(
-                  'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
-                  color: Colors.white),
+                'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
+                color: Theme.of(context).iconTheme.color,
+              ),
               duration: const Duration(seconds: 3),
               backgroundColor: Colors.red[400],
               routeBlur: 0.5,
@@ -157,7 +158,9 @@ class _LanguagePageState extends State<LanguagePage>
               },
               child: Center(
                 child: SvgPicture.asset(
-                    'assets/eva_icons/outline/svg/arrow-back-outline.svg'),
+                  'assets/eva_icons/outline/svg/arrow-back-outline.svg',
+                  color: Theme.of(context).appBarTheme.foregroundColor,
+                ),
               ),
             ),
           ),
@@ -169,11 +172,14 @@ class _LanguagePageState extends State<LanguagePage>
               DongkapLocalizations.of(context).language,
               textAlign: TextAlign.left,
               style: TextStyle(
-                fontFamily: AppTheme.fontName,
-                fontWeight: FontWeight.w700,
-                fontSize: 22 + 6 - 6 * _topBarOpacity,
-                letterSpacing: 1.2,
-                color: AppTheme.darkerText,
+                fontSize: 22 + 6 - 6 * 0.0,
+                color: Theme.of(context).appBarTheme.titleTextStyle.color,
+                fontFamily:
+                    Theme.of(context).appBarTheme.titleTextStyle.fontFamily,
+                fontWeight:
+                    Theme.of(context).appBarTheme.titleTextStyle.fontWeight,
+                letterSpacing:
+                    Theme.of(context).appBarTheme.titleTextStyle.letterSpacing,
               ),
             ),
           ),
