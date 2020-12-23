@@ -12,10 +12,10 @@ class TranslationBloc extends Bloc<TranslationEvent, TranslationState> {
   TranslationBloc()
       : super(const TranslationState(
             locale: Locale.fromSubtags(languageCode: 'en', countryCode: 'US')));
+  final LanguageService languageService = LanguageService();
 
   @override
   Stream<TranslationState> mapEventToState(TranslationEvent event) async* {
-    LanguageService languageService = LanguageService();
     final LocaleDto locale = languageService.getCurrentLocale();
     yield TranslationState(locale: getLanguageCode(locale));
   }

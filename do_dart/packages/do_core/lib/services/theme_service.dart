@@ -8,7 +8,6 @@ import 'package:do_core/services/auth_service.dart';
 import 'package:do_core/services/core_locator.dart';
 import 'package:do_core/services/shared_preferences_service.dart';
 import 'package:logger/logger.dart';
-import 'package:meta/meta.dart';
 
 class ThemeType {
   static const defaultTheme = 'default';
@@ -16,9 +15,7 @@ class ThemeType {
 }
 
 class ThemeService {
-  ThemeService({@required AuthService authService})
-      : assert(authService != null),
-        _authService = authService;
+  ThemeService({AuthService authService}) : _authService = authService;
 
   final logger = Logger();
   final AuthService _authService;

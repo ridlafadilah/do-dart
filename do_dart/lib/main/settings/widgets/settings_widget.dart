@@ -4,6 +4,7 @@ import 'package:do_core/core.dart';
 import 'package:do_dart/l10n/utils/locale_utils.dart';
 import 'package:do_dart/main/settings/bloc/theme_bloc.dart';
 import 'package:do_dart/main/settings/language_page.dart';
+import 'package:do_dart/theme/bloc/thememode_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:do_dart/generated/l10n.dart';
@@ -91,6 +92,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     dismissDirection: FlushbarDismissDirection.vertical,
                   )..show(context);
                 } else if (state is SubmitSuccessState<bool>) {
+                  context.read<ThemeModeBloc>().add(const ThemeModeEvent());
                   Navigator.of(context, rootNavigator: true).pop();
                   isDarkMode = state.data;
                   iconDarkMode = state.data

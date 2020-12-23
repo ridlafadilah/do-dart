@@ -7,6 +7,7 @@ import 'package:do_dart/configs/security_config.dart';
 import 'package:do_dart/environments/environment.dart';
 import 'package:do_dart/l10n/bloc/translation_bloc.dart';
 import 'package:do_dart/main/main_layout.dart';
+import 'package:do_dart/theme/bloc/thememode_bloc.dart';
 import 'package:do_dart/splash/splash.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
@@ -44,7 +45,10 @@ class DongkapApp extends StatelessWidget {
         ),
         BlocProvider<TranslationBloc>(
           create: (_) => TranslationBloc()..add(const TranslationEvent()),
-        )
+        ),
+        BlocProvider<ThemeModeBloc>(
+          create: (_) => ThemeModeBloc()..add(const ThemeModeEvent()),
+        ),
       ], child: DongkapAppView()),
     );
   }
@@ -71,46 +75,50 @@ class _DongkapAppViewState extends State<DongkapAppView> {
   Widget build(BuildContext context) {
     return BlocBuilder<TranslationBloc, TranslationState>(
       builder: (BuildContext context, TranslationState state) {
-        return MaterialApp(
-          navigatorKey: _navigatorKey,
-          title: 'Dongkap',
-          debugShowCheckedModeBanner:
-              GlobalConfiguration().getValue<bool>('debug'),
-          theme: AppTheme.light,
-          darkTheme: AppTheme.dark,
-          themeMode: ThemeMode.dark,
-          localizationsDelegates: [
-            DongkapLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: supportedLocales,
-          locale: state.locale,
-          builder: (context, child) {
-            return BlocListener<AuthenticationBloc, AuthenticationState>(
-              listener: (context, state) {
-                switch (state.status) {
-                  case AuthStatus.authenticated:
-                    _navigator.pushAndRemoveUntil<void>(
-                      MainLayout.route(),
-                      (route) => false,
-                    );
-                    break;
-                  case AuthStatus.unauthenticated:
-                    _navigator.pushAndRemoveUntil<void>(
-                      LoginPage.route(),
-                      (route) => false,
-                    );
-                    break;
-                  default:
-                    break;
-                }
+        return BlocBuilder<ThemeModeBloc, ThemeModeState>(
+          builder: (BuildContext context, ThemeModeState themeState) {
+            return MaterialApp(
+              navigatorKey: _navigatorKey,
+              title: 'Dongkap',
+              debugShowCheckedModeBanner:
+                  GlobalConfiguration().getValue<bool>('debug'),
+              theme: AppTheme.light,
+              darkTheme: AppTheme.dark,
+              themeMode: themeState.themeMode,
+              localizationsDelegates: [
+                DongkapLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+              supportedLocales: supportedLocales,
+              locale: state.locale,
+              builder: (context, child) {
+                return BlocListener<AuthenticationBloc, AuthenticationState>(
+                  listener: (context, state) {
+                    switch (state.status) {
+                      case AuthStatus.authenticated:
+                        _navigator.pushAndRemoveUntil<void>(
+                          MainLayout.route(),
+                          (route) => false,
+                        );
+                        break;
+                      case AuthStatus.unauthenticated:
+                        _navigator.pushAndRemoveUntil<void>(
+                          LoginPage.route(),
+                          (route) => false,
+                        );
+                        break;
+                      default:
+                        break;
+                    }
+                  },
+                  child: child,
+                );
               },
-              child: child,
+              onGenerateRoute: (_) => SplashPage.route(),
             );
           },
-          onGenerateRoute: (_) => SplashPage.route(),
         );
       },
     );
