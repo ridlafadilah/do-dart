@@ -24,7 +24,7 @@ class BodyMeasurementWidget extends StatelessWidget {
                   left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.white,
+                  color: AppTheme.lightColor,
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomLeft: Radius.circular(8.0),
@@ -32,7 +32,7 @@ class BodyMeasurementWidget extends StatelessWidget {
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.grey.withOpacity(0.2),
+                        color: AppTheme.darkGrey.withOpacity(0.2),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -108,7 +108,8 @@ class BodyMeasurementWidget extends StatelessWidget {
                                     children: <Widget>[
                                       Icon(
                                         Icons.access_time,
-                                        color: AppTheme.grey.withOpacity(0.5),
+                                        color:
+                                            AppTheme.darkGrey.withOpacity(0.5),
                                         size: 16,
                                       ),
                                       Padding(
@@ -122,8 +123,8 @@ class BodyMeasurementWidget extends StatelessWidget {
                                             fontWeight: FontWeight.w500,
                                             fontSize: 14,
                                             letterSpacing: 0.0,
-                                            color:
-                                                AppTheme.grey.withOpacity(0.5),
+                                            color: AppTheme.darkGrey
+                                                .withOpacity(0.5),
                                           ),
                                         ),
                                       ),
@@ -157,7 +158,7 @@ class BodyMeasurementWidget extends StatelessWidget {
                       child: Container(
                         height: 2,
                         decoration: const BoxDecoration(
-                          color: AppTheme.backgroundGrey,
+                          color: AppTheme.lightGrey,
                           borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         ),
                       ),
@@ -192,7 +193,7 @@ class BodyMeasurementWidget extends StatelessWidget {
                                       fontFamily: AppTheme.fontName,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 12,
-                                      color: AppTheme.grey.withOpacity(0.5),
+                                      color: AppTheme.darkGrey.withOpacity(0.5),
                                     ),
                                   ),
                                 ),
@@ -228,7 +229,8 @@ class BodyMeasurementWidget extends StatelessWidget {
                                           fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.w600,
                                           fontSize: 12,
-                                          color: AppTheme.grey.withOpacity(0.5),
+                                          color: AppTheme.darkGrey
+                                              .withOpacity(0.5),
                                         ),
                                       ),
                                     ),
@@ -265,7 +267,8 @@ class BodyMeasurementWidget extends StatelessWidget {
                                           fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.w600,
                                           fontSize: 12,
-                                          color: AppTheme.grey.withOpacity(0.5),
+                                          color: AppTheme.darkGrey
+                                              .withOpacity(0.5),
                                         ),
                                       ),
                                     ),

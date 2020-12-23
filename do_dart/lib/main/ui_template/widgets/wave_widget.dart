@@ -141,7 +141,7 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
                         fontWeight: FontWeight.w500,
                         fontSize: 24,
                         letterSpacing: 0.0,
-                        color: AppTheme.white,
+                        color: AppTheme.lightColor,
                       ),
                     ),
                     const Padding(
@@ -154,7 +154,7 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
                           letterSpacing: 0.0,
-                          color: AppTheme.white,
+                          color: AppTheme.lightColor,
                         ),
                       ),
                     ),
@@ -176,7 +176,7 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
                   width: 2,
                   height: 2,
                   decoration: BoxDecoration(
-                    color: AppTheme.white.withOpacity(0.4),
+                    color: AppTheme.lightColor.withOpacity(0.4),
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -196,7 +196,7 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
                   width: 4,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: AppTheme.white.withOpacity(0.4),
+                    color: AppTheme.lightColor.withOpacity(0.4),
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -216,7 +216,7 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
                   width: 3,
                   height: 3,
                   decoration: BoxDecoration(
-                    color: AppTheme.white.withOpacity(0.4),
+                    color: AppTheme.lightColor.withOpacity(0.4),
                     shape: BoxShape.circle,
                   ),
                 ),
@@ -233,7 +233,7 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
                   width: 4,
                   height: 4,
                   decoration: BoxDecoration(
-                    color: AppTheme.white.withOpacity(
+                    color: AppTheme.lightColor.withOpacity(
                         animationController.status == AnimationStatus.reverse
                             ? 0.0
                             : 0.4),

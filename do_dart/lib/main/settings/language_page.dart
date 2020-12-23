@@ -151,7 +151,7 @@ class _LanguagePageState extends State<LanguagePage>
             height: 40,
             width: 40,
             child: InkWell(
-              highlightColor: AppTheme.grey.withOpacity(0.2),
+              highlightColor: AppTheme.darkGrey.withOpacity(0.2),
               borderRadius: const BorderRadius.all(Radius.circular(20.0)),
               onTap: () {
                 Navigator.of(context).pop(true);

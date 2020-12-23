@@ -146,7 +146,7 @@ class MealsView extends StatelessWidget {
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
                                 letterSpacing: 0.2,
-                                color: AppTheme.white,
+                                color: AppTheme.lightColor,
                               ),
                             ),
                             Expanded(
@@ -164,7 +164,7 @@ class MealsView extends StatelessWidget {
                                         fontWeight: FontWeight.w500,
                                         fontSize: 10,
                                         letterSpacing: 0.2,
-                                        color: AppTheme.white,
+                                        color: AppTheme.lightColor,
                                       ),
                                     ),
                                   ],
@@ -184,7 +184,7 @@ class MealsView extends StatelessWidget {
                                           fontWeight: FontWeight.w500,
                                           fontSize: 24,
                                           letterSpacing: 0.2,
-                                          color: AppTheme.white,
+                                          color: AppTheme.lightColor,
                                         ),
                                       ),
                                       const Padding(
@@ -197,7 +197,7 @@ class MealsView extends StatelessWidget {
                                             fontWeight: FontWeight.w500,
                                             fontSize: 10,
                                             letterSpacing: 0.2,
-                                            color: AppTheme.white,
+                                            color: AppTheme.lightColor,
                                           ),
                                         ),
                                       ),
@@ -205,7 +205,7 @@ class MealsView extends StatelessWidget {
                                   )
                                 : Container(
                                     decoration: BoxDecoration(
-                                      color: AppTheme.nearlyWhite,
+                                      color: AppTheme.lightColor,
                                       shape: BoxShape.circle,
                                       boxShadow: <BoxShadow>[
                                         BoxShadow(
@@ -236,7 +236,7 @@ class MealsView extends StatelessWidget {
                       width: 84,
                       height: 84,
                       decoration: BoxDecoration(
-                        color: AppTheme.nearlyWhite.withOpacity(0.2),
+                        color: AppTheme.lightColor.withOpacity(0.2),
                         shape: BoxShape.circle,
                       ),
                     ),

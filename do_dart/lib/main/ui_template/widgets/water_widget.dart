@@ -37,7 +37,7 @@ class _WaterWidgetState extends State<WaterWidget>
                   left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.white,
+                  color: AppTheme.lightColor,
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomLeft: Radius.circular(8.0),
@@ -45,7 +45,7 @@ class _WaterWidgetState extends State<WaterWidget>
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.grey.withOpacity(0.2),
+                        color: AppTheme.darkGrey.withOpacity(0.2),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -120,7 +120,7 @@ class _WaterWidgetState extends State<WaterWidget>
                               child: Container(
                                 height: 2,
                                 decoration: const BoxDecoration(
-                                  color: AppTheme.backgroundGrey,
+                                  color: AppTheme.lightGrey,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(4.0)),
                                 ),
@@ -141,7 +141,8 @@ class _WaterWidgetState extends State<WaterWidget>
                                         padding: const EdgeInsets.only(left: 4),
                                         child: Icon(
                                           Icons.access_time,
-                                          color: AppTheme.grey.withOpacity(0.5),
+                                          color: AppTheme.darkGrey
+                                              .withOpacity(0.5),
                                           size: 16,
                                         ),
                                       ),
@@ -156,8 +157,8 @@ class _WaterWidgetState extends State<WaterWidget>
                                             fontWeight: FontWeight.w500,
                                             fontSize: 14,
                                             letterSpacing: 0.0,
-                                            color:
-                                                AppTheme.grey.withOpacity(0.5),
+                                            color: AppTheme.darkGrey
+                                                .withOpacity(0.5),
                                           ),
                                         ),
                                       ),
@@ -207,7 +208,7 @@ class _WaterWidgetState extends State<WaterWidget>
                           children: <Widget>[
                             Container(
                               decoration: BoxDecoration(
-                                color: AppTheme.nearlyWhite,
+                                color: AppTheme.lightColor,
                                 shape: BoxShape.circle,
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(
@@ -231,7 +232,7 @@ class _WaterWidgetState extends State<WaterWidget>
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                color: AppTheme.nearlyWhite,
+                                color: AppTheme.lightColor,
                                 shape: BoxShape.circle,
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(
@@ -268,7 +269,7 @@ class _WaterWidgetState extends State<WaterWidget>
                                 topRight: Radius.circular(80.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
-                                  color: AppTheme.grey.withOpacity(0.4),
+                                  color: AppTheme.darkGrey.withOpacity(0.4),
                                   offset: const Offset(2, 2),
                                   blurRadius: 4),
                             ],

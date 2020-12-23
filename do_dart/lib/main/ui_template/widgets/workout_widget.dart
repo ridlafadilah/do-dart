@@ -34,7 +34,7 @@ class WorkoutWidget extends StatelessWidget {
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.grey.withOpacity(0.6),
+                        color: AppTheme.darkGrey.withOpacity(0.6),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -53,7 +53,7 @@ class WorkoutWidget extends StatelessWidget {
                           fontWeight: FontWeight.normal,
                           fontSize: 14,
                           letterSpacing: 0.0,
-                          color: AppTheme.white,
+                          color: AppTheme.lightColor,
                         ),
                       ),
                       const Padding(
@@ -66,7 +66,7 @@ class WorkoutWidget extends StatelessWidget {
                             fontWeight: FontWeight.normal,
                             fontSize: 20,
                             letterSpacing: 0.0,
-                            color: AppTheme.white,
+                            color: AppTheme.lightColor,
                           ),
                         ),
                       ),
@@ -83,7 +83,7 @@ class WorkoutWidget extends StatelessWidget {
                               padding: EdgeInsets.only(left: 4),
                               child: Icon(
                                 Icons.timer,
-                                color: AppTheme.white,
+                                color: AppTheme.lightColor,
                                 size: 16,
                               ),
                             ),
@@ -97,7 +97,7 @@ class WorkoutWidget extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14,
                                   letterSpacing: 0.0,
-                                  color: AppTheme.white,
+                                  color: AppTheme.lightColor,
                                 ),
                               ),
                             ),
@@ -106,7 +106,7 @@ class WorkoutWidget extends StatelessWidget {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                color: AppTheme.nearlyWhite,
+                                color: AppTheme.lightColor,
                                 shape: BoxShape.circle,
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(

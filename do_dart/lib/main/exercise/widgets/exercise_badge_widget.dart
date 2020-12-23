@@ -26,7 +26,7 @@ class ExerciseBadgeWidget extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                      colors: [AppTheme.nearlyDarkBlue, HexColor('#598BFF')],
+                      colors: [AppTheme.colorTheme, HexColor('#598BFF')],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight),
                   borderRadius: const BorderRadius.only(
@@ -36,7 +36,7 @@ class ExerciseBadgeWidget extends StatelessWidget {
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.grey.withOpacity(0.6),
+                        color: AppTheme.darkGrey.withOpacity(0.6),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -55,7 +55,7 @@ class ExerciseBadgeWidget extends StatelessWidget {
                           fontWeight: FontWeight.normal,
                           fontSize: 14,
                           letterSpacing: 0.0,
-                          color: AppTheme.white,
+                          color: AppTheme.lightColor,
                         ),
                       ),
                       Padding(
@@ -69,7 +69,7 @@ class ExerciseBadgeWidget extends StatelessWidget {
                             fontWeight: FontWeight.normal,
                             fontSize: 20,
                             letterSpacing: 0.0,
-                            color: AppTheme.white,
+                            color: AppTheme.lightColor,
                           ),
                         ),
                       ),
@@ -86,7 +86,7 @@ class ExerciseBadgeWidget extends StatelessWidget {
                               padding: EdgeInsets.only(left: 4),
                               child: Icon(
                                 Icons.timer,
-                                color: AppTheme.white,
+                                color: AppTheme.lightColor,
                                 size: 16,
                               ),
                             ),
@@ -100,7 +100,7 @@ class ExerciseBadgeWidget extends StatelessWidget {
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14,
                                   letterSpacing: 0.0,
-                                  color: AppTheme.white,
+                                  color: AppTheme.lightColor,
                                 ),
                               ),
                             ),
@@ -109,7 +109,7 @@ class ExerciseBadgeWidget extends StatelessWidget {
                             ),
                             Container(
                               decoration: BoxDecoration(
-                                color: AppTheme.nearlyWhite,
+                                color: AppTheme.lightColor,
                                 shape: BoxShape.circle,
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(

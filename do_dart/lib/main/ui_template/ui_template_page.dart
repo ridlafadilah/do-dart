@@ -290,13 +290,13 @@ class _UITemplatePageState extends State<UITemplatePage>
             height: 40,
             width: 40,
             child: InkWell(
-              highlightColor: AppTheme.grey.withOpacity(0.2),
+              highlightColor: AppTheme.darkGrey.withOpacity(0.2),
               borderRadius: const BorderRadius.all(Radius.circular(20.0)),
               onTap: () {},
               child: const Center(
                 child: Icon(
                   Icons.keyboard_arrow_left,
-                  color: AppTheme.grey,
+                  color: AppTheme.darkGrey,
                 ),
               ),
             ),
@@ -313,7 +313,7 @@ class _UITemplatePageState extends State<UITemplatePage>
                 padding: EdgeInsets.only(right: 8),
                 child: Icon(
                   Icons.calendar_today,
-                  color: AppTheme.grey,
+                  color: AppTheme.darkGrey,
                   size: 18,
                 ),
               ),
@@ -325,7 +325,7 @@ class _UITemplatePageState extends State<UITemplatePage>
                   fontWeight: FontWeight.normal,
                   fontSize: 18,
                   letterSpacing: -0.2,
-                  color: AppTheme.darkerText,
+                  color: AppTheme.darkText,
                 ),
               ),
             ],
@@ -337,13 +337,13 @@ class _UITemplatePageState extends State<UITemplatePage>
             height: 40,
             width: 40,
             child: InkWell(
-              highlightColor: AppTheme.grey.withOpacity(0.2),
+              highlightColor: AppTheme.darkGrey.withOpacity(0.2),
               borderRadius: const BorderRadius.all(Radius.circular(20.0)),
               onTap: () {},
               child: const Center(
                 child: Icon(
                   Icons.keyboard_arrow_right,
-                  color: AppTheme.grey,
+                  color: AppTheme.darkGrey,
                 ),
               ),
             ),

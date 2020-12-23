@@ -26,7 +26,7 @@ class ConnectionErrorWidget extends StatelessWidget {
             width: 35,
             child: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
-                color: AppTheme.grey),
+                color: AppTheme.darkGrey),
           ),
           Padding(
             padding: const EdgeInsets.all(10.0),
@@ -34,7 +34,7 @@ class ConnectionErrorWidget extends StatelessWidget {
               error,
               style: const TextStyle(
                 fontSize: 16,
-                color: AppTheme.grey,
+                color: AppTheme.darkGrey,
               ),
             ),
           ),
@@ -46,7 +46,7 @@ class ConnectionErrorWidget extends StatelessWidget {
               style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.w600,
-                color: AppTheme.white,
+                color: AppTheme.lightColor,
               ),
             ),
           ),

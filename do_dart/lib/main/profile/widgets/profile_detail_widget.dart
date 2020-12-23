@@ -36,7 +36,7 @@ class ProfileDetailWidget extends StatelessWidget {
                   left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.white,
+                  color: AppTheme.lightColor,
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomLeft: Radius.circular(8.0),
@@ -44,7 +44,7 @@ class ProfileDetailWidget extends StatelessWidget {
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.grey.withOpacity(0.2),
+                        color: AppTheme.darkGrey.withOpacity(0.2),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -61,7 +61,7 @@ class ProfileDetailWidget extends StatelessWidget {
                           ListTile(
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/person-outline.svg',
-                                color: AppTheme.grey),
+                                color: AppTheme.darkGrey),
                             title: Text(
                               DongkapLocalizations.of(context).username,
                               style: const TextStyle(
@@ -78,7 +78,7 @@ class ProfileDetailWidget extends StatelessWidget {
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
-                                color: AppTheme.grey.withOpacity(0.5),
+                                color: AppTheme.darkGrey.withOpacity(0.5),
                               ),
                             ),
                             horizontalTitleGap: 5,
@@ -87,7 +87,7 @@ class ProfileDetailWidget extends StatelessWidget {
                           ListTile(
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/phone-outline.svg',
-                                color: AppTheme.grey),
+                                color: AppTheme.darkGrey),
                             title: Text(
                               DongkapLocalizations.of(context).phoneNumber,
                               style: const TextStyle(
@@ -106,7 +106,7 @@ class ProfileDetailWidget extends StatelessWidget {
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
-                                color: AppTheme.grey.withOpacity(0.5),
+                                color: AppTheme.darkGrey.withOpacity(0.5),
                               ),
                             ),
                             horizontalTitleGap: 5,
@@ -115,7 +115,7 @@ class ProfileDetailWidget extends StatelessWidget {
                           ListTile(
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/people-outline.svg',
-                                color: AppTheme.grey),
+                                color: AppTheme.darkGrey),
                             title: Text(
                               DongkapLocalizations.of(context).gender,
                               style: const TextStyle(
@@ -132,7 +132,7 @@ class ProfileDetailWidget extends StatelessWidget {
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
-                                color: AppTheme.grey.withOpacity(0.5),
+                                color: AppTheme.darkGrey.withOpacity(0.5),
                               ),
                             ),
                             horizontalTitleGap: 5,
@@ -141,7 +141,7 @@ class ProfileDetailWidget extends StatelessWidget {
                           ListTile(
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/calendar-outline.svg',
-                                color: AppTheme.grey),
+                                color: AppTheme.darkGrey),
                             title: Text(
                               DongkapLocalizations.of(context).pdob,
                               style: const TextStyle(
@@ -158,7 +158,7 @@ class ProfileDetailWidget extends StatelessWidget {
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
-                                color: AppTheme.grey.withOpacity(0.5),
+                                color: AppTheme.darkGrey.withOpacity(0.5),
                               ),
                             ),
                             horizontalTitleGap: 5,
@@ -167,7 +167,7 @@ class ProfileDetailWidget extends StatelessWidget {
                           ListTile(
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/home-outline.svg',
-                                color: AppTheme.grey),
+                                color: AppTheme.darkGrey),
                             title: Text(
                               DongkapLocalizations.of(context).address,
                               style: const TextStyle(
@@ -184,7 +184,7 @@ class ProfileDetailWidget extends StatelessWidget {
                                 fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
-                                color: AppTheme.grey.withOpacity(0.5),
+                                color: AppTheme.darkGrey.withOpacity(0.5),
                               ),
                             ),
                             horizontalTitleGap: 5,

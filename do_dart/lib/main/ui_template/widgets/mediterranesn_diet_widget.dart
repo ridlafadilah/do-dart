@@ -26,7 +26,7 @@ class MediterranesnDietWidget extends StatelessWidget {
                   left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.white,
+                  color: AppTheme.lightColor,
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomLeft: Radius.circular(8.0),
@@ -34,7 +34,7 @@ class MediterranesnDietWidget extends StatelessWidget {
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.grey.withOpacity(0.2),
+                        color: AppTheme.darkGrey.withOpacity(0.2),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -83,7 +83,7 @@ class MediterranesnDietWidget extends StatelessWidget {
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 16,
                                                   letterSpacing: -0.1,
-                                                  color: AppTheme.grey
+                                                  color: AppTheme.darkGrey
                                                       .withOpacity(0.5),
                                                 ),
                                               ),
@@ -114,8 +114,7 @@ ${(1127 * animation.value).toInt()}''',
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontSize: 16,
-                                                      color:
-                                                          AppTheme.darkerText,
+                                                      color: AppTheme.darkText,
                                                     ),
                                                   ),
                                                 ),
@@ -133,7 +132,7 @@ ${(1127 * animation.value).toInt()}''',
                                                           FontWeight.w600,
                                                       fontSize: 12,
                                                       letterSpacing: -0.2,
-                                                      color: AppTheme.grey
+                                                      color: AppTheme.darkGrey
                                                           .withOpacity(0.5),
                                                     ),
                                                   ),
@@ -179,7 +178,7 @@ ${(1127 * animation.value).toInt()}''',
                                                   fontWeight: FontWeight.w500,
                                                   fontSize: 16,
                                                   letterSpacing: -0.1,
-                                                  color: AppTheme.grey
+                                                  color: AppTheme.darkGrey
                                                       .withOpacity(0.5),
                                                 ),
                                               ),
@@ -210,8 +209,7 @@ ${(102 * animation.value).toInt()}''',
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontSize: 16,
-                                                      color:
-                                                          AppTheme.darkerText,
+                                                      color: AppTheme.darkText,
                                                     ),
                                                   ),
                                                 ),
@@ -229,7 +227,7 @@ ${(102 * animation.value).toInt()}''',
                                                           FontWeight.w600,
                                                       fontSize: 12,
                                                       letterSpacing: -0.2,
-                                                      color: AppTheme.grey
+                                                      color: AppTheme.darkGrey
                                                           .withOpacity(0.5),
                                                     ),
                                                   ),
@@ -257,7 +255,7 @@ ${(102 * animation.value).toInt()}''',
                                       width: 100,
                                       height: 100,
                                       decoration: BoxDecoration(
-                                        color: AppTheme.white,
+                                        color: AppTheme.lightColor,
                                         borderRadius: const BorderRadius.all(
                                           Radius.circular(100.0),
                                         ),
@@ -292,7 +290,7 @@ ${(1503 * animation.value).toInt()}''',
                                               fontWeight: FontWeight.bold,
                                               fontSize: 12,
                                               letterSpacing: 0.0,
-                                              color: AppTheme.grey
+                                              color: AppTheme.darkGrey
                                                   .withOpacity(0.5),
                                             ),
                                           ),
@@ -331,7 +329,7 @@ ${(1503 * animation.value).toInt()}''',
                       child: Container(
                         height: 2,
                         decoration: const BoxDecoration(
-                          color: AppTheme.backgroundGrey,
+                          color: AppTheme.lightGrey,
                           borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         ),
                       ),
@@ -397,7 +395,7 @@ ${(1503 * animation.value).toInt()}''',
                                       fontFamily: AppTheme.fontName,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 12,
-                                      color: AppTheme.grey.withOpacity(0.5),
+                                      color: AppTheme.darkGrey.withOpacity(0.5),
                                     ),
                                   ),
                                 ),
@@ -466,7 +464,8 @@ ${(1503 * animation.value).toInt()}''',
                                           fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.w600,
                                           fontSize: 12,
-                                          color: AppTheme.grey.withOpacity(0.5),
+                                          color: AppTheme.darkGrey
+                                              .withOpacity(0.5),
                                         ),
                                       ),
                                     ),
@@ -537,7 +536,8 @@ ${(1503 * animation.value).toInt()}''',
                                           fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.w600,
                                           fontSize: 12,
-                                          color: AppTheme.grey.withOpacity(0.5),
+                                          color: AppTheme.darkGrey
+                                              .withOpacity(0.5),
                                         ),
                                       ),
                                     ),

@@ -37,12 +37,12 @@ class TitleWidget extends StatelessWidget {
                       child: Text(
                         titleTxt,
                         textAlign: TextAlign.left,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: AppTheme.fontName,
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
                           letterSpacing: 0.5,
-                          color: AppTheme.lightText,
+                          color: Theme.of(context).textTheme.headline6.color,
                         ),
                       ),
                     ),
@@ -63,15 +63,15 @@ class TitleWidget extends StatelessWidget {
                                 fontWeight: FontWeight.normal,
                                 fontSize: 16,
                                 letterSpacing: 0.5,
-                                color: AppTheme.nearlyDarkBlue,
+                                color: AppTheme.colorTheme,
                               ),
                             ),
-                            const SizedBox(
+                            SizedBox(
                               height: 38,
                               width: 26,
                               child: Icon(
                                 Icons.arrow_forward,
-                                color: AppTheme.darkText,
+                                color: Theme.of(context).iconTheme.color,
                                 size: 18,
                               ),
                             ),

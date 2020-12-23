@@ -22,16 +22,6 @@ class DongkapApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.transparent,
-      statusBarIconBrightness: Brightness.light,
-      statusBarBrightness:
-          Platform.isAndroid ? Brightness.dark : Brightness.light,
-      systemNavigationBarColor: Colors.white,
-      systemNavigationBarDividerColor: Colors.grey,
-      systemNavigationBarIconBrightness: Brightness.dark,
-    ));
-
     return MultiRepositoryProvider(
       providers: [
         RepositoryProvider<AuthService>(
@@ -77,6 +67,16 @@ class _DongkapAppViewState extends State<DongkapAppView> {
       builder: (BuildContext context, TranslationState state) {
         return BlocBuilder<ThemeModeBloc, ThemeModeState>(
           builder: (BuildContext context, ThemeModeState themeState) {
+            SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+              statusBarColor: Colors.transparent,
+              statusBarIconBrightness:
+                  themeState.darkMode ? Brightness.light : Brightness.dark,
+              statusBarBrightness:
+                  Platform.isAndroid ? Brightness.dark : Brightness.light,
+              systemNavigationBarColor: Colors.white,
+              systemNavigationBarDividerColor: Colors.grey,
+              systemNavigationBarIconBrightness: Brightness.dark,
+            ));
             return MaterialApp(
               navigatorKey: _navigatorKey,
               title: 'Dongkap',

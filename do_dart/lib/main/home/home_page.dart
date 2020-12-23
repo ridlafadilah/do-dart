@@ -129,7 +129,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             height: 40,
             width: 40,
             child: InkWell(
-              highlightColor: AppTheme.grey.withOpacity(0.2),
+              highlightColor: AppTheme.darkGrey.withOpacity(0.2),
               borderRadius: const BorderRadius.all(Radius.circular(20.0)),
               onTap: () {},
               child: Center(
@@ -145,8 +145,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             height: 40,
             width: 40,
             child: InkWell(
-              highlightColor: AppTheme.grey.withOpacity(0.2),
-              splashColor: AppTheme.grey,
+              highlightColor: AppTheme.darkGrey.withOpacity(0.2),
+              splashColor: AppTheme.darkGrey,
               borderRadius: const BorderRadius.all(Radius.circular(20.0)),
               onTap: () {},
               child: Center(

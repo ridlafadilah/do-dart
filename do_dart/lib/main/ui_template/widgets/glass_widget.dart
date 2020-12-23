@@ -38,7 +38,7 @@ class GlassWidget extends StatelessWidget {
                                 topRight: Radius.circular(8.0)),
                             // boxShadow: <BoxShadow>[
                             //   BoxShadow(
-                            //       color: AppTheme.grey.withOpacity(0.2),
+                            //       color: AppTheme.darkGrey.withOpacity(0.2),
                             //       offset: Offset(1.1, 1.1),
                             //       blurRadius: 10.0),
                             // ],
