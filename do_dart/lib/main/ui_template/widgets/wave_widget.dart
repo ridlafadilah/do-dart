@@ -87,7 +87,7 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
             ClipPath(
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.nearlyDarkBlue.withOpacity(0.5),
+                  color: AppTheme.colorTheme.withOpacity(0.5),
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(80.0),
                       bottomLeft: Radius.circular(80.0),
@@ -95,8 +95,8 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
                       topRight: Radius.circular(80.0)),
                   gradient: LinearGradient(
                     colors: [
-                      AppTheme.nearlyDarkBlue.withOpacity(0.2),
-                      AppTheme.nearlyDarkBlue.withOpacity(0.5)
+                      AppTheme.colorTheme.withOpacity(0.2),
+                      AppTheme.colorTheme.withOpacity(0.5)
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
@@ -108,11 +108,11 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
             ClipPath(
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.nearlyDarkBlue,
+                  color: AppTheme.colorTheme,
                   gradient: LinearGradient(
                     colors: [
-                      AppTheme.nearlyDarkBlue.withOpacity(0.4),
-                      AppTheme.nearlyDarkBlue
+                      AppTheme.colorTheme.withOpacity(0.4),
+                      AppTheme.colorTheme
                     ],
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,

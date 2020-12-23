@@ -24,7 +24,7 @@ class WorkoutWidget extends StatelessWidget {
               child: Container(
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                      colors: [AppTheme.nearlyDarkBlue, HexColor('#6F56E8')],
+                      colors: [AppTheme.colorTheme, HexColor('#6F56E8')],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight),
                   borderRadius: const BorderRadius.only(
@@ -111,7 +111,7 @@ class WorkoutWidget extends StatelessWidget {
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(
                                       color:
-                                          AppTheme.nearlyBlack.withOpacity(0.4),
+                                          AppTheme.darkColor.withOpacity(0.3),
                                       offset: const Offset(8.0, 8.0),
                                       blurRadius: 8.0),
                                 ],

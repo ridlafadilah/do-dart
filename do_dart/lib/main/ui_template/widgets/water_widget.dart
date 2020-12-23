@@ -76,7 +76,7 @@ class _WaterWidgetState extends State<WaterWidget>
                                           fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.w600,
                                           fontSize: 32,
-                                          color: AppTheme.nearlyDarkBlue,
+                                          color: AppTheme.colorTheme,
                                         ),
                                       ),
                                     ),
@@ -91,7 +91,7 @@ class _WaterWidgetState extends State<WaterWidget>
                                           fontWeight: FontWeight.w500,
                                           fontSize: 18,
                                           letterSpacing: -0.2,
-                                          color: AppTheme.nearlyDarkBlue,
+                                          color: AppTheme.colorTheme,
                                         ),
                                       ),
                                     ),
@@ -212,8 +212,8 @@ class _WaterWidgetState extends State<WaterWidget>
                                 shape: BoxShape.circle,
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(
-                                      color: AppTheme.nearlyDarkBlue
-                                          .withOpacity(0.4),
+                                      color:
+                                          AppTheme.colorTheme.withOpacity(0.4),
                                       offset: const Offset(4.0, 4.0),
                                       blurRadius: 8.0),
                                 ],
@@ -222,7 +222,7 @@ class _WaterWidgetState extends State<WaterWidget>
                                 padding: EdgeInsets.all(6.0),
                                 child: Icon(
                                   Icons.add,
-                                  color: AppTheme.nearlyDarkBlue,
+                                  color: AppTheme.colorTheme,
                                   size: 24,
                                 ),
                               ),
@@ -236,8 +236,8 @@ class _WaterWidgetState extends State<WaterWidget>
                                 shape: BoxShape.circle,
                                 boxShadow: <BoxShadow>[
                                   BoxShadow(
-                                      color: AppTheme.nearlyDarkBlue
-                                          .withOpacity(0.4),
+                                      color:
+                                          AppTheme.colorTheme.withOpacity(0.4),
                                       offset: const Offset(4.0, 4.0),
                                       blurRadius: 8.0),
                                 ],
@@ -246,7 +246,7 @@ class _WaterWidgetState extends State<WaterWidget>
                                 padding: EdgeInsets.all(6.0),
                                 child: Icon(
                                   Icons.remove,
-                                  color: AppTheme.nearlyDarkBlue,
+                                  color: AppTheme.colorTheme,
                                   size: 24,
                                 ),
                               ),

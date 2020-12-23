@@ -42,7 +42,7 @@ class TitleWidget extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
                           letterSpacing: 0.5,
-                          color: Theme.of(context).textTheme.headline6.color,
+                          color: Theme.of(context).textTheme.headline5.color,
                         ),
                       ),
                     ),

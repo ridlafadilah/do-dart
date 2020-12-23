@@ -19,8 +19,6 @@ class AppTheme {
 
   static const Color darkGrey = Color(0xFF3A5160);
   static const Color lightGrey = Color(0xFFF2F3F8);
-  static const Color nearlyDarkBlue = Color(0xFF3366FF);
-  static const Color nearlyBlack = Color(0xFF213333);
 
   static final ThemeData light = ThemeData(
     platform: TargetPlatform.iOS,
@@ -240,8 +238,8 @@ class AppTheme {
 
   static const TextStyle headline5 = TextStyle(
     fontFamily: fontName,
-    fontWeight: FontWeight.bold,
-    fontSize: 24,
+    fontWeight: FontWeight.normal,
+    fontSize: 16,
     letterSpacing: 0.27,
     color: darkText,
   );
@@ -323,8 +321,8 @@ class AppTheme {
 
   static const TextStyle headline5Dark = TextStyle(
     fontFamily: fontName,
-    fontWeight: FontWeight.bold,
-    fontSize: 24,
+    fontWeight: FontWeight.normal,
+    fontSize: 16,
     letterSpacing: 0.27,
     color: lightText,
   );

@@ -261,7 +261,7 @@ ${(102 * animation.value).toInt()}''',
                                         ),
                                         border: Border.all(
                                             width: 4,
-                                            color: AppTheme.nearlyDarkBlue
+                                            color: AppTheme.colorTheme
                                                 .withOpacity(0.2)),
                                       ),
                                       child: Column(
@@ -279,7 +279,7 @@ ${(1503 * animation.value).toInt()}''',
                                               fontWeight: FontWeight.normal,
                                               fontSize: 24,
                                               letterSpacing: 0.0,
-                                              color: AppTheme.nearlyDarkBlue,
+                                              color: AppTheme.colorTheme,
                                             ),
                                           ),
                                           Text(
@@ -303,7 +303,7 @@ ${(1503 * animation.value).toInt()}''',
                                     child: CustomPaint(
                                       painter: CurvePainter(
                                           colors: [
-                                            AppTheme.nearlyDarkBlue,
+                                            AppTheme.colorTheme,
                                             HexColor('#8A98E8'),
                                             HexColor('#8A98E8')
                                           ],
