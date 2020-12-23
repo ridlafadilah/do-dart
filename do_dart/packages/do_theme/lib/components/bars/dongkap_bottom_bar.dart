@@ -144,10 +144,14 @@ class _DongkapBottomBarState extends State<DongkapBottomBar>
                             curve: Curves.fastOutSlowIn)),
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.secondary,
+                        color: Theme.of(context)
+                            .floatingActionButtonTheme
+                            .backgroundColor,
                         gradient: LinearGradient(
                             colors: [
-                              Theme.of(context).colorScheme.secondary,
+                              Theme.of(context)
+                                  .floatingActionButtonTheme
+                                  .backgroundColor,
                               HexColor('#3366ff'),
                             ],
                             begin: Alignment.topLeft,
@@ -156,8 +160,8 @@ class _DongkapBottomBarState extends State<DongkapBottomBar>
                         boxShadow: <BoxShadow>[
                           BoxShadow(
                               color: Theme.of(context)
-                                  .colorScheme
-                                  .secondary
+                                  .floatingActionButtonTheme
+                                  .backgroundColor
                                   .withOpacity(0.4),
                               offset: const Offset(8.0, 16.0),
                               blurRadius: 16.0),

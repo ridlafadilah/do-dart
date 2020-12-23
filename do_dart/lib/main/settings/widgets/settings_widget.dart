@@ -116,7 +116,8 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       contentPadding:
                           const EdgeInsets.only(left: 5.0, right: 15.0),
                       value: isDarkMode,
-                      activeColor: Theme.of(context).colorScheme.secondary,
+                      activeColor:
+                          Theme.of(context).toggleButtonsTheme.selectedColor,
                       onChanged: (bool value) {
                         _promptTheme(context, value);
                       },

@@ -95,6 +95,7 @@ class AppTheme {
       height: 48.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
     ),
+    toggleButtonsTheme: const ToggleButtonsThemeData(selectedColor: colorTheme),
     cardTheme: const CardTheme(
       color: Colors.teal,
     ),
@@ -190,6 +191,7 @@ class AppTheme {
       height: 48.0,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5.0)),
     ),
+    toggleButtonsTheme: const ToggleButtonsThemeData(selectedColor: colorTheme),
     cardTheme: const CardTheme(
       color: Colors.black,
     ),
