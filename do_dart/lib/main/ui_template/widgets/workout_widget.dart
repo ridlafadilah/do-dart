@@ -34,7 +34,7 @@ class WorkoutWidget extends StatelessWidget {
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.darkGrey.withOpacity(0.6),
+                        color: AppTheme.darkBlueGrey.withOpacity(0.6),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -49,7 +49,6 @@ class WorkoutWidget extends StatelessWidget {
                         'Next workout',
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                          fontFamily: AppTheme.fontName,
                           fontWeight: FontWeight.normal,
                           fontSize: 14,
                           letterSpacing: 0.0,
@@ -62,7 +61,6 @@ class WorkoutWidget extends StatelessWidget {
                           'Legs Toning and\nGlutes Workout at Home',
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                            fontFamily: AppTheme.fontName,
                             fontWeight: FontWeight.normal,
                             fontSize: 20,
                             letterSpacing: 0.0,
@@ -93,7 +91,6 @@ class WorkoutWidget extends StatelessWidget {
                                 '68 min',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontFamily: AppTheme.fontName,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14,
                                   letterSpacing: 0.0,

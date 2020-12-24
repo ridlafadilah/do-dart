@@ -142,7 +142,6 @@ class MealsView extends StatelessWidget {
                               mealsListData.titleTxt,
                               textAlign: TextAlign.center,
                               style: const TextStyle(
-                                fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 16,
                                 letterSpacing: 0.2,
@@ -160,7 +159,6 @@ class MealsView extends StatelessWidget {
                                     Text(
                                       mealsListData.meals.join('\n'),
                                       style: const TextStyle(
-                                        fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 10,
                                         letterSpacing: 0.2,
@@ -180,7 +178,6 @@ class MealsView extends StatelessWidget {
                                         mealsListData.kacl.toString(),
                                         textAlign: TextAlign.center,
                                         style: const TextStyle(
-                                          fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.w500,
                                           fontSize: 24,
                                           letterSpacing: 0.2,
@@ -193,7 +190,6 @@ class MealsView extends StatelessWidget {
                                         child: Text(
                                           'kcal',
                                           style: TextStyle(
-                                            fontFamily: AppTheme.fontName,
                                             fontWeight: FontWeight.w500,
                                             fontSize: 10,
                                             letterSpacing: 0.2,

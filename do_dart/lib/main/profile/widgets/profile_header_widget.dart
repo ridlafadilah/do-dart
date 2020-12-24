@@ -34,7 +34,7 @@ class ProfileHeaderWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 16, bottom: 16),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppTheme.lightColor,
+                            color: Theme.of(context).cardTheme.color,
                             borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(8.0),
                                 bottomLeft: Radius.circular(8.0),
@@ -42,7 +42,10 @@ class ProfileHeaderWidget extends StatelessWidget {
                                 topRight: Radius.circular(8.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
-                                  color: AppTheme.darkGrey.withOpacity(0.2),
+                                  color: Theme.of(context)
+                                      .cardTheme
+                                      .shadowColor
+                                      .withOpacity(0.2),
                                   offset: const Offset(1.1, 1.1),
                                   blurRadius: 10.0),
                             ],
@@ -68,11 +71,10 @@ class ProfileHeaderWidget extends StatelessWidget {
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                         style: const TextStyle(
-                                            fontFamily: AppTheme.fontName,
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14,
-                                            letterSpacing: -0.2,
-                                            color: AppTheme.darkText),
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14,
+                                          letterSpacing: -0.2,
+                                        ),
                                       ),
                                     ),
                                     Padding(
@@ -88,11 +90,12 @@ class ProfileHeaderWidget extends StatelessWidget {
                                         maxLines: 2,
                                         overflow: TextOverflow.ellipsis,
                                         style: TextStyle(
-                                          fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.w500,
                                           fontSize: 12,
-                                          letterSpacing: 0.0,
-                                          color: AppTheme.darkGrey
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .subtitle2
+                                              .color
                                               .withOpacity(0.5),
                                         ),
                                       ),
@@ -115,7 +118,7 @@ class ProfileHeaderWidget extends StatelessWidget {
                                 const BorderRadius.all(Radius.circular(50.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
-                                  color: AppTheme.darkGrey.withOpacity(0.1),
+                                  color: AppTheme.darkBlueGrey.withOpacity(0.1),
                                   offset: const Offset(1.1, 1.1),
                                   blurRadius: 5.0),
                             ],
@@ -134,11 +137,16 @@ class ProfileHeaderWidget extends StatelessWidget {
                                   height: 30,
                                   width: 30,
                                   decoration: BoxDecoration(
-                                    color: AppTheme.lightColor,
+                                    color: Theme.of(context)
+                                        .accentIconTheme
+                                        .color
+                                        .withOpacity(0.5),
                                     shape: BoxShape.circle,
                                     boxShadow: <BoxShadow>[
                                       BoxShadow(
-                                          color: AppTheme.darkGrey
+                                          color: Theme.of(context)
+                                              .accentIconTheme
+                                              .color
                                               .withOpacity(0.1),
                                           offset: const Offset(1.0, 1.0),
                                           blurRadius: 5.0),
@@ -154,7 +162,9 @@ class ProfileHeaderWidget extends StatelessWidget {
                                         onTap: () {},
                                         child: SvgPicture.asset(
                                             'assets/eva_icons/fill/svg/camera.svg',
-                                            color: AppTheme.darkGrey),
+                                            color: Theme.of(context)
+                                                .iconTheme
+                                                .color),
                                       ),
                                     ],
                                   ),

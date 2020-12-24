@@ -47,7 +47,6 @@ class _DongkapBottomBarState extends State<DongkapBottomBar>
                       .bottomNavigationBarTheme
                       .backgroundColor,
                   elevation: 30.0,
-                  shadowColor: Colors.white,
                   clipper: TabClipper(
                       radius: Tween<double>(begin: 0.0, end: 1.0)
                               .animate(CurvedAnimation(

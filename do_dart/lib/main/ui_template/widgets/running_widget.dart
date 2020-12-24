@@ -30,7 +30,7 @@ class RunningWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 16, bottom: 16),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppTheme.lightColor,
+                            color: Theme.of(context).cardTheme.color,
                             borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(8.0),
                                 bottomLeft: Radius.circular(8.0),
@@ -38,7 +38,10 @@ class RunningWidget extends StatelessWidget {
                                 topRight: Radius.circular(8.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
-                                  color: AppTheme.darkGrey.withOpacity(0.4),
+                                  color: Theme.of(context)
+                                      .cardTheme
+                                      .shadowColor
+                                      .withOpacity(0.4),
                                   offset: const Offset(1.1, 1.1),
                                   blurRadius: 10.0),
                             ],
@@ -73,7 +76,6 @@ class RunningWidget extends StatelessWidget {
                                           "You're doing great!",
                                           textAlign: TextAlign.left,
                                           style: TextStyle(
-                                            fontFamily: AppTheme.fontName,
                                             fontWeight: FontWeight.w500,
                                             fontSize: 14,
                                             letterSpacing: 0.0,
@@ -94,12 +96,14 @@ class RunningWidget extends StatelessWidget {
                                       'Keep it up\nand stick to your plan!',
                                       textAlign: TextAlign.left,
                                       style: TextStyle(
-                                        fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 10,
                                         letterSpacing: 0.0,
-                                        color:
-                                            AppTheme.darkGrey.withOpacity(0.5),
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .caption
+                                            .color
+                                            .withOpacity(0.5),
                                       ),
                                     ),
                                   ),

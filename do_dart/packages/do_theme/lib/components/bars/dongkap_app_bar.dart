@@ -51,6 +51,7 @@ class _DongkapAppBarState extends State<DongkapAppBar> {
                 child: Container(
                   decoration: BoxDecoration(
                     color: Theme.of(context)
+                        .appBarTheme
                         .backgroundColor
                         .withOpacity(widget.topBarOpacity),
                     borderRadius: const BorderRadius.only(

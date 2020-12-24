@@ -43,8 +43,8 @@ class SkeletonListState extends State<SkeletonList>
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.grey[200],
-      highlightColor: Colors.white,
+      baseColor: Theme.of(context).colorScheme.primaryVariant,
+      highlightColor: Theme.of(context).colorScheme.secondaryVariant,
       child: ListView.builder(
           shrinkWrap: true,
           itemCount: widget.itemCount,

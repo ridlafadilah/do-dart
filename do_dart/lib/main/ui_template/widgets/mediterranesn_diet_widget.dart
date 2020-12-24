@@ -26,7 +26,7 @@ class MediterranesnDietWidget extends StatelessWidget {
                   left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.lightColor,
+                  color: Theme.of(context).cardTheme.color,
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomLeft: Radius.circular(8.0),
@@ -34,7 +34,10 @@ class MediterranesnDietWidget extends StatelessWidget {
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.darkGrey.withOpacity(0.2),
+                        color: Theme.of(context)
+                            .cardTheme
+                            .shadowColor
+                            .withOpacity(0.2),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -79,13 +82,13 @@ class MediterranesnDietWidget extends StatelessWidget {
                                                 'Eaten',
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
-                                                  fontFamily: AppTheme.fontName,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 16,
-                                                  letterSpacing: -0.1,
-                                                  color: AppTheme.darkGrey
-                                                      .withOpacity(0.5),
-                                                ),
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 16,
+                                                    letterSpacing: -0.1,
+                                                    color: Theme.of(context)
+                                                        .textTheme
+                                                        .caption
+                                                        .color),
                                               ),
                                             ),
                                             Row(
@@ -108,13 +111,14 @@ class MediterranesnDietWidget extends StatelessWidget {
                                                     '''
 ${(1127 * animation.value).toInt()}''',
                                                     textAlign: TextAlign.center,
-                                                    style: const TextStyle(
-                                                      fontFamily:
-                                                          AppTheme.fontName,
+                                                    style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontSize: 16,
-                                                      color: AppTheme.darkText,
+                                                      color: Theme.of(context)
+                                                          .textTheme
+                                                          .headline4
+                                                          .color,
                                                     ),
                                                   ),
                                                 ),
@@ -126,15 +130,14 @@ ${(1127 * animation.value).toInt()}''',
                                                     'Kcal',
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
-                                                      fontFamily:
-                                                          AppTheme.fontName,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 12,
-                                                      letterSpacing: -0.2,
-                                                      color: AppTheme.darkGrey
-                                                          .withOpacity(0.5),
-                                                    ),
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 12,
+                                                        letterSpacing: -0.2,
+                                                        color: Theme.of(context)
+                                                            .textTheme
+                                                            .caption
+                                                            .color),
                                                   ),
                                                 ),
                                               ],
@@ -174,13 +177,13 @@ ${(1127 * animation.value).toInt()}''',
                                                 'Burned',
                                                 textAlign: TextAlign.center,
                                                 style: TextStyle(
-                                                  fontFamily: AppTheme.fontName,
-                                                  fontWeight: FontWeight.w500,
-                                                  fontSize: 16,
-                                                  letterSpacing: -0.1,
-                                                  color: AppTheme.darkGrey
-                                                      .withOpacity(0.5),
-                                                ),
+                                                    fontWeight: FontWeight.w500,
+                                                    fontSize: 16,
+                                                    letterSpacing: -0.1,
+                                                    color: Theme.of(context)
+                                                        .textTheme
+                                                        .caption
+                                                        .color),
                                               ),
                                             ),
                                             Row(
@@ -203,13 +206,14 @@ ${(1127 * animation.value).toInt()}''',
                                                     '''
 ${(102 * animation.value).toInt()}''',
                                                     textAlign: TextAlign.center,
-                                                    style: const TextStyle(
-                                                      fontFamily:
-                                                          AppTheme.fontName,
+                                                    style: TextStyle(
                                                       fontWeight:
                                                           FontWeight.w600,
                                                       fontSize: 16,
-                                                      color: AppTheme.darkText,
+                                                      color: Theme.of(context)
+                                                          .textTheme
+                                                          .headline4
+                                                          .color,
                                                     ),
                                                   ),
                                                 ),
@@ -221,15 +225,14 @@ ${(102 * animation.value).toInt()}''',
                                                     'Kcal',
                                                     textAlign: TextAlign.center,
                                                     style: TextStyle(
-                                                      fontFamily:
-                                                          AppTheme.fontName,
-                                                      fontWeight:
-                                                          FontWeight.w600,
-                                                      fontSize: 12,
-                                                      letterSpacing: -0.2,
-                                                      color: AppTheme.darkGrey
-                                                          .withOpacity(0.5),
-                                                    ),
+                                                        fontWeight:
+                                                            FontWeight.w600,
+                                                        fontSize: 12,
+                                                        letterSpacing: -0.2,
+                                                        color: Theme.of(context)
+                                                            .textTheme
+                                                            .caption
+                                                            .color),
                                                   ),
                                                 ),
                                               ],
@@ -255,7 +258,8 @@ ${(102 * animation.value).toInt()}''',
                                       width: 100,
                                       height: 100,
                                       decoration: BoxDecoration(
-                                        color: AppTheme.lightColor,
+                                        color:
+                                            Theme.of(context).cardTheme.color,
                                         borderRadius: const BorderRadius.all(
                                           Radius.circular(100.0),
                                         ),
@@ -275,7 +279,6 @@ ${(102 * animation.value).toInt()}''',
 ${(1503 * animation.value).toInt()}''',
                                             textAlign: TextAlign.center,
                                             style: const TextStyle(
-                                              fontFamily: AppTheme.fontName,
                                               fontWeight: FontWeight.normal,
                                               fontSize: 24,
                                               letterSpacing: 0.0,
@@ -286,13 +289,13 @@ ${(1503 * animation.value).toInt()}''',
                                             'Kcal left',
                                             textAlign: TextAlign.center,
                                             style: TextStyle(
-                                              fontFamily: AppTheme.fontName,
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 12,
-                                              letterSpacing: 0.0,
-                                              color: AppTheme.darkGrey
-                                                  .withOpacity(0.5),
-                                            ),
+                                                fontWeight: FontWeight.bold,
+                                                fontSize: 12,
+                                                letterSpacing: 0.0,
+                                                color: Theme.of(context)
+                                                    .textTheme
+                                                    .caption
+                                                    .color),
                                           ),
                                         ],
                                       ),
@@ -329,7 +332,7 @@ ${(1503 * animation.value).toInt()}''',
                       child: Container(
                         height: 2,
                         decoration: const BoxDecoration(
-                          color: AppTheme.lightGrey,
+                          color: AppTheme.lightBlueGrey,
                           borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         ),
                       ),
@@ -344,15 +347,17 @@ ${(1503 * animation.value).toInt()}''',
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                const Text(
+                                Text(
                                   'Carbs',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontFamily: AppTheme.fontName,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 16,
                                     letterSpacing: -0.2,
-                                    color: AppTheme.darkText,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .headline4
+                                        .color,
                                   ),
                                 ),
                                 Padding(
@@ -392,11 +397,12 @@ ${(1503 * animation.value).toInt()}''',
                                     '12g left',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontFamily: AppTheme.fontName,
-                                      fontWeight: FontWeight.w600,
-                                      fontSize: 12,
-                                      color: AppTheme.darkGrey.withOpacity(0.5),
-                                    ),
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 12,
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .caption
+                                            .color),
                                   ),
                                 ),
                               ],
@@ -411,15 +417,17 @@ ${(1503 * animation.value).toInt()}''',
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    const Text(
+                                    Text(
                                       'Protein',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 16,
                                         letterSpacing: -0.2,
-                                        color: AppTheme.darkText,
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .headline4
+                                            .color,
                                       ),
                                     ),
                                     Padding(
@@ -461,12 +469,12 @@ ${(1503 * animation.value).toInt()}''',
                                         '30g left',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontFamily: AppTheme.fontName,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 12,
-                                          color: AppTheme.darkGrey
-                                              .withOpacity(0.5),
-                                        ),
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 12,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .caption
+                                                .color),
                                       ),
                                     ),
                                   ],
@@ -483,14 +491,16 @@ ${(1503 * animation.value).toInt()}''',
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: <Widget>[
-                                    const Text(
+                                    Text(
                                       'Fat',
                                       style: TextStyle(
-                                        fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 16,
                                         letterSpacing: -0.2,
-                                        color: AppTheme.darkText,
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .headline4
+                                            .color,
                                       ),
                                     ),
                                     Padding(
@@ -533,12 +543,12 @@ ${(1503 * animation.value).toInt()}''',
                                         '10g left',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontFamily: AppTheme.fontName,
-                                          fontWeight: FontWeight.w600,
-                                          fontSize: 12,
-                                          color: AppTheme.darkGrey
-                                              .withOpacity(0.5),
-                                        ),
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 12,
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .caption
+                                                .color),
                                       ),
                                     ),
                                   ],

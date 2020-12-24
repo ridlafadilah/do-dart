@@ -79,9 +79,7 @@ class _LinearProgressIndicator extends StatelessWidget {
             height: 4.0,
           );
         } else {
-          return const LinearProgressIndicator(
-            backgroundColor: AppTheme.colorTheme,
-          );
+          return const LinearProgressIndicator();
         }
       },
     );
@@ -198,7 +196,9 @@ class _LoginButton extends StatelessWidget {
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
-                        color: state.status.isSubmissionInProgress
+                        color: (state.status.isSubmissionInProgress ||
+                                state.action.isInvalid ||
+                                state.action.isPure)
                             ? AppTheme.buttonTextDisable
                             : Colors.white,
                       ),
@@ -221,7 +221,6 @@ class _TitleLabel extends StatelessWidget {
         DongkapLocalizations.of(context).login,
         textAlign: TextAlign.center,
         style: const TextStyle(
-          fontFamily: AppTheme.fontName,
           fontSize: 35,
           fontWeight: FontWeight.w700,
         ),
@@ -239,7 +238,6 @@ class _SubtitleLabel extends StatelessWidget {
         DongkapLocalizations.of(context).labelLogin,
         textAlign: TextAlign.center,
         style: const TextStyle(
-          fontFamily: AppTheme.fontName,
           fontSize: 16,
           fontWeight: FontWeight.w400,
         ),
@@ -276,7 +274,6 @@ class _AdditionalTitleLabel extends StatelessWidget {
         '${DongkapLocalizations.of(context).labelFooterLoginSocial} :',
         textAlign: TextAlign.center,
         style: const TextStyle(
-          fontFamily: AppTheme.fontName,
           fontSize: 16,
           fontWeight: FontWeight.w400,
         ),
@@ -314,7 +311,6 @@ class _RegisterLink extends StatelessWidget {
                   DongkapLocalizations.of(context).labelFooterLoginOther,
                   textAlign: TextAlign.center,
                   style: const TextStyle(
-                    fontFamily: AppTheme.fontName,
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
                   ),
@@ -326,7 +322,6 @@ class _RegisterLink extends StatelessWidget {
                 DongkapLocalizations.of(context).register,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
-                  fontFamily: AppTheme.fontName,
                   fontSize: 16,
                   fontWeight: FontWeight.w400,
                   color: AppTheme.colorTheme,
@@ -351,7 +346,6 @@ class _TermsConditionLink extends StatelessWidget {
           DongkapLocalizations.of(context).termsAndConditions,
           textAlign: TextAlign.center,
           style: const TextStyle(
-            fontFamily: AppTheme.fontName,
             fontSize: 16,
             fontWeight: FontWeight.w400,
             color: AppTheme.colorTheme,

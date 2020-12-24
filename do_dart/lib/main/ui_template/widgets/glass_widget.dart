@@ -38,9 +38,9 @@ class GlassWidget extends StatelessWidget {
                                 topRight: Radius.circular(8.0)),
                             // boxShadow: <BoxShadow>[
                             //   BoxShadow(
-                            //       color: AppTheme.darkGrey.withOpacity(0.2),
-                            //       offset: Offset(1.1, 1.1),
-                            //       blurRadius: 10.0),
+                            //   color: AppTheme.darkBlueGrey.withOpacity(0.2),
+                            //   offset: Offset(1.1, 1.1),
+                            //   blurRadius: 10.0),
                             // ],
                           ),
                           child: Column(
@@ -53,7 +53,6 @@ class GlassWidget extends StatelessWidget {
 Prepare your stomach for lunch with one or two glass of water''',
                                   textAlign: TextAlign.left,
                                   style: TextStyle(
-                                    fontFamily: AppTheme.fontName,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 14,
                                     letterSpacing: 0.0,

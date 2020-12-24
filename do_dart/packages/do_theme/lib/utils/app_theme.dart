@@ -9,39 +9,46 @@ class AppTheme {
   static const Color darkColor = Color(0xFF0d1117);
 
   static const String fontName = 'OpenSans';
+  static const Color greyText = Color(0xFF9E9E9E);
   static const Color darkText = Color(0xFF17262A);
   static const Color lightText = Color(0xFFFFFFFF);
   static const Color lightModal = Color(0xFFFFFFFF);
-  static const Color darkModal = Color(0xFF1a1a1b);
   static const Color buttonDisable = Color.fromRGBO(143, 155, 179, .24);
   static const Color buttonTextDisable = Color.fromRGBO(143, 155, 179, .48);
   static const Color danger = Color(0xFFFF0000);
 
-  static const Color darkGrey = Color(0xFF3A5160);
-  static const Color lightGrey = Color(0xFFF2F3F8);
+  static const Color darkDeep = Color(0xFF000000);
+  static const Color darkAccent = Color(0xFF1a1a1b);
+  static const Color lightGrey = Color(0xFFE0E0E0);
+  static const Color grey = Color(0xFF9E9E9E);
+  static const Color darkGrey = Color(0xFF757575);
+  static const Color lightBlueGrey = Color(0xFFF2F3F8);
+  static const Color darkBlueGrey = Color(0xFF3A5160);
 
   static final ThemeData light = ThemeData(
     platform: TargetPlatform.iOS,
     primaryColor: colorTheme,
     backgroundColor: lightColor,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       color: lightColor,
       titleTextStyle: titleTextStyle,
-      shadowColor: darkColor.withOpacity(0.7),
-      iconTheme: const IconThemeData(color: darkColor),
+      backgroundColor: lightColor,
+      shadowColor: darkGrey,
+      iconTheme: IconThemeData(color: darkColor),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: colorTheme,
+      backgroundColor: lightColor,
       selectedIconTheme: const IconThemeData(
-        color: lightColor,
+        color: darkColor,
       ),
       unselectedIconTheme: IconThemeData(
-        color: lightColor.withOpacity(0.7),
+        color: darkColor.withOpacity(0.7),
       ),
     ),
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: lightModal,
     ),
+    dialogTheme: const DialogTheme(backgroundColor: lightColor),
     dividerTheme: DividerThemeData(
       color: darkColor.withOpacity(0.1),
       thickness: 1.0,
@@ -51,8 +58,9 @@ class AppTheme {
     colorScheme: ColorScheme.light(
       primary: darkColor.withOpacity(0.5),
       onPrimary: lightColor,
-      primaryVariant: lightColor,
+      primaryVariant: lightGrey,
       secondary: colorTheme,
+      secondaryVariant: lightColor,
     ),
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: TextStyle(
@@ -98,10 +106,18 @@ class AppTheme {
     ),
     toggleButtonsTheme: const ToggleButtonsThemeData(selectedColor: colorTheme),
     cardTheme: const CardTheme(
-      color: Colors.teal,
+      color: lightColor,
+      shadowColor: darkGrey,
     ),
     iconTheme: const IconThemeData(
       color: darkColor,
+    ),
+    primaryIconTheme: const IconThemeData(
+      color: darkColor,
+    ),
+    accentColor: colorTheme,
+    accentIconTheme: const IconThemeData(
+      color: lightColor,
     ),
     textTheme: const TextTheme(
       headline1: headline1,
@@ -124,21 +140,23 @@ class AppTheme {
     appBarTheme: const AppBarTheme(
       color: darkColor,
       titleTextStyle: titleTextStyleDark,
-      shadowColor: lightColor,
+      backgroundColor: darkDeep,
+      shadowColor: darkGrey,
       iconTheme: IconThemeData(color: lightColor),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-      backgroundColor: colorTheme,
+      backgroundColor: darkDeep,
       selectedIconTheme: const IconThemeData(
-        color: darkColor,
+        color: lightColor,
       ),
       unselectedIconTheme: IconThemeData(
-        color: darkColor.withOpacity(0.7),
+        color: lightColor.withOpacity(0.7),
       ),
     ),
     bottomSheetTheme: const BottomSheetThemeData(
-      backgroundColor: darkModal,
+      backgroundColor: darkAccent,
     ),
+    dialogTheme: const DialogTheme(backgroundColor: darkAccent),
     dividerTheme: DividerThemeData(
       color: lightColor.withOpacity(0.1),
       thickness: 1.0,
@@ -148,8 +166,9 @@ class AppTheme {
     colorScheme: const ColorScheme.dark(
       primary: lightColor,
       onPrimary: darkColor,
-      primaryVariant: darkColor,
+      primaryVariant: lightGrey,
       secondary: colorTheme,
+      secondaryVariant: darkGrey,
     ),
     inputDecorationTheme: InputDecorationTheme(
       labelStyle: TextStyle(
@@ -195,10 +214,18 @@ class AppTheme {
     ),
     toggleButtonsTheme: const ToggleButtonsThemeData(selectedColor: colorTheme),
     cardTheme: const CardTheme(
-      color: Colors.black,
+      color: darkColor,
+      shadowColor: lightColor,
     ),
     iconTheme: const IconThemeData(
       color: lightColor,
+    ),
+    primaryIconTheme: const IconThemeData(
+      color: lightColor,
+    ),
+    accentColor: colorTheme,
+    accentIconTheme: const IconThemeData(
+      color: darkColor,
     ),
     textTheme: const TextTheme(
       headline1: headline1Dark,
@@ -293,7 +320,7 @@ class AppTheme {
     fontWeight: FontWeight.w400,
     fontSize: 12,
     letterSpacing: 0.2,
-    color: darkText,
+    color: greyText,
   );
 
   // Dark Text
@@ -376,6 +403,6 @@ class AppTheme {
     fontWeight: FontWeight.w400,
     fontSize: 12,
     letterSpacing: 0.2,
-    color: lightText,
+    color: greyText,
   );
 }

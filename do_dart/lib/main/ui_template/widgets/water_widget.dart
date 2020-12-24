@@ -37,7 +37,7 @@ class _WaterWidgetState extends State<WaterWidget>
                   left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.lightColor,
+                  color: Theme.of(context).cardTheme.color,
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomLeft: Radius.circular(8.0),
@@ -45,7 +45,10 @@ class _WaterWidgetState extends State<WaterWidget>
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.darkGrey.withOpacity(0.2),
+                        color: Theme.of(context)
+                            .cardTheme
+                            .shadowColor
+                            .withOpacity(0.2),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -73,7 +76,6 @@ class _WaterWidgetState extends State<WaterWidget>
                                         '2100',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.w600,
                                           fontSize: 32,
                                           color: AppTheme.colorTheme,
@@ -87,7 +89,6 @@ class _WaterWidgetState extends State<WaterWidget>
                                         'ml',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.w500,
                                           fontSize: 18,
                                           letterSpacing: -0.2,
@@ -97,18 +98,20 @@ class _WaterWidgetState extends State<WaterWidget>
                                     ),
                                   ],
                                 ),
-                                const Padding(
-                                  padding: EdgeInsets.only(
+                                Padding(
+                                  padding: const EdgeInsets.only(
                                       left: 4, top: 2, bottom: 14),
                                   child: Text(
                                     'of daily goal 3.5L',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontFamily: AppTheme.fontName,
                                       fontWeight: FontWeight.w500,
                                       fontSize: 14,
                                       letterSpacing: 0.0,
-                                      color: AppTheme.darkText,
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .headline4
+                                          .color,
                                     ),
                                   ),
                                 ),
@@ -120,7 +123,7 @@ class _WaterWidgetState extends State<WaterWidget>
                               child: Container(
                                 height: 2,
                                 decoration: const BoxDecoration(
-                                  color: AppTheme.lightGrey,
+                                  color: AppTheme.lightBlueGrey,
                                   borderRadius:
                                       BorderRadius.all(Radius.circular(4.0)),
                                 ),
@@ -141,7 +144,7 @@ class _WaterWidgetState extends State<WaterWidget>
                                         padding: const EdgeInsets.only(left: 4),
                                         child: Icon(
                                           Icons.access_time,
-                                          color: AppTheme.darkGrey
+                                          color: AppTheme.darkBlueGrey
                                               .withOpacity(0.5),
                                           size: 16,
                                         ),
@@ -153,11 +156,13 @@ class _WaterWidgetState extends State<WaterWidget>
                                           'Last drink 8:26 AM',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontFamily: AppTheme.fontName,
                                             fontWeight: FontWeight.w500,
                                             fontSize: 14,
                                             letterSpacing: 0.0,
-                                            color: AppTheme.darkGrey
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .caption
+                                                .color
                                                 .withOpacity(0.5),
                                           ),
                                         ),
@@ -179,15 +184,19 @@ class _WaterWidgetState extends State<WaterWidget>
                                               'assets/uitemplate/bell.png'),
                                         ),
                                         Flexible(
-                                          child: Text(
-                                            'Your bottle is empty, refill it!.',
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                              fontFamily: AppTheme.fontName,
-                                              fontWeight: FontWeight.w500,
-                                              fontSize: 12,
-                                              letterSpacing: 0.0,
-                                              color: HexColor('#F65283'),
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 5.0),
+                                            child: Text(
+                                              '''
+Your bottle is empty, refill it!.''',
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                fontWeight: FontWeight.w500,
+                                                fontSize: 12,
+                                                letterSpacing: 0.0,
+                                                color: HexColor('#F65283'),
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -269,7 +278,7 @@ class _WaterWidgetState extends State<WaterWidget>
                                 topRight: Radius.circular(80.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
-                                  color: AppTheme.darkGrey.withOpacity(0.4),
+                                  color: AppTheme.darkBlueGrey.withOpacity(0.4),
                                   offset: const Offset(2, 2),
                                   blurRadius: 4),
                             ],

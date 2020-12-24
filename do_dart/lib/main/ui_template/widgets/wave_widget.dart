@@ -137,7 +137,6 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
                       widget.percentageValue.round().toString(),
                       textAlign: TextAlign.center,
                       style: const TextStyle(
-                        fontFamily: AppTheme.fontName,
                         fontWeight: FontWeight.w500,
                         fontSize: 24,
                         letterSpacing: 0.0,
@@ -150,7 +149,6 @@ class _WaveWidgetState extends State<WaveWidget> with TickerProviderStateMixin {
                         '%',
                         textAlign: TextAlign.center,
                         style: TextStyle(
-                          fontFamily: AppTheme.fontName,
                           fontWeight: FontWeight.w500,
                           fontSize: 14,
                           letterSpacing: 0.0,

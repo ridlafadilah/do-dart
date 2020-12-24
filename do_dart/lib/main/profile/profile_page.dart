@@ -89,7 +89,7 @@ class _ProfilePageState extends State<ProfilePage>
         builder: (BuildContext context, CommonState state) {
           if (state is RequestSuccessState<ProfileDto>) {
             return RefreshIndicator(
-              backgroundColor: Colors.white,
+              backgroundColor: Theme.of(context).dialogTheme.backgroundColor,
               color: AppTheme.colorTheme,
               strokeWidth: 3,
               child: ProfileView(

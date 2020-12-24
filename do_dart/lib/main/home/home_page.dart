@@ -129,12 +129,13 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             height: 40,
             width: 40,
             child: InkWell(
-              highlightColor: AppTheme.darkGrey.withOpacity(0.2),
+              highlightColor: AppTheme.darkBlueGrey.withOpacity(0.2),
               borderRadius: const BorderRadius.all(Radius.circular(20.0)),
               onTap: () {},
               child: Center(
                 child: SvgPicture.asset(
-                    'assets/eva_icons/outline/svg/bell-outline.svg'),
+                    'assets/eva_icons/outline/svg/bell-outline.svg',
+                    color: Theme.of(context).appBarTheme.iconTheme.color),
               ),
             ),
           ),
@@ -145,8 +146,8 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
             height: 40,
             width: 40,
             child: InkWell(
-              highlightColor: AppTheme.darkGrey.withOpacity(0.2),
-              splashColor: AppTheme.darkGrey,
+              highlightColor: AppTheme.darkBlueGrey.withOpacity(0.2),
+              splashColor: AppTheme.darkBlueGrey,
               borderRadius: const BorderRadius.all(Radius.circular(20.0)),
               onTap: () {},
               child: Center(

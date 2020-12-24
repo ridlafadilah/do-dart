@@ -76,7 +76,6 @@ class DialogBottomSheet extends StatelessWidget {
                     child: Text(
                       title,
                       style: const TextStyle(
-                        fontFamily: AppTheme.fontName,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -91,7 +90,6 @@ class DialogBottomSheet extends StatelessWidget {
                     child: Text(
                       subtitle,
                       style: const TextStyle(
-                        fontFamily: AppTheme.fontName,
                         wordSpacing: 0.5,
                         height: 1.7,
                       ),

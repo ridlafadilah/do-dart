@@ -38,7 +38,6 @@ class TitleWidget extends StatelessWidget {
                         titleTxt,
                         textAlign: TextAlign.left,
                         style: TextStyle(
-                          fontFamily: AppTheme.fontName,
                           fontWeight: FontWeight.w500,
                           fontSize: 18,
                           letterSpacing: 0.5,
@@ -59,7 +58,6 @@ class TitleWidget extends StatelessWidget {
                               subTxt,
                               textAlign: TextAlign.left,
                               style: const TextStyle(
-                                fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.normal,
                                 fontSize: 16,
                                 letterSpacing: 0.5,

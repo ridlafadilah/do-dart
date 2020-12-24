@@ -1,5 +1,4 @@
 import 'package:do_common/common.dart';
-import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 
 class ProfileHeaderSkeletonWidget extends StatelessWidget {
@@ -32,7 +31,7 @@ class ProfileHeaderSkeletonWidget extends StatelessWidget {
                         padding: const EdgeInsets.only(top: 16, bottom: 16),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: AppTheme.lightColor,
+                            color: Theme.of(context).cardTheme.color,
                             borderRadius: const BorderRadius.only(
                                 topLeft: Radius.circular(8.0),
                                 bottomLeft: Radius.circular(8.0),
@@ -40,7 +39,10 @@ class ProfileHeaderSkeletonWidget extends StatelessWidget {
                                 topRight: Radius.circular(8.0)),
                             boxShadow: <BoxShadow>[
                               BoxShadow(
-                                  color: AppTheme.darkGrey.withOpacity(0.2),
+                                  color: Theme.of(context)
+                                      .cardTheme
+                                      .shadowColor
+                                      .withOpacity(0.2),
                                   offset: const Offset(1.1, 1.1),
                                   blurRadius: 10.0),
                             ],

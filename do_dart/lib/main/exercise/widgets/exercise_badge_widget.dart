@@ -36,7 +36,10 @@ class ExerciseBadgeWidget extends StatelessWidget {
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.darkGrey.withOpacity(0.6),
+                        color: Theme.of(context)
+                            .cardTheme
+                            .shadowColor
+                            .withOpacity(0.6),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -51,7 +54,6 @@ class ExerciseBadgeWidget extends StatelessWidget {
                         DongkapLocalizations.of(context).badgeExerciseTitle,
                         textAlign: TextAlign.left,
                         style: const TextStyle(
-                          fontFamily: AppTheme.fontName,
                           fontWeight: FontWeight.normal,
                           fontSize: 14,
                           letterSpacing: 0.0,
@@ -65,7 +67,6 @@ class ExerciseBadgeWidget extends StatelessWidget {
                               .badgeExerciseSubtitle,
                           textAlign: TextAlign.left,
                           style: const TextStyle(
-                            fontFamily: AppTheme.fontName,
                             fontWeight: FontWeight.normal,
                             fontSize: 20,
                             letterSpacing: 0.0,
@@ -96,7 +97,6 @@ class ExerciseBadgeWidget extends StatelessWidget {
                                 DongkapLocalizations.of(context).days(40),
                                 textAlign: TextAlign.center,
                                 style: const TextStyle(
-                                  fontFamily: AppTheme.fontName,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 14,
                                   letterSpacing: 0.0,

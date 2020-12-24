@@ -1,5 +1,4 @@
 import 'package:do_core/models.dart';
-import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -36,7 +35,7 @@ class ProfileDetailWidget extends StatelessWidget {
                   left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.lightColor,
+                  color: Theme.of(context).cardTheme.color,
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomLeft: Radius.circular(8.0),
@@ -44,7 +43,10 @@ class ProfileDetailWidget extends StatelessWidget {
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.darkGrey.withOpacity(0.2),
+                        color: Theme.of(context)
+                            .cardTheme
+                            .shadowColor
+                            .withOpacity(0.2),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -61,24 +63,26 @@ class ProfileDetailWidget extends StatelessWidget {
                           ListTile(
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/person-outline.svg',
-                                color: AppTheme.darkGrey),
+                                color: Theme.of(context).iconTheme.color),
                             title: Text(
                               DongkapLocalizations.of(context).username,
-                              style: const TextStyle(
-                                fontFamily: AppTheme.fontName,
+                              style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
-                                letterSpacing: -0.2,
-                                color: AppTheme.darkText,
+                                color:
+                                    Theme.of(context).textTheme.headline5.color,
                               ),
                             ),
                             subtitle: Text(
                               profile.username,
                               style: TextStyle(
-                                fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
-                                color: AppTheme.darkGrey.withOpacity(0.5),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .subtitle2
+                                    .color
+                                    .withOpacity(0.5),
                               ),
                             ),
                             horizontalTitleGap: 5,
@@ -87,15 +91,14 @@ class ProfileDetailWidget extends StatelessWidget {
                           ListTile(
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/phone-outline.svg',
-                                color: AppTheme.darkGrey),
+                                color: Theme.of(context).iconTheme.color),
                             title: Text(
                               DongkapLocalizations.of(context).phoneNumber,
-                              style: const TextStyle(
-                                fontFamily: AppTheme.fontName,
+                              style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
-                                letterSpacing: -0.2,
-                                color: AppTheme.darkText,
+                                color:
+                                    Theme.of(context).textTheme.headline5.color,
                               ),
                             ),
                             subtitle: Text(
@@ -103,10 +106,13 @@ class ProfileDetailWidget extends StatelessWidget {
                                   ? profile.phoneNumber
                                   : '',
                               style: TextStyle(
-                                fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
-                                color: AppTheme.darkGrey.withOpacity(0.5),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .subtitle2
+                                    .color
+                                    .withOpacity(0.5),
                               ),
                             ),
                             horizontalTitleGap: 5,
@@ -115,24 +121,26 @@ class ProfileDetailWidget extends StatelessWidget {
                           ListTile(
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/people-outline.svg',
-                                color: AppTheme.darkGrey),
+                                color: Theme.of(context).iconTheme.color),
                             title: Text(
                               DongkapLocalizations.of(context).gender,
-                              style: const TextStyle(
-                                fontFamily: AppTheme.fontName,
+                              style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
-                                letterSpacing: -0.2,
-                                color: AppTheme.darkText,
+                                color:
+                                    Theme.of(context).textTheme.headline5.color,
                               ),
                             ),
                             subtitle: Text(
                               profile.gender != null ? profile.gender : '',
                               style: TextStyle(
-                                fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
-                                color: AppTheme.darkGrey.withOpacity(0.5),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .subtitle2
+                                    .color
+                                    .withOpacity(0.5),
                               ),
                             ),
                             horizontalTitleGap: 5,
@@ -141,24 +149,26 @@ class ProfileDetailWidget extends StatelessWidget {
                           ListTile(
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/calendar-outline.svg',
-                                color: AppTheme.darkGrey),
+                                color: Theme.of(context).iconTheme.color),
                             title: Text(
                               DongkapLocalizations.of(context).pdob,
-                              style: const TextStyle(
-                                fontFamily: AppTheme.fontName,
+                              style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
-                                letterSpacing: -0.2,
-                                color: AppTheme.darkText,
+                                color:
+                                    Theme.of(context).textTheme.headline5.color,
                               ),
                             ),
                             subtitle: Text(
                               pdb,
                               style: TextStyle(
-                                fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
-                                color: AppTheme.darkGrey.withOpacity(0.5),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .subtitle2
+                                    .color
+                                    .withOpacity(0.5),
                               ),
                             ),
                             horizontalTitleGap: 5,
@@ -167,24 +177,26 @@ class ProfileDetailWidget extends StatelessWidget {
                           ListTile(
                             leading: SvgPicture.asset(
                                 'assets/eva_icons/outline/svg/home-outline.svg',
-                                color: AppTheme.darkGrey),
+                                color: Theme.of(context).iconTheme.color),
                             title: Text(
                               DongkapLocalizations.of(context).address,
-                              style: const TextStyle(
-                                fontFamily: AppTheme.fontName,
+                              style: TextStyle(
                                 fontWeight: FontWeight.w500,
                                 fontSize: 14,
-                                letterSpacing: -0.2,
-                                color: AppTheme.darkText,
+                                color:
+                                    Theme.of(context).textTheme.headline5.color,
                               ),
                             ),
                             subtitle: Text(
                               profile.address != null ? profile.address : '',
                               style: TextStyle(
-                                fontFamily: AppTheme.fontName,
                                 fontWeight: FontWeight.w500,
                                 fontSize: 12,
-                                color: AppTheme.darkGrey.withOpacity(0.5),
+                                color: Theme.of(context)
+                                    .textTheme
+                                    .subtitle2
+                                    .color
+                                    .withOpacity(0.5),
                               ),
                             ),
                             horizontalTitleGap: 5,

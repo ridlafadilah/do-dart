@@ -24,7 +24,7 @@ class BodyMeasurementWidget extends StatelessWidget {
                   left: 24, right: 24, top: 16, bottom: 18),
               child: Container(
                 decoration: BoxDecoration(
-                  color: AppTheme.lightColor,
+                  color: Theme.of(context).cardTheme.color,
                   borderRadius: const BorderRadius.only(
                       topLeft: Radius.circular(8.0),
                       bottomLeft: Radius.circular(8.0),
@@ -32,7 +32,10 @@ class BodyMeasurementWidget extends StatelessWidget {
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.darkGrey.withOpacity(0.2),
+                        color: Theme.of(context)
+                            .cardTheme
+                            .shadowColor
+                            .withOpacity(0.2),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -46,18 +49,20 @@ class BodyMeasurementWidget extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          const Padding(
-                            padding:
-                                EdgeInsets.only(left: 4, bottom: 8, top: 16),
+                          Padding(
+                            padding: const EdgeInsets.only(
+                                left: 4, bottom: 8, top: 16),
                             child: Text(
                               'Weight',
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                  fontFamily: AppTheme.fontName,
                                   fontWeight: FontWeight.w500,
                                   fontSize: 16,
                                   letterSpacing: -0.1,
-                                  color: AppTheme.darkText),
+                                  color: Theme.of(context)
+                                      .textTheme
+                                      .headline4
+                                      .color),
                             ),
                           ),
                           Row(
@@ -75,7 +80,6 @@ class BodyMeasurementWidget extends StatelessWidget {
                                       '206.8',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w600,
                                         fontSize: 32,
                                         color: AppTheme.colorTheme,
@@ -89,7 +93,6 @@ class BodyMeasurementWidget extends StatelessWidget {
                                       'Ibs',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 18,
                                         letterSpacing: -0.2,
@@ -108,8 +111,8 @@ class BodyMeasurementWidget extends StatelessWidget {
                                     children: <Widget>[
                                       Icon(
                                         Icons.access_time,
-                                        color:
-                                            AppTheme.darkGrey.withOpacity(0.5),
+                                        color: AppTheme.darkBlueGrey
+                                            .withOpacity(0.5),
                                         size: 16,
                                       ),
                                       Padding(
@@ -119,11 +122,13 @@ class BodyMeasurementWidget extends StatelessWidget {
                                           'Today 8:26 AM',
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                            fontFamily: AppTheme.fontName,
                                             fontWeight: FontWeight.w500,
                                             fontSize: 14,
                                             letterSpacing: 0.0,
-                                            color: AppTheme.darkGrey
+                                            color: Theme.of(context)
+                                                .textTheme
+                                                .caption
+                                                .color
                                                 .withOpacity(0.5),
                                           ),
                                         ),
@@ -137,7 +142,6 @@ class BodyMeasurementWidget extends StatelessWidget {
                                       'InBody SmartScale',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 12,
                                         letterSpacing: 0.0,
@@ -158,7 +162,7 @@ class BodyMeasurementWidget extends StatelessWidget {
                       child: Container(
                         height: 2,
                         decoration: const BoxDecoration(
-                          color: AppTheme.lightGrey,
+                          color: AppTheme.lightBlueGrey,
                           borderRadius: BorderRadius.all(Radius.circular(4.0)),
                         ),
                       ),
@@ -173,15 +177,17 @@ class BodyMeasurementWidget extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: <Widget>[
-                                const Text(
+                                Text(
                                   '185 cm',
                                   textAlign: TextAlign.center,
                                   style: TextStyle(
-                                    fontFamily: AppTheme.fontName,
                                     fontWeight: FontWeight.w500,
                                     fontSize: 16,
                                     letterSpacing: -0.2,
-                                    color: AppTheme.darkText,
+                                    color: Theme.of(context)
+                                        .textTheme
+                                        .headline4
+                                        .color,
                                   ),
                                 ),
                                 Padding(
@@ -190,10 +196,13 @@ class BodyMeasurementWidget extends StatelessWidget {
                                     'Height',
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      fontFamily: AppTheme.fontName,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 12,
-                                      color: AppTheme.darkGrey.withOpacity(0.5),
+                                      color: Theme.of(context)
+                                          .textTheme
+                                          .caption
+                                          .color
+                                          .withOpacity(0.5),
                                     ),
                                   ),
                                 ),
@@ -209,15 +218,17 @@ class BodyMeasurementWidget extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: <Widget>[
-                                    const Text(
+                                    Text(
                                       '27.3 BMI',
                                       textAlign: TextAlign.center,
                                       style: TextStyle(
-                                        fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 16,
                                         letterSpacing: -0.2,
-                                        color: AppTheme.darkText,
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .headline4
+                                            .color,
                                       ),
                                     ),
                                     Padding(
@@ -226,10 +237,12 @@ class BodyMeasurementWidget extends StatelessWidget {
                                         'Overweight',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.w600,
                                           fontSize: 12,
-                                          color: AppTheme.darkGrey
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .caption
+                                              .color
                                               .withOpacity(0.5),
                                         ),
                                       ),
@@ -248,14 +261,16 @@ class BodyMeasurementWidget extends StatelessWidget {
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   crossAxisAlignment: CrossAxisAlignment.end,
                                   children: <Widget>[
-                                    const Text(
+                                    Text(
                                       '20%',
                                       style: TextStyle(
-                                        fontFamily: AppTheme.fontName,
                                         fontWeight: FontWeight.w500,
                                         fontSize: 16,
                                         letterSpacing: -0.2,
-                                        color: AppTheme.darkText,
+                                        color: Theme.of(context)
+                                            .textTheme
+                                            .headline4
+                                            .color,
                                       ),
                                     ),
                                     Padding(
@@ -264,10 +279,12 @@ class BodyMeasurementWidget extends StatelessWidget {
                                         'Body fat',
                                         textAlign: TextAlign.center,
                                         style: TextStyle(
-                                          fontFamily: AppTheme.fontName,
                                           fontWeight: FontWeight.w600,
                                           fontSize: 12,
-                                          color: AppTheme.darkGrey
+                                          color: Theme.of(context)
+                                              .textTheme
+                                              .caption
+                                              .color
                                               .withOpacity(0.5),
                                         ),
                                       ),

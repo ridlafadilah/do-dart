@@ -35,7 +35,10 @@ class HomeWidget extends StatelessWidget {
                       topRight: Radius.circular(68.0)),
                   boxShadow: <BoxShadow>[
                     BoxShadow(
-                        color: AppTheme.darkGrey.withOpacity(0.6),
+                        color: Theme.of(context)
+                            .cardTheme
+                            .shadowColor
+                            .withOpacity(0.6),
                         offset: const Offset(1.1, 1.1),
                         blurRadius: 10.0),
                   ],
@@ -50,7 +53,6 @@ class HomeWidget extends StatelessWidget {
                         DongkapLocalizations.of(context).hello,
                         textAlign: TextAlign.left,
                         style: const TextStyle(
-                          fontFamily: AppTheme.fontName,
                           fontWeight: FontWeight.normal,
                           fontSize: 14,
                           letterSpacing: 0.0,
@@ -63,7 +65,6 @@ class HomeWidget extends StatelessWidget {
                           'Ridla Fadilah',
                           textAlign: TextAlign.left,
                           style: TextStyle(
-                            fontFamily: AppTheme.fontName,
                             fontWeight: FontWeight.normal,
                             fontSize: 20,
                             letterSpacing: 0.0,

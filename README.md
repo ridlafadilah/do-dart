@@ -41,7 +41,7 @@ Dongkap | Mobile Application with Flutter
   * Update Profile ( _soon_ )
   * Upload Photo Profile ( _soon_ )
   * Change Language
-  * Dark Mode ( _soon_ )
+  * Dark Mode
 
 <p float="left">
 <img src="https://github.com/ridlafadilah/do-dart/raw/main/assets/images/login_page.png" height="400">

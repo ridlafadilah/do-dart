@@ -23,8 +23,8 @@ class SkeletonState extends State<Skeleton>
   @override
   Widget build(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.grey[200],
-      highlightColor: Colors.white,
+      baseColor: Theme.of(context).colorScheme.primaryVariant,
+      highlightColor: Theme.of(context).colorScheme.secondaryVariant,
       child: Container(
         height: widget.height,
         width: widget.width,

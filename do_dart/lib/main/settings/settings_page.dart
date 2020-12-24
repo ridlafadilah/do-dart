@@ -54,7 +54,7 @@ class SettingsPage extends StatelessWidget {
             height: 40,
             width: 40,
             child: InkWell(
-              highlightColor: AppTheme.darkGrey.withOpacity(0.2),
+              highlightColor: AppTheme.darkBlueGrey.withOpacity(0.2),
               borderRadius: const BorderRadius.all(Radius.circular(20.0)),
               onTap: () {
                 Navigator.of(context).pop(true);

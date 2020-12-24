@@ -72,7 +72,6 @@ class _DeactivateDialogBottomSheetState
                       DongkapLocalizations.of(context)
                           .promptDeactivateAccountTitle,
                       style: const TextStyle(
-                        fontFamily: AppTheme.fontName,
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -88,7 +87,6 @@ class _DeactivateDialogBottomSheetState
                       DongkapLocalizations.of(context)
                           .promptDeactivateAccountSubtitle,
                       style: const TextStyle(
-                        fontFamily: AppTheme.fontName,
                         wordSpacing: 0.5,
                         height: 1.7,
                       ),

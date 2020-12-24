@@ -290,13 +290,13 @@ class _UITemplatePageState extends State<UITemplatePage>
             height: 40,
             width: 40,
             child: InkWell(
-              highlightColor: AppTheme.darkGrey.withOpacity(0.2),
+              highlightColor: AppTheme.darkBlueGrey.withOpacity(0.2),
               borderRadius: const BorderRadius.all(Radius.circular(20.0)),
               onTap: () {},
-              child: const Center(
+              child: Center(
                 child: Icon(
                   Icons.keyboard_arrow_left,
-                  color: AppTheme.darkGrey,
+                  color: Theme.of(context).appBarTheme.iconTheme.color,
                 ),
               ),
             ),
@@ -309,23 +309,22 @@ class _UITemplatePageState extends State<UITemplatePage>
           ),
           child: Row(
             children: <Widget>[
-              const Padding(
-                padding: EdgeInsets.only(right: 8),
+              Padding(
+                padding: const EdgeInsets.only(right: 8),
                 child: Icon(
                   Icons.calendar_today,
-                  color: AppTheme.darkGrey,
+                  color: Theme.of(context).appBarTheme.iconTheme.color,
                   size: 18,
                 ),
               ),
-              const Text(
+              Text(
                 '15 May',
                 textAlign: TextAlign.left,
                 style: TextStyle(
-                  fontFamily: AppTheme.fontName,
                   fontWeight: FontWeight.normal,
                   fontSize: 18,
                   letterSpacing: -0.2,
-                  color: AppTheme.darkText,
+                  color: Theme.of(context).appBarTheme.titleTextStyle.color,
                 ),
               ),
             ],
@@ -337,13 +336,13 @@ class _UITemplatePageState extends State<UITemplatePage>
             height: 40,
             width: 40,
             child: InkWell(
-              highlightColor: AppTheme.darkGrey.withOpacity(0.2),
+              highlightColor: AppTheme.darkBlueGrey.withOpacity(0.2),
               borderRadius: const BorderRadius.all(Radius.circular(20.0)),
               onTap: () {},
-              child: const Center(
+              child: Center(
                 child: Icon(
                   Icons.keyboard_arrow_right,
-                  color: AppTheme.darkGrey,
+                  color: Theme.of(context).appBarTheme.iconTheme.color,
                 ),
               ),
             ),
