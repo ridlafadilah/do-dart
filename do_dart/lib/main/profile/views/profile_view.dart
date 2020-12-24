@@ -1,4 +1,5 @@
 import 'package:do_core/models.dart';
+import 'package:do_dart/main/profile/edit_profile_page.dart';
 import 'package:do_dart/main/profile/widgets/profile_detail_widget.dart';
 import 'package:do_dart/main/profile/widgets/profile_header_widget.dart';
 import 'package:do_common/common.dart';
@@ -61,14 +62,23 @@ class _ProfileViewState extends State<ProfileView> {
 
     listWidgets.add(
       TitleWidget(
-        titleTxt: DongkapLocalizations.of(context).titleWidgetProfiletitle,
+        titleTxt: DongkapLocalizations.of(context).titleWidgetProfileTitle,
         subTxt: DongkapLocalizations.of(context).titleWidgetProfileSubtitle,
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
             curve: Interval((1 / widget.itemTotal) * 1, 1.0,
                 curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController,
-        onTap: () {},
+        onTap: () {
+          Navigator.push<dynamic>(
+            context,
+            MaterialPageRoute<dynamic>(
+                builder: (BuildContext context) => EditProfilePage(
+                      animationController: widget.animationController,
+                      profile: widget.profile,
+                    )),
+          );
+        },
       ),
     );
 

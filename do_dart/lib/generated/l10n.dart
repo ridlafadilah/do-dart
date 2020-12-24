@@ -135,11 +135,41 @@ class DongkapLocalizations {
     );
   }
 
+  /// `Profile`
+  String get editProfile {
+    return Intl.message(
+      'Profile',
+      name: 'editProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fullname`
+  String get fullname {
+    return Intl.message(
+      'Fullname',
+      name: 'fullname',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Username`
   String get username {
     return Intl.message(
       'Username',
       name: 'username',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Email`
+  String get email {
+    return Intl.message(
+      'Email',
+      name: 'email',
       desc: '',
       args: [],
     );
@@ -185,6 +215,26 @@ class DongkapLocalizations {
     );
   }
 
+  /// `Place of Birth`
+  String get placeOfBirth {
+    return Intl.message(
+      'Place of Birth',
+      name: 'placeOfBirth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of Birth`
+  String get dateOfBirth {
+    return Intl.message(
+      'Date of Birth',
+      name: 'dateOfBirth',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Address`
   String get address {
     return Intl.message(
@@ -200,6 +250,16 @@ class DongkapLocalizations {
     return Intl.message(
       'Register',
       name: 'register',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Update`
+  String get update {
+    return Intl.message(
+      'Update',
+      name: 'update',
       desc: '',
       args: [],
     );
@@ -575,11 +635,71 @@ class DongkapLocalizations {
     );
   }
 
+  /// `Email is required!`
+  String get errorEmail {
+    return Intl.message(
+      'Email is required!',
+      name: 'errorEmail',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Password is required!`
   String get errorPassword {
     return Intl.message(
       'Password is required!',
       name: 'errorPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Fullname is required!`
+  String get errorFullname {
+    return Intl.message(
+      'Fullname is required!',
+      name: 'errorFullname',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number is invalid!`
+  String get errorPhoneNumber {
+    return Intl.message(
+      'Phone Number is invalid!',
+      name: 'errorPhoneNumber',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Place of Birth is required!`
+  String get errorPlaceOfBirth {
+    return Intl.message(
+      'Place of Birth is required!',
+      name: 'errorPlaceOfBirth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Date of Birth is required!`
+  String get errorDateOfBirth {
+    return Intl.message(
+      'Date of Birth is required!',
+      name: 'errorDateOfBirth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Address is required!`
+  String get errorAddress {
+    return Intl.message(
+      'Address is required!',
+      name: 'errorAddress',
       desc: '',
       args: [],
     );
@@ -626,10 +746,10 @@ class DongkapLocalizations {
   }
 
   /// `Your Profile`
-  String get titleWidgetProfiletitle {
+  String get titleWidgetProfileTitle {
     return Intl.message(
       'Your Profile',
-      name: 'titleWidgetProfiletitle',
+      name: 'titleWidgetProfileTitle',
       desc: '',
       args: [],
     );

@@ -38,7 +38,7 @@ Dongkap | Mobile Application with Flutter
   * Registration ( _soon_ )
   * Forgot Password ( _soon_ )
   * Change Password
-  * Update Profile ( _soon_ )
+  * Update Profile
   * Upload Photo Profile ( _soon_ )
   * Change Language
   * Dark Mode

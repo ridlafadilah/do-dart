@@ -57,7 +57,7 @@ class _ProfileSkeletonViewState extends State<ProfileSkeletonView> {
 
     listWidgets.add(
       TitleWidget(
-        titleTxt: DongkapLocalizations.of(context).titleWidgetProfiletitle,
+        titleTxt: DongkapLocalizations.of(context).titleWidgetProfileTitle,
         subTxt: DongkapLocalizations.of(context).titleWidgetProfileSubtitle,
         animation: Tween<double>(begin: 0.0, end: 1.0).animate(CurvedAnimation(
             parent: widget.animationController,
