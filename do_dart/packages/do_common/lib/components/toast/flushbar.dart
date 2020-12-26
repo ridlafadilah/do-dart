@@ -6,7 +6,8 @@ import 'package:flutter/scheduler.dart';
 
 import 'flushbar_route.dart' as route;
 
-const String flushbarRouteName = '/flushbarRoute';
+// ignore: constant_identifier_names
+const String FLUSHBAR_ROUTE_NAME = '/flushbarRoute';
 
 typedef void FlushbarStatusCallback(FlushbarStatus status);
 typedef void OnTap(Flushbar flushbar);
@@ -36,13 +37,13 @@ class Flushbar<T> extends StatefulWidget {
       Duration duration,
       bool isDismissible = true,
       FlushbarDismissDirection dismissDirection =
-          FlushbarDismissDirection.vertical,
+          FlushbarDismissDirection.VERTICAL,
       bool showProgressIndicator = false,
       AnimationController progressIndicatorController,
       Color progressIndicatorBackgroundColor,
       Animation<Color> progressIndicatorValueColor,
-      FlushbarPosition flushbarPosition = FlushbarPosition.bottom,
-      FlushbarStyle flushbarStyle = FlushbarStyle.floating,
+      FlushbarPosition flushbarPosition = FlushbarPosition.BOTTOM,
+      FlushbarStyle flushbarStyle = FlushbarStyle.FLOATING,
       Curve forwardAnimationCurve = Curves.easeOutCirc,
       Curve reverseAnimationCurve = Curves.easeOutCirc,
       Duration animationDuration = const Duration(seconds: 1),
@@ -200,12 +201,12 @@ class Flushbar<T> extends StatefulWidget {
 
   /// Checks if the flushbar is visible
   bool isShowing() {
-    return _flushbarRoute?.currentStatus == FlushbarStatus.showing;
+    return _flushbarRoute?.currentStatus == FlushbarStatus.SHOWING;
   }
 
   /// Checks if the flushbar is dismissed
   bool isDismissed() {
-    return _flushbarRoute?.currentStatus == FlushbarStatus.dismissed;
+    return _flushbarRoute?.currentStatus == FlushbarStatus.DISMISSED;
   }
 
   @override
@@ -324,16 +325,16 @@ A message is mandatory if you are not using userInputForm. Set either a message 
     return Align(
       heightFactor: 1.0,
       child: Material(
-        color: widget.flushbarStyleParam == FlushbarStyle.floating
+        color: widget.flushbarStyleParam == FlushbarStyle.FLOATING
             ? Colors.transparent
             : widget.backgroundColorParam,
         child: SafeArea(
-          minimum: widget.flushbarPositionParam == FlushbarPosition.bottom
+          minimum: widget.flushbarPositionParam == FlushbarPosition.BOTTOM
               ? EdgeInsets.only(
                   bottom: MediaQuery.of(context).viewInsets.bottom)
               : EdgeInsets.only(top: MediaQuery.of(context).viewInsets.top),
-          bottom: widget.flushbarPositionParam == FlushbarPosition.bottom,
-          top: widget.flushbarPositionParam == FlushbarPosition.top,
+          bottom: widget.flushbarPositionParam == FlushbarPosition.BOTTOM,
+          top: widget.flushbarPositionParam == FlushbarPosition.TOP,
           left: false,
           right: false,
           child: _getFlushbar(),
@@ -688,10 +689,14 @@ A message is mandatory if you are not using userInputForm. Set either a message 
   }
 }
 
-enum FlushbarPosition { top, bottom }
+// ignore: constant_identifier_names
+enum FlushbarPosition { TOP, BOTTOM }
 
-enum FlushbarStyle { floating, grounded }
+// ignore: constant_identifier_names
+enum FlushbarStyle { FLOATING, GROUNDED }
 
-enum FlushbarDismissDirection { horizontal, vertical }
+// ignore: constant_identifier_names
+enum FlushbarDismissDirection { HORIZONTAL, VERTICAL }
 
-enum FlushbarStatus { showing, dismissed, isAppearing, isHiding }
+// ignore: constant_identifier_names
+enum FlushbarStatus { SHOWING, DISMISSED, IS_APPEARING, IS_HIDING }

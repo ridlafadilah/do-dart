@@ -39,13 +39,13 @@ class FlushbarRoute<T> extends OverlayRoute<T> {
 
   void _configureAlignment(FlushbarPosition flushbarPosition) {
     switch (flushbar.flushbarPositionParam) {
-      case FlushbarPosition.top:
+      case FlushbarPosition.TOP:
         {
           _initialAlignment = const Alignment(-1.0, -2.0);
           _endAlignment = const Alignment(-1.0, -1.0);
           break;
         }
-      case FlushbarPosition.bottom:
+      case FlushbarPosition.BOTTOM:
         {
           _initialAlignment = const Alignment(-1.0, 2.0);
           _endAlignment = const Alignment(-1.0, 1.0);
@@ -159,8 +159,8 @@ class FlushbarRoute<T> extends OverlayRoute<T> {
       direction: _getDismissDirection(),
       resizeDuration: null,
       confirmDismiss: (_) {
-        if (currentStatus == FlushbarStatus.isAppearing ||
-            currentStatus == FlushbarStatus.isHiding) {
+        if (currentStatus == FlushbarStatus.IS_APPEARING ||
+            currentStatus == FlushbarStatus.IS_HIDING) {
           return Future.value(false);
         }
         return Future.value(true);
@@ -182,10 +182,10 @@ class FlushbarRoute<T> extends OverlayRoute<T> {
   }
 
   DismissDirection _getDismissDirection() {
-    if (flushbar.dismissDirectionParam == FlushbarDismissDirection.horizontal) {
+    if (flushbar.dismissDirectionParam == FlushbarDismissDirection.HORIZONTAL) {
       return DismissDirection.horizontal;
     } else {
-      if (flushbar.flushbarPositionParam == FlushbarPosition.top) {
+      if (flushbar.flushbarPositionParam == FlushbarPosition.TOP) {
         return DismissDirection.up;
       } else {
         return DismissDirection.down;
@@ -279,17 +279,17 @@ class FlushbarRoute<T> extends OverlayRoute<T> {
   void _handleStatusChanged(AnimationStatus status) {
     switch (status) {
       case AnimationStatus.completed:
-        currentStatus = FlushbarStatus.showing;
+        currentStatus = FlushbarStatus.SHOWING;
         _onStatusChanged(currentStatus);
         if (overlayEntries.isNotEmpty) overlayEntries.first.opaque = opaque;
 
         break;
       case AnimationStatus.forward:
-        currentStatus = FlushbarStatus.isAppearing;
+        currentStatus = FlushbarStatus.IS_APPEARING;
         _onStatusChanged(currentStatus);
         break;
       case AnimationStatus.reverse:
-        currentStatus = FlushbarStatus.isHiding;
+        currentStatus = FlushbarStatus.IS_HIDING;
         _onStatusChanged(currentStatus);
         if (overlayEntries.isNotEmpty) overlayEntries.first.opaque = false;
         break;
@@ -299,14 +299,10 @@ class FlushbarRoute<T> extends OverlayRoute<T> {
         // the transition and hits the dismissed status. For example, the iOS
         // back gesture drives this animation to the dismissed status before
         // popping the navigator.
-        currentStatus = FlushbarStatus.dismissed;
+        currentStatus = FlushbarStatus.DISMISSED;
         _onStatusChanged(currentStatus);
 
         if (!isCurrent) {
-          if (overlayEntries.isNotEmpty) {
-            overlayEntries.clear();
-          }
-          assert(overlayEntries.isEmpty);
           navigator.finalizeRoute(this);
           assert(overlayEntries.isEmpty);
         }
@@ -435,6 +431,6 @@ FlushbarRoute showFlushbar<T>(
 
   return FlushbarRoute<T>(
     flushbar: flushbar,
-    settings: const RouteSettings(name: flushbarRouteName),
+    settings: const RouteSettings(name: FLUSHBAR_ROUTE_NAME),
   );
 }

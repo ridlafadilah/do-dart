@@ -33,7 +33,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
       },
       child: BlocListener<ChangePasswordBloc, ChangePasswordState>(
         listener: (context, state) {
-          if (state.status.isSubmissionFailure) {
+          if (state.action.isSubmissionFailure) {
             Flushbar(
               messageText: Text(
                 LocaleUtils.translate(state.error),
@@ -43,10 +43,9 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
                   'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
                   color: Colors.white),
               duration: const Duration(seconds: 3),
-              backgroundColor: Colors.red[400],
-              routeBlur: 0.5,
+              backgroundColor: AppTheme.lightDanger,
               isDismissible: false,
-              dismissDirection: FlushbarDismissDirection.vertical,
+              dismissDirection: FlushbarDismissDirection.VERTICAL,
             )..show(context);
           }
         },
@@ -87,9 +86,7 @@ class _LinearProgressIndicator extends StatelessWidget {
             height: 4.0,
           );
         } else {
-          return const LinearProgressIndicator(
-            backgroundColor: AppTheme.colorTheme,
-          );
+          return const LinearProgressIndicator();
         }
       },
     );

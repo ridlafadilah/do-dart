@@ -43,6 +43,8 @@ class ChangePasswordBloc extends Bloc<CommonEvent, ChangePasswordState> {
       oldPassword: oldPassword,
       action: Formz.validate(
           [oldPassword, state.newPassword, state.confirmPassword]),
+      status: FormzStatus.pure,
+      error: null,
     );
   }
 
@@ -55,6 +57,8 @@ class ChangePasswordBloc extends Bloc<CommonEvent, ChangePasswordState> {
       newPassword: newPassword,
       action: Formz.validate(
           [state.oldPassword, newPassword, state.confirmPassword]),
+      status: FormzStatus.pure,
+      error: null,
     );
   }
 
@@ -68,6 +72,8 @@ class ChangePasswordBloc extends Bloc<CommonEvent, ChangePasswordState> {
       confirmPassword: confirmPassword,
       action: Formz.validate(
           [state.oldPassword, state.newPassword, confirmPassword]),
+      status: FormzStatus.pure,
+      error: null,
     );
   }
 
@@ -91,11 +97,17 @@ class ChangePasswordBloc extends Bloc<CommonEvent, ChangePasswordState> {
             .then((value) async {
           await _authService.logOut();
         });
-        yield state.copyWith(status: FormzStatus.submissionSuccess);
+        yield state.copyWith(
+          status: FormzStatus.submissionSuccess,
+          action: FormzStatus.submissionSuccess,
+          error: null,
+        );
       } on ServerError catch (err) {
         yield state.copyWith(
-            error: err.getErrorMessage(),
-            status: FormzStatus.submissionFailure);
+          error: err.getErrorMessage(),
+          action: FormzStatus.submissionFailure,
+          status: FormzStatus.submissionFailure,
+        );
       }
     }
   }

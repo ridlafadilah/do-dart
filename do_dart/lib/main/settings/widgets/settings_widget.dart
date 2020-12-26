@@ -5,6 +5,7 @@ import 'package:do_dart/l10n/utils/locale_utils.dart';
 import 'package:do_dart/main/settings/bloc/theme_bloc.dart';
 import 'package:do_dart/main/settings/language_page.dart';
 import 'package:do_dart/theme/bloc/thememode_bloc.dart';
+import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:do_dart/generated/l10n.dart';
@@ -86,10 +87,9 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                       color: Theme.of(context).iconTheme.color,
                     ),
                     duration: const Duration(seconds: 3),
-                    backgroundColor: Colors.red[400],
-                    routeBlur: 0.5,
+                    backgroundColor: AppTheme.lightDanger,
                     isDismissible: false,
-                    dismissDirection: FlushbarDismissDirection.vertical,
+                    dismissDirection: FlushbarDismissDirection.VERTICAL,
                   )..show(context);
                 } else if (state is SubmitSuccessState<bool>) {
                   context.read<ThemeModeBloc>().add(const ThemeModeEvent());

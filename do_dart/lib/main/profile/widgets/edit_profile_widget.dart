@@ -38,7 +38,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
       },
       child: BlocListener<EditProfileBloc, EditProfileState>(
         listener: (context, state) {
-          if (state.status.isSubmissionFailure) {
+          if (state.action.isSubmissionFailure) {
             Flushbar(
               messageText: Text(
                 LocaleUtils.translate(state.error),
@@ -48,10 +48,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
                   color: Colors.white),
               duration: const Duration(seconds: 3),
-              backgroundColor: Colors.red[400],
-              routeBlur: 0.5,
+              backgroundColor: AppTheme.lightDanger,
               isDismissible: false,
-              dismissDirection: FlushbarDismissDirection.vertical,
+              dismissDirection: FlushbarDismissDirection.VERTICAL,
             )..show(context);
           }
         },

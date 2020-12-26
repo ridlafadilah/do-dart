@@ -103,10 +103,9 @@ class _LanguagePageState extends State<LanguagePage>
                 color: Theme.of(context).iconTheme.color,
               ),
               duration: const Duration(seconds: 3),
-              backgroundColor: Colors.red[400],
-              routeBlur: 0.5,
+              backgroundColor: AppTheme.lightDanger,
               isDismissible: false,
-              dismissDirection: FlushbarDismissDirection.vertical,
+              dismissDirection: FlushbarDismissDirection.VERTICAL,
             )..show(context);
           } else if (state is SubmitSuccessState<BaseResponse>) {
             context.read<TranslationBloc>().add(const TranslationEvent());

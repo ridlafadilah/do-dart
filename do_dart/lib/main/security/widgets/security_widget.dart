@@ -6,6 +6,7 @@ import 'package:do_dart/main/security/bloc/provider_bloc.dart';
 import 'package:do_dart/main/security/bloc/two_factor_auth_bloc.dart';
 import 'package:do_dart/main/security/change_password_page.dart';
 import 'package:do_dart/main/security/deactivate_account_page.dart';
+import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:do_dart/generated/l10n.dart';
@@ -156,10 +157,9 @@ class _SecurityWidgetState extends State<SecurityWidget> {
                       color: Theme.of(context).iconTheme.color,
                     ),
                     duration: const Duration(seconds: 3),
-                    backgroundColor: Colors.red[400],
-                    routeBlur: 0.5,
+                    backgroundColor: AppTheme.lightDanger,
                     isDismissible: false,
-                    dismissDirection: FlushbarDismissDirection.vertical,
+                    dismissDirection: FlushbarDismissDirection.VERTICAL,
                   )..show(context);
                 } else if (state is SubmitSuccessState<bool>) {
                   Navigator.of(context, rootNavigator: true).pop();

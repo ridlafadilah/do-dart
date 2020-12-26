@@ -16,6 +16,7 @@ class AppTheme {
   static const Color buttonDisable = Color.fromRGBO(143, 155, 179, .24);
   static const Color buttonTextDisable = Color.fromRGBO(143, 155, 179, .48);
   static const Color danger = Color(0xFFFF0000);
+  static const Color lightDanger = Color(0xFFEF5350);
 
   static const Color darkDeep = Color(0xFF000000);
   static const Color darkAccent = Color(0xFF1a1a1b);

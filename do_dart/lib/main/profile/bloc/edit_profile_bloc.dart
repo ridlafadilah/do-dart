@@ -108,6 +108,8 @@ class EditProfileBloc extends Bloc<CommonEvent, EditProfileState> {
         dateOfBirth,
         address
       ]),
+      status: FormzStatus.pure,
+      error: null,
     );
   }
 
@@ -123,11 +125,17 @@ class EditProfileBloc extends Bloc<CommonEvent, EditProfileState> {
         ProfileService profileService =
             ProfileService(authService: _authService);
         await profileService.getProfile();
-        yield state.copyWith(status: FormzStatus.submissionSuccess);
+        yield state.copyWith(
+          status: FormzStatus.submissionSuccess,
+          action: FormzStatus.submissionSuccess,
+          error: null,
+        );
       } on ServerError catch (err) {
         yield state.copyWith(
-            error: err.getErrorMessage(),
-            status: FormzStatus.submissionFailure);
+          error: err.getErrorMessage(),
+          action: FormzStatus.submissionFailure,
+          status: FormzStatus.submissionFailure,
+        );
       }
     }
   }

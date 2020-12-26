@@ -42,6 +42,7 @@ class LoginBloc extends Bloc<CommonEvent, LoginState> {
       username: username,
       action: Formz.validate([state.password, username]),
       status: FormzStatus.pure,
+      error: null,
     );
   }
 
@@ -54,6 +55,7 @@ class LoginBloc extends Bloc<CommonEvent, LoginState> {
       password: password,
       action: Formz.validate([password, state.username]),
       status: FormzStatus.pure,
+      error: null,
     );
   }
 
@@ -70,11 +72,17 @@ class LoginBloc extends Bloc<CommonEvent, LoginState> {
           username: state.username.value,
           password: state.password.value,
         );
-        yield state.copyWith(status: FormzStatus.submissionSuccess);
+        yield state.copyWith(
+          status: FormzStatus.submissionSuccess,
+          action: FormzStatus.submissionSuccess,
+          error: null,
+        );
       } on ServerError catch (err) {
         yield state.copyWith(
-            error: err.getErrorMessage(),
-            status: FormzStatus.submissionFailure);
+          error: err.getErrorMessage(),
+          action: FormzStatus.submissionFailure,
+          status: FormzStatus.submissionFailure,
+        );
       }
     }
   }
