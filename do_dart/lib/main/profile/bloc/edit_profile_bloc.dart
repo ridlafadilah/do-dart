@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
+import 'package:do_core/models.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:meta/meta.dart';
@@ -25,9 +26,43 @@ class EditProfileBloc extends Bloc<CommonEvent, EditProfileState> {
   ) async* {
     if (event is SubmittedEvent) {
       yield* _mapEditProfileSubmittedToState(event, state);
+    } else if (event is FetchedEvent) {
+      yield _mapFetchedEventToState(event, state);
     } else {
       yield _mapEventToState(event, state);
     }
+  }
+
+  EditProfileState _mapFetchedEventToState(
+    FetchedEvent event,
+    EditProfileState state,
+  ) {
+    final Name fullname = Name.pure(event.profile.name);
+    final Email email = Email.pure(event.profile.email);
+    final PhoneNumber phoneNumber = PhoneNumber.pure(event.profile.phoneNumber);
+    final Gender gender = Gender.pure(event.profile.gender);
+    final PlaceOfBirth placeOfBirth =
+        PlaceOfBirth.pure(event.profile.placeOfBirth);
+    final DateOfBirth dateOfBirth = DateOfBirth.pure(event.profile.dateOfBirth);
+    final Address address = Address.pure(event.profile.address);
+    return state.copyWith(
+      fullname: fullname,
+      email: email,
+      phoneNumber: phoneNumber,
+      gender: gender,
+      placeOfBirth: placeOfBirth,
+      dateOfBirth: dateOfBirth,
+      address: address,
+      action: Formz.validate([
+        fullname,
+        email,
+        phoneNumber,
+        gender,
+        placeOfBirth,
+        dateOfBirth,
+        address
+      ]),
+    );
   }
 
   EditProfileState _mapEventToState(

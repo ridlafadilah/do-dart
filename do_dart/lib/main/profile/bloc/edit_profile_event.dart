@@ -6,7 +6,7 @@ class FullnameChanged extends CommonEvent {
   final String fullname;
 
   @override
-  List<Object> get props => [fullname];
+  List<String> get props => [fullname];
 }
 
 class EmailChanged extends CommonEvent {
@@ -15,7 +15,7 @@ class EmailChanged extends CommonEvent {
   final String email;
 
   @override
-  List<Object> get props => [email];
+  List<String> get props => [email];
 }
 
 class PhoneNumberChanged extends CommonEvent {
@@ -24,7 +24,7 @@ class PhoneNumberChanged extends CommonEvent {
   final String phoneNumber;
 
   @override
-  List<Object> get props => [phoneNumber];
+  List<String> get props => [phoneNumber];
 }
 
 class GenderChanged extends CommonEvent {
@@ -33,7 +33,7 @@ class GenderChanged extends CommonEvent {
   final String gender;
 
   @override
-  List<Object> get props => [gender];
+  List<String> get props => [gender];
 }
 
 class PlaceOfBirthChanged extends CommonEvent {
@@ -42,7 +42,7 @@ class PlaceOfBirthChanged extends CommonEvent {
   final String placeOfBirth;
 
   @override
-  List<Object> get props => [placeOfBirth];
+  List<String> get props => [placeOfBirth];
 }
 
 class DateOfBirthChanged extends CommonEvent {
@@ -51,7 +51,7 @@ class DateOfBirthChanged extends CommonEvent {
   final String dateOfBirth;
 
   @override
-  List<Object> get props => [dateOfBirth];
+  List<String> get props => [dateOfBirth];
 }
 
 class AddressChanged extends CommonEvent {
@@ -60,5 +60,14 @@ class AddressChanged extends CommonEvent {
   final String address;
 
   @override
-  List<Object> get props => [address];
+  List<String> get props => [address];
+}
+
+class FetchedEvent extends CommonEvent {
+  const FetchedEvent(this.profile);
+
+  final ProfileDto profile;
+
+  @override
+  List<ProfileDto> get props => [profile];
 }

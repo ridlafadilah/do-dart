@@ -34,7 +34,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
       create: (context) {
         return EditProfileBloc(
           authService: RepositoryProvider.of<AuthService>(context),
-        );
+        )..add(FetchedEvent(widget.profile));
       },
       child: BlocListener<EditProfileBloc, EditProfileState>(
         listener: (context, state) {

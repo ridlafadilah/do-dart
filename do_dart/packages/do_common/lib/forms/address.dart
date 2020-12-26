@@ -3,7 +3,7 @@ import 'package:formz/formz.dart';
 enum AddressValidationError { empty, length }
 
 class Address extends FormzInput<String, AddressValidationError> {
-  const Address.pure() : super.pure('');
+  const Address.pure([String value = '']) : super.pure(value);
   const Address.dirty([String value = '']) : super.dirty(value);
 
   @override
