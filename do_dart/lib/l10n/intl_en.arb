@@ -40,6 +40,8 @@
       }
     },
     "retry": "Retry",
+    "male": "Male",
+    "female": "Female",
     "exercise": "Exercise",
     "template": "Template",
   

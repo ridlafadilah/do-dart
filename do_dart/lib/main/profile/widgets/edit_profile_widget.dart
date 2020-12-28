@@ -69,6 +69,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                   const SizedBox(height: 10),
                   _PhoneNumberInput(profile: widget.profile),
                   const SizedBox(height: 10),
+                  _GenderInput(profile: widget.profile),
+                  const SizedBox(height: 10),
                   _PlaceOfBirthInput(profile: widget.profile),
                   const SizedBox(height: 10),
                   _DateOfBirthInput(profile: widget.profile),
@@ -187,6 +189,52 @@ class __PhoneNumberInputState extends State<_PhoneNumberInput> {
           onChanged: (phoneNumber) => context
               .read<EditProfileBloc>()
               .add(PhoneNumberChanged(phoneNumber)),
+        );
+      },
+    );
+  }
+}
+
+class _GenderInput extends StatefulWidget {
+  const _GenderInput({Key key, this.profile}) : super(key: key);
+
+  final ProfileDto profile;
+
+  @override
+  __GenderInputState createState() => __GenderInputState();
+}
+
+class __GenderInputState extends State<_GenderInput> {
+  List<DropdownMenuItem<String>> genderList = [];
+
+  @override
+  Widget build(BuildContext context) {
+    genderList.addAll([
+      DropdownMenuItem(
+        child: Text(DongkapLocalizations.of(context).male),
+        value: 'GENDER.MALE',
+      ),
+      DropdownMenuItem(
+        child: Text(DongkapLocalizations.of(context).female),
+        value: 'GENDER.FEMALE',
+      )
+    ]);
+    return BlocBuilder<EditProfileBloc, EditProfileState>(
+      buildWhen: (previous, current) => previous.gender != current.gender,
+      builder: (context, state) {
+        return Container(
+          width: 370.0,
+          child: DropdownButtonHideUnderline(
+            child: ButtonTheme(
+              alignedDropdown: true,
+              child: DropdownButton(
+                value: widget.profile.genderCode,
+                items: genderList,
+                onChanged: (gender) =>
+                    context.read<EditProfileBloc>().add(GenderChanged(gender)),
+              ),
+            ),
+          ),
         );
       },
     );

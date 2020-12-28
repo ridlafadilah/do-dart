@@ -40,6 +40,8 @@
       }
     },
     "retry": "Ulang",
+    "male": "Pria",
+    "female": "Wanita",
     "exercise": "Latihan",
     "template": "Template",
   

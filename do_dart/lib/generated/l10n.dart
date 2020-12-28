@@ -385,6 +385,26 @@ class DongkapLocalizations {
     );
   }
 
+  /// `Male`
+  String get male {
+    return Intl.message(
+      'Male',
+      name: 'male',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Female`
+  String get female {
+    return Intl.message(
+      'Female',
+      name: 'female',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Exercise`
   String get exercise {
     return Intl.message(
