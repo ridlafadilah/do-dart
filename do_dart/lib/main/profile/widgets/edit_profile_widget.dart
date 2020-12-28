@@ -205,20 +205,8 @@ class _GenderInput extends StatefulWidget {
 }
 
 class __GenderInputState extends State<_GenderInput> {
-  List<DropdownMenuItem<String>> genderList = [];
-
   @override
   Widget build(BuildContext context) {
-    genderList.addAll([
-      DropdownMenuItem(
-        child: Text(DongkapLocalizations.of(context).male),
-        value: 'GENDER.MALE',
-      ),
-      DropdownMenuItem(
-        child: Text(DongkapLocalizations.of(context).female),
-        value: 'GENDER.FEMALE',
-      )
-    ]);
     return BlocBuilder<EditProfileBloc, EditProfileState>(
       buildWhen: (previous, current) => previous.gender != current.gender,
       builder: (context, state) {
@@ -228,8 +216,19 @@ class __GenderInputState extends State<_GenderInput> {
             child: ButtonTheme(
               alignedDropdown: true,
               child: DropdownButton(
-                value: widget.profile.genderCode,
-                items: genderList,
+                value: state.gender.value?.isNotEmpty == true
+                    ? state.gender.value
+                    : widget.profile.genderCode,
+                items: <DropdownMenuItem<String>>[
+                  DropdownMenuItem(
+                    child: Text(DongkapLocalizations.of(context).male),
+                    value: 'GENDER.MALE',
+                  ),
+                  DropdownMenuItem(
+                    child: Text(DongkapLocalizations.of(context).female),
+                    value: 'GENDER.FEMALE',
+                  )
+                ],
                 onChanged: (gender) =>
                     context.read<EditProfileBloc>().add(GenderChanged(gender)),
               ),

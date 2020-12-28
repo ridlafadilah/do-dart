@@ -40,7 +40,7 @@ class EditProfileBloc extends Bloc<CommonEvent, EditProfileState> {
     final Name fullname = Name.pure(event.profile.name);
     final Email email = Email.pure(event.profile.email);
     final PhoneNumber phoneNumber = PhoneNumber.pure(event.profile.phoneNumber);
-    final Gender gender = Gender.pure(event.profile.gender);
+    final Gender gender = Gender.pure(event.profile.genderCode);
     final PlaceOfBirth placeOfBirth =
         PlaceOfBirth.pure(event.profile.placeOfBirth);
     final DateOfBirth dateOfBirth = DateOfBirth.pure(event.profile.dateOfBirth);
