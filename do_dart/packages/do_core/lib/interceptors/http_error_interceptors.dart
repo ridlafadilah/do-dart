@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:do_core/api/auth/auth_api.dart';
 import 'package:do_core/models/base_response.dart';
@@ -13,34 +15,27 @@ class HttpErrorInterceptors extends Interceptor {
   final AuthAPI _authAPI = AuthAPI(Dio());
   final SharedPreferencesService _sharedPreferences =
       coreLocator<SharedPreferencesService>();
-  bool hasRefreshToken = false;
-
-  @override
-  Future onResponse(Response response) async {
-    hasRefreshToken = false;
-  }
 
   @override
   Future onError(DioError err) async {
     final int statusCode = err.response.statusCode;
-    final BaseResponse response = BaseResponse.fromJson(err.response.data);
+    final BaseResponse response = BaseResponse.fromJson(
+        (err.response.data is List<int>)
+            ? json.decode(utf8.decode(err.response.data))
+            : err.response.data);
     switch (statusCode) {
       case 401:
         try {
           final String msg = response.respStatusMessage['invalid_token'];
           if (msg != null) {
-            if (msg.contains('expired')) {
-              if (!hasRefreshToken) {
-                _dio.interceptors.requestLock.lock();
-                _dio.interceptors.responseLock.lock();
-                await doRefreshToken().catchError((onError) {});
-                RequestOptions options = err.response.request;
-                _dio.interceptors.requestLock.unlock();
-                _dio.interceptors.responseLock.unlock();
-                return _dio.request(options.path, options: options);
-              } else {
-                await doLogOut();
-              }
+            if (!hasRefreshToken(err.request.headers['authorization'])) {
+              _dio.interceptors.requestLock.lock();
+              _dio.interceptors.responseLock.lock();
+              await doRefreshToken().catchError((onError) {});
+              RequestOptions options = err.response.request;
+              _dio.interceptors.requestLock.unlock();
+              _dio.interceptors.responseLock.unlock();
+              return _dio.request(options.path, options: options);
             } else {
               await doLogOut();
             }
@@ -63,11 +58,15 @@ class HttpErrorInterceptors extends Interceptor {
       'refresh_token': refreshToken,
     };
     await _authService.putSharedPreferences(await _authAPI.token(body));
-    hasRefreshToken = !hasRefreshToken;
   }
 
   Future<void> doLogOut() async {
     await _authService.logOut();
-    hasRefreshToken = false;
+  }
+
+  bool hasRefreshToken(String authorization) {
+    authorization = authorization.replaceAll('Bearer ', '');
+    final String accessToken = _sharedPreferences.getString('access_token');
+    return authorization != accessToken;
   }
 }

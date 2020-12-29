@@ -67,7 +67,7 @@
     "labelFooterLoginSocial": "atau masuk dengan",
     "labelFooterLoginOther": "Belum memiliki akun?",
     "labelLogin": "Halo! Masuk dengan username atau email.",
-    "labelUsernameEmail": "Username atau email :",
+    "labelUsernameEmail": "Username atau email",
     "labelLoginSocial": "Anda saat ini masuk dengan {value}?",
     "@labelLoginSocial": {
       "placeholders": {

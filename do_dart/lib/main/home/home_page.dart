@@ -1,6 +1,11 @@
+import 'package:do_core/bloc.dart';
 import 'package:do_dart/main/home/widgets/home_widget.dart';
+import 'package:do_dart/main/profile/bloc/photo_profile_bloc.dart';
+import 'package:do_dart/main/profile/profile_page.dart';
+import 'package:do_dart/main/profile/widgets/photo_profile_widget.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class HomePage extends StatefulWidget {
@@ -66,6 +71,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+    BlocProvider.of<PhotoProfileBloc>(context).add(const RequestedEvent());
     return Container(
       color: Theme.of(context).backgroundColor,
       child: Scaffold(
@@ -125,7 +131,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
         Padding(
           padding: const EdgeInsets.all(5.0),
-          child: SizedBox(
+          child: Container(
             height: 40,
             width: 40,
             child: InkWell(
@@ -142,18 +148,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ),
         Padding(
           padding: const EdgeInsets.all(5.0),
-          child: SizedBox(
+          child: Container(
             height: 40,
-            width: 40,
+            width: 37,
             child: InkWell(
               highlightColor: AppTheme.darkBlueGrey.withOpacity(0.2),
               splashColor: AppTheme.darkBlueGrey,
               borderRadius: const BorderRadius.all(Radius.circular(20.0)),
-              onTap: () {},
+              onTap: () {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute<dynamic>(
+                      builder: (BuildContext context) => ProfilePage(
+                          animationController: widget.animationController)),
+                );
+              },
               child: Center(
-                child: ClipOval(
-                  child: Image.asset('assets/avatars/default.png'),
-                ),
+                child: PhotoProfile(),
               ),
             ),
           ),

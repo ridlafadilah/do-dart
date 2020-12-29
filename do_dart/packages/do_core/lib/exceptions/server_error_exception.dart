@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart' hide Headers;
 import 'package:do_core/models/base_response.dart';
 
@@ -40,8 +42,10 @@ class ServerError implements Exception {
         _errorMessage = 'errorDioSendTimeout';
         break;
       case DioErrorType.RESPONSE:
-        BaseResponse _errorResponse =
-            BaseResponse.fromJson(error.response.data as Map<String, dynamic>);
+        BaseResponse _errorResponse = BaseResponse.fromJson(
+            (error.response.data is List<int>)
+                ? json.decode(utf8.decode(error.response.data))
+                : error.response.data);
         if (_errorResponse.respStatusCode != null) {
           _errorMessage =
               _errorResponse.respStatusMessage[_errorResponse.respStatusCode];

@@ -625,10 +625,10 @@ class DongkapLocalizations {
     );
   }
 
-  /// `Username or email :`
+  /// `Username or email`
   String get labelUsernameEmail {
     return Intl.message(
-      'Username or email :',
+      'Username or email',
       name: 'labelUsernameEmail',
       desc: '',
       args: [],

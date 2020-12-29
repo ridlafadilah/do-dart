@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart' hide Headers;
 import 'package:do_core/models.dart';
 import 'package:do_core/models/profile_dto.dart';
 import 'package:do_dart/environments/environment.dart';
-import 'package:retrofit/http.dart';
+import 'package:retrofit/retrofit.dart';
 
 import 'http_interceptors_test.dart';
 
@@ -26,4 +28,12 @@ abstract class ProfileAPITest {
   @Headers({'content-type': 'application/json'})
   @GET('/do/api/profile/vw/get/profile/v.1')
   Future<ProfileDto> getProfile();
+
+  @Headers({'content-type': 'application/json'})
+  @POST('/do/api/profile/trx/post/profile/v.1')
+  Future<BaseResponse> putProfile(@Body() ProfileDto profile);
+
+  @Headers({'content-type': 'image/png'})
+  @GET('/do/api/file/vw/get/photo-profile/v.1/{imageUUID}')
+  Future<HttpResponse> getPhotoProfile(@Path() String imageUUID);
 }

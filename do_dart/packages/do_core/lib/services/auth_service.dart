@@ -53,6 +53,26 @@ class AuthService {
     });
   }
 
+  OAuthResult getOAuthResult() {
+    return OAuthResult.fromJson({
+      'access_token': _sharedPreferences.getString('access_token'),
+      'refresh_token': _sharedPreferences.getString('refresh_token'),
+      'token_type': _sharedPreferences.getString('token_type'),
+      'xrkey': _sharedPreferences.getString('xrkey'),
+      'expires_in': _sharedPreferences.getInt('expires_in'),
+      'authority': _sharedPreferences.getString('authority'),
+      'provider': _sharedPreferences.getString('provider'),
+      'image': _sharedPreferences.getString('image'),
+      'email': _sharedPreferences.getString('email'),
+      'menus': _sharedPreferences.getString('menus'),
+      'extras': _sharedPreferences.getString('extras'),
+      'server_date': _sharedPreferences.getString('server_date'),
+      'locale': _sharedPreferences.getString('locale'),
+      'theme': _sharedPreferences.getString('theme'),
+      'name': _sharedPreferences.getString('name'),
+    });
+  }
+
   Future<void> logOut() async {
     await _sharedPreferences.clearKey('access_token');
     await _sharedPreferences.clearKey('refresh_token');

@@ -38,7 +38,6 @@ class EditProfileBloc extends Bloc<CommonEvent, EditProfileState> {
     EditProfileState state,
   ) {
     final Name fullname = Name.pure(event.profile.name);
-    final Email email = Email.pure(event.profile.email);
     final PhoneNumber phoneNumber = PhoneNumber.pure(event.profile.phoneNumber);
     final Gender gender = Gender.pure(event.profile.genderCode);
     final PlaceOfBirth placeOfBirth =
@@ -47,21 +46,13 @@ class EditProfileBloc extends Bloc<CommonEvent, EditProfileState> {
     final Address address = Address.pure(event.profile.address);
     return state.copyWith(
       fullname: fullname,
-      email: email,
       phoneNumber: phoneNumber,
       gender: gender,
       placeOfBirth: placeOfBirth,
       dateOfBirth: dateOfBirth,
       address: address,
-      action: Formz.validate([
-        fullname,
-        email,
-        phoneNumber,
-        gender,
-        placeOfBirth,
-        dateOfBirth,
-        address
-      ]),
+      action: Formz.validate(
+          [fullname, phoneNumber, gender, placeOfBirth, dateOfBirth, address]),
     );
   }
 
@@ -70,7 +61,6 @@ class EditProfileBloc extends Bloc<CommonEvent, EditProfileState> {
     EditProfileState state,
   ) {
     Name fullname = state.fullname;
-    Email email = state.email;
     PhoneNumber phoneNumber = state.phoneNumber;
     Gender gender = state.gender;
     PlaceOfBirth placeOfBirth = state.placeOfBirth;
@@ -78,8 +68,6 @@ class EditProfileBloc extends Bloc<CommonEvent, EditProfileState> {
     Address address = state.address;
     if (event is FullnameChanged) {
       fullname = Name.dirty(event.fullname);
-    } else if (event is EmailChanged) {
-      email = Email.dirty(event.email);
     } else if (event is PhoneNumberChanged) {
       phoneNumber = PhoneNumber.dirty(event.phoneNumber);
     } else if (event is GenderChanged) {
@@ -93,21 +81,13 @@ class EditProfileBloc extends Bloc<CommonEvent, EditProfileState> {
     }
     return state.copyWith(
       fullname: fullname,
-      email: email,
       phoneNumber: phoneNumber,
       gender: gender,
       placeOfBirth: placeOfBirth,
       dateOfBirth: dateOfBirth,
       address: address,
-      action: Formz.validate([
-        fullname,
-        email,
-        phoneNumber,
-        gender,
-        placeOfBirth,
-        dateOfBirth,
-        address
-      ]),
+      action: Formz.validate(
+          [fullname, phoneNumber, gender, placeOfBirth, dateOfBirth, address]),
       status: FormzStatus.pure,
       error: null,
     );
@@ -122,9 +102,17 @@ class EditProfileBloc extends Bloc<CommonEvent, EditProfileState> {
           status: FormzStatus.submissionInProgress,
           action: FormzStatus.submissionInProgress);
       try {
+        ProfileDto profile = ProfileDto.fromJson({
+          'name': state.fullname.value,
+          'phoneNumber': state.phoneNumber.value,
+          'genderCode': state.gender.value,
+          'placeOfBirth': state.placeOfBirth.value,
+          'dateOfBirth': state.dateOfBirth.value,
+          'address': state.address.value,
+        });
         ProfileService profileService =
             ProfileService(authService: _authService);
-        await profileService.getProfile();
+        await profileService.putProfile(profile);
         yield state.copyWith(
           status: FormzStatus.submissionSuccess,
           action: FormzStatus.submissionSuccess,

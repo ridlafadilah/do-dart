@@ -1,3 +1,4 @@
+import 'package:do_core/exceptions/server_error_exception.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -14,16 +15,16 @@ abstract class CommonBloc<X, Y, Z> extends Bloc<CommonEvent, CommonState> {
       try {
         X data = await getData();
         yield RequestSuccessState<X>(data: data);
-      } catch (e) {
-        yield RequestFailureState(error: e.toString());
+      } on ServerError catch (e) {
+        yield RequestFailureState(error: e.getErrorMessage());
       }
     } else if (event is SubmittedEvent<Y>) {
       yield SubmitInProgressState();
       try {
         Z data = await putData(event.data);
         yield SubmitSuccessState<Z>(data: data);
-      } catch (e) {
-        yield SubmitFailureState(error: e.toString());
+      } on ServerError catch (e) {
+        yield SubmitFailureState(error: e.getErrorMessage());
       }
     }
   }

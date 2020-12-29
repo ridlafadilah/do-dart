@@ -6,7 +6,7 @@ import 'package:do_core/interceptors/http_signature_interceptors.dart';
 import 'package:do_core/models.dart';
 import 'package:do_core/services/auth_service.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:retrofit/http.dart';
+import 'package:retrofit/retrofit.dart';
 
 part 'security_api.g.dart';
 

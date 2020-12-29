@@ -2,8 +2,10 @@ import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
 import 'package:do_core/models.dart';
+import 'package:do_dart/auth/page/login/bloc/authentication/authentication_bloc.dart';
 import 'package:do_dart/l10n/utils/locale_utils.dart';
 import 'package:do_dart/main/about/about_page.dart';
+import 'package:do_dart/main/profile/bloc/photo_profile_bloc.dart';
 import 'package:do_dart/main/profile/bloc/profile_bloc.dart';
 import 'package:do_dart/main/profile/views/profile_skeleton_view.dart';
 import 'package:do_dart/main/profile/views/profile_view.dart';
@@ -79,6 +81,7 @@ class _ProfilePageState extends State<ProfilePage>
   }
 
   Widget mainView() {
+    BlocProvider.of<PhotoProfileBloc>(context).add(const RequestedEvent());
     return BlocProvider(
       create: (context) {
         return ProfileBloc(
@@ -98,6 +101,7 @@ class _ProfilePageState extends State<ProfilePage>
                   animationController: widget.animationController,
                   profile: state.data),
               onRefresh: () async {
+                context.read<PhotoProfileBloc>().add(const RequestedEvent());
                 context.read<ProfileBloc>().add(const RequestedEvent());
               },
             );
@@ -286,10 +290,10 @@ class _ProfilePageState extends State<ProfilePage>
                     horizontalTitleGap: 2,
                     contentPadding:
                         const EdgeInsets.symmetric(horizontal: 20.0),
-                    onTap: () async {
-                      AuthService authService =
-                          RepositoryProvider.of<AuthService>(context);
-                      await authService.logOut();
+                    onTap: () {
+                      context
+                          .read<AuthenticationBloc>()
+                          .add(AuthenticationLogoutRequested());
                     },
                   ),
                   const Divider(height: 1),

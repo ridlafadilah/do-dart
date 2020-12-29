@@ -1,6 +1,12 @@
+import 'dart:io';
+
+import 'package:do_common/common.dart';
+import 'package:do_core/bloc.dart';
 import 'package:do_core/models.dart';
+import 'package:do_dart/main/profile/bloc/photo_profile_bloc.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileHeaderWidget extends StatelessWidget {
@@ -110,69 +116,7 @@ class ProfileHeaderWidget extends StatelessWidget {
                       Positioned(
                         top: -20,
                         left: 15,
-                        child: Container(
-                          height: 100,
-                          width: 100,
-                          decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(50.0)),
-                            boxShadow: <BoxShadow>[
-                              BoxShadow(
-                                  color: AppTheme.darkBlueGrey.withOpacity(0.1),
-                                  offset: const Offset(1.1, 1.1),
-                                  blurRadius: 5.0),
-                            ],
-                          ),
-                          padding: const EdgeInsets.only(left: 5),
-                          child: Stack(
-                            children: <Widget>[
-                              const CircleAvatar(
-                                radius: 50,
-                                backgroundImage:
-                                    AssetImage('assets/avatars/default.png'),
-                              ),
-                              Align(
-                                alignment: Alignment.bottomRight,
-                                child: Container(
-                                  height: 30,
-                                  width: 30,
-                                  decoration: BoxDecoration(
-                                    color: Theme.of(context)
-                                        .accentIconTheme
-                                        .color
-                                        .withOpacity(0.5),
-                                    shape: BoxShape.circle,
-                                    boxShadow: <BoxShadow>[
-                                      BoxShadow(
-                                          color: Theme.of(context)
-                                              .accentIconTheme
-                                              .color
-                                              .withOpacity(0.1),
-                                          offset: const Offset(1.0, 1.0),
-                                          blurRadius: 5.0),
-                                    ],
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: <Widget>[
-                                      InkWell(
-                                        highlightColor: Colors.transparent,
-                                        borderRadius: const BorderRadius.all(
-                                            Radius.circular(4.0)),
-                                        onTap: () {},
-                                        child: SvgPicture.asset(
-                                            'assets/eva_icons/fill/svg/camera.svg',
-                                            color: Theme.of(context)
-                                                .iconTheme
-                                                .color),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
+                        child: _PhotoProfile(),
                       )
                     ],
                   ),
@@ -181,6 +125,88 @@ class ProfileHeaderWidget extends StatelessWidget {
             ),
           ),
         );
+      },
+    );
+  }
+}
+
+class _PhotoProfile extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<PhotoProfileBloc, CommonState>(
+      builder: (context, state) {
+        if (state is RequestInProgressState) {
+          return const SkeletonRound();
+        } else {
+          Widget _imageAvatar = const CircleAvatar(
+            radius: 50,
+            backgroundImage: AssetImage('assets/avatars/default.png'),
+          );
+          if (state is RequestSuccessState<String>) {
+            if (state.data != null) {
+              _imageAvatar = CircleAvatar(
+                radius: 50,
+                backgroundImage: FileImage(File(state.data)),
+              );
+            }
+          }
+          return Container(
+            height: 100,
+            width: 100,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+              boxShadow: <BoxShadow>[
+                BoxShadow(
+                    color: AppTheme.darkBlueGrey.withOpacity(0.1),
+                    offset: const Offset(1.1, 1.1),
+                    blurRadius: 5.0),
+              ],
+            ),
+            padding: const EdgeInsets.only(left: 5),
+            child: Stack(
+              children: <Widget>[
+                _imageAvatar,
+                Align(
+                  alignment: Alignment.bottomRight,
+                  child: Container(
+                    height: 30,
+                    width: 30,
+                    decoration: BoxDecoration(
+                      color: Theme.of(context)
+                          .accentIconTheme
+                          .color
+                          .withOpacity(0.5),
+                      shape: BoxShape.circle,
+                      boxShadow: <BoxShadow>[
+                        BoxShadow(
+                            color: Theme.of(context)
+                                .accentIconTheme
+                                .color
+                                .withOpacity(0.1),
+                            offset: const Offset(1.0, 1.0),
+                            blurRadius: 5.0),
+                      ],
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        InkWell(
+                          highlightColor: Colors.transparent,
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(4.0)),
+                          onTap: () {},
+                          child: SvgPicture.asset(
+                              'assets/eva_icons/fill/svg/camera.svg',
+                              color: Theme.of(context).iconTheme.color),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        }
       },
     );
   }

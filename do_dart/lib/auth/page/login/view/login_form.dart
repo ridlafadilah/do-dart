@@ -2,7 +2,9 @@ import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
 import 'package:do_dart/auth/page/login/bloc/login_bloc.dart';
+import 'package:do_dart/l10n/bloc/translation_bloc.dart';
 import 'package:do_dart/l10n/utils/locale_utils.dart';
+import 'package:do_dart/theme/bloc/thememode_bloc.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -24,12 +26,16 @@ class LoginForm extends StatelessWidget {
             ),
             icon: SvgPicture.asset(
                 'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
-                color: Theme.of(context).iconTheme.color),
+                color: AppTheme.lightColor),
             duration: const Duration(seconds: 3),
             backgroundColor: AppTheme.lightDanger,
             isDismissible: false,
             dismissDirection: FlushbarDismissDirection.VERTICAL,
           )..show(context);
+        }
+        if (state.status.isSubmissionSuccess) {
+          context.read<TranslationBloc>().add(const TranslationEvent());
+          context.read<ThemeModeBloc>().add(const ThemeModeEvent());
         }
       },
       child: ListView(
@@ -73,12 +79,14 @@ class _LinearProgressIndicator extends StatelessWidget {
     return BlocBuilder<LoginBloc, LoginState>(
       buildWhen: (previous, current) => previous.action != current.action,
       builder: (context, state) {
-        if (!state.status.isSubmissionInProgress) {
+        if (state.status.isSubmissionInProgress) {
+          return const LinearProgressIndicator();
+        } else if (state.status.isSubmissionSuccess) {
+          return const LinearProgressIndicator(value: 100);
+        } else {
           return const SizedBox(
             height: 4.0,
           );
-        } else {
-          return const LinearProgressIndicator();
         }
       },
     );
@@ -128,7 +136,7 @@ class __PasswordInputState extends State<_PasswordInput> {
             key: const Key('loginForm_password'),
             autofocus: false,
             decoration: InputDecoration(
-              labelText: '${DongkapLocalizations.of(context).password} :',
+              labelText: DongkapLocalizations.of(context).password,
               hintText: DongkapLocalizations.of(context).password,
               contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
               errorText: state.password.invalid
@@ -168,7 +176,9 @@ class __PasswordInputState extends State<_PasswordInput> {
 
 class _LoginButton extends StatelessWidget {
   Function _loginButtonPress(BuildContext context, LoginState state) {
-    if (!state.action.isValidated || state.status.isSubmissionInProgress) {
+    if (!state.action.isValidated ||
+        state.status.isSubmissionInProgress ||
+        state.status.isSubmissionSuccess) {
       return null;
     } else {
       return () {

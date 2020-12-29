@@ -42,6 +42,8 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>CFBundleLocalizations</key>
+	<key>NSCameraUsageDescription</key>
+	<string>Taking photos for image profile.</string>
 	<array>
 		<string>en</string>
 		<string>id</string>

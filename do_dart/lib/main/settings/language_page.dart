@@ -99,7 +99,7 @@ class _LanguagePageState extends State<LanguagePage>
                 style: const TextStyle(color: Colors.white),
               ),
               icon: SvgPicture.asset(
-                'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
+                'AppTheme.lightColor',
                 color: Theme.of(context).iconTheme.color,
               ),
               duration: const Duration(seconds: 3),

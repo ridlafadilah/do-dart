@@ -1,6 +1,9 @@
+import 'package:do_core/core.dart';
+import 'package:do_dart/main/profile/bloc/photo_profile_bloc.dart';
 import 'package:do_dart/main/tab_navigator.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MainLayout extends StatefulWidget {
   static Route route() {
@@ -74,23 +77,30 @@ class _MainLayoutState extends State<MainLayout> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).backgroundColor,
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: Stack(
-          children: <Widget>[
-            TabNavigator(
-              navigatorKey: navigatorKeys[currentTab],
-              animationController: animationController,
-              tab: currentTab,
-            )
-          ],
-        ),
-        bottomNavigationBar: bottomNavigation(),
-        extendBody: true,
-      ),
-    );
+    return MultiBlocProvider(
+        providers: [
+          BlocProvider<PhotoProfileBloc>(
+            create: (_) => PhotoProfileBloc(
+                authService: RepositoryProvider.of<AuthService>(_)),
+          ),
+        ],
+        child: Container(
+          color: Theme.of(context).backgroundColor,
+          child: Scaffold(
+            backgroundColor: Colors.transparent,
+            body: Stack(
+              children: <Widget>[
+                TabNavigator(
+                  navigatorKey: navigatorKeys[currentTab],
+                  animationController: animationController,
+                  tab: currentTab,
+                )
+              ],
+            ),
+            bottomNavigationBar: bottomNavigation(),
+            extendBody: true,
+          ),
+        ));
   }
 
   Widget bottomNavigation() {

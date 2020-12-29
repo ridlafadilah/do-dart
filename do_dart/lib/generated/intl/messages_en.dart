@@ -79,7 +79,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "labelFooterLoginSocial" : MessageLookupByLibrary.simpleMessage("or enter with"),
     "labelLogin" : MessageLookupByLibrary.simpleMessage("Hello! Login with your username or email."),
     "labelLoginSocial" : m1,
-    "labelUsernameEmail" : MessageLookupByLibrary.simpleMessage("Username or email :"),
+    "labelUsernameEmail" : MessageLookupByLibrary.simpleMessage("Username or email"),
     "language" : MessageLookupByLibrary.simpleMessage("Language"),
     "login" : MessageLookupByLibrary.simpleMessage("Login"),
     "logout" : MessageLookupByLibrary.simpleMessage("Logout"),

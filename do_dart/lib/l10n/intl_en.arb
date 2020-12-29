@@ -67,7 +67,7 @@
     "labelFooterLoginSocial": "or enter with",
     "labelFooterLoginOther": "Don't have an account?",
     "labelLogin": "Hello! Login with your username or email.",
-    "labelUsernameEmail": "Username or email :",
+    "labelUsernameEmail": "Username or email",
     "labelLoginSocial": "Logged in with {value}?",
     "@labelLoginSocial": {
       "placeholders": {

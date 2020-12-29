@@ -1,5 +1,7 @@
 analyzer:
-  exclude: [lib/generated/**]
+  exclude: 
+    - lib/generated/**
+    - lib/generated/intl/**
   errors:
     close_sinks: ignore
     uri_has_not_been_generated: ignore

@@ -48,21 +48,12 @@ class AuthenticationBloc
       case AuthStatus.unauthenticated:
         return const AuthenticationState.unauthenticated();
       case AuthStatus.authenticated:
-        final user = await _tryGetUser();
-        return user != null
-            ? AuthenticationState.authenticated(user)
+        final oAuthResult = _authService.getOAuthResult();
+        return oAuthResult != null
+            ? AuthenticationState.authenticated(oAuthResult)
             : const AuthenticationState.unauthenticated();
       default:
         return const AuthenticationState.unknown();
-    }
-  }
-
-  Future<OAuthResult> _tryGetUser() async {
-    try {
-      final user = OAuthResult.fromJson({});
-      return user;
-    } on Exception {
-      return null;
     }
   }
 }

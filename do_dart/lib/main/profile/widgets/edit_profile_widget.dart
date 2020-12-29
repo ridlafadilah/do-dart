@@ -4,6 +4,7 @@ import 'package:do_core/core.dart';
 import 'package:do_core/models.dart';
 import 'package:do_dart/main/profile/bloc/edit_profile_bloc.dart';
 import 'package:do_dart/l10n/utils/locale_utils.dart';
+import 'package:do_dart/main/profile/profile_page.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -46,12 +47,20 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
               ),
               icon: SvgPicture.asset(
                   'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
-                  color: Colors.white),
+                  color: AppTheme.lightColor),
               duration: const Duration(seconds: 3),
               backgroundColor: AppTheme.lightDanger,
               isDismissible: false,
               dismissDirection: FlushbarDismissDirection.VERTICAL,
             )..show(context);
+          }
+          if (state.status.isSubmissionSuccess) {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute<dynamic>(
+                  builder: (BuildContext context) => ProfilePage(
+                      animationController: widget.animationController)),
+            );
           }
         },
         child: ListView(
@@ -64,8 +73,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget> {
                 children: <Widget>[
                   const SizedBox(height: 10),
                   _FullnameInput(profile: widget.profile),
-                  const SizedBox(height: 10),
-                  _EmailInput(profile: widget.profile),
                   const SizedBox(height: 10),
                   _PhoneNumberInput(profile: widget.profile),
                   const SizedBox(height: 10),
@@ -117,41 +124,6 @@ class __FullnameInputState extends State<_FullnameInput> {
           ),
           onChanged: (fullname) =>
               context.read<EditProfileBloc>().add(FullnameChanged(fullname)),
-        );
-      },
-    );
-  }
-}
-
-class _EmailInput extends StatefulWidget {
-  const _EmailInput({Key key, this.profile}) : super(key: key);
-
-  final ProfileDto profile;
-
-  @override
-  __EmailInputState createState() => __EmailInputState();
-}
-
-class __EmailInputState extends State<_EmailInput> {
-  @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<EditProfileBloc, EditProfileState>(
-      buildWhen: (previous, current) => previous.email != current.email,
-      builder: (context, state) {
-        return TextFormField(
-          key: const Key('editProfileForm_email'),
-          initialValue: widget.profile.email,
-          autofocus: false,
-          decoration: InputDecoration(
-            labelText: DongkapLocalizations.of(context).email,
-            hintText: DongkapLocalizations.of(context).email,
-            contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
-            errorText: state.email.invalid
-                ? DongkapLocalizations.of(context).errorEmail
-                : null,
-          ),
-          onChanged: (email) =>
-              context.read<EditProfileBloc>().add(EmailChanged(email)),
         );
       },
     );
@@ -407,9 +379,7 @@ class _LinearProgressIndicator extends StatelessWidget {
             height: 4.0,
           );
         } else {
-          return const LinearProgressIndicator(
-            backgroundColor: AppTheme.colorTheme,
-          );
+          return const LinearProgressIndicator();
         }
       },
     );

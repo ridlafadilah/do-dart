@@ -84,7 +84,7 @@ class _SettingsWidgetState extends State<SettingsWidget> {
                     ),
                     icon: SvgPicture.asset(
                       'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
-                      color: Theme.of(context).iconTheme.color,
+                      color: AppTheme.lightColor,
                     ),
                     duration: const Duration(seconds: 3),
                     backgroundColor: AppTheme.lightDanger,

@@ -9,15 +9,6 @@ class FullnameChanged extends CommonEvent {
   List<String> get props => [fullname];
 }
 
-class EmailChanged extends CommonEvent {
-  const EmailChanged(this.email);
-
-  final String email;
-
-  @override
-  List<String> get props => [email];
-}
-
 class PhoneNumberChanged extends CommonEvent {
   const PhoneNumberChanged(this.phoneNumber);
 

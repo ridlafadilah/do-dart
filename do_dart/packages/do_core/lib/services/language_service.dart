@@ -40,7 +40,9 @@ class LanguageService {
   ];
 
   LocaleDto getCurrentLocale() {
-    final String localeCode = _sharedPreferences.getString('locale');
+    final String localeCode = _sharedPreferences.getString('locale') == null
+        ? 'en-US'
+        : _sharedPreferences.getString('locale');
     return locales.singleWhere((element) => element.localeCode == localeCode);
   }
 

@@ -41,7 +41,7 @@ class _ChangePasswordWidgetState extends State<ChangePasswordWidget> {
               ),
               icon: SvgPicture.asset(
                   'assets/eva_icons/outline/svg/alert-triangle-outline.svg',
-                  color: Colors.white),
+                  color: AppTheme.lightColor),
               duration: const Duration(seconds: 3),
               backgroundColor: AppTheme.lightDanger,
               isDismissible: false,
