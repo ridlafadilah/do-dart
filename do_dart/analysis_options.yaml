@@ -1,5 +1,6 @@
 analyzer:
-  exclude: 
+  exclude:
+    - lib/generated/l10n.dart
     - lib/generated/**
     - lib/generated/intl/**
   errors:
