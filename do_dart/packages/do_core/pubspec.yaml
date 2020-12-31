@@ -10,6 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  camera:
   path_provider:
   path:
   equatable: ^1.2.5

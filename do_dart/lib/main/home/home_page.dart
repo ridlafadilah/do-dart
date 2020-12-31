@@ -2,7 +2,7 @@ import 'package:do_core/bloc.dart';
 import 'package:do_dart/main/home/widgets/home_widget.dart';
 import 'package:do_dart/main/profile/bloc/photo_profile_bloc.dart';
 import 'package:do_dart/main/profile/profile_page.dart';
-import 'package:do_dart/main/profile/widgets/photo_profile_widget.dart';
+import 'package:do_dart/widgets/photo_profile_widget.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';

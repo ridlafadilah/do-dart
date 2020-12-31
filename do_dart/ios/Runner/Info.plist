@@ -43,7 +43,9 @@
 	<false/>
 	<key>CFBundleLocalizations</key>
 	<key>NSCameraUsageDescription</key>
-	<string>Taking photos for image profile.</string>
+	<string>Enable Dongkap to access your camera to capture your photo</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Enable Dongkap to access mic to record your voice</string>
 	<array>
 		<string>en</string>
 		<string>id</string>

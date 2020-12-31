@@ -2,8 +2,10 @@ import 'dart:io';
 
 import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
+import 'package:do_core/core.dart';
 import 'package:do_core/models.dart';
 import 'package:do_dart/main/profile/bloc/photo_profile_bloc.dart';
+import 'package:do_dart/widgets/camera_widget.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -130,7 +132,14 @@ class ProfileHeaderWidget extends StatelessWidget {
   }
 }
 
-class _PhotoProfile extends StatelessWidget {
+class _PhotoProfile extends StatefulWidget {
+  @override
+  __PhotoProfileState createState() => __PhotoProfileState();
+}
+
+class __PhotoProfileState extends State<_PhotoProfile> {
+  String path;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PhotoProfileBloc, CommonState>(
@@ -194,7 +203,9 @@ class _PhotoProfile extends StatelessWidget {
                           highlightColor: Colors.transparent,
                           borderRadius:
                               const BorderRadius.all(Radius.circular(4.0)),
-                          onTap: () {},
+                          onTap: () {
+                            openCamera();
+                          },
                           child: SvgPicture.asset(
                               'assets/eva_icons/fill/svg/camera.svg',
                               color: Theme.of(context).iconTheme.color),
@@ -209,5 +220,17 @@ class _PhotoProfile extends StatelessWidget {
         }
       },
     );
+  }
+
+  void openCamera() {
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (_) => BlocProvider(
+            create: (_) => CameraBloc(cameraUtils: CameraUtils())
+              ..add(const CameraInitializedEvent()),
+            child: CameraScreen(),
+          ),
+        )).then((value) => setState(() => path = value));
   }
 }
