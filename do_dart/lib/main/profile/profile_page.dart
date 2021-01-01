@@ -18,9 +18,11 @@ import 'package:do_dart/generated/l10n.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({Key key, this.animationController}) : super(key: key);
+  const ProfilePage({Key key, this.animationController, this.navigatorState})
+      : super(key: key);
 
   final AnimationController animationController;
+  final NavigatorState navigatorState;
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
@@ -99,7 +101,8 @@ class _ProfilePageState extends State<ProfilePage>
                   itemTotal: _itemTotal,
                   scrollController: _scrollController,
                   animationController: widget.animationController,
-                  profile: state.data),
+                  profile: state.data,
+                  navigatorState: widget.navigatorState),
               onRefresh: () async {
                 context.read<PhotoProfileBloc>().add(const RequestedEvent());
                 context.read<ProfileBloc>().add(const RequestedEvent());

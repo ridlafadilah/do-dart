@@ -88,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "password" : MessageLookupByLibrary.simpleMessage("Kata Sandi"),
     "pdob" : MessageLookupByLibrary.simpleMessage("Tempat / Tanggal Lahir"),
     "phoneNumber" : MessageLookupByLibrary.simpleMessage("Nomor Telepon"),
+    "photoProfile" : MessageLookupByLibrary.simpleMessage("Foto Profil"),
     "placeOfBirth" : MessageLookupByLibrary.simpleMessage("Tempat Lahir"),
     "privacyPolicy" : MessageLookupByLibrary.simpleMessage("Kebijakan Privasi"),
     "promptDeactivateAccountSubtitle" : MessageLookupByLibrary.simpleMessage("Tindakan ini tidak bisa dibatalkan. Ini secara permanen akan menonaktifkan akun anda.\nSaya mengerti konsekuensinya"),

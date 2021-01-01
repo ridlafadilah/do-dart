@@ -88,6 +88,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "password" : MessageLookupByLibrary.simpleMessage("Password"),
     "pdob" : MessageLookupByLibrary.simpleMessage("Place / Date of Birth"),
     "phoneNumber" : MessageLookupByLibrary.simpleMessage("Phone Number"),
+    "photoProfile" : MessageLookupByLibrary.simpleMessage("Photo Profile"),
     "placeOfBirth" : MessageLookupByLibrary.simpleMessage("Place of Birth"),
     "privacyPolicy" : MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "promptDeactivateAccountSubtitle" : MessageLookupByLibrary.simpleMessage("This action cannot be undone. This will permanently disable your account.\nI understand the consequences"),

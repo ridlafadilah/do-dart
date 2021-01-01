@@ -94,8 +94,8 @@ class AppTheme {
       ),
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      foregroundColor: colorTheme,
-      backgroundColor: lightColor,
+      foregroundColor: lightColor,
+      backgroundColor: colorTheme,
     ),
     buttonTheme: ButtonThemeData(
       buttonColor: colorTheme,
@@ -202,8 +202,8 @@ class AppTheme {
       ),
     ),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      foregroundColor: colorTheme,
-      backgroundColor: darkColor,
+      foregroundColor: darkColor,
+      backgroundColor: colorTheme,
     ),
     buttonTheme: ButtonThemeData(
       buttonColor: colorTheme,

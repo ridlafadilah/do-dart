@@ -12,13 +12,15 @@ class ProfileView extends StatefulWidget {
       this.itemTotal,
       this.scrollController,
       this.animationController,
-      @required this.profile})
+      @required this.profile,
+      this.navigatorState})
       : super(key: key);
 
   final int itemTotal;
   final ScrollController scrollController;
   final AnimationController animationController;
   final ProfileDto profile;
+  final NavigatorState navigatorState;
 
   @override
   _ProfileViewState createState() => _ProfileViewState();
@@ -57,6 +59,7 @@ class _ProfileViewState extends State<ProfileView> {
                 curve: Curves.fastOutSlowIn))),
         animationController: widget.animationController,
         profile: widget.profile,
+        navigatorState: widget.navigatorState,
       ),
     );
 

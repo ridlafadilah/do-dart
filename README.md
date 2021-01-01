@@ -39,7 +39,7 @@ Dongkap | Mobile Application with Flutter
   * Forgot Password ( _soon_ )
   * Change Password
   * Update Profile
-  * Upload Photo Profile ( _soon_ )
+  * Upload Photo Profile
   * Change Language
   * Dark Mode
 

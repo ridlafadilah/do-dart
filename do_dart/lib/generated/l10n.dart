@@ -145,6 +145,16 @@ class DongkapLocalizations {
     );
   }
 
+  /// `Photo Profile`
+  String get photoProfile {
+    return Intl.message(
+      'Photo Profile',
+      name: 'photoProfile',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Fullname`
   String get fullname {
     return Intl.message(

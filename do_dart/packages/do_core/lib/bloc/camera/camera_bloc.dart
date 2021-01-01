@@ -47,16 +47,12 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
     try {
       _controller = await cameraUtils.getCameraController(
           resolutionPreset, cameraLensDirection);
-      print('initialize camera');
       await _controller.initialize();
-      print('after initialize camera');
       yield CameraReady();
     } on CameraException catch (error) {
-      print('error camera 1');
       await _controller?.dispose();
       yield CameraFailure(error: error.description);
     } catch (error) {
-      print('error camera 2');
       yield CameraFailure(error: error.toString());
     }
   }
@@ -67,7 +63,7 @@ class CameraBloc extends Bloc<CameraEvent, CameraState> {
       yield CameraCaptureInProgress();
       try {
         final path = await cameraUtils.getPath();
-        await _controller.takePicture();
+        await _controller.takePicture(path);
         yield CameraCaptureSuccess(path: path);
       } on CameraException catch (error) {
         yield CameraCaptureFailure(error: error.description);

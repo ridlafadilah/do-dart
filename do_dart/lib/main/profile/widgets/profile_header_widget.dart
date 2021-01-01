@@ -4,6 +4,7 @@ import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
 import 'package:do_core/models.dart';
+import 'package:do_dart/generated/l10n.dart';
 import 'package:do_dart/main/profile/bloc/photo_profile_bloc.dart';
 import 'package:do_dart/widgets/camera_widget.dart';
 import 'package:do_theme/theme.dart';
@@ -13,12 +14,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ProfileHeaderWidget extends StatelessWidget {
   const ProfileHeaderWidget(
-      {Key key, this.animationController, this.animation, this.profile})
+      {Key key,
+      this.animationController,
+      this.animation,
+      this.profile,
+      this.navigatorState})
       : super(key: key);
 
   final AnimationController animationController;
   final Animation animation;
   final ProfileDto profile;
+  final NavigatorState navigatorState;
 
   @override
   Widget build(BuildContext context) {
@@ -118,7 +124,10 @@ class ProfileHeaderWidget extends StatelessWidget {
                       Positioned(
                         top: -20,
                         left: 15,
-                        child: _PhotoProfile(),
+                        child: _PhotoProfile(
+                          animationController: animationController,
+                          navigatorState: navigatorState,
+                        ),
                       )
                     ],
                   ),
@@ -133,6 +142,12 @@ class ProfileHeaderWidget extends StatelessWidget {
 }
 
 class _PhotoProfile extends StatefulWidget {
+  const _PhotoProfile({Key key, this.animationController, this.navigatorState})
+      : super(key: key);
+
+  final AnimationController animationController;
+  final NavigatorState navigatorState;
+
   @override
   __PhotoProfileState createState() => __PhotoProfileState();
 }
@@ -223,14 +238,18 @@ class __PhotoProfileState extends State<_PhotoProfile> {
   }
 
   void openCamera() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (_) => BlocProvider(
-            create: (_) => CameraBloc(cameraUtils: CameraUtils())
-              ..add(const CameraInitializedEvent()),
-            child: CameraScreen(),
-          ),
-        )).then((value) => setState(() => path = value));
+    FocusScope.of(context).requestFocus(FocusNode());
+    widget.navigatorState
+        .push(MaterialPageRoute(
+      builder: (BuildContext context) => BlocProvider(
+        create: (BuildContext context) => CameraBloc(cameraUtils: CameraUtils())
+          ..add(const CameraInitializedEvent()),
+        child:
+            CameraScreen(header: DongkapLocalizations.of(context).photoProfile),
+      ),
+    ))
+        .then((value) {
+      if (value is String) setState(() => path = value);
+    });
   }
 }
