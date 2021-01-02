@@ -76,4 +76,28 @@ class _ProfileAPI implements ProfileAPI {
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }
+
+  @override
+  Future<BaseResponse> putPhotoProfile(photo) async {
+    ArgumentError.checkNotNull(photo, 'photo');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = FormData();
+    _data.files.add(MapEntry(
+        'photo',
+        MultipartFile.fromFileSync(photo.path,
+            filename: photo.path.split(Platform.pathSeparator).last)));
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/do/api/file/trx/post/photo-profile/v.1',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{r'content-type': 'multipart/form-data'},
+            extra: _extra,
+            contentType: 'multipart/form-data',
+            baseUrl: baseUrl),
+        data: _data);
+    final value = BaseResponse.fromJson(_result.data);
+    return value;
+  }
 }

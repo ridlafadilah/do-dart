@@ -18,3 +18,34 @@ class CameraStoppedEvent extends CameraEvent {
 class CameraCapturedEvent extends CameraEvent {
   const CameraCapturedEvent();
 }
+
+class CameraFlippedEvent extends CameraEvent {
+  const CameraFlippedEvent();
+}
+
+class CameraProfileUploadedEvent extends CameraEvent {
+  const CameraProfileUploadedEvent({this.path});
+
+  final String path;
+
+  @override
+  List<Object> get props => [path];
+}
+
+class CameraCanceledEvent extends CameraEvent {
+  const CameraCanceledEvent({this.path});
+
+  final String path;
+
+  @override
+  List<Object> get props => [path];
+}
+
+class CameraDeletedEvent extends CameraEvent {
+  const CameraDeletedEvent({this.path});
+
+  final String path;
+
+  @override
+  List<Object> get props => [path];
+}

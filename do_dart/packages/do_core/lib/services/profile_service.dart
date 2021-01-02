@@ -87,4 +87,21 @@ class ProfileService {
       return '${dirProfile.path}/$imageUUID';
     }
   }
+
+  Future<BaseResponse> putPhotoProfile(File photo) async {
+    _profileAPI = ProfileAPI(Dio(), _authService);
+    final BaseResponse response =
+        await _profileAPI.putPhotoProfile(photo).catchError((Object obj) {
+      switch (obj.runtimeType) {
+        case DioError:
+          final error = ServerError.withError(error: obj as DioError);
+          throw error;
+          break;
+        default:
+      }
+    });
+    await _sharedPreferences.putString(
+        'image', response.respStatusMessage['checksum']);
+    return response;
+  }
 }

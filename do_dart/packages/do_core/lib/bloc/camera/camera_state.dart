@@ -22,6 +22,26 @@ class CameraCaptureSuccess extends CameraState {
   List<String> get props => [path];
 }
 
+class CameraUploadInProgress extends CameraState {}
+
+class CameraUploadSuccess extends CameraState {
+  const CameraUploadSuccess({this.path});
+
+  final String path;
+
+  @override
+  List<String> get props => [path];
+}
+
+class CameraFlipDone extends CameraState {
+  const CameraFlipDone({this.direction});
+
+  final String direction;
+
+  @override
+  List<String> get props => [direction];
+}
+
 class CameraFailure extends CameraState {
   const CameraFailure({this.error});
 
@@ -44,4 +64,16 @@ class CameraCaptureFailure extends CameraState {
 
   @override
   String toString() => 'Camera Capture Failure { error: $error }';
+}
+
+class CameraUploadFailure extends CameraState {
+  const CameraUploadFailure({this.error});
+
+  final String error;
+
+  @override
+  List<Object> get props => [error];
+
+  @override
+  String toString() => 'Camera Upload Failure { error: $error }';
 }

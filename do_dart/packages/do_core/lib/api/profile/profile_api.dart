@@ -39,4 +39,8 @@ abstract class ProfileAPI {
   @Headers({'content-type': 'image/png'})
   @GET('/do/api/file/vw/get/photo-profile/v.1/{imageUUID}')
   Future<HttpResponse> getPhotoProfile(@Path() String imageUUID);
+
+  @Headers({'content-type': 'multipart/form-data'})
+  @POST('/do/api/file/trx/post/photo-profile/v.1')
+  Future<BaseResponse> putPhotoProfile(@Part(name: 'photo') File photo);
 }

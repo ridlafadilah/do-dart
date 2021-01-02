@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:camera/camera.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
@@ -17,4 +19,9 @@ class CameraUtils {
         (await getTemporaryDirectory()).path,
         '${DateTime.now()}.png',
       );
+
+  void deleteFile(String path) {
+    final dir = Directory(path);
+    dir.deleteSync(recursive: true);
+  }
 }

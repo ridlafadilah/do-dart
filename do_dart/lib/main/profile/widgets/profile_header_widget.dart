@@ -242,7 +242,9 @@ class __PhotoProfileState extends State<_PhotoProfile> {
     widget.navigatorState
         .push(MaterialPageRoute(
       builder: (BuildContext context) => BlocProvider(
-        create: (BuildContext context) => CameraBloc(cameraUtils: CameraUtils())
+        create: (BuildContext context) => CameraBloc(
+            cameraUtils: CameraUtils(),
+            authService: RepositoryProvider.of<AuthService>(context))
           ..add(const CameraInitializedEvent()),
         child:
             CameraScreen(header: DongkapLocalizations.of(context).photoProfile),
