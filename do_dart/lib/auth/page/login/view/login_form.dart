@@ -300,7 +300,9 @@ class _GoogleLogin extends StatelessWidget {
         'assets/eva_icons/fill/svg/google.svg',
         color: AppTheme.colorTheme,
       ),
-      onPressed: () {},
+      onPressed: () {
+        context.read<LoginBloc>().add(const GoogleLoginEvent());
+      },
     );
   }
 }

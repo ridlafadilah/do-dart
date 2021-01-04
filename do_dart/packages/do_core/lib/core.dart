@@ -8,6 +8,7 @@ export 'services/auth_service.dart';
 export 'services/change_password_service.dart';
 export 'services/core_locator.dart';
 export 'services/encryption_service.dart';
+export 'services/google_service.dart';
 export 'services/language_service.dart';
 export 'services/profile_service.dart';
 export 'services/provider_service.dart';

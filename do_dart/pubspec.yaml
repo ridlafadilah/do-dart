@@ -52,6 +52,7 @@ flutter_icons:
 flutter:
   uses-material-design: true
   assets:
+    - assets/
     - assets/avatars/
     - assets/eva_icons/fill/svg/
     - assets/eva_icons/outline/svg/

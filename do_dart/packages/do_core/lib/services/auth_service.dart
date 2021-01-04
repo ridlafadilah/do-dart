@@ -5,6 +5,7 @@ import 'package:do_core/api/auth/auth_api.dart';
 import 'package:do_core/exceptions/server_error_exception.dart';
 import 'package:do_core/models.dart';
 import 'package:do_core/services/core_locator.dart';
+import 'package:do_core/services/google_service.dart';
 import 'package:do_core/services/shared_preferences_service.dart';
 import 'package:global_configuration/global_configuration.dart';
 import 'package:logger/logger.dart';
@@ -15,6 +16,8 @@ class AuthService {
       coreLocator<SharedPreferencesService>();
   final logger = Logger();
   final _controller = StreamController<AuthStatus>();
+  final GoogleService _googleSignIn = GoogleService();
+  AuthAPI _authAPI;
 
   Stream<AuthStatus> get status async* {
     await Future<void>.delayed(const Duration(seconds: 1));
@@ -32,13 +35,13 @@ class AuthService {
   }) async {
     final String clientId =
         GlobalConfiguration().get('security_resource')['client_id'].toString();
-    final _authAPI = AuthAPI(Dio());
     Map<String, dynamic> body = {
       'grant_type': 'password',
       'client_id': clientId,
       'username': username,
       'password': password
     };
+    _authAPI = AuthAPI(Dio());
     await _authAPI.token(body).then((value) async {
       await putSharedPreferences(value)
           .then((value) => _controller.add(AuthStatus.authenticated));
@@ -50,6 +53,24 @@ class AuthService {
           break;
         default:
       }
+    });
+  }
+
+  Future<void> loginGoogle() async {
+    final String clientId =
+        GlobalConfiguration().get('google')['client_id'].toString();
+    String token = await _googleSignIn.loginGoogle(clientId);
+    Map<String, dynamic> body = {
+      'token': token,
+      'provider': GoogleService.provider,
+      'client_id': clientId
+    };
+    _authAPI = AuthAPI(Dio());
+    await _authAPI.tokenVerifier(body).then((value) async {
+      print('result : ');
+      print(value.authority);
+      await putSharedPreferences(value)
+          .then((value) => _controller.add(AuthStatus.authenticated));
     });
   }
 
@@ -74,6 +95,11 @@ class AuthService {
   }
 
   Future<void> logOut() async {
+    if (_sharedPreferences.getString('provider') != 'local') {
+      final String clientId =
+          GlobalConfiguration().get('google')['client_id'].toString();
+      _googleSignIn.logoutGoogle(clientId);
+    }
     await _sharedPreferences.clearKey('access_token');
     await _sharedPreferences.clearKey('refresh_token');
     await _sharedPreferences.clearKey('token_type');
@@ -94,8 +120,6 @@ class AuthService {
     await _sharedPreferences.putString('provider', value.provider);
     await _sharedPreferences.putString('image', value.image);
     await _sharedPreferences.putString('email', value.email);
-    await _sharedPreferences.putString('menus', value.menus);
-    await _sharedPreferences.putString('extras', value.extras);
     await _sharedPreferences.putString('server_date', value.serverDate);
     await _sharedPreferences.putString('locale', value.locale);
     await _sharedPreferences.putString('theme', value.theme);

@@ -21,4 +21,8 @@ abstract class AuthAPI {
   @Headers({'content-type': 'application/x-www-form-urlencoded'})
   @POST('/do/oauth/token')
   Future<OAuthResult> token(@Body() Map<String, dynamic> body);
+
+  @Headers({'content-type': 'application/x-www-form-urlencoded'})
+  @POST('/do/oauth/token-verifier')
+  Future<OAuthResult> tokenVerifier(@Body() Map<String, dynamic> body);
 }

@@ -30,6 +30,8 @@ class LoginBloc extends Bloc<CommonEvent, LoginState> {
       yield _mapPasswordChangedToState(event, state);
     } else if (event is SubmittedEvent) {
       yield* _mapLoginSubmittedToState(event, state);
+    } else if (event is GoogleLoginEvent) {
+      yield* _mapLoginGoogleToState(event, state);
     }
   }
 
@@ -84,6 +86,29 @@ class LoginBloc extends Bloc<CommonEvent, LoginState> {
           status: FormzStatus.submissionFailure,
         );
       }
+    }
+  }
+
+  Stream<LoginState> _mapLoginGoogleToState(
+    GoogleLoginEvent event,
+    LoginState state,
+  ) async* {
+    yield state.copyWith(
+        status: FormzStatus.submissionInProgress,
+        action: FormzStatus.submissionInProgress);
+    try {
+      await _authService.loginGoogle();
+      yield state.copyWith(
+        status: FormzStatus.submissionSuccess,
+        action: FormzStatus.submissionSuccess,
+        error: null,
+      );
+    } on ServerError catch (err) {
+      yield state.copyWith(
+        error: err.getErrorMessage(),
+        action: FormzStatus.submissionFailure,
+        status: FormzStatus.submissionFailure,
+      );
     }
   }
 }

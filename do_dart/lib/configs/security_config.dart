@@ -21,8 +21,14 @@ BB3fvY674t6pB9TjZONmYxxlebCmSskbf8lvRLTMYHE-zZ7FONNXOCPv4ndOa1FDov10k26UXZl6rQ7n
         'mark': 'X-DONGKAP-Mark',
       };
 
+  Map<String, dynamic> get google => {
+        'client_id': '''
+635923857962-co20kj5j0df4etlinb9m8b8bcad1h3m5.apps.googleusercontent.com''',
+      };
+
   Map<String, dynamic> get config => {
         'security_resource': securityResourceModel,
         'signature_header': signatureHeader,
+        'google': google,
       };
 }

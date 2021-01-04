@@ -17,3 +17,7 @@ class LoginPasswordChanged extends CommonEvent {
   @override
   List<Object> get props => [password];
 }
+
+class GoogleLoginEvent extends CommonEvent {
+  const GoogleLoginEvent();
+}

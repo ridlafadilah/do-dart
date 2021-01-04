@@ -27,7 +27,7 @@ Dongkap | Mobile Application with Flutter
   * Get_it
 
 * __Social Sign On__
-  * Google ( _soon_ )
+  * Google
 
 * __Google reCAPTCHA v2__ ( _soon_ )
 

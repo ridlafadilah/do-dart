@@ -14,8 +14,6 @@ class OAuthResult {
       this.provider,
       this.image,
       this.email,
-      this.menus,
-      this.extras,
       this.serverDate,
       this.locale,
       this.theme,
@@ -40,8 +38,6 @@ class OAuthResult {
   String provider;
   String image;
   String email;
-  String menus;
-  String extras;
   @JsonKey(name: 'server_date')
   String serverDate;
   String locale;
@@ -51,6 +47,6 @@ class OAuthResult {
   @override
   String toString() {
     return '''
-OAuthResult : {${'accessToken: $accessToken, '}${'refreshToken: $refreshToken, '}${'tokenType: $tokenType, '}${'publicKey: $publicKey, '}${'expiresIn: $expiresIn, '}${'authority: $authority, '}${'provider: $provider, '}${'image: $image, '}${'email: $email, '}${'menus: $menus, '}${'extras: $extras, '}${'serverDate: $serverDate, '}${'locale: $locale, '}${'theme: $theme, '}${'name: $name}'}''';
+OAuthResult : {${'accessToken: $accessToken, '}${'refreshToken: $refreshToken, '}${'tokenType: $tokenType, '}${'publicKey: $publicKey, '}${'expiresIn: $expiresIn, '}${'authority: $authority, '}${'provider: $provider, '}${'image: $image, '}${'email: $email, '}${'serverDate: $serverDate, '}${'locale: $locale, '}${'theme: $theme, '}${'name: $name}'}''';
   }
 }
