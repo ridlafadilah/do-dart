@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:dio/dio.dart';
+import 'package:dio/dio.dart' hide Headers;
 import 'package:do_core/api/auth/auth_api.dart';
 import 'package:do_core/models/base_response.dart';
 import 'package:do_core/services/auth_service.dart';
@@ -26,9 +26,9 @@ class HttpErrorInterceptors extends Interceptor {
   Future onError(DioError err) async {
     final int statusCode = err.response.statusCode;
     final BaseResponse response = BaseResponse.fromJson(
-        (err.response.data is List<int>)
-            ? json.decode(utf8.decode(err.response.data))
-            : err.response.data);
+        (err.response?.data is List<int>)
+            ? json.decode(utf8.decode(err.response?.data))
+            : err.response?.data);
     switch (statusCode) {
       case 401:
         try {
@@ -40,6 +40,17 @@ class HttpErrorInterceptors extends Interceptor {
               _dio.interceptors.responseLock.lock();
               await doRefreshToken().catchError((onError) {});
               RequestOptions options = err.response.request;
+              if (options.data is FormData) {
+                final FormData formData = FormData();
+                formData.fields.addAll(options.data.fields);
+                for (MapEntry mapFile in options.data.files) {
+                  formData.files.add(MapEntry(
+                      mapFile.key,
+                      MultipartFile.fromFileSync(options.extra['path'],
+                          filename: mapFile.value.filename)));
+                }
+                options.data = formData;
+              }
               _dio.interceptors.requestLock.unlock();
               _dio.interceptors.responseLock.unlock();
               return _dio.request(options.path, options: options);

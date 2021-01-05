@@ -53,6 +53,9 @@ class ServerError implements Exception {
         if (_errorResponse.respStatusCode != null) {
           _errorMessage =
               _errorResponse.respStatusMessage[_errorResponse.respStatusCode];
+          if (_errorResponse.respStatusMessage['invalid_token'] != null) {
+            _errorMessage = 'ERR_401';
+          }
         } else {
           _errorMessage = 'ERR_${error.response.statusCode}';
         }

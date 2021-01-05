@@ -24,10 +24,9 @@ class ProfileService {
   final AuthService _authService;
   final SharedPreferencesService _sharedPreferences =
       coreLocator<SharedPreferencesService>();
-  ProfileAPI _profileAPI;
 
   Future<ProfileDto> getProfile() async {
-    _profileAPI = ProfileAPI(Dio(), _authService);
+    final ProfileAPI _profileAPI = ProfileAPI(Dio(), _authService);
     final ProfileDto response =
         await _profileAPI.getProfile().catchError((Object obj) {
       switch (obj.runtimeType) {
@@ -42,7 +41,7 @@ class ProfileService {
   }
 
   Future<BaseResponse> putProfile(ProfileDto profile) async {
-    _profileAPI = ProfileAPI(Dio(), _authService);
+    final ProfileAPI _profileAPI = ProfileAPI(Dio(), _authService);
     final BaseResponse response =
         await _profileAPI.putProfile(profile).catchError((Object obj) {
       switch (obj.runtimeType) {
@@ -73,7 +72,7 @@ class ProfileService {
     if (provider == 'local') {
       final File image = File('${dirProfile.path}/$imageUrlUUID');
       if (!image.existsSync()) {
-        _profileAPI = ProfileAPI(_dio, _authService);
+        final ProfileAPI _profileAPI = ProfileAPI(_dio, _authService);
         final HttpResponse response = await _profileAPI
             .getPhotoProfile(imageUrlUUID)
             .catchError((Object obj) {
@@ -101,7 +100,9 @@ class ProfileService {
   }
 
   Future<BaseResponse> putPhotoProfile(File photo) async {
-    _profileAPI = ProfileAPI(Dio(), _authService);
+    final Dio _dio = Dio();
+    _dio.options.extra = {'path': photo.path};
+    final ProfileAPI _profileAPI = ProfileAPI(_dio, _authService);
     final BaseResponse response =
         await _profileAPI.putPhotoProfile(photo).catchError((Object obj) {
       switch (obj.runtimeType) {
