@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:do_core/api/auth/auth_api.dart';
@@ -56,22 +57,31 @@ class AuthService {
     });
   }
 
-  Future<void> loginGoogle() async {
+  Future<bool> loginGoogle() async {
     final String clientId =
         GlobalConfiguration().get('google')['client_id'].toString();
-    String token = await _googleSignIn.loginGoogle(clientId);
-    Map<String, dynamic> body = {
-      'token': token,
-      'provider': GoogleService.provider,
-      'client_id': clientId
-    };
-    _authAPI = AuthAPI(Dio());
-    await _authAPI.tokenVerifier(body).then((value) async {
-      print('result : ');
-      print(value.authority);
-      await putSharedPreferences(value)
-          .then((value) => _controller.add(AuthStatus.authenticated));
-    });
+    try {
+      String token;
+      try {
+        token = await _googleSignIn.loginGoogle(clientId);
+      } catch (e) {
+        return false;
+      }
+      Map<String, dynamic> body = {
+        'token': token,
+        'provider': GoogleService.provider,
+        'client_id': clientId
+      };
+      _authAPI = AuthAPI(Dio());
+      await _authAPI.tokenVerifier(body).then((value) async {
+        await putSharedPreferences(value)
+            .then((value) => _controller.add(AuthStatus.authenticated));
+      });
+      return true;
+    } catch (e) {
+      _googleSignIn.logoutGoogle(clientId);
+      throw ServerError(error: 'ERR_500');
+    }
   }
 
   OAuthResult getOAuthResult() {
@@ -91,6 +101,7 @@ class AuthService {
       'locale': _sharedPreferences.getString('locale'),
       'theme': _sharedPreferences.getString('theme'),
       'name': _sharedPreferences.getString('name'),
+      'username': _sharedPreferences.getString('username'),
     });
   }
 
@@ -100,6 +111,7 @@ class AuthService {
           GlobalConfiguration().get('google')['client_id'].toString();
       _googleSignIn.logoutGoogle(clientId);
     }
+    await _sharedPreferences.clearKey('username');
     await _sharedPreferences.clearKey('access_token');
     await _sharedPreferences.clearKey('refresh_token');
     await _sharedPreferences.clearKey('token_type');
@@ -120,10 +132,13 @@ class AuthService {
     await _sharedPreferences.putString('provider', value.provider);
     await _sharedPreferences.putString('image', value.image);
     await _sharedPreferences.putString('email', value.email);
+    await _sharedPreferences.putString('menus', json.encode(value.menus));
+    await _sharedPreferences.putString('extras', json.encode(value.extras));
     await _sharedPreferences.putString('server_date', value.serverDate);
     await _sharedPreferences.putString('locale', value.locale);
     await _sharedPreferences.putString('theme', value.theme);
     await _sharedPreferences.putString('name', value.name);
+    await _sharedPreferences.putString('username', value.username);
   }
 
   void dispose() => _controller.close();

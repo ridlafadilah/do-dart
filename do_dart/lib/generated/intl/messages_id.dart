@@ -75,6 +75,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "gender" : MessageLookupByLibrary.simpleMessage("Jenis Kelamin"),
     "hello" : MessageLookupByLibrary.simpleMessage("Halo,"),
     "hintUsernameEmail" : MessageLookupByLibrary.simpleMessage("Username / Email"),
+    "internalServerError" : MessageLookupByLibrary.simpleMessage("Server gagal diakses"),
     "labelFooterLoginOther" : MessageLookupByLibrary.simpleMessage("Belum memiliki akun?"),
     "labelFooterLoginSocial" : MessageLookupByLibrary.simpleMessage("atau masuk dengan"),
     "labelLogin" : MessageLookupByLibrary.simpleMessage("Halo! Masuk dengan username atau email."),

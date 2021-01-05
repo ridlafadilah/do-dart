@@ -17,10 +17,13 @@ OAuthResult _$OAuthResultFromJson(Map<String, dynamic> json) {
     json['provider'] as String,
     json['image'] as String,
     json['email'] as String,
+    json['menus'],
+    json['extras'],
     json['server_date'] as String,
     json['locale'] as String,
     json['theme'] as String,
     json['name'] as String,
+    json['username'] as String,
   );
 }
 
@@ -35,8 +38,11 @@ Map<String, dynamic> _$OAuthResultToJson(OAuthResult instance) =>
       'provider': instance.provider,
       'image': instance.image,
       'email': instance.email,
+      'menus': instance.menus,
+      'extras': instance.extras,
       'server_date': instance.serverDate,
       'locale': instance.locale,
       'theme': instance.theme,
       'name': instance.name,
+      'username': instance.username,
     };

@@ -505,6 +505,16 @@ class DongkapLocalizations {
     );
   }
 
+  /// `Internal Server Error`
+  String get internalServerError {
+    return Intl.message(
+      'Internal Server Error',
+      name: 'internalServerError',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Request was cancelled`
   String get errorDioCancel {
     return Intl.message(

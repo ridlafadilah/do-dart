@@ -14,10 +14,13 @@ class OAuthResult {
       this.provider,
       this.image,
       this.email,
+      this.menus,
+      this.extras,
       this.serverDate,
       this.locale,
       this.theme,
-      this.name);
+      this.name,
+      this.username);
 
   factory OAuthResult.fromJson(Map<String, dynamic> json) =>
       _$OAuthResultFromJson(json);
@@ -36,17 +39,23 @@ class OAuthResult {
   int expiresIn;
   String authority;
   String provider;
+  @JsonKey(name: 'image', nullable: true, required: false)
   String image;
   String email;
+  @JsonKey(name: 'menus', nullable: true, required: false)
+  dynamic menus;
+  @JsonKey(name: 'extras', nullable: true, required: false)
+  dynamic extras;
   @JsonKey(name: 'server_date')
   String serverDate;
   String locale;
   String theme;
   String name;
+  String username;
 
   @override
   String toString() {
     return '''
-OAuthResult : {${'accessToken: $accessToken, '}${'refreshToken: $refreshToken, '}${'tokenType: $tokenType, '}${'publicKey: $publicKey, '}${'expiresIn: $expiresIn, '}${'authority: $authority, '}${'provider: $provider, '}${'image: $image, '}${'email: $email, '}${'serverDate: $serverDate, '}${'locale: $locale, '}${'theme: $theme, '}${'name: $name}'}''';
+OAuthResult : {${'accessToken: $accessToken, '}${'refreshToken: $refreshToken, '}${'tokenType: $tokenType, '}${'publicKey: $publicKey, '}${'expiresIn: $expiresIn, '}${'authority: $authority, '}${'provider: $provider, '}${'image: $image, '}${'email: $email, '}${'menus: $menus, '}${'extras: $extras, '}${'serverDate: $serverDate, '}${'locale: $locale, '}${'theme: $theme, '}${'name: $name, '}${'username: $username}'}''';
   }
 }

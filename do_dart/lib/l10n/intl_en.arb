@@ -54,6 +54,7 @@
 		"ERR_404": "Not Found",
 		"ERR_500": "Internal Server Error",
 		"ERR_504": "Timeout Server",
+		"internalServerError": "Internal Server Error",
     "errorDioCancel": "Request was cancelled",
     "errorDioConnectTimeout": "Connection timeout",
     "errorDioDefault": "Connection failed due to internet connection",

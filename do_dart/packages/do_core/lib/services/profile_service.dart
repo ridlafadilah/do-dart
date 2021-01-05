@@ -57,34 +57,46 @@ class ProfileService {
   }
 
   Future<String> getPhotoProfile() async {
-    final String imageUUID = _sharedPreferences.getString('image');
+    final String imageUrlUUID = _sharedPreferences.getString('image');
+    final String username = _sharedPreferences.getString('username');
+    final String provider = _sharedPreferences.getString('provider');
     final Directory srcDir = await getApplicationSupportDirectory();
     final Directory dirProfile = Directory('${srcDir.path}$pathImage');
-    final File image = File('${dirProfile.path}/$imageUUID');
-    if (imageUUID == null) {
+    if (imageUrlUUID == null) {
       return null;
     }
     if (!await dirProfile.exists()) {
       await dirProfile.create(recursive: true);
     }
-    if (image.existsSync()) {
-      return '${dirProfile.path}/$imageUUID';
+    final Dio _dio = Dio();
+    _dio.options.responseType = ResponseType.bytes;
+    if (provider == 'local') {
+      final File image = File('${dirProfile.path}/$imageUrlUUID');
+      if (!image.existsSync()) {
+        _profileAPI = ProfileAPI(_dio, _authService);
+        final HttpResponse response = await _profileAPI
+            .getPhotoProfile(imageUrlUUID)
+            .catchError((Object obj) {
+          switch (obj.runtimeType) {
+            case DioError:
+              final error = ServerError.withError(error: obj as DioError);
+              throw error;
+              break;
+            default:
+          }
+        });
+        await image.writeAsBytes(response.data);
+      }
+      return '${dirProfile.path}/$imageUrlUUID';
     } else {
-      final Dio _dio = Dio();
-      _dio.options.responseType = ResponseType.bytes;
-      _profileAPI = ProfileAPI(_dio, _authService);
-      final HttpResponse response =
-          await _profileAPI.getPhotoProfile(imageUUID).catchError((Object obj) {
-        switch (obj.runtimeType) {
-          case DioError:
-            final error = ServerError.withError(error: obj as DioError);
-            throw error;
-            break;
-          default:
-        }
-      });
-      await image.writeAsBytes(response.data);
-      return '${dirProfile.path}/$imageUUID';
+      final String paddingImage =
+          imageUrlUUID.substring(imageUrlUUID.length - 11);
+      final File image = File('${dirProfile.path}/$username$paddingImage');
+      if (!image.existsSync()) {
+        await _dio.download(
+            imageUrlUUID, '${dirProfile.path}/$username$paddingImage');
+      }
+      return '${dirProfile.path}/$username$paddingImage';
     }
   }
 

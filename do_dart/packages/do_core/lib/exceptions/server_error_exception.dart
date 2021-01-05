@@ -4,6 +4,10 @@ import 'package:dio/dio.dart' hide Headers;
 import 'package:do_core/models/base_response.dart';
 
 class ServerError implements Exception {
+  ServerError({String error}) {
+    _errorMessage = error;
+  }
+
   ServerError.withError({DioError error}) {
     _handleError(error);
   }

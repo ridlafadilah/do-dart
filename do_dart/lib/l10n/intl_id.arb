@@ -54,6 +54,7 @@
 		"ERR_404": "Data tidak ditemukan",
 		"ERR_500": "Server gagal diakses",
 		"ERR_504": "Server timeout",
+		"internalServerError": "Server gagal diakses",
     "errorDioCancel": "Permintaan dibatalkan",
     "errorDioConnectTimeout": "Koneksi timeout",
     "errorDioDefault": "Koneksi Terputus",

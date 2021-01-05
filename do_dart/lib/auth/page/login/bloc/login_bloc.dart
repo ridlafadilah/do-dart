@@ -97,12 +97,20 @@ class LoginBloc extends Bloc<CommonEvent, LoginState> {
         status: FormzStatus.submissionInProgress,
         action: FormzStatus.submissionInProgress);
     try {
-      await _authService.loginGoogle();
-      yield state.copyWith(
-        status: FormzStatus.submissionSuccess,
-        action: FormzStatus.submissionSuccess,
-        error: null,
-      );
+      bool status = await _authService.loginGoogle();
+      if (status) {
+        yield state.copyWith(
+          status: FormzStatus.submissionSuccess,
+          action: FormzStatus.submissionSuccess,
+          error: null,
+        );
+      } else {
+        yield state.copyWith(
+          status: FormzStatus.pure,
+          action: FormzStatus.pure,
+          error: null,
+        );
+      }
     } on ServerError catch (err) {
       yield state.copyWith(
         error: err.getErrorMessage(),

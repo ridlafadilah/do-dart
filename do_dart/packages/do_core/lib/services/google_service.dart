@@ -8,9 +8,10 @@ class GoogleService {
   static const String provider = 'google';
   GoogleSignIn _googleSignIn;
 
-  Future<String> loginGoogle(String clientId) async {
+  Future<dynamic> loginGoogle(String clientId) async {
     _googleSignIn ??= GoogleSignIn(clientId: clientId);
     GoogleSignInAccount googleSignInAccount = await _googleSignIn.signIn();
+    assert(googleSignInAccount != null);
     GoogleSignInAuthentication googleSignInAuthentication =
         await googleSignInAccount.authentication;
     return googleSignInAuthentication.idToken;
