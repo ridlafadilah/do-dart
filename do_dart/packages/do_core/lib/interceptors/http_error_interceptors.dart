@@ -15,6 +15,12 @@ class HttpErrorInterceptors extends Interceptor {
   final AuthAPI _authAPI = AuthAPI(Dio());
   final SharedPreferencesService _sharedPreferences =
       coreLocator<SharedPreferencesService>();
+  int refreshCount = 0;
+
+  @override
+  Future onResponse(Response response) async {
+    refreshCount = 0;
+  }
 
   @override
   Future onError(DioError err) async {
@@ -28,7 +34,8 @@ class HttpErrorInterceptors extends Interceptor {
         try {
           final String msg = response.respStatusMessage['invalid_token'];
           if (msg != null) {
-            if (!hasRefreshToken(err.request.headers['authorization'])) {
+            if (!hasRefreshToken(err.request.headers['authorization']) &&
+                refreshCount <= 3) {
               _dio.interceptors.requestLock.lock();
               _dio.interceptors.responseLock.lock();
               await doRefreshToken().catchError((onError) {});
@@ -61,10 +68,12 @@ class HttpErrorInterceptors extends Interceptor {
   }
 
   Future<void> doLogOut() async {
+    refreshCount = 0;
     await _authService.logOut();
   }
 
   bool hasRefreshToken(String authorization) {
+    refreshCount++;
     authorization = authorization.replaceAll('Bearer ', '');
     final String accessToken = _sharedPreferences.getString('access_token');
     return authorization != accessToken;
