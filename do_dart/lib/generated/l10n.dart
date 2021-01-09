@@ -355,6 +355,16 @@ class DongkapLocalizations {
     );
   }
 
+  /// `Send`
+  String get send {
+    return Intl.message(
+      'Send',
+      name: 'send',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `2-Step Verification`
   String get twoFactorAuthentication {
     return Intl.message(
@@ -662,6 +672,26 @@ class DongkapLocalizations {
       name: 'labelLoginSocial',
       desc: '',
       args: [value],
+    );
+  }
+
+  /// `Enter your email address and we’ll send the code to reset your password`
+  String get labelForgotPassword {
+    return Intl.message(
+      'Enter your email address and we’ll send the code to reset your password',
+      name: 'labelForgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Back to Login`
+  String get labelBackToLogin {
+    return Intl.message(
+      'Back to Login',
+      name: 'labelBackToLogin',
+      desc: '',
+      args: [],
     );
   }
 

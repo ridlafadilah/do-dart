@@ -13,6 +13,7 @@ export 'forms/date_of_birth.dart';
 export 'forms/email.dart';
 export 'forms/gender.dart';
 export 'forms/name.dart';
+export 'forms/number.dart';
 export 'forms/password.dart';
 export 'forms/phone_number.dart';
 export 'forms/place_of_birth.dart';

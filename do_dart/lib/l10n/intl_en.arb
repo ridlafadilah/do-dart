@@ -32,6 +32,7 @@
     "newPassword": "New Password",
     "confirmPassword": "Confirm Password",
     "forgotPassword": "Forgot Password",
+    "send": "Send",
     "twoFactorAuthentication": "2-Step Verification",
     "twoFactorAuthenticationSubtitle": "Send a verification code every time you login",
     "days": "{value} Days",
@@ -76,6 +77,8 @@
           "value": {}
       }
     },
+    "labelForgotPassword": "Enter your email address and we’ll send the code to reset your password",
+    "labelBackToLogin": "Back to Login",
   
     "errorUsername": "Username is required!",
     "errorEmail": "Email is required!",

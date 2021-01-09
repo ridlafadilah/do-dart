@@ -1,6 +1,7 @@
 import 'package:do_common/common.dart';
 import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
+import 'package:do_dart/auth/page/forgot-password/view/request_forgot_password_page.dart';
 import 'package:do_dart/auth/page/login/bloc/login_bloc.dart';
 import 'package:do_dart/l10n/bloc/translation_bloc.dart';
 import 'package:do_dart/l10n/utils/locale_utils.dart';
@@ -267,7 +268,12 @@ class _ForgotPasswordLabel extends StatelessWidget {
           child: Text(
             '${DongkapLocalizations.of(context).forgotPassword}?',
           ),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushAndRemoveUntil<void>(
+              RequestForgotPasswordPage.route(),
+              (route) => false,
+            );
+          },
         ),
       ),
     );

@@ -61,4 +61,70 @@ class _AuthAPI implements AuthAPI {
     final value = OAuthResult.fromJson(_result.data);
     return value;
   }
+
+  @override
+  Future<BaseResponse> requestForgotPassword(body) async {
+    ArgumentError.checkNotNull(body, 'body');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body ?? <String, dynamic>{});
+    _data.removeWhere((k, v) => v == null);
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/do/oauth/request-forgot-password',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{r'content-type': 'application/json'},
+            extra: _extra,
+            contentType: 'application/json',
+            baseUrl: baseUrl),
+        data: _data);
+    final value = BaseResponse.fromJson(_result.data);
+    return value;
+  }
+
+  @override
+  Future<BaseResponse> verificationForgotPassword(body) async {
+    ArgumentError.checkNotNull(body, 'body');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body ?? <String, dynamic>{});
+    _data.removeWhere((k, v) => v == null);
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/do/oauth/verification-forgot-password',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{r'content-type': 'application/json'},
+            extra: _extra,
+            contentType: 'application/json',
+            baseUrl: baseUrl),
+        data: _data);
+    final value = BaseResponse.fromJson(_result.data);
+    return value;
+  }
+
+  @override
+  Future<BaseResponse> forgotPassword(body) async {
+    ArgumentError.checkNotNull(body, 'body');
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _data = <String, dynamic>{};
+    _data.addAll(body ?? <String, dynamic>{});
+    _data.removeWhere((k, v) => v == null);
+    final _result = await _dio.request<Map<String, dynamic>>(
+        '/do/oauth/forgot-password',
+        queryParameters: queryParameters,
+        options: RequestOptions(
+            method: 'POST',
+            headers: <String, dynamic>{r'content-type': 'application/json'},
+            extra: _extra,
+            contentType: 'application/json',
+            baseUrl: baseUrl),
+        data: _data);
+    final value = BaseResponse.fromJson(_result.data);
+    return value;
+  }
 }

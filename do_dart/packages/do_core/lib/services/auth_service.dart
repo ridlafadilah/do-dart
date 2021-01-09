@@ -30,6 +30,24 @@ class AuthService {
     yield* _controller.stream;
   }
 
+  Future<String> requestForgotPassword({
+    @required String email,
+  }) async {
+    Map<String, dynamic> body = {'email': email};
+    _authAPI = AuthAPI(Dio());
+    BaseResponse response =
+        await _authAPI.requestForgotPassword(body).catchError((Object obj) {
+      switch (obj.runtimeType) {
+        case DioError:
+          final error = ServerError.withError(error: obj as DioError);
+          throw error;
+          break;
+        default:
+      }
+    });
+    return response.respStatusMessage[response.respStatusCode];
+  }
+
   Future<void> logIn({
     @required String username,
     @required String password,

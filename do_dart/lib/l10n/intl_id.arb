@@ -32,6 +32,7 @@
     "newPassword": "Kata Sandi Baru",
     "confirmPassword": "Konfirmasi Kata Sandi",
     "forgotPassword": "Lupa Kata Sandi",
+    "send": "Kirim",
     "twoFactorAuthentication": "Verifikasi 2 langkah",
     "twoFactorAuthenticationSubtitle": "Kirim kode verifikasi setiap kali Anda masuk",
     "days": "{value} Hari",
@@ -76,6 +77,8 @@
           "value": {}
       }
     },
+    "labelForgotPassword": "Masukkan email Anda, kami akan mengirimkan kode untuk menyetel ulang kata sandi Anda",
+    "labelBackToLogin": "Kembali untuk masuk",
   
     "errorUsername": "Username wajib diisi!",
     "errorEmail": "Email wajib diisi!",
