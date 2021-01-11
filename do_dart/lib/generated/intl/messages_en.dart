@@ -21,11 +21,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(value) => "${value} Days";
 
-  static m1(value) => "Logged in with ${value}?";
+  static m1(value) => "Enter the code sent to ${value}";
 
-  static m2(value) => "Are you sure want to change the language into ${value}?";
+  static m2(value) => "Logged in with ${value}?";
 
-  static m3(value) => "Are you sure want to change to ${value}?";
+  static m3(value) => "Are you sure want to change the language into ${value}?";
+
+  static m4(value) => "Are you sure want to change to ${value}?";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -71,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "exercise" : MessageLookupByLibrary.simpleMessage("Exercise"),
     "female" : MessageLookupByLibrary.simpleMessage("Female"),
     "forgotPassword" : MessageLookupByLibrary.simpleMessage("Forgot Password"),
+    "forgotPasswordVerification" : MessageLookupByLibrary.simpleMessage("Forgot Password Verification"),
     "fullname" : MessageLookupByLibrary.simpleMessage("Fullname"),
     "gender" : MessageLookupByLibrary.simpleMessage("Gender"),
     "hello" : MessageLookupByLibrary.simpleMessage("Hello,"),
@@ -79,9 +82,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "labelBackToLogin" : MessageLookupByLibrary.simpleMessage("Back to Login"),
     "labelFooterLoginOther" : MessageLookupByLibrary.simpleMessage("Don\'t have an account?"),
     "labelFooterLoginSocial" : MessageLookupByLibrary.simpleMessage("or enter with"),
-    "labelForgotPassword" : MessageLookupByLibrary.simpleMessage("Enter your email address and we’ll send the code to reset your password"),
+    "labelForgotPassword" : MessageLookupByLibrary.simpleMessage("Enter your new password"),
+    "labelForgotPasswordRequest" : MessageLookupByLibrary.simpleMessage("Enter your email address and we’ll send the code to reset your password"),
+    "labelForgotPasswordResend" : MessageLookupByLibrary.simpleMessage("Didn\'t receive the code?"),
+    "labelForgotPasswordVerification" : m1,
     "labelLogin" : MessageLookupByLibrary.simpleMessage("Hello! Login with your username or email."),
-    "labelLoginSocial" : m1,
+    "labelLoginSocial" : m2,
     "labelUsernameEmail" : MessageLookupByLibrary.simpleMessage("Username or email"),
     "language" : MessageLookupByLibrary.simpleMessage("Language"),
     "login" : MessageLookupByLibrary.simpleMessage("Login"),
@@ -96,14 +102,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "privacyPolicy" : MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "promptDeactivateAccountSubtitle" : MessageLookupByLibrary.simpleMessage("This action cannot be undone. This will permanently disable your account.\nI understand the consequences"),
     "promptDeactivateAccountTitle" : MessageLookupByLibrary.simpleMessage("Deactivate Account"),
-    "promptLanguageSubtitle" : m2,
+    "promptLanguageSubtitle" : m3,
     "promptLanguageTitle" : MessageLookupByLibrary.simpleMessage("Change Language"),
-    "promptThemeSubtitle" : m3,
+    "promptThemeSubtitle" : m4,
     "promptThemeTitle" : MessageLookupByLibrary.simpleMessage("Change Theme"),
     "promptTwoFactorAuthenticationDisableSubtitle" : MessageLookupByLibrary.simpleMessage("Are you sure want to disable 2-Step Verification?"),
     "promptTwoFactorAuthenticationEnableSubtitle" : MessageLookupByLibrary.simpleMessage("Are you sure want to enable 2-Step Verification?"),
     "promptTwoFactorAuthenticationTitle" : MessageLookupByLibrary.simpleMessage("2-Step Verification"),
     "register" : MessageLookupByLibrary.simpleMessage("Register"),
+    "resend" : MessageLookupByLibrary.simpleMessage("Resend"),
     "retry" : MessageLookupByLibrary.simpleMessage("Retry"),
     "security" : MessageLookupByLibrary.simpleMessage("Security"),
     "send" : MessageLookupByLibrary.simpleMessage("Send"),
@@ -119,6 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "userAccountIsLocked" : MessageLookupByLibrary.simpleMessage("Account has been locked"),
     "userCredentialsHaveExpired" : MessageLookupByLibrary.simpleMessage("Account credentials has been expired"),
     "userIsDisabled" : MessageLookupByLibrary.simpleMessage("Account has been deactivated"),
-    "username" : MessageLookupByLibrary.simpleMessage("Username")
+    "username" : MessageLookupByLibrary.simpleMessage("Username"),
+    "verify" : MessageLookupByLibrary.simpleMessage("Verify")
   };
 }

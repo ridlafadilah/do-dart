@@ -6,6 +6,7 @@ import 'package:do_core/api/auth/auth_api.dart';
 import 'package:do_core/exceptions/server_error_exception.dart';
 import 'package:do_core/models.dart';
 import 'package:do_core/services/core_locator.dart';
+import 'package:do_core/services/encryption_service.dart';
 import 'package:do_core/services/google_service.dart';
 import 'package:do_core/services/shared_preferences_service.dart';
 import 'package:global_configuration/global_configuration.dart';
@@ -46,6 +47,51 @@ class AuthService {
       }
     });
     return response.respStatusMessage[response.respStatusCode];
+  }
+
+  Future<void> verificationForgotPassword({
+    @required String verificationId,
+    @required String verificationCode,
+  }) async {
+    Map<String, dynamic> body = {
+      'verificationId': verificationId,
+      'verificationCode': verificationCode
+    };
+    _authAPI = AuthAPI(Dio());
+    await _authAPI.verificationForgotPassword(body).catchError((Object obj) {
+      switch (obj.runtimeType) {
+        case DioError:
+          final error = ServerError.withError(error: obj as DioError);
+          throw error;
+          break;
+        default:
+      }
+    });
+  }
+
+  Future<void> forgotPassword({
+    @required String verificationId,
+    @required String verificationCode,
+    @required String newPassword,
+    @required String confirmPassword,
+  }) async {
+    Map<String, dynamic> body = {
+      'verificationId': verificationId,
+      'verificationCode': verificationCode,
+      'newPassword': EncryptionService.encryptAES(plainText: newPassword),
+      'confirmPassword':
+          EncryptionService.encryptAES(plainText: confirmPassword)
+    };
+    _authAPI = AuthAPI(Dio());
+    await _authAPI.forgotPassword(body).catchError((Object obj) {
+      switch (obj.runtimeType) {
+        case DioError:
+          final error = ServerError.withError(error: obj as DioError);
+          throw error;
+          break;
+        default:
+      }
+    });
   }
 
   Future<void> logIn({

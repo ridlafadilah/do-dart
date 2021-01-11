@@ -36,7 +36,7 @@ Dongkap | Mobile Application with Flutter
 * __Simple UI Template__
   * Login
   * Registration ( _soon_ )
-  * Forgot Password ( _soon_ )
+  * Forgot Password
   * Change Password
   * Update Profile
   * Upload Photo Profile

@@ -355,11 +355,41 @@ class DongkapLocalizations {
     );
   }
 
+  /// `Forgot Password Verification`
+  String get forgotPasswordVerification {
+    return Intl.message(
+      'Forgot Password Verification',
+      name: 'forgotPasswordVerification',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify`
+  String get verify {
+    return Intl.message(
+      'Verify',
+      name: 'verify',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Send`
   String get send {
     return Intl.message(
       'Send',
       name: 'send',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Resend`
+  String get resend {
+    return Intl.message(
+      'Resend',
+      name: 'resend',
       desc: '',
       args: [],
     );
@@ -675,11 +705,41 @@ class DongkapLocalizations {
     );
   }
 
-  /// `Enter your email address and we’ll send the code to reset your password`
+  /// `Enter your new password`
   String get labelForgotPassword {
     return Intl.message(
-      'Enter your email address and we’ll send the code to reset your password',
+      'Enter your new password',
       name: 'labelForgotPassword',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter your email address and we’ll send the code to reset your password`
+  String get labelForgotPasswordRequest {
+    return Intl.message(
+      'Enter your email address and we’ll send the code to reset your password',
+      name: 'labelForgotPasswordRequest',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Enter the code sent to {value}`
+  String labelForgotPasswordVerification(Object value) {
+    return Intl.message(
+      'Enter the code sent to $value',
+      name: 'labelForgotPasswordVerification',
+      desc: '',
+      args: [value],
+    );
+  }
+
+  /// `Didn't receive the code?`
+  String get labelForgotPasswordResend {
+    return Intl.message(
+      'Didn\'t receive the code?',
+      name: 'labelForgotPasswordResend',
       desc: '',
       args: [],
     );

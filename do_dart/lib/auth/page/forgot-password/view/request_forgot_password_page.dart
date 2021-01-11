@@ -1,5 +1,5 @@
 import 'package:do_core/core.dart';
-import 'package:do_dart/auth/page/forgot-password/bloc/forgot_password_bloc.dart';
+import 'package:do_dart/auth/page/forgot-password/bloc/request_forgot_password_bloc.dart';
 import 'package:do_dart/auth/page/forgot-password/view/request_forgot_password_form.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,11 +20,11 @@ class RequestForgotPasswordPage extends StatelessWidget {
       body: Container(
         child: BlocProvider(
           create: (context) {
-            return ForgotPasswordBloc(
+            return RequestForgotPasswordBloc(
               authService: RepositoryProvider.of<AuthService>(context),
             );
           },
-          child: ForgotPasswordForm(),
+          child: RequestForgotPasswordForm(),
         ),
       ),
     );

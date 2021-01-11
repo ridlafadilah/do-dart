@@ -1,21 +1,19 @@
 import 'package:do_common/common.dart';
 import 'package:do_core/core.dart';
-import 'package:do_dart/auth/page/forgot-password/bloc/request_forgot_password_bloc.dart';
-import 'package:do_dart/auth/page/forgot-password/bloc/verification_forgot_password_bloc.dart';
-import 'package:do_dart/auth/page/forgot-password/view/verification_forgot_password_page.dart';
 import 'package:do_dart/auth/page/login/view/login_page.dart';
+import 'package:do_dart/auth/page/forgot-password/bloc/forgot_password_bloc.dart';
 import 'package:do_dart/generated/l10n.dart';
 import 'package:do_dart/l10n/utils/locale_utils.dart';
 import 'package:do_theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
-class RequestForgotPasswordForm extends StatelessWidget {
+class ForgotPasswordForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocListener<RequestForgotPasswordBloc, RequestForgotPasswordState>(
+    return BlocListener<ForgotPasswordBloc, ForgotPasswordState>(
       listener: (context, state) {
         if (state.action.isSubmissionFailure) {
           Flushbar(
@@ -34,22 +32,10 @@ class RequestForgotPasswordForm extends StatelessWidget {
           )..show(context);
         }
         if (state.status.isSubmissionSuccess) {
-          if (state.verificationId != null) {
-            Navigator.of(context).pushAndRemoveUntil<void>(
-              MaterialPageRoute(
-                builder: (BuildContext context) => BlocProvider(
-                  create: (BuildContext context) =>
-                      VerificationForgotPasswordBloc(
-                          authService:
-                              RepositoryProvider.of<AuthService>(context),
-                          verificationId: state.verificationId),
-                  child:
-                      VerificationForgotPasswordPage(email: state.email.value),
-                ),
-              ),
-              (route) => false,
-            );
-          }
+          Navigator.of(context).pushAndRemoveUntil<void>(
+            LoginPage.route(),
+            (route) => false,
+          );
         }
       },
       child: ListView(
@@ -71,16 +57,18 @@ class RequestForgotPasswordForm extends StatelessWidget {
                       _TitleLabel(),
                       const SizedBox(height: 8.0),
                       _SubtitleLabel(),
-                      const SizedBox(height: 35.0),
-                      _EmailInput(),
                       const SizedBox(height: 24.0),
-                      _RequestForgotPasswordButton(),
+                      _NewPasswordInput(),
+                      const SizedBox(height: 10),
+                      _ConfirmPasswordInput(),
+                      const SizedBox(height: 15.0),
+                      _ForgotPasswordButton(),
                       const SizedBox(height: 20.0),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [_LoginLink(), _RegisterLink()],
-                      )
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [_LoginLink()],
+                      ),
                     ],
                   ),
                 ),
@@ -99,7 +87,7 @@ class RequestForgotPasswordForm extends StatelessWidget {
 class _LinearProgressIndicator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RequestForgotPasswordBloc, RequestForgotPasswordState>(
+    return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
       buildWhen: (previous, current) => previous.action != current.action,
       builder: (context, state) {
         if (state.status.isSubmissionInProgress) {
@@ -116,64 +104,145 @@ class _LinearProgressIndicator extends StatelessWidget {
   }
 }
 
-class _EmailInput extends StatelessWidget {
+class _NewPasswordInput extends StatefulWidget {
+  @override
+  __NewPasswordInputState createState() => __NewPasswordInputState();
+}
+
+class __NewPasswordInputState extends State<_NewPasswordInput> {
+  bool isObscureText = true;
+
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RequestForgotPasswordBloc, RequestForgotPasswordState>(
-      buildWhen: (previous, current) => previous.email != current.email,
+    return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+      buildWhen: (previous, current) =>
+          previous.newPassword != current.newPassword,
       builder: (context, state) {
         return TextFormField(
-          key: const Key('RequestForgotPasswordForm_email'),
-          keyboardType: TextInputType.emailAddress,
-          autofocus: true,
+          key: const Key('forgotPasswordForm_newPassword'),
+          autofocus: false,
           decoration: InputDecoration(
-            labelText: DongkapLocalizations.of(context).email,
-            hintText: DongkapLocalizations.of(context).email,
-            contentPadding: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 10.0),
-            errorText: state.email.invalid
-                ? DongkapLocalizations.of(context).errorEmail
+            labelText: DongkapLocalizations.of(context).newPassword,
+            hintText: DongkapLocalizations.of(context).newPassword,
+            contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+            errorText: state.newPassword.invalid
+                ? DongkapLocalizations.of(context).errorNewPassword
                 : null,
+            suffixIcon: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isObscureText = !isObscureText;
+                  });
+                },
+                child: isObscureText
+                    ? SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/eye-outline.svg',
+                        color:
+                            Theme.of(context).iconTheme.color.withOpacity(0.5))
+                    : SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/eye-off-outline.svg',
+                        color:
+                            Theme.of(context).iconTheme.color.withOpacity(0.5)),
+              ),
+            ),
           ),
-          onChanged: (email) => context
-              .read<RequestForgotPasswordBloc>()
-              .add(RequestEmailChanged(email)),
+          obscureText: isObscureText,
+          onChanged: (password) => context
+              .read<ForgotPasswordBloc>()
+              .add(ForgotPasswordNewPasswordChanged(password)),
         );
       },
     );
   }
 }
 
-class _RequestForgotPasswordButton extends StatelessWidget {
-  Function _requestForgotPasswordButtonPress(
-      BuildContext context, RequestForgotPasswordState state) {
+class _ConfirmPasswordInput extends StatefulWidget {
+  @override
+  __ConfirmPasswordInputState createState() => __ConfirmPasswordInputState();
+}
+
+class __ConfirmPasswordInputState extends State<_ConfirmPasswordInput> {
+  bool isObscureText = true;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
+      buildWhen: (previous, current) =>
+          previous.confirmPassword != current.confirmPassword,
+      builder: (context, state) {
+        return TextFormField(
+          key: const Key('forgotPasswordForm_confirmPassword'),
+          autofocus: false,
+          decoration: InputDecoration(
+            labelText: DongkapLocalizations.of(context).confirmPassword,
+            hintText: DongkapLocalizations.of(context).confirmPassword,
+            contentPadding: const EdgeInsets.fromLTRB(15.0, 5.0, 15.0, 5.0),
+            errorText: state.confirmPassword.invalid
+                ? DongkapLocalizations.of(context).errorConfirmPassword
+                : null,
+            suffixIcon: Padding(
+              padding: const EdgeInsets.all(12.0),
+              child: GestureDetector(
+                onTap: () {
+                  setState(() {
+                    isObscureText = !isObscureText;
+                  });
+                },
+                child: isObscureText
+                    ? SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/eye-outline.svg',
+                        color:
+                            Theme.of(context).iconTheme.color.withOpacity(0.5))
+                    : SvgPicture.asset(
+                        'assets/eva_icons/outline/svg/eye-off-outline.svg',
+                        color:
+                            Theme.of(context).iconTheme.color.withOpacity(0.5)),
+              ),
+            ),
+          ),
+          obscureText: isObscureText,
+          onChanged: (password) => context
+              .read<ForgotPasswordBloc>()
+              .add(ForgotPasswordConfirmPasswordChanged(password)),
+        );
+      },
+    );
+  }
+}
+
+class _ForgotPasswordButton extends StatelessWidget {
+  Function _forgotPasswordButtonPress(
+      BuildContext context, ForgotPasswordState state) {
     if (!state.action.isValidated ||
         state.status.isSubmissionInProgress ||
         state.status.isSubmissionSuccess) {
       return null;
     } else {
       return () {
-        context
-            .read<RequestForgotPasswordBloc>()
-            .add(const RequestForgotPasswordEvent());
+        context.read<ForgotPasswordBloc>().add(const ForgotPasswordEvent());
       };
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<RequestForgotPasswordBloc, RequestForgotPasswordState>(
+    return BlocBuilder<ForgotPasswordBloc, ForgotPasswordState>(
         buildWhen: (previous, current) => previous.action != current.action,
         builder: (context, state) {
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 16.0),
             child: Center(
               child: RaisedButton(
-                onPressed: _requestForgotPasswordButtonPress(context, state),
+                onPressed: _forgotPasswordButtonPress(context, state),
                 child: Center(
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
                     child: Text(
-                      DongkapLocalizations.of(context).send.toUpperCase(),
+                      DongkapLocalizations.of(context)
+                          .buttonSubmit
+                          .toUpperCase(),
                       style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.w500,
@@ -216,7 +285,7 @@ class _SubtitleLabel extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 8),
       child: Text(
-        DongkapLocalizations.of(context).labelForgotPasswordRequest,
+        DongkapLocalizations.of(context).labelForgotPassword,
         textAlign: TextAlign.center,
         style: const TextStyle(
           fontSize: 16,
@@ -251,31 +320,6 @@ class _LoginLink extends StatelessWidget {
               (route) => false,
             );
           },
-        ),
-      ),
-    );
-  }
-}
-
-class _RegisterLink extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(top: 8, bottom: 6),
-      child: Align(
-        alignment: Alignment.centerRight,
-        child: InkWell(
-          canRequestFocus: false,
-          child: Text(
-            DongkapLocalizations.of(context).register,
-            style: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
-              color: AppTheme.colorTheme,
-              decoration: TextDecoration.underline,
-            ),
-          ),
-          onTap: () {},
         ),
       ),
     );

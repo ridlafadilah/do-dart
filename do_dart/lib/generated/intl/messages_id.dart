@@ -21,11 +21,13 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(value) => "${value} Hari";
 
-  static m1(value) => "Anda saat ini masuk dengan ${value}?";
+  static m1(value) => "Masukan kode yang dikirim ke ${value}";
 
-  static m2(value) => "Apakah Anda yakin ingin mengubah bahasa menjadi ${value}?";
+  static m2(value) => "Anda saat ini masuk dengan ${value}?";
 
-  static m3(value) => "Apakah Anda yakin ingin mengubah ke ${value}?";
+  static m3(value) => "Apakah Anda yakin ingin mengubah bahasa menjadi ${value}?";
+
+  static m4(value) => "Apakah Anda yakin ingin mengubah ke ${value}?";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -71,6 +73,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "exercise" : MessageLookupByLibrary.simpleMessage("Latihan"),
     "female" : MessageLookupByLibrary.simpleMessage("Wanita"),
     "forgotPassword" : MessageLookupByLibrary.simpleMessage("Lupa Kata Sandi"),
+    "forgotPasswordVerification" : MessageLookupByLibrary.simpleMessage("Verifikasi Lupa Kata Sandi"),
     "fullname" : MessageLookupByLibrary.simpleMessage("Nama Lengkap"),
     "gender" : MessageLookupByLibrary.simpleMessage("Jenis Kelamin"),
     "hello" : MessageLookupByLibrary.simpleMessage("Halo,"),
@@ -79,9 +82,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "labelBackToLogin" : MessageLookupByLibrary.simpleMessage("Kembali untuk masuk"),
     "labelFooterLoginOther" : MessageLookupByLibrary.simpleMessage("Belum memiliki akun?"),
     "labelFooterLoginSocial" : MessageLookupByLibrary.simpleMessage("atau masuk dengan"),
-    "labelForgotPassword" : MessageLookupByLibrary.simpleMessage("Masukkan email Anda, kami akan mengirimkan kode untuk menyetel ulang kata sandi Anda"),
+    "labelForgotPassword" : MessageLookupByLibrary.simpleMessage("Masukan kata sandi baru Anda"),
+    "labelForgotPasswordRequest" : MessageLookupByLibrary.simpleMessage("Masukkan email Anda, kami akan mengirimkan kode untuk menyetel ulang kata sandi Anda"),
+    "labelForgotPasswordResend" : MessageLookupByLibrary.simpleMessage("Tidak menerima kode?"),
+    "labelForgotPasswordVerification" : m1,
     "labelLogin" : MessageLookupByLibrary.simpleMessage("Halo! Masuk dengan username atau email."),
-    "labelLoginSocial" : m1,
+    "labelLoginSocial" : m2,
     "labelUsernameEmail" : MessageLookupByLibrary.simpleMessage("Username atau email"),
     "language" : MessageLookupByLibrary.simpleMessage("Bahasa"),
     "login" : MessageLookupByLibrary.simpleMessage("Masuk"),
@@ -96,14 +102,15 @@ class MessageLookup extends MessageLookupByLibrary {
     "privacyPolicy" : MessageLookupByLibrary.simpleMessage("Kebijakan Privasi"),
     "promptDeactivateAccountSubtitle" : MessageLookupByLibrary.simpleMessage("Tindakan ini tidak bisa dibatalkan. Ini secara permanen akan menonaktifkan akun anda.\nSaya mengerti konsekuensinya"),
     "promptDeactivateAccountTitle" : MessageLookupByLibrary.simpleMessage("Nonaktifkan Akun"),
-    "promptLanguageSubtitle" : m2,
+    "promptLanguageSubtitle" : m3,
     "promptLanguageTitle" : MessageLookupByLibrary.simpleMessage("Ganti Bahasa"),
-    "promptThemeSubtitle" : m3,
+    "promptThemeSubtitle" : m4,
     "promptThemeTitle" : MessageLookupByLibrary.simpleMessage("Ganti Tema"),
     "promptTwoFactorAuthenticationDisableSubtitle" : MessageLookupByLibrary.simpleMessage("Anda yakin ingin menonaktifkan Verifikasi 2 langkah?"),
     "promptTwoFactorAuthenticationEnableSubtitle" : MessageLookupByLibrary.simpleMessage("Anda yakin ingin mengaktifkan Verifikasi 2 langkah?"),
     "promptTwoFactorAuthenticationTitle" : MessageLookupByLibrary.simpleMessage("Verifikasi 2 langkah"),
     "register" : MessageLookupByLibrary.simpleMessage("Daftar"),
+    "resend" : MessageLookupByLibrary.simpleMessage("Kirim Ulang"),
     "retry" : MessageLookupByLibrary.simpleMessage("Ulang"),
     "security" : MessageLookupByLibrary.simpleMessage("Keamanan"),
     "send" : MessageLookupByLibrary.simpleMessage("Kirim"),
@@ -119,6 +126,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "userAccountIsLocked" : MessageLookupByLibrary.simpleMessage("Akun telah dikunci"),
     "userCredentialsHaveExpired" : MessageLookupByLibrary.simpleMessage("Kredensial akun sudah kedaluwarsa"),
     "userIsDisabled" : MessageLookupByLibrary.simpleMessage("Akun sudah dinonaktifkan"),
-    "username" : MessageLookupByLibrary.simpleMessage("Username")
+    "username" : MessageLookupByLibrary.simpleMessage("Username"),
+    "verify" : MessageLookupByLibrary.simpleMessage("Verifikasi")
   };
 }

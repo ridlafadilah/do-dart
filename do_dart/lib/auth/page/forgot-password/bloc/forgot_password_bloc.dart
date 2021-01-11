@@ -14,9 +14,13 @@ part 'forgot_password_state.dart';
 class ForgotPasswordBloc extends Bloc<CommonEvent, ForgotPasswordState> {
   ForgotPasswordBloc({
     @required AuthService authService,
+    @required String verificationId,
+    @required String verificationCode,
   })  : assert(authService != null),
         _authService = authService,
-        super(const ForgotPasswordState());
+        super(ForgotPasswordState(
+            verificationId: verificationId,
+            verificationCode: verificationCode));
 
   final AuthService _authService;
 
@@ -24,28 +28,45 @@ class ForgotPasswordBloc extends Bloc<CommonEvent, ForgotPasswordState> {
   Stream<ForgotPasswordState> mapEventToState(
     CommonEvent event,
   ) async* {
-    if (event is ForgotPasswordEmailChanged) {
-      yield _mapEmailChangedToState(event, state);
-    } else if (event is RequestForgotPasswordEvent) {
-      yield* _mapRequestForgotPasswordRequestedToState(event, state);
+    if (event is ForgotPasswordNewPasswordChanged) {
+      yield _mapNewPasswordChangedToState(event, state);
+    } else if (event is ForgotPasswordConfirmPasswordChanged) {
+      yield _mapConfirmPasswordChangedToState(event, state);
+    } else if (event is ForgotPasswordEvent) {
+      yield* _mapForgotPasswordRequestedToState(event, state);
     }
   }
 
-  ForgotPasswordState _mapEmailChangedToState(
-    ForgotPasswordEmailChanged event,
+  ForgotPasswordState _mapNewPasswordChangedToState(
+    ForgotPasswordNewPasswordChanged event,
     ForgotPasswordState state,
   ) {
-    final email = Email.dirty(event.email);
+    final newPassword = NewPassword.dirty(event.newPassword);
+    print(newPassword);
     return state.copyWith(
-      email: email,
-      action: Formz.validate([state.email]),
+      newPassword: newPassword,
+      action: Formz.validate([newPassword, state.confirmPassword]),
       status: FormzStatus.pure,
       error: null,
     );
   }
 
-  Stream<ForgotPasswordState> _mapRequestForgotPasswordRequestedToState(
-    RequestForgotPasswordEvent event,
+  ForgotPasswordState _mapConfirmPasswordChangedToState(
+    ForgotPasswordConfirmPasswordChanged event,
+    ForgotPasswordState state,
+  ) {
+    final confirmPassword = ConfirmedPassword.dirty(
+        password: state.newPassword.value, value: event.confirmPassword);
+    return state.copyWith(
+      confirmPassword: confirmPassword,
+      action: Formz.validate([state.newPassword, confirmPassword]),
+      status: FormzStatus.pure,
+      error: null,
+    );
+  }
+
+  Stream<ForgotPasswordState> _mapForgotPasswordRequestedToState(
+    ForgotPasswordEvent event,
     ForgotPasswordState state,
   ) async* {
     if (state.action.isValidated) {
@@ -53,14 +74,16 @@ class ForgotPasswordBloc extends Bloc<CommonEvent, ForgotPasswordState> {
           status: FormzStatus.submissionInProgress,
           action: FormzStatus.submissionInProgress);
       try {
-        String verificationId = await _authService.requestForgotPassword(
-          email: state.email.value,
+        await _authService.forgotPassword(
+          verificationId: state.verificationId,
+          verificationCode: state.verificationCode,
+          newPassword: state.newPassword.value,
+          confirmPassword: state.confirmPassword.value,
         );
         yield state.copyWith(
           status: FormzStatus.submissionSuccess,
           action: FormzStatus.submissionSuccess,
           error: null,
-          verificationId: verificationId,
         );
       } on ServerError catch (err) {
         yield state.copyWith(

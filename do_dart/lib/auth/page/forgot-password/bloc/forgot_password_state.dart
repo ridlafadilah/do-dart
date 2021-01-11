@@ -7,7 +7,7 @@ class ForgotPasswordState extends Equatable {
     this.action = FormzStatus.pure,
     this.email = const Email.pure(),
     this.verificationId = '',
-    this.verificationCode = const Number.pure(),
+    this.verificationCode = '',
     this.newPassword = const NewPassword.pure(),
     this.confirmPassword = const ConfirmedPassword.pure(),
   });
@@ -17,7 +17,7 @@ class ForgotPasswordState extends Equatable {
   final FormzStatus action;
   final Email email;
   final String verificationId;
-  final Number verificationCode;
+  final String verificationCode;
   final NewPassword newPassword;
   final ConfirmedPassword confirmPassword;
 
@@ -27,7 +27,7 @@ class ForgotPasswordState extends Equatable {
     FormzStatus action,
     Email email,
     String verificationId,
-    Number verificationCode,
+    String verificationCode,
     NewPassword newPassword,
     ConfirmedPassword confirmPassword,
   }) {

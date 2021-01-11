@@ -1,14 +1,23 @@
 part of 'forgot_password_bloc.dart';
 
-class ForgotPasswordEmailChanged extends CommonEvent {
-  const ForgotPasswordEmailChanged(this.email);
+class ForgotPasswordNewPasswordChanged extends CommonEvent {
+  const ForgotPasswordNewPasswordChanged(this.newPassword);
 
-  final String email;
+  final String newPassword;
 
   @override
-  List<Object> get props => [email];
+  List<Object> get props => [newPassword];
 }
 
-class RequestForgotPasswordEvent extends CommonEvent {
-  const RequestForgotPasswordEvent();
+class ForgotPasswordConfirmPasswordChanged extends CommonEvent {
+  const ForgotPasswordConfirmPasswordChanged(this.confirmPassword);
+
+  final String confirmPassword;
+
+  @override
+  List<Object> get props => [confirmPassword];
+}
+
+class ForgotPasswordEvent extends CommonEvent {
+  const ForgotPasswordEvent();
 }
