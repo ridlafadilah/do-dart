@@ -1,5 +1,4 @@
 import 'package:do_common/common.dart';
-import 'package:do_core/core.dart';
 import 'package:do_dart/auth/page/login/view/login_page.dart';
 import 'package:do_dart/auth/page/forgot-password/bloc/forgot_password_bloc.dart';
 import 'package:do_dart/generated/l10n.dart';
@@ -18,8 +17,7 @@ class ForgotPasswordForm extends StatelessWidget {
         if (state.action.isSubmissionFailure) {
           Flushbar(
             messageText: Text(
-              LocaleUtils.translate(
-                  LocaleUtils.translate(StringUtils.toCamelCase(state.error))),
+              LocaleUtils.translate(LocaleUtils.translate(state.error)),
               style: const TextStyle(color: Colors.white),
             ),
             icon: SvgPicture.asset(

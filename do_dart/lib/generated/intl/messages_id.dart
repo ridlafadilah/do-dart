@@ -21,13 +21,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(value) => "${value} Hari";
 
-  static m1(value) => "Masukan kode yang dikirim ke ${value}";
+  static m1(value) => "Masukan kode sebelum ${value}";
 
-  static m2(value) => "Anda saat ini masuk dengan ${value}?";
+  static m2(value) => "Masukan kode yang dikirim ke ${value}";
 
-  static m3(value) => "Apakah Anda yakin ingin mengubah bahasa menjadi ${value}?";
+  static m3(value) => "Anda saat ini masuk dengan ${value}?";
 
-  static m4(value) => "Apakah Anda yakin ingin mengubah ke ${value}?";
+  static m4(value) => "Apakah Anda yakin ingin mengubah bahasa menjadi ${value}?";
+
+  static m5(value) => "Apakah Anda yakin ingin mengubah ke ${value}?";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -85,9 +87,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "labelForgotPassword" : MessageLookupByLibrary.simpleMessage("Masukan kata sandi baru Anda"),
     "labelForgotPasswordRequest" : MessageLookupByLibrary.simpleMessage("Masukkan email Anda, kami akan mengirimkan kode untuk menyetel ulang kata sandi Anda"),
     "labelForgotPasswordResend" : MessageLookupByLibrary.simpleMessage("Tidak menerima kode?"),
-    "labelForgotPasswordVerification" : m1,
+    "labelForgotPasswordTimer" : m1,
+    "labelForgotPasswordVerification" : m2,
     "labelLogin" : MessageLookupByLibrary.simpleMessage("Halo! Masuk dengan username atau email."),
-    "labelLoginSocial" : m2,
+    "labelLoginSocial" : m3,
     "labelUsernameEmail" : MessageLookupByLibrary.simpleMessage("Username atau email"),
     "language" : MessageLookupByLibrary.simpleMessage("Bahasa"),
     "login" : MessageLookupByLibrary.simpleMessage("Masuk"),
@@ -102,9 +105,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "privacyPolicy" : MessageLookupByLibrary.simpleMessage("Kebijakan Privasi"),
     "promptDeactivateAccountSubtitle" : MessageLookupByLibrary.simpleMessage("Tindakan ini tidak bisa dibatalkan. Ini secara permanen akan menonaktifkan akun anda.\nSaya mengerti konsekuensinya"),
     "promptDeactivateAccountTitle" : MessageLookupByLibrary.simpleMessage("Nonaktifkan Akun"),
-    "promptLanguageSubtitle" : m3,
+    "promptLanguageSubtitle" : m4,
     "promptLanguageTitle" : MessageLookupByLibrary.simpleMessage("Ganti Bahasa"),
-    "promptThemeSubtitle" : m4,
+    "promptThemeSubtitle" : m5,
     "promptThemeTitle" : MessageLookupByLibrary.simpleMessage("Ganti Tema"),
     "promptTwoFactorAuthenticationDisableSubtitle" : MessageLookupByLibrary.simpleMessage("Anda yakin ingin menonaktifkan Verifikasi 2 langkah?"),
     "promptTwoFactorAuthenticationEnableSubtitle" : MessageLookupByLibrary.simpleMessage("Anda yakin ingin mengaktifkan Verifikasi 2 langkah?"),

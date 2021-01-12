@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:do_common/common.dart';
+import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
 import 'package:do_dart/auth/page/login/view/login_page.dart';
 import 'package:do_dart/auth/page/forgot-password/bloc/forgot_password_bloc.dart';
@@ -34,8 +35,7 @@ class _VerificationForgotPasswordFormState
         if (state.action.isSubmissionFailure) {
           Flushbar(
             messageText: Text(
-              LocaleUtils.translate(
-                  LocaleUtils.translate(StringUtils.toCamelCase(state.error))),
+              LocaleUtils.translate(LocaleUtils.translate(state.error)),
               style: const TextStyle(color: Colors.white),
             ),
             icon: SvgPicture.asset(
@@ -62,6 +62,9 @@ class _VerificationForgotPasswordFormState
               (route) => false,
             );
           }
+        }
+        if (state.resend.isSubmissionSuccess) {
+          context.read<TimerBloc>().add(const TimerStarted(duration: 60));
         }
       },
       child: ListView(
@@ -115,7 +118,7 @@ class _LinearProgressIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<VerificationForgotPasswordBloc,
         VerificationForgotPasswordState>(
-      buildWhen: (previous, current) => previous.action != current.action,
+      buildWhen: (previous, current) => previous.status != current.status,
       builder: (context, state) {
         if (state.status.isSubmissionInProgress) {
           return const LinearProgressIndicator();
@@ -158,6 +161,7 @@ class __PinInputState extends State<_PinInput> {
           autoFocus: true,
           obscuringCharacter: '*',
           animationType: AnimationType.fade,
+          backgroundColor: Colors.transparent,
           pinTheme: PinTheme(
               shape: PinCodeFieldShape.box,
               borderRadius: BorderRadius.circular(5),
@@ -171,7 +175,8 @@ class __PinInputState extends State<_PinInput> {
               selectedFillColor: AppTheme.lightColor),
           cursorColor: Colors.black,
           animationDuration: const Duration(milliseconds: 300),
-          textStyle: const TextStyle(fontSize: 20, height: 1.6),
+          textStyle: const TextStyle(
+              fontSize: 20, height: 1.6, color: AppTheme.darkGrey),
           enableActiveFill: true,
           errorAnimationController: errorController,
           controller: textEditingController,
@@ -280,40 +285,88 @@ class __SubtitleLabelState extends State<_SubtitleLabel> {
   }
 }
 
-class _Resend extends StatelessWidget {
+class _Resend extends StatefulWidget {
+  @override
+  __ResendState createState() => __ResendState();
+}
+
+class __ResendState extends State<_Resend> {
+  _resendForgotPasswordButtonPress() {
+    if (!context
+        .read<VerificationForgotPasswordBloc>()
+        .state
+        .status
+        .isSubmissionInProgress) {
+      context
+          .read<VerificationForgotPasswordBloc>()
+          .add(const ResendForgotPasswordEvent());
+    } else {
+      return null;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.only(top: 8),
-      child: Wrap(
-          direction: Axis.horizontal,
-          alignment: WrapAlignment.center,
-          children: <Widget>[
-            Padding(
-                padding: const EdgeInsets.only(right: 2),
-                child: Text(
-                  DongkapLocalizations.of(context).labelForgotPasswordResend,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
+      child: BlocBuilder<TimerBloc, TimerState>(
+        builder: (context, state) {
+          if (state is TimerRunInProgress) {
+            final String minutesStr =
+                ((state.duration / 60) % 60).floor().toString().padLeft(2, '0');
+            final String secondsStr =
+                (state.duration % 60).floor().toString().padLeft(2, '0');
+            return Wrap(
+                direction: Axis.horizontal,
+                alignment: WrapAlignment.center,
+                children: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.only(right: 2),
+                      child: Text(
+                        DongkapLocalizations.of(context)
+                            .labelForgotPasswordTimer(
+                                '$minutesStr:$secondsStr'),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )),
+                ]);
+          } else {
+            return Wrap(
+                direction: Axis.horizontal,
+                alignment: WrapAlignment.center,
+                children: <Widget>[
+                  Padding(
+                      padding: const EdgeInsets.only(right: 2),
+                      child: Text(
+                        DongkapLocalizations.of(context)
+                            .labelForgotPasswordResend,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w400,
+                        ),
+                      )),
+                  InkWell(
+                    onTap: _resendForgotPasswordButtonPress,
+                    canRequestFocus: false,
+                    child: Text(
+                      DongkapLocalizations.of(context).resend,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w400,
+                        color: AppTheme.colorTheme,
+                        decoration: TextDecoration.underline,
+                      ),
+                    ),
                   ),
-                )),
-            InkWell(
-              onTap: () {},
-              canRequestFocus: false,
-              child: Text(
-                DongkapLocalizations.of(context).resend,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                  color: AppTheme.colorTheme,
-                  decoration: TextDecoration.underline,
-                ),
-              ),
-            )
-          ]),
+                ]);
+          }
+        },
+      ),
     );
   }
 }

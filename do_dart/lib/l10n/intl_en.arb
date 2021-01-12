@@ -89,6 +89,12 @@
       }
     },
     "labelForgotPasswordResend": "Didn't receive the code?",
+    "labelForgotPasswordTimer": "Enter the code before {value}",
+    "@labelForgotPasswordTimer": {
+      "placeholders": {
+          "value": {}
+      }
+    },
     "labelBackToLogin": "Back to Login",
   
     "errorUsername": "Username is required!",

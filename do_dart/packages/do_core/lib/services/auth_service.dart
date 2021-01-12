@@ -34,7 +34,7 @@ class AuthService {
   Future<String> requestForgotPassword({
     @required String email,
   }) async {
-    Map<String, dynamic> body = {'email': email};
+    Map<String, dynamic> body = {'email': email, 'pin': true};
     _authAPI = AuthAPI(Dio());
     BaseResponse response =
         await _authAPI.requestForgotPassword(body).catchError((Object obj) {

@@ -12,3 +12,7 @@ class VerificationCodeChanged extends CommonEvent {
 class VerificationForgotPasswordEvent extends CommonEvent {
   const VerificationForgotPasswordEvent();
 }
+
+class ResendForgotPasswordEvent extends CommonEvent {
+  const ResendForgotPasswordEvent();
+}

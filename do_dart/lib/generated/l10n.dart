@@ -745,6 +745,16 @@ class DongkapLocalizations {
     );
   }
 
+  /// `Enter the code before {value}`
+  String labelForgotPasswordTimer(Object value) {
+    return Intl.message(
+      'Enter the code before $value',
+      name: 'labelForgotPasswordTimer',
+      desc: '',
+      args: [value],
+    );
+  }
+
   /// `Back to Login`
   String get labelBackToLogin {
     return Intl.message(

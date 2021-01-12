@@ -21,13 +21,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(value) => "${value} Days";
 
-  static m1(value) => "Enter the code sent to ${value}";
+  static m1(value) => "Enter the code before ${value}";
 
-  static m2(value) => "Logged in with ${value}?";
+  static m2(value) => "Enter the code sent to ${value}";
 
-  static m3(value) => "Are you sure want to change the language into ${value}?";
+  static m3(value) => "Logged in with ${value}?";
 
-  static m4(value) => "Are you sure want to change to ${value}?";
+  static m4(value) => "Are you sure want to change the language into ${value}?";
+
+  static m5(value) => "Are you sure want to change to ${value}?";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -85,9 +87,10 @@ class MessageLookup extends MessageLookupByLibrary {
     "labelForgotPassword" : MessageLookupByLibrary.simpleMessage("Enter your new password"),
     "labelForgotPasswordRequest" : MessageLookupByLibrary.simpleMessage("Enter your email address and we’ll send the code to reset your password"),
     "labelForgotPasswordResend" : MessageLookupByLibrary.simpleMessage("Didn\'t receive the code?"),
-    "labelForgotPasswordVerification" : m1,
+    "labelForgotPasswordTimer" : m1,
+    "labelForgotPasswordVerification" : m2,
     "labelLogin" : MessageLookupByLibrary.simpleMessage("Hello! Login with your username or email."),
-    "labelLoginSocial" : m2,
+    "labelLoginSocial" : m3,
     "labelUsernameEmail" : MessageLookupByLibrary.simpleMessage("Username or email"),
     "language" : MessageLookupByLibrary.simpleMessage("Language"),
     "login" : MessageLookupByLibrary.simpleMessage("Login"),
@@ -102,9 +105,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "privacyPolicy" : MessageLookupByLibrary.simpleMessage("Privacy Policy"),
     "promptDeactivateAccountSubtitle" : MessageLookupByLibrary.simpleMessage("This action cannot be undone. This will permanently disable your account.\nI understand the consequences"),
     "promptDeactivateAccountTitle" : MessageLookupByLibrary.simpleMessage("Deactivate Account"),
-    "promptLanguageSubtitle" : m3,
+    "promptLanguageSubtitle" : m4,
     "promptLanguageTitle" : MessageLookupByLibrary.simpleMessage("Change Language"),
-    "promptThemeSubtitle" : m4,
+    "promptThemeSubtitle" : m5,
     "promptThemeTitle" : MessageLookupByLibrary.simpleMessage("Change Theme"),
     "promptTwoFactorAuthenticationDisableSubtitle" : MessageLookupByLibrary.simpleMessage("Are you sure want to disable 2-Step Verification?"),
     "promptTwoFactorAuthenticationEnableSubtitle" : MessageLookupByLibrary.simpleMessage("Are you sure want to enable 2-Step Verification?"),

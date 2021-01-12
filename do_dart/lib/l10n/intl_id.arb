@@ -89,6 +89,12 @@
       }
     },
     "labelForgotPasswordResend": "Tidak menerima kode?",
+    "labelForgotPasswordTimer": "Masukan kode sebelum {value}",
+    "@labelForgotPasswordTimer": {
+      "placeholders": {
+          "value": {}
+      }
+    },
     "labelBackToLogin": "Kembali untuk masuk",
   
     "errorUsername": "Username wajib diisi!",

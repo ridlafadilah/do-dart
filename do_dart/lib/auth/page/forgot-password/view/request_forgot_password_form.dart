@@ -1,4 +1,5 @@
 import 'package:do_common/common.dart';
+import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
 import 'package:do_dart/auth/page/forgot-password/bloc/request_forgot_password_bloc.dart';
 import 'package:do_dart/auth/page/forgot-password/bloc/verification_forgot_password_bloc.dart';
@@ -20,8 +21,7 @@ class RequestForgotPasswordForm extends StatelessWidget {
         if (state.action.isSubmissionFailure) {
           Flushbar(
             messageText: Text(
-              LocaleUtils.translate(
-                  LocaleUtils.translate(StringUtils.toCamelCase(state.error))),
+              LocaleUtils.translate(LocaleUtils.translate(state.error)),
               style: const TextStyle(color: Colors.white),
             ),
             icon: SvgPicture.asset(
@@ -37,15 +37,22 @@ class RequestForgotPasswordForm extends StatelessWidget {
           if (state.verificationId != null) {
             Navigator.of(context).pushAndRemoveUntil<void>(
               MaterialPageRoute(
-                builder: (BuildContext context) => BlocProvider(
-                  create: (BuildContext context) =>
-                      VerificationForgotPasswordBloc(
-                          authService:
-                              RepositoryProvider.of<AuthService>(context),
-                          verificationId: state.verificationId),
-                  child:
-                      VerificationForgotPasswordPage(email: state.email.value),
-                ),
+                builder: (BuildContext context) => MultiBlocProvider(
+                    providers: [
+                      BlocProvider<VerificationForgotPasswordBloc>(
+                        create: (_) => VerificationForgotPasswordBloc(
+                            authService:
+                                RepositoryProvider.of<AuthService>(context),
+                            email: state.email.value,
+                            verificationId: state.verificationId),
+                      ),
+                      BlocProvider<TimerBloc>(
+                        create: (_) =>
+                            TimerBloc()..add(const TimerStarted(duration: 60)),
+                      ),
+                    ],
+                    child: VerificationForgotPasswordPage(
+                        email: state.email.value)),
               ),
               (route) => false,
             );
