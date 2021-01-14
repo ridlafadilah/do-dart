@@ -33,7 +33,7 @@ Dongkap | Mobile Application with Flutter
 
 * __Simple UI Template__
   * Login
-  * Registration ( _soon_ )
+  * Registration
   * Forgot Password
   * Change Password
   * Update Profile

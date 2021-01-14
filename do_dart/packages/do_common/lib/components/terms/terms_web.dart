@@ -3,26 +3,21 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class RecaptchaV2 extends StatefulWidget {
-  RecaptchaV2({
-    @required this.siteKey,
-    this.pluginURL = 'https://ridlafadilah.github.io/recaptcha/',
+class TermsWeb extends StatefulWidget {
+  TermsWeb({
+    @required this.url,
     this.dark = false,
-    this.onChanged,
-  }) : assert(siteKey != null, 'Google ReCaptcha API KEY is missing.');
+  });
 
-  final String siteKey;
-  final String pluginURL;
+  final String url;
   final bool dark;
-  final ValueChanged<String> onChanged;
 
   @override
-  State<StatefulWidget> createState() => _RecaptchaV2State();
+  State<StatefulWidget> createState() => _TermsWebState();
 }
 
-class _RecaptchaV2State extends State<RecaptchaV2> {
+class _TermsWebState extends State<TermsWeb> {
   WebViewController webViewController;
-  bool resize = false;
   String theme = 'light';
 
   @override
@@ -41,10 +36,9 @@ class _RecaptchaV2State extends State<RecaptchaV2> {
 
   @override
   Widget build(BuildContext context) {
-    var pluginURL = widget.pluginURL;
     return Container(
-      height: resize ? 590.0 : 255.0,
-      width: resize ? 330.0 : 330.0,
+      height: 590.0,
+      width: 330.0,
       color: Colors.transparent,
       child: Column(
         children: <Widget>[
@@ -72,7 +66,7 @@ class _RecaptchaV2State extends State<RecaptchaV2> {
             ),
           ),
           Container(
-            height: resize ? 520.0 : 105.0,
+            height: 520.0,
             color: Colors.transparent,
             child: Card(
               color: widget.dark
@@ -88,35 +82,11 @@ class _RecaptchaV2State extends State<RecaptchaV2> {
                 children: <Widget>[
                   const SizedBox(height: 10),
                   Container(
-                    height: resize ? 500.0 : 85.0,
-                    width: resize ? 330.0 : 330.0,
+                    height: 500.0,
+                    width: 330.0,
                     color: Colors.transparent,
                     child: WebView(
-                      initialUrl:
-                          '$pluginURL?site_key=${widget.siteKey}&theme=$theme',
-                      javascriptMode: JavascriptMode.unrestricted,
-                      javascriptChannels: <JavascriptChannel>[
-                        JavascriptChannel(
-                          name: 'RecaptchaDongkapChannel',
-                          onMessageReceived: (JavascriptMessage receiver) {
-                            widget.onChanged(receiver.message);
-                            Navigator.of(context).pop(true);
-                            webViewController.clearCache();
-                          },
-                        ),
-                        JavascriptChannel(
-                          name: 'ResizeDongkapChannel',
-                          onMessageReceived: (JavascriptMessage receiver) {
-                            setState(() {
-                              if (receiver.message == 'true') {
-                                resize = true;
-                              } else {
-                                resize = false;
-                              }
-                            });
-                          },
-                        ),
-                      ].toSet(),
+                      initialUrl: '${widget.url}?theme=$theme',
                       onWebViewCreated: (_controller) {
                         webViewController = _controller;
                       },

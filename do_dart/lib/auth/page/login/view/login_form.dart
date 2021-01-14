@@ -363,7 +363,9 @@ class _TermsConditionLink extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.only(top: 8),
       child: InkWell(
-        onTap: () {},
+        onTap: () {
+          _termsShow(context);
+        },
         canRequestFocus: false,
         child: Text(
           DongkapLocalizations.of(context).termsAndConditions,
@@ -376,6 +378,21 @@ class _TermsConditionLink extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  void _termsShow(BuildContext context) async {
+    await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (_) {
+        return Center(
+          child: TermsWeb(
+            url: 'https://ridlafadilah.github.io/privacy-policy/terms.html',
+            dark: context.read<ThemeModeBloc>().state.darkMode,
+          ),
+        );
+      },
     );
   }
 }
