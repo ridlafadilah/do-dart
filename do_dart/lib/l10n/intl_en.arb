@@ -96,6 +96,7 @@
       }
     },
     "labelBackToLogin": "Back to Login",
+    "labelTermsRegister": "Agree to",
   
     "errorUsername": "Username is required!",
     "errorEmail": "Email is required!",

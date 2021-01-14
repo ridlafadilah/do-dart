@@ -94,6 +94,37 @@ class AuthService {
     });
   }
 
+  Future<void> signup({
+    @required String fullname,
+    @required String username,
+    @required String email,
+    @required String password,
+    @required String confirmPassword,
+    @required String terms,
+    @required String recaptcha,
+  }) async {
+    Map<String, dynamic> body = {
+      'fullname': fullname,
+      'username': username,
+      'email': email,
+      'password': EncryptionService.encryptAES(plainText: password),
+      'confirmPassword':
+          EncryptionService.encryptAES(plainText: confirmPassword),
+      'terms': terms,
+      'recaptcha': recaptcha
+    };
+    _authAPI = AuthAPI(Dio());
+    await _authAPI.signup(body).catchError((Object obj) {
+      switch (obj.runtimeType) {
+        case DioError:
+          final error = ServerError.withError(error: obj as DioError);
+          throw error;
+          break;
+        default:
+      }
+    });
+  }
+
   Future<void> logIn({
     @required String username,
     @required String password,

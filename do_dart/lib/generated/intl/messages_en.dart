@@ -91,6 +91,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "labelForgotPasswordVerification" : m2,
     "labelLogin" : MessageLookupByLibrary.simpleMessage("Hello! Login with your username or email."),
     "labelLoginSocial" : m3,
+    "labelTermsRegister" : MessageLookupByLibrary.simpleMessage("Agree to"),
     "labelUsernameEmail" : MessageLookupByLibrary.simpleMessage("Username or email"),
     "language" : MessageLookupByLibrary.simpleMessage("Language"),
     "login" : MessageLookupByLibrary.simpleMessage("Login"),

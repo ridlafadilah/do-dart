@@ -42,7 +42,6 @@ class ForgotPasswordBloc extends Bloc<CommonEvent, ForgotPasswordState> {
     ForgotPasswordState state,
   ) {
     final newPassword = NewPassword.dirty(event.newPassword);
-    print(newPassword);
     return state.copyWith(
       newPassword: newPassword,
       action: Formz.validate([newPassword, state.confirmPassword]),

@@ -20,6 +20,10 @@ abstract class AuthAPI {
     return _AuthAPI(dio, baseUrl: baseUrl);
   }
 
+  @Headers({'content-type': 'application/json'})
+  @POST('/do/oauth/signup')
+  Future<BaseResponse> signup(@Body() Map<String, dynamic> body);
+
   @Headers({'content-type': 'application/x-www-form-urlencoded'})
   @POST('/do/oauth/token')
   Future<OAuthResult> token(@Body() Map<String, dynamic> body);

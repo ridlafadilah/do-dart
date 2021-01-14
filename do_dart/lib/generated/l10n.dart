@@ -765,6 +765,16 @@ class DongkapLocalizations {
     );
   }
 
+  /// `Agree to`
+  String get labelTermsRegister {
+    return Intl.message(
+      'Agree to',
+      name: 'labelTermsRegister',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Username is required!`
   String get errorUsername {
     return Intl.message(

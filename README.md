@@ -29,8 +29,6 @@ Dongkap | Mobile Application with Flutter
 * __Social Sign On__
   * Google
 
-* __Google reCAPTCHA v2__ ( _soon_ )
-
 * __l10n__ ( _flutter_localizations_ )
 
 * __Simple UI Template__

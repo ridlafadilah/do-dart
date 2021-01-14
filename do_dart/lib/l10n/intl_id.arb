@@ -96,6 +96,7 @@
       }
     },
     "labelBackToLogin": "Kembali untuk masuk",
+    "labelTermsRegister": "Setuju dengan",
   
     "errorUsername": "Username wajib diisi!",
     "errorEmail": "Email wajib diisi!",

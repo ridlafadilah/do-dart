@@ -3,6 +3,7 @@ import 'package:do_core/bloc.dart';
 import 'package:do_core/core.dart';
 import 'package:do_dart/auth/page/forgot-password/view/request_forgot_password_page.dart';
 import 'package:do_dart/auth/page/login/bloc/login_bloc.dart';
+import 'package:do_dart/auth/page/register/view/register_page.dart';
 import 'package:do_dart/l10n/bloc/translation_bloc.dart';
 import 'package:do_dart/l10n/utils/locale_utils.dart';
 import 'package:do_dart/theme/bloc/thememode_bloc.dart';
@@ -333,7 +334,12 @@ class _RegisterLink extends StatelessWidget {
                   ),
                 )),
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushAndRemoveUntil<void>(
+                  RegisterPage.route(),
+                  (route) => false,
+                );
+              },
               canRequestFocus: false,
               child: Text(
                 DongkapLocalizations.of(context).register,
