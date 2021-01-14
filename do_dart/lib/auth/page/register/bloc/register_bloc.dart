@@ -84,7 +84,7 @@ class RegisterBloc extends Bloc<CommonEvent, RegisterState> {
             email: state.email.value,
             password: state.password.value,
             confirmPassword: state.confirmPassword.value,
-            recaptcha: null,
+            recaptcha: state.captcha.value,
             terms: null);
         yield state.copyWith(
           status: FormzStatus.submissionSuccess,
