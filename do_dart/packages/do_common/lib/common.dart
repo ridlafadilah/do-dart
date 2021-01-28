@@ -7,6 +7,8 @@ export 'components/pin/pin_code_fields.dart';
 export 'components/skeleton/skeleton.dart';
 export 'components/skeleton/skeleton_list.dart';
 export 'components/skeleton/skeleton_round.dart';
+export 'components/switch/animated_switch.dart';
+export 'components/switch/rolling_switch.dart';
 export 'components/terms/terms_web.dart';
 export 'components/title/title_widget.dart';
 export 'components/toast/flushbar.dart';
